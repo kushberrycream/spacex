@@ -10,22 +10,13 @@ html,body {
 }
 
 body {
-    display: flex;
-  min-height: 100vh;
+  display: flex;
   flex-direction: column;
 }
 #data {
-    flex: 1;
+    flex: 1 0 auto;
 }
 
-.bg {
-  /* The image used */
-  background-image: url("../images/stars.jpg");
-  height: 85vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 h2 {
   padding: 20px;
 }
@@ -38,12 +29,6 @@ button.nav-link {
   background-color: transparent;
 }
 
-.header {
-  background: url("../images/spacexheader.jpg") no-repeat center;
-  background-size: cover;
-  max-width: 100%;
-  
-}
 
 .navbar-brand {
   height: 60px;
@@ -78,10 +63,26 @@ button.nav-link {
 }
 
 .card {
-  padding: 20px;
   margin: 20px;
-  box-shadow: 5px 5px 20px;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s linear;
+  padding: 0;
+  border: 0;
 }
+.rocket-image {
+  width: 100%;
+  max-width:400px;
+  height: auto;
+  text-align: center;
+}
+.center-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .github {
   width: 70px;
   margin: 20px 20px 0 20px;
@@ -109,5 +110,9 @@ a {
 }
 .spacexwhite {
   width: 75%;
+}
+
+.footer {
+  flex-shrink: 0;
 }
 
