@@ -82,7 +82,7 @@ function callRockets() {
         title.setAttribute("class", "title")
         app.appendChild(title)
         title.innerHTML = `<h1><strong>SpaceX Rockets</strong></h1>`
-
+        console.log(data);
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 
@@ -208,11 +208,24 @@ function rocketSpec() {
         data = response.data
         $("#loader").addClass("hide-loader");
 
-        console.log(data);
+        const objectArray = Object.keys(data.payload_weights);
+
+        objectArray.forEach(([key]) => {
+            let text = key
+            console.log(text); // 1
 
 
-        app.innerHTML = `<h1 class="text-center p-4"><strong>${data.rocket_name}</strong></h1>
-                            <div class="card">
+            let aboutRocket = document.createElement("div");
+            let rocketStats = document.createElement("div");
+
+            aboutRocket.setAttribute("class", "about-rockets");
+            rocketStats.setAttribute("class", "rocket-stats");
+
+            app.innerHTML = `<h1 class="text-center p-4"><strong>${data.rocket_name}</strong></h1>`
+            app.appendChild(aboutRocket);
+            app.appendChild(rocketStats);
+
+            aboutRocket.innerHTML = `<div class="card">
                             <div class="card-header">
                                 <h4>About</h4>
                             </div>
@@ -231,82 +244,111 @@ function rocketSpec() {
                                         <p class="card-text">${data.description}</p>
                                 
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Statistics</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Stages: ${data.stages}</li>
-                                            <li class="list-group-item">Boosters: ${data.boosters}</li>
-                                            <li class="list-group-item">Height: ${data.height.meters}m</li>
-                                            <li class="list-group-item">Diameter: ${data.diameter.meters}m</li>
-                                            <li class="list-group-item">Mass: ${data.mass.kg}kg</li>
-                                            <li class="list-group-item">Landing Legs: ${data.landing_legs.number}</li>
-                                            <li class="list-group-item">Payload:
-                                                <ul>
-                                                    <li class="list-item">Name: ${data.payload_weights[0].name}</li>
-                                                    <li class="list-item">Weights: ${data.payload_weights[0].kg}kg</li>
-                                                </ul>
-                                            </li>
-                                            <li class="list-group-item">Engines:
-                                                <ul>
-                                                    <li class="list-item">Type: ${data.engines.type}</li>
-                                                    <li class="list-item">No. of Engines: ${data.engines.number}</li>
-                                                    <li class="list-item">Engine Version: ${data.engines.version}</li>
-                                                    <li class="list-item">Layout: ${data.engines.layout}</li>
-                                                    <li class="list-item">Propellants: 
+                        </div>`;
+
+            rocketStats.innerHTML = `<div class="row">
+                                        <div class="col-md-5">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4>Statistics</h4>
+                                                </div>
+                                            <div class="card-body">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">Stages: ${data.stages}</li>
+                                                    <li class="list-group-item">Boosters: ${data.boosters}</li>
+                                                    <li class="list-group-item">Height: ${data.height.meters}m</li>
+                                                    <li class="list-group-item">Diameter: ${data.diameter.meters}m</li>
+                                                    <li class="list-group-item">Mass: ${data.mass.kg}kg</li>
+                                                    <li class="list-group-item">Landing Legs: ${data.landing_legs.number}</li>
+                                                    <li class="list-group-item">Payload:
                                                         <ul>
-                                                            <li class="list-item">1: ${data.engines.propellant_1}</li>
-                                                            <li class="list-item">2: ${data.engines.propellant_2}</li>
+                                                            <li id="payload-name" class="list-item"></li>
                                                         </ul>
                                                     </li>
-                                                    <li class="list-item">Thrust at Sea Level: ${data.engines.thrust_sea_level.kN}kN</li>
-                                                    <li class="list-item">Thrust Vaccum: ${data.engines.thrust_vacuum.kN}kN</li>
+                                                    <li class="list-group-item">Engines:
+                                                        <ul>
+                                                            <li class="list-item">Type: ${data.engines.type}</li>
+                                                            <li class="list-item">No. of Engines: ${data.engines.number}</li>
+                                                            <li class="list-item">Engine Version: ${data.engines.version}</li>
+                                                            <li class="list-item">Layout: ${data.engines.layout}</li>
+                                                            <li class="list-item">Propellants:
+                                                                <ul>
+                                                                    <li class="list-item">1: ${data.engines.propellant_1}</li>
+                                                                    <li class="list-item">2: ${data.engines.propellant_2}</li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="list-item">Thrust at Sea Level: ${data.engines.thrust_sea_level.kN}kN</li>
+                                                            <li class="list-item">Thrust Vaccum: ${data.engines.thrust_vacuum.kN}kN</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="list-group-item">First Stage:
+                                                        <ul>
+                                                            <li class="list-item">No. of Engines: ${data.first_stage.engines}</li>
+                                                            <li class="list-item">Resuable: ${data.first_stage.reusable}</li>
+                                                            <li class="list-item">Fuel Amount: ${data.first_stage.fuel_amount_tons}t</li>
+                                                            <li class="list-item">Burn Time: ${data.first_stage.burn_time_sec}secs</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="list-group-item">Second Stage:
+                                                        <ul>
+                                                            <li class="list-item">No. of Engines: ${data.second_stage.engines}</li>
+                                                            <li class="list-item">Resuable: ${data.second_stage.reusable}</li>
+                                                            <li class="list-item">Fuel Amount: ${data.second_stage.fuel_amount_tons}t</li>
+                                                            <li class="list-item">Burn Time: ${data.second_stage.burn_time_sec}secs</li>
+                                                        </ul>
+                                                    </li>
                                                 </ul>
-                                            </li>
-                                            <li class="list-group-item">First Stage:
-                                                <ul>
-                                                    <li class="list-item">No. of Engines: ${data.first_stage.engines}</li>
-                                                    <li class="list-item">Resuable: ${data.first_stage.reusable}</li>
-                                                    <li class="list-item">Fuel Amount: ${data.first_stage.fuel_amount_tons}t</li>
-                                                    <li class="list-item">Burn Time: ${data.first_stage.burn_time_sec}secs</li>
-                                                </ul>
-                                            </li>
-                                            <li class="list-group-item">Second Stage:
-                                                <ul>
-                                                    <li class="list-item">No. of Engines: ${data.second_stage.engines}</li>
-                                                    <li class="list-item">Resuable: ${data.second_stage.reusable}</li>
-                                                    <li class="list-item">Fuel Amount: ${data.second_stage.fuel_amount_tons}t</li>
-                                                    <li class="list-item">Burn Time: ${data.second_stage.burn_time_sec}secs</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card">
-                                    <div class="card-header">
+                                    <div class="col-md-7">
+                                        <div class="card">
+                                        <div class="card-header">
                                         <h4>Photos</h4>
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title"> Active: ${data.active}  <br>  First Flight: ${data.first_flight}  </h5>
-                                            Wikipedia: <a href="${data.wikipedia}" target="_blank">${data.wikipedia}</a>
-                                        
-                                        </br>
-
-                                        <p class="card-text">${data.description}</p>
-                                
+                                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="..." class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="..." class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="..." class="d-block w-100" alt="...">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>`;
+                        </div>`
+            data.payload_weights.forEach(item => {
+
+                payloadName = document.getElementById("payload-name");
+                listitem = document.createElement("li")
+                payloadName.appendChild(listitem);
+                
+                listitem.innerHTML = `${item.name} - ${item.kg}kg`
+
+            })
+
+        })
 
     })
+
 }
-
-
