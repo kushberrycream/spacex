@@ -208,46 +208,87 @@ function rocketSpec() {
         data = response.data
         $("#loader").addClass("hide-loader");
 
-        const objectArray = Object.keys(data.payload_weights);
-
-        objectArray.forEach(([key]) => {
-            let text = key
-            console.log(text); // 1
+        let aboutRocket = document.createElement("div");
 
 
-            let aboutRocket = document.createElement("div");
-            let rocketStats = document.createElement("div");
+        aboutRocket.setAttribute("class", "about-rockets");
 
-            aboutRocket.setAttribute("class", "about-rockets");
-            rocketStats.setAttribute("class", "rocket-stats");
+        app.innerHTML = `<h1 class="text-center p-4"><strong>${data.rocket_name}</strong></h1>`
+        app.appendChild(aboutRocket);
 
-            app.innerHTML = `<h1 class="text-center p-4"><strong>${data.rocket_name}</strong></h1>`
-            app.appendChild(aboutRocket);
-            app.appendChild(rocketStats);
 
-            aboutRocket.innerHTML = `<div class="card">
-                            <div class="card-header">
-                                <h4>About</h4>
-                            </div>
-                            <div class="card-body">
-                                        <h6>Active: ${data.active}</h6>
-                                        <h6>First Flight: ${data.first_flight}  </h6>
-                                        <h6>Cost Per Launch: $${data.cost_per_launch}  </h6>
-                                        <progress max="100" value="${data.success_rate_pct}"><span>${data.success_rate_pct}</span></progress>
+        aboutRocket.innerHTML = `<div class="row">
+                                    <div id="about" class="col-md-7">                                     
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>About</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <h6>Active: ${data.active}</h6>
+                                                <h6>First Flight: ${data.first_flight}  </h6>
+                                                <h6>Cost Per Launch: $${data.cost_per_launch}  </h6>
+                                                <progress max="100" value="${data.success_rate_pct}"><span>${data.success_rate_pct}</span></progress>
 
-                                        </br>
+                                                </br>
 
-                                        Wikipedia: <a href="${data.wikipedia}" target="_blank">${data.wikipedia}</a>
+                                                Wikipedia: <a href="${data.wikipedia}" target="_blank">${data.wikipedia}</a>
                                         
-                                        </br>
+                                                </br>
 
-                                        <p class="card-text">${data.description}</p>
+                                                <p class="card-text">${data.description}</p>
                                 
-                            </div>
-                        </div>`;
+                                            </div>
+                                        </div>
+                                        <div id="photos">
+                                        </div>
+                                    </div>
+                                    <div id="rocketstats" class="col-md-5">
+                                    </div>
+                                </div`;
 
-            rocketStats.innerHTML = `<div class="row">
-                                        <div class="col-md-5">
+        photos = document.getElementById("photos");
+        photos.innerHTML = `<div class="card">
+                                            <div class="card-header">
+                                                <h4>Photos</h4>
+                                            </div>
+                                                <div class="card-body">
+                                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                                        <ol class="carousel-indicators">
+                                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                        </ol>
+                                                        <div id="flickr-images" class="carousel-inner">
+                                                            
+                                                            
+                                                        </div>
+                                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                        </div>`
+        data.flickr_images.forEach(item => {
+
+            flickrImages = document.getElementById("flickr-images");
+            photos = document.createElement("div")
+            photos.setAttribute("class", "carousel-item")
+            flickrImages.appendChild(photos);
+
+
+            photos.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`
+
+            active = document.getElementsByTagName("div").item(16)
+            active.setAttribute("class", "carousel-item active")
+        })
+
+        rocketStats = document.getElementById("rocketstats");
+        rocketStats.innerHTML = `
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h4>Statistics</h4>
@@ -301,54 +342,16 @@ function rocketSpec() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-7">
-                                        <div class="card">
-                                        <div class="card-header">
-                                        <h4>Photos</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                            </ol>
-                                            <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img src="..." class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="..." class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="..." class="d-block w-100" alt="...">
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`
-            data.payload_weights.forEach(item => {
+                                </div>`;
+        data.payload_weights.forEach(item => {
 
-                payloadName = document.getElementById("payload-name");
-                listitem = document.createElement("li")
-                payloadName.appendChild(listitem);
-                
-                listitem.innerHTML = `${item.name} - ${item.kg}kg`
+            payloadName = document.getElementById("payload-name");
+            listitem = document.createElement("li")
+            payloadName.appendChild(listitem);
 
-            })
+            listitem.innerHTML = `${item.name} - ${item.kg}kg`
 
         })
-
     })
 
 }
