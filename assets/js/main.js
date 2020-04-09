@@ -63,7 +63,7 @@ function upcomingLaunch() {
 
     axios.get(api + "launches/upcoming").then(response => {
         data = response.data
-        
+
         $("#loader").addClass("hide-loader");
     });
 }
@@ -129,16 +129,14 @@ function callMissions() {
         title.setAttribute("class", "title")
         app.appendChild(title)
         title.innerHTML = `<h1><strong>Missions</strong></h1>`
-        
+
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
-            item.manufacturers[1] = {}
-            item.manufacturers[2] = {}
-            item.manufacturers[3] = {}
+
             let info = document.createElement("div");
             info.setAttribute("class", "card");
             app.appendChild(info);
-            
+
             info.innerHTML = `
                             <div class="card-header">
                                 <h3>${item.mission_name}</h3>
@@ -146,8 +144,8 @@ function callMissions() {
                             <div class="card-body">
                                 
                                    
-                                        <h5 class="card-title">Mission ID: ${item.mission_id} - Active: ${item.active}</h5>
-                                        <h6>Manufacturers: ${item.manufacturers[0]} - ${item.manufacturers[1]} - ${item.manufacturers[2]} - ${item.manufacturers[3]} </h6>
+                                        <h5 class="card-title">Mission ID: ${item.mission_id}</h5>
+                                        <h6>Manufacturers: ${item.manufacturers[0]} - ${item.manufacturers[1]} - ${item.manufacturers[2]} </h6>
                                         <p class="card-text">${item.description}</p>
                                         Website: <a href="${item.website}" target="_blank">${item.website}</a> 
                                         <br>
@@ -162,7 +160,8 @@ function callMissions() {
                             </div>`;
 
         });
-         
+
+
     })
 }
 
@@ -173,10 +172,45 @@ function callLaunches() {
 
     axios.get(api + "launches/past").then(response => {
         data = response.data
-        console.log(data)
-        $("#loader").addClass("hide-loader");
-    });
+        let newData = data.slice().reverse();
+        console.log(newData)
+        let title = document.createElement("div");
+        title.setAttribute("class", "title")
+        app.appendChild(title)
+        title.innerHTML = `<h1><strong>Past Launches</strong></h1>`
+        newData.forEach(item => {
+            $("#loader").addClass("hide-loader");
+
+            let date = new Date(item.launch_date_utc);
+            let info = document.createElement("div");
+            info.setAttribute("class", "card");
+            app.appendChild(info);
+
+            info.innerHTML = `
+                            <div class="card-header">
+                                <h3>${item.mission_name}</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5 class="card-title">Flight Number: ${item.flight_number} </h5>
+                                        <p class="card-text">Launch Date: ${date.toString()}</p>
+                                        <a href="" target="_blank">${item.wikipedia}</a>
+                                        <br>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <img src="${item.links.mission_patch_small}" alt="Mission Patch" >
+                                    </div>
+                                </div>
+                            </div>`;
+
+
+
+        });
+    })
 }
+
+
 
 
 
@@ -326,22 +360,22 @@ function rocketSpec() {
         data.flickr_images.forEach(item => {
 
             let a = data.flickr_images.indexOf(item);
-            
+
             flickrImages = document.getElementById("flickr-images");
             indicators = document.getElementById("data-slide");
-            
+
             photos = document.createElement("div");
             slide = document.createElement("li");
 
             photos.setAttribute("class", "carousel-item");
             slide.setAttribute("data-slide-to", a);
-            slide.setAttribute("data-target","#carouselExampleIndicators");
+            slide.setAttribute("data-target", "#carouselExampleIndicators");
 
             flickrImages.appendChild(photos);
             indicators.appendChild(slide);
 
             photos.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
-            
+
             activePhoto = document.getElementsByTagName("div").item(16);
             activePhoto.setAttribute("class", "carousel-item active");
 
@@ -418,3 +452,4 @@ function rocketSpec() {
     })
 
 }
+
