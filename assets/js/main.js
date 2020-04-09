@@ -21,20 +21,15 @@ function WireUpEvents() {
     launches.addEventListener('click', launchesClick);
 
 }
-
-
 function aboutClick() {
     callAbout()
 }
-
 function rocketsClick() {
     callRockets()
 }
-
 function missionsClick() {
     callMissions()
 }
-
 function launchesClick() {
     callLaunches()
 }
@@ -49,6 +44,8 @@ let btnValue = {}
 function getValue(value) {
     btnValue = value;
 }
+
+
 //Clear data div 
 
 function clearData() {
@@ -66,10 +63,14 @@ function upcomingLaunch() {
 
     axios.get(api + "launches/upcoming").then(response => {
         data = response.data
-        console.log(data)
+        
         $("#loader").addClass("hide-loader");
     });
 }
+
+
+
+// calls spacex rocket url - all rockets
 
 function callRockets() {
     clearData()
@@ -114,6 +115,8 @@ function callRockets() {
     })
 }
 
+
+
 function callMissions() {
     clearData()
     $("#loader").removeClass("hide-loader");
@@ -121,9 +124,46 @@ function callMissions() {
 
     axios.get(api + "missions").then(response => {
         data = response.data
-        console.log(data)
-        $("#loader").addClass("hide-loader");
-    });
+        console.log(data.manufacturers)
+        let title = document.createElement("div");
+        title.setAttribute("class", "title")
+        app.appendChild(title)
+        title.innerHTML = `<h1><strong>Missions</strong></h1>`
+        
+        data.forEach(item => {
+            $("#loader").addClass("hide-loader");
+            item.manufacturers[1] = {}
+            item.manufacturers[2] = {}
+            item.manufacturers[3] = {}
+            let info = document.createElement("div");
+            info.setAttribute("class", "card");
+            app.appendChild(info);
+            
+            info.innerHTML = `
+                            <div class="card-header">
+                                <h3>${item.mission_name}</h3>
+                            </div>
+                            <div class="card-body">
+                                
+                                   
+                                        <h5 class="card-title">Mission ID: ${item.mission_id} - Active: ${item.active}</h5>
+                                        <h6>Manufacturers: ${item.manufacturers[0]} - ${item.manufacturers[1]} - ${item.manufacturers[2]} - ${item.manufacturers[3]} </h6>
+                                        <p class="card-text">${item.description}</p>
+                                        Website: <a href="${item.website}" target="_blank">${item.website}</a> 
+                                        <br>
+
+                                        <a href="${item.wikipedia}" target="_blank"><i class="fab fa-wikipedia-w"></i> </a>
+                                    
+
+                                        <a href="${item.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
+                                     
+                                        
+                            
+                            </div>`;
+
+        });
+         
+    })
 }
 
 function callLaunches() {
@@ -137,6 +177,10 @@ function callLaunches() {
         $("#loader").addClass("hide-loader");
     });
 }
+
+
+
+// calls spacex url
 
 function callAbout() {
     clearData()
@@ -199,6 +243,9 @@ function callAbout() {
 }
 
 
+
+// calls a specific spacex rocket api url
+
 function rocketSpec() {
     clearData()
     $("#loader").removeClass("hide-loader");
@@ -209,7 +256,6 @@ function rocketSpec() {
         $("#loader").addClass("hide-loader");
 
         let aboutRocket = document.createElement("div");
-
 
         aboutRocket.setAttribute("class", "about-rockets");
 
@@ -224,6 +270,10 @@ function rocketSpec() {
                                                 <h4>About</h4>
                                             </div>
                                             <div class="card-body">
+
+                                                <p class="card-text">${data.description}</p>
+                                                   </br>
+
                                                 <h6>Active: ${data.active}</h6>
                                                 <h6>First Flight: ${data.first_flight}  </h6>
                                                 <h6>Cost Per Launch: $${data.cost_per_launch}  </h6>
@@ -233,9 +283,9 @@ function rocketSpec() {
 
                                                 Wikipedia: <a href="${data.wikipedia}" target="_blank">${data.wikipedia}</a>
                                         
-                                                </br>
+                                             
 
-                                                <p class="card-text">${data.description}</p>
+                                                
                                 
                                             </div>
                                         </div>
@@ -253,10 +303,8 @@ function rocketSpec() {
                                             </div>
                                                 <div class="card-body">
                                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                                        <ol class="carousel-indicators">
-                                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                        <ol id="data-slide" class="carousel-indicators">
+                                                            
                                                         </ol>
                                                         <div id="flickr-images" class="carousel-inner">
                                                             
@@ -272,19 +320,34 @@ function rocketSpec() {
                                                         </a>
                                                     </div>
                                                 </div>
-                                        </div>`
+                                        </div>`;
+
+
         data.flickr_images.forEach(item => {
 
+            let a = data.flickr_images.indexOf(item);
+            
             flickrImages = document.getElementById("flickr-images");
-            photos = document.createElement("div")
-            photos.setAttribute("class", "carousel-item")
+            indicators = document.getElementById("data-slide");
+            
+            photos = document.createElement("div");
+            slide = document.createElement("li");
+
+            photos.setAttribute("class", "carousel-item");
+            slide.setAttribute("data-slide-to", a);
+            slide.setAttribute("data-target","#carouselExampleIndicators");
+
             flickrImages.appendChild(photos);
+            indicators.appendChild(slide);
 
+            photos.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
+            
+            activePhoto = document.getElementsByTagName("div").item(16);
+            activePhoto.setAttribute("class", "carousel-item active");
 
-            photos.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`
+            activePhoto = document.getElementsByTagName("li").item(5);
+            activePhoto.setAttribute("class", "active");
 
-            active = document.getElementsByTagName("div").item(16)
-            active.setAttribute("class", "carousel-item active")
         })
 
         rocketStats = document.getElementById("rocketstats");
