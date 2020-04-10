@@ -11,12 +11,14 @@ document.addEventListener('DOMContentLoaded', WireUpEvents);
 function WireUpEvents() {
     var about = document.getElementById('about'),
         rockets = document.getElementById('rockets');
+    dragons = document.getElementById('dragons');
     missions = document.getElementById('missions');
     launches = document.getElementById('launches');
 
 
     about.addEventListener('click', aboutClick);
     rockets.addEventListener('click', rocketsClick);
+    dragons.addEventListener('click', dragonsClick);
     missions.addEventListener('click', missionsClick);
     launches.addEventListener('click', launchesClick);
 
@@ -26,6 +28,9 @@ function aboutClick() {
 }
 function rocketsClick() {
     callRockets()
+}
+function dragonsClick() {
+    callDragons()
 }
 function missionsClick() {
     callMissions()
@@ -112,7 +117,6 @@ function upcomingLaunch() {
 
         data.forEach(item => {
             let a = data.indexOf(item);
-            console.log(item)
 
             upcomingLaunch = document.getElementById("upcoming-launch");
             indicators = document.getElementById("data-slide");
@@ -129,9 +133,10 @@ function upcomingLaunch() {
             if (item.details !== null) {
                 launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
                                                 alt="First slide">
-                                                <div class="carousel-caption">
+                                                <div class="carousel-caption d-none d-md-block">
                                                     <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
-                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number} &nbsp; &nbsp; &nbsp; <span class="rocket">Rocket:</span> ${item.rocket.rocket_name}
+                                                    &nbsp; <span class="rocket">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
                                                     <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
 
                                                     <p>${item.details}</p>
@@ -141,9 +146,10 @@ function upcomingLaunch() {
             } else {
                 launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
                                                 alt="Launch Countdown Photo">
-                                                <div class="carousel-caption">
+                                                <div class="carousel-caption d-none d-md-block">
                                                     <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
-                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number} &nbsp; &nbsp; &nbsp; <span class="rocket">Rocket:</span> ${item.rocket.rocket_name}
+                                                    &nbsp <span class="rocket">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
                                                     <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
                                                 </div>
                                                 `;
@@ -162,7 +168,7 @@ function upcomingLaunch() {
                 );
                 let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((t % (1000 * 60)) / 1000);
-                
+
 
                 info.innerHTML = `<h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>`;
                 if (t < 0) {
@@ -178,11 +184,10 @@ function upcomingLaunch() {
         activeItem = document.getElementsByTagName("div").item(9);
         activeItem.setAttribute("class", "carousel-item active");
 
-        activeLaunch = document.getElementsByTagName("li").item(5);
+        activeLaunch = document.getElementsByTagName("li").item(6);
         activeLaunch.setAttribute("class", "active");
     });
 }
-
 
 
 // calls spacex rocket url - all rockets
@@ -230,6 +235,51 @@ function callRockets() {
     })
 }
 
+
+function callDragons() {
+    clearData()
+    $("#loader").removeClass("hide-loader");
+    $("#data").removeClass("container-fluid");
+    $("#data").addClass("container");
+
+    axios.get(api + "dragons").then(response => {
+        data = response.data
+        console.log(data)
+        let title = document.createElement("div");
+        title.setAttribute("class", "title")
+        app.appendChild(title)
+        title.innerHTML = `<h1><strong>SpaceX Dragons</strong></h1>`
+        data.forEach(item => {
+            $("#loader").addClass("hide-loader");
+
+            let info = document.createElement("div");
+            info.setAttribute("class", "card");
+            app.appendChild(info);
+
+            info.innerHTML = `
+                            <div class="card-header">
+                                <h3>${item.name}</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5 class="card-title">Type: ${item.type} - Active: ${item.active}</h5>
+                                        <h6 class="card-title">Crew Capacity: ${item.crew_capacity} - Sidewall Angle: ${item.sidewall_angle_deg}&deg; - Orbit Duration: ${item.orbit_duration_yr}yrs</h6>
+                                        <p class="card-text">${item.description}</p>
+                                        Wikipedia: <a href="${item.wikipedia}" target="_blank">${item.wikipedia}</a>
+                                        <br>
+                                        
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <img class="rocket-image" src="${item.flickr_images[0]} alt="Rocket-Image">
+                                    </div>
+                                </div>
+                            </div>`;
+
+
+        });
+    })
+}
 
 // calls spacex missions api
 
@@ -292,6 +342,7 @@ function callLaunches() {
 
     axios.get(api + "launches/past").then(response => {
         data = response.data
+        console.log(data)
         let newData = data.slice().reverse();
         let title = document.createElement("div");
         title.setAttribute("class", "title")
@@ -311,13 +362,14 @@ function callLaunches() {
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-7">
                                         <h5 class="card-title">Flight Number: ${item.flight_number} </h5>
-                                        <p class="card-text">Launch Date: ${date.toString()}</p>
-                                        <a href="" target="_blank">${item.wikipedia}</a>
+                                        <p class="card-text">Launch Date: ${date.toString()}</>
+                                        Launch Site: ${item.launch_site.site_name_long}</p>
+                                        <p>${item.details}</p>
                                         <br>
                                     </div>
-                                    <div class="col-md-6 text-center">
+                                    <div class="col-md-5 text-center">
                                         <img src="${item.links.mission_patch_small}" alt="Mission Patch" >
                                     </div>
                                 </div>

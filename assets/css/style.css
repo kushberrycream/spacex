@@ -18,7 +18,7 @@ body {
 }
 
 h2 {
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .bg-dark {
@@ -170,13 +170,19 @@ progress[value]::-webkit-progress-value {
     margin-top: 30px;
     border-radius: 6px ;
     color: rgba(0,0,0,.87);
-    background: #fff;
+   
     text-align: center;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    height: 100%;
+    
+    background: #000;
+    overflow: hidden;
 }
 
 .card.card-carousel img{
     border-radius: 6px;
+    object-fit: cover;
+   opacity: 0.4;
 }
 
 
@@ -222,7 +228,7 @@ progress[value]::-webkit-progress-value {
 
 .carousel .carousel-indicators .active {
     margin-top: 10px;
-    transform: scale(1.5);
+    transform: scale(1);
     box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
 }
 
@@ -329,6 +335,12 @@ progress[value]::-webkit-progress-value {
     font-size: small;
 }
 
+.rocket {
+    position: absolute;
+    top: 50px;
+    font-size: small;
+}
+
 .countdown {
     
     height: 125px;
@@ -338,7 +350,7 @@ progress[value]::-webkit-progress-value {
     bottom: 20px;
     left: 15%;
     z-index: 10;
-    padding-top: 20px;
+   
     padding-bottom: 20px;
     color: #fff;
     text-align: center;
