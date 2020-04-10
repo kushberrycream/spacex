@@ -40,6 +40,14 @@ const app = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/";
 
 let btnValue = {}
+let url;
+var photosObj = [
+    { image: 'assets/images/sideboosters.jpg' },
+    { image: 'assets/images/falconheavy.jpg' },
+    { image: 'assets/images/crewdragon.jpg' },
+    { image: 'assets/images/dragonapproachingiss.jpg' }
+];
+
 
 function getValue(value) {
     btnValue = value;
@@ -53,18 +61,125 @@ function clearData() {
 }
 
 
-// API function
+// call spacex api on load
 
 upcomingLaunch()
 
+
+// call spacex upcoming launches api
+
 function upcomingLaunch() {
+
     $("#loader").removeClass("hide-loader");
-    $("#data").addClass("bg");
 
     axios.get(api + "launches/upcoming").then(response => {
         data = response.data
-
         $("#loader").addClass("hide-loader");
+        let jumbotron = document.createElement("div")
+        jumbotron.setAttribute("class", "jumbotron jumbotron-fluid")
+        app.appendChild(jumbotron);
+
+
+        jumbotron.innerHTML = `<div class="container">
+                                <div class="card card-raised card-carousel">
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+                                        <ol id="data-slide" class="carousel-indicators">
+                            
+                                            
+                                        </ol>
+                                        <div id="upcoming-launch" class="carousel-inner">
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <a class="carousel-control-prev-home" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            <i class="fas fa-long-arrow-alt-left"></i>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next-home" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                            <i class="fas fa-long-arrow-alt-right"></i>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+           
+           
+                                 </div>`;
+
+
+
+
+
+        data.forEach(item => {
+            let a = data.indexOf(item);
+            console.log(item)
+
+            upcomingLaunch = document.getElementById("upcoming-launch");
+            indicators = document.getElementById("data-slide");
+
+            launches = document.createElement("div");
+            slide = document.createElement("li");
+
+            launches.setAttribute("class", "carousel-item");
+            slide.setAttribute("data-slide-to", a);
+            slide.setAttribute("data-target", "#carouselExampleIndicators");
+
+            upcomingLaunch.appendChild(launches);
+            indicators.appendChild(slide);
+            if (item.details !== null) {
+                launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
+                                                alt="First slide">
+                                                <div class="carousel-caption">
+                                                    <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
+                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                    <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
+
+                                                    <p>${item.details}</p>
+                                                </div>
+                                                `;
+
+            } else {
+                launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
+                                                alt="Launch Countdown Photo">
+                                                <div class="carousel-caption">
+                                                    <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
+                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                    <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
+                                                </div>
+                                                `;
+
+            }
+            let info = document.createElement("div");
+            info.setAttribute("class", "countdown");
+            launches.appendChild(info);
+            let deadline = new Date(item.launch_date_utc).getTime();
+            let x = setInterval(function () {
+                let now = new Date().getTime();
+                let t = deadline - now;
+                let days = Math.floor(t / (1000 * 60 * 60 * 24));
+                let hours = Math.floor(
+                    (t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((t % (1000 * 60)) / 1000);
+                
+
+                info.innerHTML = `<h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>`;
+                if (t < 0) {
+                    clearInterval(x);
+                    info.innerHTML = `<h3>COUNTDOWN OVER!</h3>`;
+                }
+            }, 1000);
+
+
+
+
+        })
+        activeItem = document.getElementsByTagName("div").item(9);
+        activeItem.setAttribute("class", "carousel-item active");
+
+        activeLaunch = document.getElementsByTagName("li").item(5);
+        activeLaunch.setAttribute("class", "active");
     });
 }
 
@@ -75,7 +190,8 @@ function upcomingLaunch() {
 function callRockets() {
     clearData()
     $("#loader").removeClass("hide-loader");
-    $("#data").addClass("bg");
+    $("#data").removeClass("container-fluid");
+    $("#data").addClass("container");
 
     axios.get(api + "rockets").then(response => {
         data = response.data
@@ -83,7 +199,6 @@ function callRockets() {
         title.setAttribute("class", "title")
         app.appendChild(title)
         title.innerHTML = `<h1><strong>SpaceX Rockets</strong></h1>`
-        console.log(data);
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 
@@ -116,15 +231,16 @@ function callRockets() {
 }
 
 
+// calls spacex missions api
 
 function callMissions() {
     clearData()
     $("#loader").removeClass("hide-loader");
-    $("#data").addClass("bg");
+    $("#data").removeClass("container-fluid");
+    $("#data").addClass("container");
 
     axios.get(api + "missions").then(response => {
         data = response.data
-        console.log(data.manufacturers)
         let title = document.createElement("div");
         title.setAttribute("class", "title")
         app.appendChild(title)
@@ -165,15 +281,18 @@ function callMissions() {
     })
 }
 
+
+// calls spacex  past launches api
+
 function callLaunches() {
     clearData()
     $("#loader").removeClass("hide-loader");
-    $("#data").addClass("bg");
+    $("#data").removeClass("container-fluid");
+    $("#data").addClass("container");
 
     axios.get(api + "launches/past").then(response => {
         data = response.data
         let newData = data.slice().reverse();
-        console.log(newData)
         let title = document.createElement("div");
         title.setAttribute("class", "title")
         app.appendChild(title)
@@ -211,15 +330,13 @@ function callLaunches() {
 }
 
 
-
-
-
 // calls spacex url
 
 function callAbout() {
     clearData()
     $("#loader").removeClass("hide-loader");
-    $("#data").removeClass("bg");
+    $("#data").removeClass("container-fluid");
+    $("#data").addClass("container");
 
 
     axios.get(api).then(response => {
@@ -277,13 +394,13 @@ function callAbout() {
 }
 
 
-
 // calls a specific spacex rocket api url
 
 function rocketSpec() {
     clearData()
     $("#loader").removeClass("hide-loader");
-    $("#data").removeClass("bg");
+    $("#data").removeClass("container-fluid");
+    $("#data").addClass("container");
 
     axios.get(api + btnValue).then(response => {
         data = response.data
@@ -376,8 +493,8 @@ function rocketSpec() {
 
             photos.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
 
-            activePhoto = document.getElementsByTagName("div").item(16);
-            activePhoto.setAttribute("class", "carousel-item active");
+            activeItem = document.getElementsByTagName("div").item(16);
+            activeItem.setAttribute("class", "carousel-item active");
 
             activePhoto = document.getElementsByTagName("li").item(5);
             activePhoto.setAttribute("class", "active");
@@ -453,3 +570,34 @@ function rocketSpec() {
 
 }
 
+
+/*
+            if (item.details !== null) {
+                launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
+                                                alt="First slide">
+                                                <div class="carousel-caption">
+                                                    <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
+                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                    <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
+
+                                                    <p>${item.details}</p>
+                                                </div>
+                                                `;
+
+            }
+
+
+
+
+else {
+                launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
+                                                alt="Launch Countdown Photo">
+                                                <div class="carousel-caption">
+                                                    <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
+                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                    <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
+                                                </div>
+                                                `;
+
+}
+*/
