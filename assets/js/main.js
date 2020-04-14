@@ -44,13 +44,15 @@ function launchesClick() {
 const app = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/";
 
-let btnValue = {}
-let url;
+let btnValue
+
 var photosObj = [
+    { image: 'assets/images/landingrocket.jpg' },
+    { image: 'assets/images/dragonapproachingiss.jpg' },
     { image: 'assets/images/sideboosters.jpg' },
     { image: 'assets/images/falconheavy.jpg' },
-    { image: 'assets/images/crewdragon.jpg' },
-    { image: 'assets/images/dragonapproachingiss.jpg' }
+    { image: 'assets/images/crewdragon.jpg' }
+
 ];
 
 
@@ -80,12 +82,15 @@ function upcomingLaunch() {
     axios.get(api + "launches/upcoming").then(response => {
         data = response.data
         $("#loader").addClass("hide-loader");
+
         let jumbotron = document.createElement("div")
         jumbotron.setAttribute("class", "jumbotron jumbotron-fluid")
         app.appendChild(jumbotron);
 
 
-        jumbotron.innerHTML = `<div class="container">
+        jumbotron.innerHTML = `
+        <h1 class="title"><strong>Upcoming Launches</strong></h1>
+        <div class="container">
                                 <div class="card card-raised card-carousel">
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
                                         <ol id="data-slide" class="carousel-indicators">
@@ -112,49 +117,42 @@ function upcomingLaunch() {
                                  </div>`;
 
 
-
-
-
         data.forEach(item => {
             let a = data.indexOf(item);
-
-            upcomingLaunch = document.getElementById("upcoming-launch");
             indicators = document.getElementById("data-slide");
-
-            launches = document.createElement("div");
             slide = document.createElement("li");
-
-            launches.setAttribute("class", "carousel-item");
             slide.setAttribute("data-slide-to", a);
             slide.setAttribute("data-target", "#carouselExampleIndicators");
-
-            upcomingLaunch.appendChild(launches);
             indicators.appendChild(slide);
-            if (item.details !== null) {
-                launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
-                                                alt="First slide">
+        })
+
+        data.forEach(item => {
+
+
+
+            upcomingLaunch = document.getElementById("upcoming-launch");
+            launches = document.createElement("div");
+            launches.setAttribute("class", "carousel-item");
+            upcomingLaunch.appendChild(launches);
+
+            
+                launches.innerHTML = `<div id="img-container">
+                                            <img class="d-block w-100" src="assets/images/crewdragon.jpg"
+                                                alt="Launch Countdown Photo">
+                                                </div>
                                                 <div class="carousel-caption d-none d-md-block">
-                                                    <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
+                                                   
                                                     <h4><span class="flight">Flight No:</span> ${item.flight_number} &nbsp; &nbsp; &nbsp; <span class="rocket">Rocket:</span> ${item.rocket.rocket_name}
                                                     &nbsp; <span class="rocket">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
                                                     <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
 
-                                                    <p>${item.details}</p>
+                                                    <p>${item.details ? item.details : ""}</p>
                                                 </div>
+                                                
                                                 `;
 
-            } else {
-                launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
-                                                alt="Launch Countdown Photo">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
-                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number} &nbsp; &nbsp; &nbsp; <span class="rocket">Rocket:</span> ${item.rocket.rocket_name}
-                                                    &nbsp <span class="rocket">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
-                                                    <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
-                                                </div>
-                                                `;
+           
 
-            }
             let info = document.createElement("div");
             info.setAttribute("class", "countdown");
             launches.appendChild(info);
@@ -170,10 +168,10 @@ function upcomingLaunch() {
                 let seconds = Math.floor((t % (1000 * 60)) / 1000);
 
 
-                info.innerHTML = `<h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>`;
+                info.innerHTML = `<h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2><h3>${days}d ${hours}h ${minutes}m ${seconds}s</h3>`;
                 if (t < 0) {
                     clearInterval(x);
-                    info.innerHTML = `<h3>COUNTDOWN OVER!</h3>`;
+                    info.innerHTML = `<h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2><h3>COUNTDOWN OVER!</h3>`;
                 }
             }, 1000);
 
@@ -187,6 +185,7 @@ function upcomingLaunch() {
         activeLaunch = document.getElementsByTagName("li").item(6);
         activeLaunch.setAttribute("class", "active");
     });
+
 }
 
 
@@ -234,6 +233,7 @@ function callRockets() {
         });
     })
 }
+
 
 
 function callDragons() {
@@ -303,27 +303,42 @@ function callMissions() {
             info.setAttribute("class", "card");
             app.appendChild(info);
 
-            info.innerHTML = `
-                            <div class="card-header">
-                                <h3>${item.mission_name}</h3>
-                            </div>
-                            <div class="card-body">
-                                
-                                   
-                                        <h5 class="card-title">Mission ID: ${item.mission_id}</h5>
-                                        <h6>Manufacturers: ${item.manufacturers[0]} - ${item.manufacturers[1]} - ${item.manufacturers[2]} </h6>
-                                        <p class="card-text">${item.description}</p>
-                                        Website: <a href="${item.website}" target="_blank">${item.website}</a> 
-                                        <br>
+            if (item.manufacturers[1] == null) { 
 
-                                        <a href="${item.wikipedia}" target="_blank"><i class="fab fa-wikipedia-w"></i> </a>
+                info.innerHTML = `<div class="card-header">
+                                    <h3>${item.mission_name}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Mission ID: ${item.mission_id}</h5>
+                                    <h6>Manufacturers: ${item.manufacturers[0]} </h6>
+                                    <p class="card-text">${item.description}</p>
+                                        Website: <a href="${item.website}" target="_blank">${item.website}</a> 
+                                    <br>
+
+                                    <a href="${item.wikipedia}" target="_blank"><i class="fab fa-wikipedia-w"></i> </a>
                                     
 
-                                        <a href="${item.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
-                                     
-                                        
-                            
-                            </div>`;
+                                    <a href="${item.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
+                                </div>`;
+            } else {
+                
+                info.innerHTML = `<div class="card-header">
+                                    <h3>${item.mission_name}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Mission ID: ${item.mission_id}</h5>
+                                    <h6>Manufacturers: ${item.manufacturers[0]} - ${item.manufacturers[1]} - ${item.manufacturers[2]}</h6>
+                                    <p class="card-text">${item.description}</p>
+                                        Website: <a href="${item.website}" target="_blank">${item.website}</a> 
+                                    <br>
+
+                                    <a href="${item.wikipedia}" target="_blank"><i class="fab fa-wikipedia-w"></i> </a>
+                                    
+
+                                    <a href="${item.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
+                                </div>`
+
+            }
 
         });
 
@@ -340,14 +355,42 @@ function callLaunches() {
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
 
-    axios.get(api + "launches/past").then(response => {
+    axios.get(api + "launches/past/" ).then(response => {
         data = response.data
-        console.log(data)
+        
         let newData = data.slice().reverse();
+        console.log(newData)
         let title = document.createElement("div");
-        title.setAttribute("class", "title")
-        app.appendChild(title)
-        title.innerHTML = `<h1><strong>Past Launches</strong></h1>`
+        let pagination = document.createElement("div");
+        title.setAttribute("class", "title");
+        app.appendChild(title);
+        app.appendChild(pagination);
+        title.innerHTML = `<h1><strong>Past Launches</strong></h1>`;
+        pagination.innerHTML = `<nav aria-label="Page navigation">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><option class="page-link" onclick="getValue(value)" value="?limit=10&offset=72">1</option></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">8</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">9</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>`
         newData.forEach(item => {
             $("#loader").addClass("hide-loader");
 
@@ -355,16 +398,27 @@ function callLaunches() {
             let info = document.createElement("div");
             info.setAttribute("class", "card");
             app.appendChild(info);
-
+            let launchSuccess = item.launch_success;
+            
+            if (launchSuccess == true) {
+                launchSuccess = `<div class='card-header green'>
+                                <h3>${item.mission_name} <span class="launch-success"><i class="fas fa-check"></i> Launch Successful </span></h3>
+                                </div>`
+                
+            } else {
+                launchSuccess = `<div class='card-header red'>
+                                <h3>${item.mission_name} <span class="launch-success"><i class="fas fa-times"></i> Launch Failed </span></h3>
+                                </div>`
+                
+                
+            }
             info.innerHTML = `
-                            <div class="card-header">
-                                <h3>${item.mission_name}</h3>
-                            </div>
+                            ${launchSuccess}
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-7">
                                         <h5 class="card-title">Flight Number: ${item.flight_number} </h5>
-                                        <p class="card-text">Launch Date: ${date.toString()}</>
+                                        <p class="card-text">Launch Date: ${date.toString()}</br>
                                         Launch Site: ${item.launch_site.site_name_long}</p>
                                         <p>${item.details}</p>
                                         <br>

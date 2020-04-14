@@ -7,14 +7,19 @@
 html,body {
   font-family: "Titillium Web", sans-serif;
   height: 100%;
+  
 }
 
 body {
   display: flex;
   flex-direction: column;
+  background: url("../images/1200px-Hyades.jpg") center center no-repeat fixed;
+  background-size: cover;
+  
 }
 #data {
     flex: 1 0 auto;
+    
 }
 
 h2 {
@@ -237,14 +242,15 @@ progress[value]::-webkit-progress-value {
     height: auto;
 }
 
+
 .carousel-item {
     position: relative;
     display: none;
     align-items: center;
-    
     transition: transform .6s ease;
     backface-visibility: hidden;
     perspective: 1000px;
+    
 }
 
 .carousel-item.active {
@@ -306,7 +312,7 @@ progress[value]::-webkit-progress-value {
 
 .carousel-caption {
     position: absolute;
-    bottom: 20px;
+    bottom: 70px;
     right: unset;
     left: 10%;
     z-index: 10;
@@ -315,8 +321,10 @@ progress[value]::-webkit-progress-value {
     padding-right: 50px;
     color: #fff;
     text-align:left;
-
     
+    height: 200px;
+    overflow: auto;
+
 }
 
 .mission-name {
@@ -324,25 +332,26 @@ progress[value]::-webkit-progress-value {
     top: 10px;
     font-size: small;
 }
+
 .flight {
     position: absolute;
-    top: 50px;
+    top: 10px;
     font-size: small;
 }
+
 .site {
     position: absolute;
-    top: 87px;
+    top: 46px;
     font-size: small;
 }
 
 .rocket {
     position: absolute;
-    top: 50px;
+    top: 10px;
     font-size: small;
 }
 
 .countdown {
-    
     height: 125px;
     position: absolute;
     top: 20px;
@@ -350,8 +359,23 @@ progress[value]::-webkit-progress-value {
     bottom: 20px;
     left: 15%;
     z-index: 10;
-   
     padding-bottom: 20px;
     color: #fff;
     text-align: center;
+}
+
+
+.launch-success {
+    position: absolute;
+    right: 20px;
+    font-size: smaller;
+    top: 17px;
+}
+
+.green {
+    background: green;
+}
+
+.red {
+    background: red;
 }
