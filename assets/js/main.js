@@ -83,15 +83,11 @@ function upcomingLaunch() {
         data = response.data
         $("#loader").addClass("hide-loader");
 
-        let jumbotron = document.createElement("div")
-        jumbotron.setAttribute("class", "jumbotron jumbotron-fluid")
-        app.appendChild(jumbotron);
-
-
-        jumbotron.innerHTML = `
-        <h1 class="title"><strong>Upcoming Launches</strong></h1>
-        <div class="container">
+        app.innerHTML = `
+        <div class="overlay"></div>
+        <div class="container-fluid">
                                 <div class="card card-raised card-carousel">
+                                <h1 class="title"><strong>Upcoming Launches</strong></h1>
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
                                         <ol id="data-slide" class="carousel-indicators">
                             
@@ -136,10 +132,8 @@ function upcomingLaunch() {
             upcomingLaunch.appendChild(launches);
 
             
-                launches.innerHTML = `<div id="img-container">
-                                            <img class="d-block w-100" src="assets/images/crewdragon.jpg"
-                                                alt="Launch Countdown Photo">
-                                                </div>
+                launches.innerHTML = `<div class="details-container">
+                                                
                                                 <div class="carousel-caption d-none d-md-block">
                                                    
                                                     <h4><span class="flight">Flight No:</span> ${item.flight_number} &nbsp; &nbsp; &nbsp; <span class="rocket">Rocket:</span> ${item.rocket.rocket_name}
@@ -148,7 +142,7 @@ function upcomingLaunch() {
 
                                                     <p>${item.details ? item.details : ""}</p>
                                                 </div>
-                                                
+                                                </div>
                                                 `;
 
            
@@ -168,10 +162,16 @@ function upcomingLaunch() {
                 let seconds = Math.floor((t % (1000 * 60)) / 1000);
 
 
-                info.innerHTML = `<h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2><h3>${days}d ${hours}h ${minutes}m ${seconds}s</h3>`;
+                info.innerHTML = `<h1>${days}d ${hours}h ${minutes}m ${seconds}s</h1>
+                <h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2> 
+                                        <img src="${item.links.mission_patch_small ? item.links.mission_patch_small: "assets/images/spacexcircle.png"}" alt="mission patch"> 
+                                        `;
                 if (t < 0) {
                     clearInterval(x);
-                    info.innerHTML = `<h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2><h3>COUNTDOWN OVER!</h3>`;
+                    info.innerHTML = `
+                    <h1>LAUNCH PENDING!</h1><h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2>
+                    <img src="${item.links.mission_patch_small ? item.links.mission_patch_small: "assets/images/spacexcircle.png"}" alt="mission patch"> 
+                    `;
                 }
             }, 1000);
 
