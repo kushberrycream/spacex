@@ -44,8 +44,8 @@ function launchesClick() {
 const app = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/";
 
-let btnValue
-
+let btnValue = "?limit=10&offset=82";
+let aboutApi;
 var photosObj = [
     { image: 'assets/images/landingrocket.jpg' },
     { image: 'assets/images/dragonapproachingiss.jpg' },
@@ -59,7 +59,10 @@ var photosObj = [
 function getValue(value) {
     btnValue = value;
 }
-
+function getPagination(value) {
+    btnValue = value;
+    callLaunches();
+}
 
 //Clear data div 
 
@@ -123,9 +126,6 @@ function upcomingLaunch() {
         })
 
         data.forEach(item => {
-
-
-
             upcomingLaunch = document.getElementById("upcoming-launch");
             launches = document.createElement("div");
             launches.setAttribute("class", "carousel-item");
@@ -134,15 +134,20 @@ function upcomingLaunch() {
             
                 launches.innerHTML = `<div class="details-container">
                                                 
-                                                <div class="carousel-caption d-none d-md-block">
-                                                   
+                                                <div class="carousel-caption row">
+                                                    <div class="col-md-6">
+                                                    <h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2>                                                    
                                                     <h4><span class="flight">Flight No:</span> ${item.flight_number} &nbsp; &nbsp; &nbsp; <span class="rocket">Rocket:</span> ${item.rocket.rocket_name}
                                                     &nbsp; <span class="rocket">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
                                                     <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
 
                                                     <p>${item.details ? item.details : ""}</p>
+                                                    </div>
+                                                    <div class="col-md-5 text-center">
+                                                    <img src="${item.links.mission_patch_small ? item.links.mission_patch_small: "assets/images/spacexcircle.png"}" alt="mission patch">
+                                                    </div>
                                                 </div>
-                                                </div>
+                                     </div>
                                                 `;
 
            
@@ -163,14 +168,13 @@ function upcomingLaunch() {
 
 
                 info.innerHTML = `<h1>${days}d ${hours}h ${minutes}m ${seconds}s</h1>
-                <h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2> 
-                                        <img src="${item.links.mission_patch_small ? item.links.mission_patch_small: "assets/images/spacexcircle.png"}" alt="mission patch"> 
+                
+                                         
                                         `;
                 if (t < 0) {
                     clearInterval(x);
                     info.innerHTML = `
-                    <h1>LAUNCH PENDING!</h1><h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2>
-                    <img src="${item.links.mission_patch_small ? item.links.mission_patch_small: "assets/images/spacexcircle.png"}" alt="mission patch"> 
+                    <h1>LAUNCH PENDING!</h1>
                     `;
                 }
             }, 1000);
@@ -189,11 +193,12 @@ function upcomingLaunch() {
 }
 
 
-// calls spacex rocket url - all rockets
+// calls spacex rocket api - all rockets
 
 function callRockets() {
     clearData()
     $("#loader").removeClass("hide-loader");
+    $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
 
@@ -234,11 +239,12 @@ function callRockets() {
     })
 }
 
-
+// calls spacex dragons api
 
 function callDragons() {
     clearData()
     $("#loader").removeClass("hide-loader");
+    $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
 
@@ -286,6 +292,7 @@ function callDragons() {
 function callMissions() {
     clearData()
     $("#loader").removeClass("hide-loader");
+    $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
 
@@ -347,15 +354,17 @@ function callMissions() {
 }
 
 
-// calls spacex  past launches api
+// calls spacex past launches api
 
 function callLaunches() {
     clearData()
+    $("#data").removeClass("bg");
     $("#loader").removeClass("hide-loader");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
+    
 
-    axios.get(api + "launches/past/" ).then(response => {
+    axios.get(api + "launches/past" + btnValue ).then(response => {
         data = response.data
         
         let newData = data.slice().reverse();
@@ -368,27 +377,18 @@ function callLaunches() {
         title.innerHTML = `<h1><strong>Past Launches</strong></h1>`;
         pagination.innerHTML = `<nav aria-label="Page navigation">
                                     <ul class="pagination justify-content-end">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><option class="page-link" onclick="getValue(value)" value="?limit=10&offset=72">1</option></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">8</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">9</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
+                                        
+                                        <li class="page-item"><option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=82">1</option></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=72" class="page-link">2</option></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=62" class="page-link">3</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=52" class="page-link">4</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=32" class="page-link">5</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=22" class="page-link">6</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=12" class="page-link">7</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=02" class="page-link">8</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=2&offset=0" class="page-link">9</a></li>
+                                        
+                            
                                     </ul>
                                 </nav>`
         newData.forEach(item => {
@@ -441,19 +441,51 @@ function callLaunches() {
 function callAbout() {
     clearData()
     $("#loader").removeClass("hide-loader");
+    $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
-
-
-    axios.get(api).then(response => {
-        data = response.data
+axios.all([
+    axios.get(api),
+    axios.get("https://api.spacexdata.com/v3/info")
+  ])
+  .then(axios.spread((api, infoApi) => {
+    // do something with both responses
+    
+        data = api.data
+        infoApi = infoApi.data
+        console.log(infoApi)
         $("#loader").addClass("hide-loader");
-
+        valuation = accounting.formatMoney(infoApi.valuation)
         let info = document.createElement("div");
-        info.setAttribute("class", "card");
+        info.setAttribute("class", "spacex-info");
         app.appendChild(info);
 
-        info.innerHTML = `<div class="card-header">
+        info.innerHTML = `<div class="card">
+                            <div class="card-header">
+                                <h3>${infoApi.name}</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                       
+                                        <p><strong>Founder, CEO & CTO: </strong>${infoApi.founder}</p>
+                                        <p><strong>COO: </strong>${infoApi.coo}</p>
+                                        <p><strong>Valuation: </strong>${valuation}</p>
+                                        <p><strong>HQ: </strong>${infoApi.headquarters.address}, ${infoApi.headquarters.city}, ${infoApi.headquarters.state} </p>
+
+                                         
+                                            
+                                    </div>
+                                    <div class="col-md-6 center-img">
+                                        <p>${infoApi.summary}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="card">
+                            <div class="card-header">
                                 <h3>${data.project_name}</h3>
                             </div>
                             <div class="card-body">
@@ -473,6 +505,7 @@ function callAbout() {
                                         <img class="spacexwhite" src="assets/images/spacexwhite.png" alt="SpaceX">
                                     </div>
                                 </div>
+                            </div>
                             </div>`
         let aboutMe = document.createElement("div");
         aboutMe.setAttribute("class", "card");
@@ -496,7 +529,7 @@ function callAbout() {
                                     </a>
                                 </div>
                             </div>`;
-    });
+    }));
 }
 
 
@@ -602,7 +635,7 @@ function rocketSpec() {
             activeItem = document.getElementsByTagName("div").item(16);
             activeItem.setAttribute("class", "carousel-item active");
 
-            activePhoto = document.getElementsByTagName("li").item(5);
+            activePhoto = document.getElementsByTagName("li").item(6);
             activePhoto.setAttribute("class", "active");
 
         })
@@ -677,33 +710,3 @@ function rocketSpec() {
 }
 
 
-/*
-            if (item.details !== null) {
-                launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
-                                                alt="First slide">
-                                                <div class="carousel-caption">
-                                                    <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
-                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
-                                                    <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
-
-                                                    <p>${item.details}</p>
-                                                </div>
-                                                `;
-
-            }
-
-
-
-
-else {
-                launches.innerHTML = `<img class="d-block w-100" src="assets/images/crewdragon.jpg"
-                                                alt="Launch Countdown Photo">
-                                                <div class="carousel-caption">
-                                                    <h3><span class="mission-name">Mission Name:</span> ${item.mission_name}</h3>
-                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
-                                                    <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
-                                                </div>
-                                                `;
-
-}
-*/

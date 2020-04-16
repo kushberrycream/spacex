@@ -13,16 +13,21 @@ html,body {
 body {
   display: flex;
   flex-direction: column;
-  background: url("../images/1200px-Hyades.jpg") center center no-repeat fixed;
+  background: url("../images/stars.jpg") center center no-repeat fixed;
   background-size: cover;
   
 }
-#data {
-    flex: 1 0 auto;
+.bg {
     background: url("../images/crewdragon.jpg") center center no-repeat;
     background-size: cover;
     height:100vh;
+  
+
+}
+#data {
+    flex: 1 0 auto;
     padding-top: 76px;
+    
 }
 
 .overlay {
@@ -52,6 +57,7 @@ button.nav-link {
     position: absolute;
     width:100%;
 }
+
 .navbar-brand {
   height: 60px;
 }
@@ -61,6 +67,7 @@ button.nav-link {
     padding-right: 0;
     padding-left: 0;
 }
+
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
@@ -315,39 +322,32 @@ progress[value]::-webkit-progress-value {
 }
 
 .carousel-caption {
-    position: absolute;
-    bottom: 70px;
-    right: unset;
-    left: 10%;
-    z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 50px;
+
     color: #fff;
     text-align:left;
 }
 
 .mission-name {
     position: absolute;
-    top: 60px;
+    top: 10px;
     font-size: small;
 }
 
 .flight {
     position: absolute;
-    top: 10px;
+    top: 76px;
     font-size: small;
 }
 
 .site {
     position: absolute;
-    top: 46px;
+    top: 112px;
     font-size: small;
 }
 
 .rocket {
     position: absolute;
-    top: 10px;
+    top: 76px;
     font-size: small;
 }
 
@@ -374,8 +374,10 @@ progress[value]::-webkit-progress-value {
 
 .green {
     background: green;
+    color: #fff;
 }
 
 .red {
     background: red;
+    color: #fff;
 }
