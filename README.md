@@ -111,6 +111,8 @@ This is the Technology Stack I used throughout this project.
     - Font Awesome was used for any icons I needed.
 - [EmailJS](https://www.emailjs.com/)
     - I have used EmailJS so my Contact form works and sends me Emails.
+- [accounting.js](https://github.com/openexchangerates/accounting.js/)
+    - I have used Accounting.JS to format all the sums of money obtain from the API.
 
 
 <p align="right">

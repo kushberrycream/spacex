@@ -17,18 +17,19 @@ body {
   background-size: cover;
   
 }
-.bg {
-    background: url("../images/crewdragon.jpg") center center no-repeat;
-    background-size: cover;
-    height:100vh;
-  
 
-}
 #data {
     flex: 1 0 auto;
     padding-top: 76px;
-    
 }
+
+.container-fluid,
+.container {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/*       Background           */
 
 .overlay {
   padding-top: 76px;
@@ -40,9 +41,13 @@ body {
   width: 100%;
 }
 
-h2 {
-  padding: 20px 0;
+.bg {
+    background: url("../images/crewdragon.jpg") center center no-repeat;
+    background-size: cover;
+    height:100vh;
 }
+
+/*     Navigation Bar     */
 
 .bg-dark {
   background: #000 !important;
@@ -62,15 +67,19 @@ button.nav-link {
   height: 60px;
 }
 
-.container-fluid,
-.container {
-    padding-right: 0;
-    padding-left: 0;
+.social {
+    color: #fff;
 }
 
+.social:hover {
+    color: #949494;
+}
+
+/*    loader     */
+
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid #272727; /* Light grey */
+  border-top: 16px solid #dadada; /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -78,10 +87,9 @@ button.nav-link {
   position: absolute;
   top: 50vh;
   left: 50vw;
-   margin-top: -60px;
+  margin-top: -60px;
   margin-left: -60px;
 }
-
 
 @keyframes spin {
   0% {
@@ -94,6 +102,11 @@ button.nav-link {
 
 .hide-loader {
   display: none;
+}
+
+/* Titles - Headers */
+h2 {
+  padding: 20px 0;
 }
 
 .title {
@@ -111,6 +124,7 @@ button.nav-link {
   padding: 0;
   border: 0;
 }
+
 .rocket-image {
   width: 100%;
   max-width:400px;
@@ -271,6 +285,12 @@ progress[value]::-webkit-progress-value {
 .carousel .carousel-caption {
     padding-bottom: 45px;
 }
+.carousel .carousel-caption img {
+    position: absolute;
+    top: 0;
+    width:100px;
+    left: 50px;
+}
 
 .carousel .carousel-caption .material-icons {
     position: relative;
@@ -329,26 +349,38 @@ progress[value]::-webkit-progress-value {
 
 .mission-name {
     position: absolute;
-    top: 10px;
-    font-size: small;
-}
-
-.flight {
-    position: absolute;
-    top: 76px;
+    top: -10px;
     font-size: small;
 }
 
 .site {
     position: absolute;
-    top: 112px;
+    top: 100px;
     font-size: small;
 }
 
 .rocket {
     position: absolute;
-    top: 76px;
+    top: 27px;
+    right: 20px;
     font-size: small;
+    width:75px;
+}
+
+.type {
+    position: absolute;
+    top: 62px;
+    right: 20px;
+    font-size: small;
+    width:100px
+}
+
+.flight {
+    position: absolute;
+    top: -10px;
+    right:20px;
+    font-size: small;
+    width: 75px;
 }
 
 .countdown {
@@ -367,9 +399,9 @@ progress[value]::-webkit-progress-value {
 
 .launch-success {
     position: absolute;
-    right: 20px;
-    font-size: smaller;
-    top: 17px;
+    left: 20px;
+    font-size: small;
+    top: 40px;
 }
 
 .green {
@@ -380,4 +412,36 @@ progress[value]::-webkit-progress-value {
 .red {
     background: red;
     color: #fff;
+}
+
+.icon {
+    height: 50px;
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.elon { 
+    margin-bottom: 20px;
+}
+.dim {
+    color: gray;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: transparent;
+    cursor: pointer;
 }

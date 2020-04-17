@@ -83,37 +83,30 @@ function upcomingLaunch() {
     $("#loader").removeClass("hide-loader");
 
     axios.get(api + "launches/upcoming").then(response => {
-        data = response.data
+        data = response.data;
         $("#loader").addClass("hide-loader");
-
+        console.log(data)
         app.innerHTML = `
         <div class="overlay"></div>
         <div class="container-fluid">
-                                <div class="card card-raised card-carousel">
-                                <h1 class="title"><strong>Upcoming Launches</strong></h1>
-                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
-                                        <ol id="data-slide" class="carousel-indicators">
-                            
-                                            
-                                        </ol>
-                                        <div id="upcoming-launch" class="carousel-inner">
-                                            
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                </div>
-                                <a class="carousel-control-prev-home" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                            <i class="fas fa-long-arrow-alt-left"></i>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next-home" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                            <i class="fas fa-long-arrow-alt-right"></i>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-           
-           
-                                 </div>`;
+            <div class="card card-raised card-carousel">
+                <h1 class="title"><strong>Upcoming Launches</strong></h1>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+                    <ol id="data-slide" class="carousel-indicators">           
+                    </ol>
+                    <div id="upcoming-launch" class="carousel-inner">          
+                    </div>         
+                </div>
+            </div>
+            <a class="carousel-control-prev-home" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <i class="fas fa-long-arrow-alt-left"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next-home" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>`;
 
 
         data.forEach(item => {
@@ -131,26 +124,44 @@ function upcomingLaunch() {
             launches.setAttribute("class", "carousel-item");
             upcomingLaunch.appendChild(launches);
 
-            
+            if (item.details == null) {
                 launches.innerHTML = `<div class="details-container">
                                                 
-                                                <div class="carousel-caption row">
-                                                    <div class="col-md-6">
-                                                    <h2><span class="mission-name">Mission Name:</span> ${item.mission_name}</h2>                                                    
-                                                    <h4><span class="flight">Flight No:</span> ${item.flight_number} &nbsp; &nbsp; &nbsp; <span class="rocket">Rocket:</span> ${item.rocket.rocket_name}
-                                                    &nbsp; <span class="rocket">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
-                                                    <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
-
-                                                    <p>${item.details ? item.details : ""}</p>
+                                                <div class="carousel-caption row justify-content-center">
+                                                    <div class="col-md-5 text-right">
+                                                        <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
+                                                        
+                                                        <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                        <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
+                                                        <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
+                                                        <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
                                                     </div>
-                                                    <div class="col-md-5 text-center">
-                                                    <img src="${item.links.mission_patch_small ? item.links.mission_patch_small: "assets/images/spacexcircle.png"}" alt="mission patch">
-                                                    </div>
+                                                    
                                                 </div>
                                      </div>
                                                 `;
+            } else {
+                launches.innerHTML = `<div class="details-container">
+                                                
+                                                <div class="carousel-caption row">
+                                                    <div class="col-md-5 text-right">
+                                                        <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
+                                                        <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                        <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
+                                                        <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
+                                                        <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
+                                                    </div>
+                                                    <div class="col-md-6 d-md-block d-none">                                                    
+                                                        <p>${item.details}</p>
+                                                    </div>
+                                                    
+                                                </div>
+                                     </div>
+                                                `;
+            }
 
-           
+
+
 
             let info = document.createElement("div");
             info.setAttribute("class", "countdown");
@@ -165,16 +176,20 @@ function upcomingLaunch() {
                 );
                 let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((t % (1000 * 60)) / 1000);
+                let date = moment.parseZone(item.launch_date_utc).utc().format("dddd, MMMM Do YYYY, h:mm:ss a");
+                ;
 
-
-                info.innerHTML = `<h1>${days}d ${hours}h ${minutes}m ${seconds}s</h1>
+                info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
+                                    <h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>
+                                    <h3>${date}</h3>
                 
                                          
                                         `;
                 if (t < 0) {
                     clearInterval(x);
-                    info.innerHTML = `
-                    <h1>LAUNCH PENDING!</h1>
+                    info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
+                                        <h2>LAUNCH PENDING!</h2>
+                                        <h3>TBC</h3>
                     `;
                 }
             }, 1000);
@@ -310,7 +325,7 @@ function callMissions() {
             info.setAttribute("class", "card");
             app.appendChild(info);
 
-            if (item.manufacturers[1] == null) { 
+            if (item.manufacturers[1] == null) {
 
                 info.innerHTML = `<div class="card-header">
                                     <h3>${item.mission_name}</h3>
@@ -328,7 +343,7 @@ function callMissions() {
                                     <a href="${item.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
                                 </div>`;
             } else {
-                
+
                 info.innerHTML = `<div class="card-header">
                                     <h3>${item.mission_name}</h3>
                                 </div>
@@ -362,11 +377,11 @@ function callLaunches() {
     $("#loader").removeClass("hide-loader");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
-    
 
-    axios.get(api + "launches/past" + btnValue ).then(response => {
+
+    axios.get(api + "launches/past" + btnValue).then(response => {
         data = response.data
-        
+
         let newData = data.slice().reverse();
         console.log(newData)
         let title = document.createElement("div");
@@ -394,23 +409,26 @@ function callLaunches() {
         newData.forEach(item => {
             $("#loader").addClass("hide-loader");
 
-            let date = new Date(item.launch_date_utc);
+            let date = moment.parseZone(item.launch_date_utc).utc().format("dddd, MMMM Do YYYY, h:mm:ss a");
             let info = document.createElement("div");
+
             info.setAttribute("class", "card");
+
             app.appendChild(info);
+
             let launchSuccess = item.launch_success;
-            
+
             if (launchSuccess == true) {
                 launchSuccess = `<div class='card-header green'>
                                 <h3>${item.mission_name} <span class="launch-success"><i class="fas fa-check"></i> Launch Successful </span></h3>
                                 </div>`
-                
+
             } else {
                 launchSuccess = `<div class='card-header red'>
                                 <h3>${item.mission_name} <span class="launch-success"><i class="fas fa-times"></i> Launch Failed </span></h3>
                                 </div>`
-                
-                
+
+
             }
             info.innerHTML = `
                             ${launchSuccess}
@@ -427,16 +445,34 @@ function callLaunches() {
                                         <img src="${item.links.mission_patch_small}" alt="Mission Patch" >
                                     </div>
                                 </div>
-                            </div>`;
+                            </div>
+                            `;
 
 
 
         });
+        let btmPages = document.createElement("nav")
+        btmPages.setAttribute("aria-label", "Page navigation")
+        app.appendChild(btmPages);
+        btmPages.innerHTML = ` <ul class="pagination justify-content-end">
+                                        
+                                        <li class="page-item"><option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=82">1</option></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=72" class="page-link">2</option></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=62" class="page-link">3</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=52" class="page-link">4</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=32" class="page-link">5</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=22" class="page-link">6</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=12" class="page-link">7</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=02" class="page-link">8</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=2&offset=0" class="page-link">9</a></li>
+                                        
+                            
+                                    </ul>`
     })
 }
 
 
-// calls spacex url
+// calls spacex API & company info API
 
 function callAbout() {
     clearData()
@@ -444,23 +480,23 @@ function callAbout() {
     $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
-axios.all([
-    axios.get(api),
-    axios.get("https://api.spacexdata.com/v3/info")
-  ])
-  .then(axios.spread((api, infoApi) => {
-    // do something with both responses
-    
-        data = api.data
-        infoApi = infoApi.data
-        console.log(infoApi)
-        $("#loader").addClass("hide-loader");
-        valuation = accounting.formatMoney(infoApi.valuation)
-        let info = document.createElement("div");
-        info.setAttribute("class", "spacex-info");
-        app.appendChild(info);
+    axios.all([
+        axios.get(api),
+        axios.get("https://api.spacexdata.com/v3/info")
+    ])
+        .then(axios.spread((api, infoApi) => {
+            // do something with both responses
 
-        info.innerHTML = `<div class="card">
+            data = api.data
+            infoApi = infoApi.data
+            console.log(infoApi)
+            $("#loader").addClass("hide-loader");
+            valuation = accounting.formatMoney(infoApi.valuation)
+            let info = document.createElement("div");
+            info.setAttribute("class", "spacex-info");
+            app.appendChild(info);
+
+            info.innerHTML = `<div class="card">
                             <div class="card-header">
                                 <h3>${infoApi.name}</h3>
                             </div>
@@ -468,10 +504,15 @@ axios.all([
                                 <div class="row">
                                     <div class="col-md-6">
 
-                                       
+                                      
                                         <p><strong>Founder, CEO & CTO: </strong>${infoApi.founder}</p>
                                         <p><strong>COO: </strong>${infoApi.coo}</p>
                                         <p><strong>Valuation: </strong>${valuation}</p>
+                                        <a href="${infoApi.links.website}" target="_blank"><i class="icon fas fa-link"></i></a>
+                                        <a href="${infoApi.links.flickr}" target="_blank"><i class="icon fab fa-flickr"></i></a>
+                                        <a href="${infoApi.links.twitter}" target="_blank"><i class="icon fab fa-twitter-square"></i></a>
+                                        <a href="${infoApi.links.elon_twitter}" target="_blank"><img class="elon icon" src="assets/images/elon.png" alt="elon_twitter"></a>
+
                                         <p><strong>HQ: </strong>${infoApi.headquarters.address}, ${infoApi.headquarters.city}, ${infoApi.headquarters.state} </p>
 
                                          
@@ -507,10 +548,10 @@ axios.all([
                                 </div>
                             </div>
                             </div>`
-        let aboutMe = document.createElement("div");
-        aboutMe.setAttribute("class", "card");
-        app.appendChild(aboutMe);
-        aboutMe.innerHTML = `<div class="card-header">
+            let aboutMe = document.createElement("div");
+            aboutMe.setAttribute("class", "card");
+            app.appendChild(aboutMe);
+            aboutMe.innerHTML = `<div class="card-header">
                                 <h3>Created By Tom Jones</h3>
                             </div>
                             <div class="card-body">
@@ -529,7 +570,7 @@ axios.all([
                                     </a>
                                 </div>
                             </div>`;
-    }));
+        }));
 }
 
 
@@ -542,14 +583,15 @@ function rocketSpec() {
     $("#data").addClass("container");
 
     axios.get(api + btnValue).then(response => {
-        data = response.data
+        data = response.data;
+        btnValue = "?limit=10&offset=82";
         $("#loader").addClass("hide-loader");
-
+        cost = accounting.formatMoney(data.cost_per_launch);
         let aboutRocket = document.createElement("div");
 
         aboutRocket.setAttribute("class", "about-rockets");
 
-        app.innerHTML = `<h1 class="text-center p-4"><strong>${data.rocket_name}</strong></h1>`
+        app.innerHTML = `<h1 class="text-center p-4"><strong>${data.rocket_name}</strong></h1>`;
         app.appendChild(aboutRocket);
 
 
@@ -566,7 +608,7 @@ function rocketSpec() {
 
                                                 <h6>Active: ${data.active}</h6>
                                                 <h6>First Flight: ${data.first_flight}  </h6>
-                                                <h6>Cost Per Launch: $${data.cost_per_launch}  </h6>
+                                                <h6>Cost Per Launch: ${cost}</h6>
                                                 <progress max="100" value="${data.success_rate_pct}"><span>${data.success_rate_pct}</span></progress>
 
                                                 </br>
