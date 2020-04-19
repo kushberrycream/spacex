@@ -58,8 +58,7 @@ to only use the navigation links.
 [All Rockets Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Rockets%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; [Specfic Rocket Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Rocket%20Spec%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; <br/>
 [Dragons Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Dragons%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; [Missions Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Missions%20Screen%20.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp;
 [Past Launches Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Launches%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; [About SpaceX and Website Info Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/about-screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp;
-[Contact Page](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Contact%20Page.png?raw=true)
-
+[Contact Page](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Contact%20Page.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp;
  
 ### Surface
 
@@ -110,4 +109,25 @@ This is the Technology Stack I used throughout this project.
 
 <p align="right">
   <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
+</p>
+
+
+
+## Credits
+
+### Content
+All the content has been obtained via the [SpaceX API](https://docs.spacexdata.com/?version=latest). 
+
+### Media
+- The main background came from [PSD Graphics](https://www.psdgraphics.com/backgrounds/night-sky-stars-background/)
+- SpaceX placeholder patch was taken from [SpaceX Twitter](https://twitter.com/SpaceX/photo)
+
+### Acknowledgements
+
+- [Programmable Web](https://www.programmableweb.com/) helped me decide which API to use.
+- I used a few [YouTube videos](https://www.youtube.com/watch?v=aISMFLKUC8o) to help me understand API's a little more it also introduced me to Axios 
+- 
+
+<p align="right">
+  <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
 </p>
