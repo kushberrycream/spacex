@@ -70,7 +70,9 @@ to only use the navigation links.
 ## Features
 
 I have used Bootstrap as the HTML and CSS Framework to help me develope a responsive mobile-first website. The Majority of the page is written in 
-VanillaJS as I wanted to showcase what I can do with Javascript 
+VanillaJS as I wanted to showcase what I can do with Javascript, I have also implimented jQuery in a few places but this is quite minimal.
+I have also used a few js libaries such as accounting.js as this was alot simpler than writing code to format currency correctly, I also used moment.js to 
+format UTC dates as I didnt want to complicate my code by trying to format dates with my own code.
 
 ### Existing Features
 
@@ -96,22 +98,51 @@ This is the Technology Stack I used throughout this project.
     - JavaScript is the main technology used it allows me to provide data to my users.
 - [Axios](https://github.com/axios/axios)
     - Axios allows me to make XMLHttpRequests with a single line of Code.
+- [EmailJS](https://www.emailjs.com/)
+    - I have used EmailJS so my Contact form works and sends me Emails.
+- [Moment.js](https://momentjs.com/)
+    - I used Moment.js to help me format the dates better and without the use of extra Javascript.
+- [Accounting.js](https://github.com/openexchangerates/accounting.js/)
+    - I have used Accounting.js to format all the sums of money obtain from the API.
 - [Bootstrap 4](https://getbootstrap.com/)
     - I have used the Bootstrap Framework and multiple components with my own CSS styles to
     create a great User Experience.
 - [Font Awesome](https://fontawesome.com/)
     - Font Awesome was used for any icons I needed.
-- [EmailJS](https://www.emailjs.com/)
-    - I have used EmailJS so my Contact form works and sends me Emails.
-- [accounting.js](https://github.com/openexchangerates/accounting.js/)
-    - I have used Accounting.JS to format all the sums of money obtain from the API.
 
 
 <p align="right">
   <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
 </p>
 
+## Testing
 
+I have passed my javascript code through the linter [jsHint](https://jshint.com/). I found no errors I only have undefined variables that are defined in the 
+various libaries I am using. It also says I have unused variables but these are infact used when clicking buttons on my page.
+
+I used [W3 Validators](https://validator.w3.org) to check for any errors within my HTML and CSS and both passed. Originally I was using the `<option>` element 
+as my navigation buttons as this worked for what I needed. The validator let me know this wasnt the correct usage, so I replaced these with buttons and restyled them so
+they still looked the same.
+
+### Bugs
+
+- During development I realised early on that users would not be able to use the browsers forwards and back button. This is unavoidable due to the way I have coded my Javascript,
+I was thinking of implementing different pages and then calling the different functions needed once the pages have loaded but instead I have opted for an alert that notifies any users
+that use of the browsers forwards and back buttons may have undesired effects.
+- A few times when developing and using my website if I clicked links to quickly this could lead to the previous API's call data not being removed and displaying it below the new API calls Data.
+Obviously this is undesirable but can be corrected by using the navigation buttons or refreshing the page.
+
+<p align="right">
+  <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
+</p> 
+
+## Deployment
+
+
+
+<p align="right">
+  <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
+</p> 
 
 ## Credits
 
@@ -126,7 +157,8 @@ All the content has been obtained via the [SpaceX API](https://docs.spacexdata.c
 
 - [Programmable Web](https://www.programmableweb.com/) helped me decide which API to use.
 - I used a few [YouTube videos](https://www.youtube.com/watch?v=aISMFLKUC8o) to help me understand API's a little more it also introduced me to Axios 
-- 
+- I needed to know how to stop a function being called on another page but I didnt want to make another js file. To do this I found this [Stack Overflow](https://stackoverflow.com/questions/4597050/how-to-check-if-the-url-contains-a-given-string)
+thread.
 
 <p align="right">
   <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 

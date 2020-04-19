@@ -55,6 +55,10 @@ body {
 
 button.nav-link {
   background-color: transparent;
+  border: none;
+}
+button:focus {
+    outline: none;
 }
 
 .navbar {

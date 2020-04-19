@@ -6,37 +6,37 @@ $(".nav-item").on("click", function () {
 
 //Navigation Buttons
 
-document.addEventListener('DOMContentLoaded', WireUpEvents);
+document.addEventListener("DOMContentLoaded", WireUpEvents);
 
 function WireUpEvents() {
-    var about = document.getElementById('about'),
-        rockets = document.getElementById('rockets');
-    dragons = document.getElementById('dragons');
-    missions = document.getElementById('missions');
-    launches = document.getElementById('launches');
+    let about = document.getElementById("about"),
+        rockets = document.getElementById("rockets"),
+        dragons = document.getElementById("dragons"),
+        missions = document.getElementById("missions"),
+        launches = document.getElementById("launches");
 
 
-    about.addEventListener('click', aboutClick);
-    rockets.addEventListener('click', rocketsClick);
-    dragons.addEventListener('click', dragonsClick);
-    missions.addEventListener('click', missionsClick);
-    launches.addEventListener('click', launchesClick);
+    about.addEventListener("click", aboutClick);
+    rockets.addEventListener("click", rocketsClick);
+    dragons.addEventListener("click", dragonsClick);
+    missions.addEventListener("click", missionsClick);
+    launches.addEventListener("click", launchesClick);
 
 }
 function aboutClick() {
-    callAbout()
+    callAbout();
 }
 function rocketsClick() {
-    callRockets()
+    callRockets();
 }
 function dragonsClick() {
-    callDragons()
+    callDragons();
 }
 function missionsClick() {
-    callMissions()
+    callMissions();
 }
 function launchesClick() {
-    callLaunches()
+    callLaunches();
 }
 
 // Variables
@@ -44,17 +44,8 @@ function launchesClick() {
 const app = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/";
 
+let data;
 let btnValue = "?limit=10&offset=82";
-let aboutApi;
-var photosObj = [
-    { image: 'assets/images/landingrocket.jpg' },
-    { image: 'assets/images/dragonapproachingiss.jpg' },
-    { image: 'assets/images/sideboosters.jpg' },
-    { image: 'assets/images/falconheavy.jpg' },
-    { image: 'assets/images/crewdragon.jpg' }
-
-];
-
 
 function getValue(value) {
     btnValue = value;
@@ -71,10 +62,11 @@ function clearData() {
 }
 
 
-// call spacex api on load
+// call spacex api on load 
 
-upcomingLaunch()
 
+upcomingLaunch();
+ 
 
 // call spacex upcoming launches api
 
@@ -85,7 +77,7 @@ function upcomingLaunch() {
     axios.get(api + "launches/upcoming").then(response => {
         data = response.data;
         $("#loader").addClass("hide-loader");
-        console.log(data)
+        console.log(data);
         app.innerHTML = `
         <div class="overlay"></div>
         <div class="container-fluid">
@@ -111,57 +103,47 @@ function upcomingLaunch() {
 
         data.forEach(item => {
             let a = data.indexOf(item);
-            indicators = document.getElementById("data-slide");
-            slide = document.createElement("li");
+            let indicators = document.getElementById("data-slide");
+            let slide = document.createElement("li");
             slide.setAttribute("data-slide-to", a);
             slide.setAttribute("data-target", "#carouselExampleIndicators");
             indicators.appendChild(slide);
-        })
+        });
 
         data.forEach(item => {
-            upcomingLaunch = document.getElementById("upcoming-launch");
-            launches = document.createElement("div");
+            let upcomingLaunch = document.getElementById("upcoming-launch");
+            let launches = document.createElement("div");
             launches.setAttribute("class", "carousel-item");
             upcomingLaunch.appendChild(launches);
 
             if (item.details == null) {
-            launches.innerHTML = `<div class="details-container">
-                                                
-                                                <div class="carousel-caption row justify-content-center">
-                                                    <div class="col-md-5 text-right">
-                                                        <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
-                                                        
-                                                        <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
-                                                        <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
-                                                        <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
-                                                        <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
-                                                    </div>
-                                                    
-                                                </div>
-                                     </div>
-                                                `;
-            } else { 
                 launches.innerHTML = `<div class="details-container">
-                                                
-                                                <div class="carousel-caption row">
-                                                    <div class="col-md-5 text-right">
-                                                        <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
-                                                        <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
-                                                        <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
-                                                        <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
-                                                        <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
-                                                    </div>
-                                                    <div class="col-md-6 d-md-block d-none">                                                    
-                                                        <p>${item.details}</p>
-                                                    </div>
-                                                    
-                                                </div>
-                                     </div>
-                                                `;
+                                    <div class="carousel-caption row justify-content-center">
+                                        <div class="col-md-5 text-right">
+                                            <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
+                                            <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                            <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
+                                            <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
+                                            <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
+                                        </div>
+                                    </div>
+                                </div>`;
+            } else {
+                launches.innerHTML = `<div class="details-container">  
+                                        <div class="carousel-caption row">
+                                            <div class="col-md-5 text-right">
+                                                <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
+                                                <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
+                                                <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
+                                                <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
+                                                <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
+                                            </div>
+                                            <div class="col-md-6 d-md-block d-none">                                                    
+                                                <p>${item.details}</p>
+                                            </div>
+                                        </div>
+                                    </div>`;
             }
-
-
-
 
             let info = document.createElement("div");
             info.setAttribute("class", "countdown");
@@ -177,7 +159,6 @@ function upcomingLaunch() {
                 let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((t % (1000 * 60)) / 1000);
                 let date = moment.parseZone(item.launch_date_utc).utc().format("dddd, MMMM Do YYYY, h:mm:ss a");
-                ;
 
                 info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
                                     <h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>
@@ -197,35 +178,35 @@ function upcomingLaunch() {
 
 
 
-        })
-        activeItem = document.getElementsByTagName("div").item(9);
+        });
+
+        let activeItem = document.getElementsByTagName("div").item(9);
         activeItem.setAttribute("class", "carousel-item active");
 
-        activeLaunch = document.getElementsByTagName("li").item(6);
+        let activeLaunch = document.getElementsByTagName("li").item(6);
         activeLaunch.setAttribute("class", "active");
     });
 
 }
 
-
 // calls spacex rocket api - all rockets
 
 function callRockets() {
-    clearData()
+    clearData();
     $("#loader").removeClass("hide-loader");
     $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
 
     axios.get(api + "rockets").then(response => {
-        data = response.data
+        data = response.data;
         let title = document.createElement("div");
-        title.setAttribute("class", "title")
-        app.appendChild(title)
-        title.innerHTML = `<h1><strong>SpaceX Rockets</strong></h1>`
+        title.setAttribute("class", "title");
+        app.appendChild(title);
+        title.innerHTML = `<h1><strong>SpaceX Rockets</strong></h1>`;
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
-            
+
             let info = document.createElement("div");
             info.setAttribute("class", "card");
             app.appendChild(info);
@@ -251,25 +232,25 @@ function callRockets() {
 
 
         });
-    })
+    });
 }
 
 // calls spacex dragons api
 
 function callDragons() {
-    clearData()
+    clearData();
     $("#loader").removeClass("hide-loader");
     $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
 
     axios.get(api + "dragons").then(response => {
-        data = response.data
-        console.log(data)
+        data = response.data;
+        console.log(data);
         let title = document.createElement("div");
-        title.setAttribute("class", "title")
-        app.appendChild(title)
-        title.innerHTML = `<h1><strong>SpaceX Dragons</strong></h1>`
+        title.setAttribute("class", "title");
+        app.appendChild(title);
+        title.innerHTML = `<h1><strong>SpaceX Dragons</strong></h1>`;
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 
@@ -277,8 +258,7 @@ function callDragons() {
             info.setAttribute("class", "card");
             app.appendChild(info);
 
-            info.innerHTML = `
-                            <div class="card-header">
+            info.innerHTML = `<div class="card-header">
                                 <h3>${item.name}</h3>
                             </div>
                             <div class="card-body">
@@ -299,24 +279,24 @@ function callDragons() {
 
 
         });
-    })
+    });
 }
 
 // calls spacex missions api
 
 function callMissions() {
-    clearData()
+    clearData();
     $("#loader").removeClass("hide-loader");
     $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
 
     axios.get(api + "missions").then(response => {
-        data = response.data
+        data = response.data;
         let title = document.createElement("div");
-        title.setAttribute("class", "title")
-        app.appendChild(title)
-        title.innerHTML = `<h1><strong>Missions</strong></h1>`
+        title.setAttribute("class", "title");
+        app.appendChild(title);
+        title.innerHTML = `<h1><strong>Missions</strong></h1>`;
 
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
@@ -358,21 +338,21 @@ function callMissions() {
                                     
 
                                     <a href="${item.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
-                                </div>`
+                                </div>`;
 
             }
 
         });
 
 
-    })
+    });
 }
 
 
 // calls spacex past launches api
 
 function callLaunches() {
-    clearData()
+    clearData();
     $("#data").removeClass("bg");
     $("#loader").removeClass("hide-loader");
     $("#data").removeClass("container-fluid");
@@ -380,10 +360,10 @@ function callLaunches() {
 
 
     axios.get(api + "launches/past" + btnValue).then(response => {
-        data = response.data
-        
+        data = response.data;
+
         let newData = data.slice().reverse();
-        console.log(newData)
+        console.log(newData);
         let title = document.createElement("div");
         let pagination = document.createElement("div");
         title.setAttribute("class", "title");
@@ -405,28 +385,29 @@ function callLaunches() {
                                         
                             
                                     </ul>
-                                </nav>`
+                                </nav>`;
+
         newData.forEach(item => {
             $("#loader").addClass("hide-loader");
 
             let date = moment.parseZone(item.launch_date_utc).utc().format("dddd, MMMM Do YYYY, h:mm:ss a");
             let info = document.createElement("div");
-            
+
             info.setAttribute("class", "card");
-            
+
             app.appendChild(info);
-    
+
             let launchSuccess = item.launch_success;
 
             if (launchSuccess == true) {
                 launchSuccess = `<div class='card-header green'>
                                 <h3>${item.mission_name} <span class="launch-success"><i class="fas fa-check"></i> Launch Successful </span></h3>
-                                </div>`
+                                </div>`;
 
             } else {
                 launchSuccess = `<div class='card-header red'>
                                 <h3>${item.mission_name} <span class="launch-success"><i class="fas fa-times"></i> Launch Failed </span></h3>
-                                </div>`
+                                </div>`;
 
 
             }
@@ -449,11 +430,11 @@ function callLaunches() {
                             `;
 
 
-            
+
         });
-        let btmPages = document.createElement("nav")
-            btmPages.setAttribute("aria-label", "Page navigation" )
-            app.appendChild(btmPages);
+        let btmPages = document.createElement("nav");
+        btmPages.setAttribute("aria-label", "Page navigation");
+        app.appendChild(btmPages);
         btmPages.innerHTML = ` <ul class="pagination justify-content-end">
                                         
                                         <li class="page-item"><option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=82">1</option></li>
@@ -467,15 +448,15 @@ function callLaunches() {
                                         <li class="page-item"><option onclick="getPagination(value)" value="?limit=2&offset=0" class="page-link">9</a></li>
                                         
                             
-                                    </ul>`
-    })
+                                    </ul>`;
+    });
 }
 
 
 // calls spacex API & company info API
 
 function callAbout() {
-    clearData()
+    clearData();
     $("#loader").removeClass("hide-loader");
     $("#data").removeClass("bg");
     $("#data").removeClass("container-fluid");
@@ -487,11 +468,11 @@ function callAbout() {
         .then(axios.spread((api, infoApi) => {
             // do something with both responses
 
-            data = api.data
-            infoApi = infoApi.data
-            console.log(infoApi)
+            data = api.data;
+            infoApi = infoApi.data;
+            console.log(infoApi);
             $("#loader").addClass("hide-loader");
-            valuation = accounting.formatMoney(infoApi.valuation)
+            let valuation = accounting.formatMoney(infoApi.valuation);
             let info = document.createElement("div");
             info.setAttribute("class", "spacex-info");
             app.appendChild(info);
@@ -547,7 +528,7 @@ function callAbout() {
                                     </div>
                                 </div>
                             </div>
-                            </div>`
+                            </div>`;
             let aboutMe = document.createElement("div");
             aboutMe.setAttribute("class", "card");
             app.appendChild(aboutMe);
@@ -577,7 +558,7 @@ function callAbout() {
 // calls a specific spacex rocket api url
 
 function rocketSpec() {
-    clearData()
+    clearData();
     $("#loader").removeClass("hide-loader");
     $("#data").removeClass("container-fluid");
     $("#data").addClass("container");
@@ -586,7 +567,7 @@ function rocketSpec() {
         data = response.data;
         btnValue = "?limit=10&offset=82";
         $("#loader").addClass("hide-loader");
-        cost = accounting.formatMoney(data.cost_per_launch);
+        let cost = accounting.formatMoney(data.cost_per_launch);
         let aboutRocket = document.createElement("div");
 
         aboutRocket.setAttribute("class", "about-rockets");
@@ -628,7 +609,7 @@ function rocketSpec() {
                                     </div>
                                 </div`;
 
-        photos = document.getElementById("photos");
+        let photos = document.getElementById("photos");
         photos.innerHTML = `<div class="card">
                                             <div class="card-header">
                                                 <h4>Photos</h4>
@@ -659,11 +640,11 @@ function rocketSpec() {
 
             let a = data.flickr_images.indexOf(item);
 
-            flickrImages = document.getElementById("flickr-images");
-            indicators = document.getElementById("data-slide");
+            let flickrImages = document.getElementById("flickr-images");
+            let indicators = document.getElementById("data-slide");
 
             photos = document.createElement("div");
-            slide = document.createElement("li");
+            let slide = document.createElement("li");
 
             photos.setAttribute("class", "carousel-item");
             slide.setAttribute("data-slide-to", a);
@@ -674,15 +655,15 @@ function rocketSpec() {
 
             photos.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
 
-            activeItem = document.getElementsByTagName("div").item(16);
+            let activeItem = document.getElementsByTagName("div").item(16);
             activeItem.setAttribute("class", "carousel-item active");
 
-            activePhoto = document.getElementsByTagName("li").item(6);
+            let activePhoto = document.getElementsByTagName("li").item(6);
             activePhoto.setAttribute("class", "active");
 
-        })
+        });
 
-        rocketStats = document.getElementById("rocketstats");
+        let rocketStats = document.getElementById("rocketstats");
         rocketStats.innerHTML = `
                                             <div class="card">
                                                 <div class="card-header">
@@ -740,14 +721,14 @@ function rocketSpec() {
                                 </div>`;
         data.payload_weights.forEach(item => {
 
-            payloadName = document.getElementById("payload-name");
-            listitem = document.createElement("li")
+            let payloadName = document.getElementById("payload-name");
+            let listitem = document.createElement("li");
             payloadName.appendChild(listitem);
 
-            listitem.innerHTML = `${item.name} - ${item.kg}kg`
+            listitem.innerHTML = `${item.name} - ${item.kg}kg`;
 
-        })
-    })
+        });
+    });
 
 }
 
