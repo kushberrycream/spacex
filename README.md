@@ -54,10 +54,10 @@ is clicked giving the impression of a multipage site, I have provided an alert t
 to only use the navigation links. 
 
 ### Skeleton
-[Landing Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Landing%20_%20Home%20Screen.png?raw=true) - [Home Screen (Below Landing)](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Home%20Screen%20(Below%20Landing).png?raw=true) - 
-[All Rockets Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Rockets%20Screen.png?raw=true) - [Specfic Rocket Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Rocket%20Spec%20Screen.png?raw=true) - 
-[Dragons Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Dragons%20Screen.png?raw=true) - [Missions Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Missions%20Screen%20.png?raw=true) -
-[Past Launches Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Launches%20Screen.png?raw=true) - [About SpaceX and Website Info Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/about-screen.png?raw=true) -
+[Landing Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Landing%20_%20Home%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; [Home Screen (Below Landing)](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Home%20Screen%20(Below%20Landing).png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; 
+[All Rockets Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Rockets%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; [Specfic Rocket Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Rocket%20Spec%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; 
+[Dragons Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Dragons%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; [Missions Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Missions%20Screen%20.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp;
+[Past Launches Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Launches%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; [About SpaceX and Website Info Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/about-screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp;
 [Contact Page](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Contact%20Page.png?raw=true)
 
  
