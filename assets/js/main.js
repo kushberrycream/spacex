@@ -125,7 +125,7 @@ function upcomingLaunch() {
             upcomingLaunch.appendChild(launches);
 
             if (item.details == null) {
-                launches.innerHTML = `<div class="details-container">
+            launches.innerHTML = `<div class="details-container">
                                                 
                                                 <div class="carousel-caption row justify-content-center">
                                                     <div class="col-md-5 text-right">
@@ -140,7 +140,7 @@ function upcomingLaunch() {
                                                 </div>
                                      </div>
                                                 `;
-            } else {
+            } else { 
                 launches.innerHTML = `<div class="details-container">
                                                 
                                                 <div class="carousel-caption row">
@@ -225,7 +225,7 @@ function callRockets() {
         title.innerHTML = `<h1><strong>SpaceX Rockets</strong></h1>`
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
-
+            
             let info = document.createElement("div");
             info.setAttribute("class", "card");
             app.appendChild(info);
@@ -381,7 +381,7 @@ function callLaunches() {
 
     axios.get(api + "launches/past" + btnValue).then(response => {
         data = response.data
-
+        
         let newData = data.slice().reverse();
         console.log(newData)
         let title = document.createElement("div");
@@ -411,11 +411,11 @@ function callLaunches() {
 
             let date = moment.parseZone(item.launch_date_utc).utc().format("dddd, MMMM Do YYYY, h:mm:ss a");
             let info = document.createElement("div");
-
+            
             info.setAttribute("class", "card");
-
+            
             app.appendChild(info);
-
+    
             let launchSuccess = item.launch_success;
 
             if (launchSuccess == true) {
@@ -449,11 +449,11 @@ function callLaunches() {
                             `;
 
 
-
+            
         });
         let btmPages = document.createElement("nav")
-        btmPages.setAttribute("aria-label", "Page navigation")
-        app.appendChild(btmPages);
+            btmPages.setAttribute("aria-label", "Page navigation" )
+            app.appendChild(btmPages);
         btmPages.innerHTML = ` <ul class="pagination justify-content-end">
                                         
                                         <li class="page-item"><option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=82">1</option></li>
