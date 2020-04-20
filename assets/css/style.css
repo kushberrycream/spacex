@@ -432,7 +432,7 @@ a {
     padding-left: 0;
     list-style: none;
     border-radius: .25rem;
-    position: absolute;
+    position: fixed;
     top: 200px;
     right: 0;
     font-size: 1.5rem;
@@ -469,11 +469,17 @@ a {
     margin-left: 0;
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
+    }
+    .page-item:last-child .page-link {
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }
-.page-item:last-child .page-link {
-    border-top-right-radius: .25rem;
-    border-bottom-right-radius: .25rem;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
+.media-buttons {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    font-size: 1.3rem;
 }

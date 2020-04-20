@@ -7,6 +7,12 @@ const api = "https://api.spacexdata.com/v3/";
 
 let btnValue = "?limit=10&offset=82";
 
+// function to clear data div
+
+function clearData() {
+    app.innerHTML = "";
+}
+
 // obtains value from the pagination buttons to change the launches on screen.
 
 function getPagination(value) {
@@ -15,8 +21,9 @@ function getPagination(value) {
     clearData();
 }
 
-let pagination = document.getElementById("btm-pagination");
+// applys pagination to page
 
+let pagination = document.getElementById("btm-pagination");
 pagination.innerHTML = `<nav aria-label="Page navigation" class="container">
                                     <ul class="pagination justify-content-center">
                                         
@@ -35,15 +42,9 @@ pagination.innerHTML = `<nav aria-label="Page navigation" class="container">
                                 </nav>`;
 
 
-
-function clearData() {
-    app.innerHTML = "";
-}
-
+// calls spacex past launches api
 
 callLaunches();
-
-// calls spacex past launches api
 
 function callLaunches() {
 
@@ -59,8 +60,11 @@ function callLaunches() {
             $("#loader").addClass("hide-loader");
             let date = moment.parseZone(item.launch_date_utc).utc().format("dddd, MMMM Do YYYY, h:mm:ss a");
             let info = document.createElement("div");
+
             info.setAttribute("class", "card");
             app.appendChild(info);
+
+            // Checks for true or false values within Mission name item.
 
             let launchSuccess = item.launch_success;
 
@@ -73,16 +77,46 @@ function callLaunches() {
                                 <h3>${item.mission_name} <span class="launch-success"><i class="fas fa-times"></i> Launch Failed </span></h3>
                                 </div>`;
             }
+
+            // checks for a url within reddit item.
+
+            let reddit = item.links.reddit_campaign;
+
+            if (reddit == null) {
+                reddit = `<i class="fab fa-reddit-alien"></i>`;
+                                                
+            } else {
+                reddit = `<a href="${item.links.reddit_campaign}" target="_blank"><i class="fab fa-reddit-alien"></i></a>`;
+            }
+
+            // checks for a url within video link item.
+
+            let presskit = item.links.presskit;
+
+            if (presskit == null) {
+                presskit = `<i class="far fa-newspaper"></i>`;
+                                                
+            } else {
+                presskit = `<a href="${item.links.presskit}" target="_blank"><i class="far fa-newspaper"></i></a>`;
+            }
+
+            
+
             info.innerHTML = `
                             ${launchSuccess}
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <h5 class="card-title">Flight Number: ${item.flight_number} </h5>
-                                        <p class="card-text">Launch Date: ${date.toString()}</br>
-                                        Launch Site: ${item.launch_site.site_name_long}</p>
+                                        <h5 class="card-title">Flight Number: ${item.flight_number}</h5>
+                                        <p class="card-text">Date: ${date.toString()}</br>
+                                        Site: ${item.launch_site.site_name_long}</p>
                                         <p>${item.details}</p>
-                                        <br>
+                                        <div class="media-buttons">
+                                        <a href="${item.links.video_link}" target="_blank"><i class="fab fa-youtube"></i></a>
+                                        <a href="${item.links.wikipedia}" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
+                                        ${reddit}
+                                        ${presskit}
+                                        </div>
                                     </div>
                                     <div class="col-md-5 text-center">
                                         <img src="${item.links.mission_patch_small}" alt="Mission Patch" >
