@@ -8,7 +8,7 @@ const api = "https://api.spacexdata.com/v3/";
 
 
 upcomingLaunch();
- 
+
 
 // call spacex upcoming launches api
 
@@ -61,7 +61,7 @@ function upcomingLaunch() {
             if (item.details == null) {
                 launches.innerHTML = `<div class="details-container">
                                     <div class="carousel-caption row justify-content-center">
-                                        <div class="col-md-5 text-right">
+                                        <div class="col-md-7 text-right">
                                             <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
                                             <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
                                             <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
@@ -127,7 +127,9 @@ function upcomingLaunch() {
 
         let activeLaunch = document.getElementsByTagName("li").item(6);
         activeLaunch.setAttribute("class", "active");
-    });
+    }).catch((e) => {
+        console.error(e);
+    })
 
 }
 
