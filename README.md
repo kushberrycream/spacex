@@ -126,9 +126,9 @@ they still looked the same.
 
 ### Bugs
 
-- During development I realised early on that users would not be able to use the browsers forwards and back button. This is unavoidable due to the way I have coded my Javascript,
-I was thinking of implementing different pages and then calling the different functions needed once the pages have loaded but instead I have opted for an alert that notifies any users
-that use of the browsers forwards and back buttons may have undesired effects.
+- During development I realised early on that users would not be able to use the browsers forwards and back button. This is unavoidable due to the way I had coded my Javascript,
+I was thinking of leaving it as it was but as I progressed I decided this was not good user experience as if they were to use the forwards and back browser buttons this would lead to
+undesired effects.
 - A few times when developing and using my website if I clicked links to quickly this could lead to the previous API's call data not being removed and displaying it below the new API calls Data.
 Obviously this is undesirable but can be corrected by using the navigation buttons or refreshing the page.
 
