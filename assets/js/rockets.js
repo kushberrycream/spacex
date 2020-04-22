@@ -22,7 +22,7 @@ function callRockets() {
         let title = document.createElement("div");
         title.setAttribute("class", "title");
         app.appendChild(title);
-        title.innerHTML = `<h1><strong>SpaceX Rockets</strong></h1>`;
+        title.innerHTML = `<h1 class="title">SpaceX Rockets</h1>`;
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 
@@ -69,7 +69,7 @@ function rocketSpec() {
 
         aboutRocket.setAttribute("class", "about-rockets");
 
-        app.innerHTML = `<h1 class="title text-center p-4"><strong>${data.rocket_name}</strong></h1>`;
+        app.innerHTML = `<h1 class="title">${data.rocket_name}</h1>`;
         app.appendChild(aboutRocket);
 
 
@@ -157,7 +157,7 @@ function rocketSpec() {
             let activeItem = document.getElementsByTagName("div").item(17);
             activeItem.setAttribute("class", "carousel-item active");
 
-            let activePhoto = document.getElementsByTagName("li").item(6);
+            let activePhoto = document.getElementsByTagName("li").item(7);
             activePhoto.setAttribute("class", "active");
 
         });

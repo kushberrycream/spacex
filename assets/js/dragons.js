@@ -18,7 +18,7 @@ function callDragons() {
         let title = document.createElement("div");
         title.setAttribute("class", "title");
         app.appendChild(title);
-        title.innerHTML = `<h1><strong>SpaceX Dragons</strong></h1>`;
+        title.innerHTML = `<h1 class="title">SpaceX Dragons</h1>`;
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 

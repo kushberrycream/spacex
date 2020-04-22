@@ -159,6 +159,8 @@ All the content has been obtained via the [SpaceX API](https://docs.spacexdata.c
 - I used a few [YouTube videos](https://www.youtube.com/watch?v=aISMFLKUC8o) to help me understand API's a little more it also introduced me to Axios 
 - I needed to know how to stop a function being called on another page but I didnt want to make another js file. To do this I found this [Stack Overflow](https://stackoverflow.com/questions/4597050/how-to-check-if-the-url-contains-a-given-string)
 thread.
+- I wanted to make some floating labels for my contact form as I think this is gives good user experience. I used this example on [Medium](https://medium.com/@imjuangarcia/floating-labels-using-patterns-to-boost-your-contact-form-conversions-3f7a040e7efb)
+to help me get my desired effect.
 
 <p align="right">
   <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 

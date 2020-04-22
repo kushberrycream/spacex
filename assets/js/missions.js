@@ -16,7 +16,7 @@ function callMissions() {
         let title = document.createElement("div");
         title.setAttribute("class", "title");
         app.appendChild(title);
-        title.innerHTML = `<h1><strong>Missions</strong></h1>`;
+        title.innerHTML = `<h1 class="title">Missions</h1>`;
 
         data.forEach(item => {
             $("#loader").addClass("hide-loader");

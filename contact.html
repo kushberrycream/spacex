@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-   
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -27,12 +27,12 @@
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="index.html" class="nav-link" >Home</a>
+						<a href="index.html" class="nav-link">Home</a>
 					</li>
 					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 						<a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
 					</li>
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 						<a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
 					</li>
 					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
@@ -41,7 +41,7 @@
 					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 						<a href="launches.html" id="launches" class="nav-link">Launches</a>
 					</li>
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 						<a href="history.html" id="history" class="nav-link">History</a>
 					</li>
 					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
@@ -49,29 +49,50 @@
 					</li>
 				</ul>
 				<div class="socialbuttons">
-                    <a class="social" href="contact.html"><i class="fas fa-envelope"></i></a> 
-                    <a class="social" href="https://www.facebook.com/profile.php?id=555815524" target="_blank"><i class="fab fa-facebook-square"></i></a> 
-                    <a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/" target="_blank"><i class="fab fa-linkedin"></i></a> 
-                    <a class="social" href="https://github.com/kushberrycream" target="_blank"><i class="fab fa-github-square"></i></a>
+					<a class="social" href="contact.html"><i class="fas fa-envelope"></i></a>
+					<a class="social" href="https://www.facebook.com/profile.php?id=555815524"
+						target="_blank"><i class="fab fa-facebook-square"></i></a>
+					<a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/"
+						target="_blank"><i class="fab fa-linkedin"></i></a>
+					<a class="social" href="https://github.com/kushberrycream"
+						target="_blank"><i class="fab fa-github-square"></i></a>
 				</div>
 			</div>
 	</nav>
-    
-	
-    
+
+	<section class="contact container">
+        <h1 class="title">Get in touch</h1>
+        <h3 class="title">Have a suggestion? or found a bug? Let me know!</h3>
+		<form class="row">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+				<input type="text" placeholder="Full name" id="name" name="name" required >
+				<label for="name">Full name</label>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+				<input type="email" data-parsley-trigger="change" data-parsley-type="email" placeholder="Email address" id="email" name="email" required >
+				<label for="email">Email Address</label>
+			</div>
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<textarea name="message" id="message" required placeholder="Send me a message!"></textarea>
+				<label for="message">Send me a message!</label>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12">
+				<div data-sitekey="6LcEwj4UAAAAAEQkrT7_E_uIWxEOO-psAhpzcU0V" data-callback="submitForm"
+					data-size="invisible" class="recaptcha"></div>
+				<button type="submit" class="send">Send message</button>
+			</div>
+		</form>
+	</section>
+
+
 	<footer id="footer" class="footer text-center">
 		<p> Unoffical Website, All Data is obtained using SpaceX API.</p>
 	</footer>
-    
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    
+
 </body>
 
 </html>
-
-
-
-
-

@@ -6,8 +6,7 @@
 
 html,body {
   font-family: "Titillium Web", sans-serif;
-  height: 100%;
-  
+  height: 100%; 
 }
 
 body {
@@ -108,7 +107,7 @@ button:focus {
   display: none;
 }
 
-/* Titles - Headers */
+/*   Titles - Headers - cards   */
 
 h2 {
   padding: 20px 0;
@@ -118,6 +117,7 @@ h2 {
     text-align: center;
     padding:20px;
     color: #fefefe;
+    font-weight: 600;
 }
 
 .card {
@@ -130,65 +130,58 @@ h2 {
   border: 0;
 }
 
-.rocket-image {
-  width: 100%;
-  max-width:400px;
-  height: auto;
-  text-align: center;
-}
-.center-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/*   wikipedia - video - article - social links  */
+
+.media-buttons {              /* found on launches page */  
+    position: absolute;
+    top: -5px;
+    right: 0;
+    font-size: 1.3rem;
 }
 
+.history-media-buttons {     /* found on history page */
+    position: absolute;
+    right: 65px;
+    font-size: 1.3rem;
+}
+
+.socialbuttons {            /* found on about page */
+    font-size: 1.5rem;
+    color:#f3f3f3; 
+}
+
+.icon {
+    height: 50px;
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.elon { 
+    margin-bottom: 20px;
+    
+}
 .github {
   width: 70px;
   margin: 20px 20px 0 20px;
   display: grid;
+  text-align: center;
 }
+
 .facebook {
   width: 58px;
   margin: 20px 20px 0 20px;
   display: grid;
+  text-align: center;
 }
 
 .docs {
   width: 58px;
   margin: 20px 20px 0 20px;
   display: grid;
-}
-a {
   text-align: center;
 }
 
-.center-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.spacexwhite {
-  width: 75%;
-}
-
-.footer {
-  flex-shrink: 0;
-  color: #fff;
-}
-
-
-.socialbuttons {
-    font-size: 1.5rem;
-    color:#f3f3f3; 
-
-}
-
-.red > span {
-			background-color: #f0a3a3;
-			background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
-			
-			background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
-		}
+/*    home page carousel    */
 
 .card.card-carousel {
     color: rgba(0,0,0,.87);
@@ -328,6 +321,8 @@ a {
     text-align:left;
 }
 
+/* home page placeholders for data and countdown styling  */
+
 .mission-name {
     position: absolute;
     top: -10px;
@@ -377,13 +372,7 @@ a {
     text-align: center;
 }
 
-
-.launch-success {
-    position: absolute;
-    left: 20px;
-    font-size: small;
-    top: 40px;
-}
+/*          launches page            */
 
 .green {
     background: green;
@@ -395,18 +384,14 @@ a {
     color: #fff;
 }
 
-.icon {
-    height: 50px;
-    font-size: 40px;
-    line-height: 40px;
+.launch-success {
+    position: absolute;
+    left: 20px;
+    font-size: small;
+    top: 40px;
 }
 
-.elon { 
-    margin-bottom: 20px;
-}
-.dim {
-    color: gray;
-}
+/*  Launches page pagination styling   */
 
 .page-link {
     position: relative;
@@ -458,9 +443,162 @@ a {
     border-color: #1f1f44;
 }
 
+/*  rockets page image styling */
+
+.rocket-image {
+  width: 100%;
+  max-width:400px;
+  height: auto;
+  text-align: center;
+}
+.center-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*     about page    */
+
+.spacexwhite {
+  width: 75%;
+}
+
+/*    contact form      */
+
+.contact {
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
+  padding-top: 76px;
+  margin-top: 0;
+
+}
+
+form {
+  padding: 2rem;
+}
+
+form div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.5rem;
+}
+
+form div label {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  font-family: "Karla", sans-serif;
+  font-size: 0.75rem;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  opacity: 0;
+  order: 1;
+}
+
+form div input {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  appearance: none;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  padding: 0.5rem 1rem;
+  outline: none;
+  width: 100%;
+  font-family: "Karla", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  color: #555555;
+  position: relative;
+  display: block;
+  order: 2;
+  border: 1px solid transparent;
+}
+
+form div input:valid + label {
+  opacity: 1;
+}
+
+form div input:focus {
+  border: 1px solid #5f6edc;
+}
+
+form div textarea {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  font-family: "Karla", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  color: #555555;
+  appearance: none;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  padding: 0.5rem 1rem;
+  outline: none;
+  width: 100%;
+  position: relative;
+  display: block;
+  order: 2;
+  resize: none;
+  height: 120px;
+  border: 1px solid transparent;
+}
+
+form div textarea:valid + label {
+  opacity: 1;
+}
+
+form div textarea:focus {
+  border: 1px solid #5f6edc;
+}
+
+form div button {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+  font-family: "Karla", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  background-color: #ff4a5d;
+  color: #ffffff;
+  border: none;
+  max-width: 210px;
+  cursor: pointer;
+}
+
+form div button:hover {
+  background-color: #5f6edc;
+}
+
+/*          footer      */
+
+.footer {
+  flex-shrink: 0;
+  color: #fff;
+}
+
+/*    media queries    */
+
+
 @media (max-width: 575.98px) { 
     .pagination {
-        
         flex-direction: row;
         top: 0;
         position: relative;
@@ -468,9 +606,9 @@ a {
     } 
 
     .page-item:first-child .page-link {
-    margin-left: 0;
-    border-top-left-radius: .25rem;
-    border-bottom-left-radius: .25rem;
+        margin-left: 0;
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
     }
     .page-item:last-child .page-link {
         border-top-right-radius: .25rem;
@@ -478,10 +616,4 @@ a {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
-}
-.media-buttons {
-    position: absolute;
-    top: -5px;
-    right: 0;
-    font-size: 1.3rem;
 }

@@ -21,27 +21,6 @@ function getPagination(value) {
     clearData();
 }
 
-// applys pagination to page
-
-let pagination = document.getElementById("btm-pagination");
-pagination.innerHTML = `<nav aria-label="Page navigation" class="container">
-                                    <ul class="pagination justify-content-center">
-                                        
-                                        <li class="page-item active"><option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=82">1</option></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=72" class="page-link">2</option></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=62" class="page-link">3</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=52" class="page-link">4</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=32" class="page-link">5</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=22" class="page-link">6</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=12" class="page-link">7</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=02" class="page-link">8</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=2&offset=0" class="page-link">9</a></li>
-                                        
-                            
-                                    </ul>
-                                </nav>`;
-
-
 // calls spacex past launches api
 
 callLaunches();
@@ -55,6 +34,10 @@ function callLaunches() {
         let data = response.data;
         let newData = data.slice().reverse();
         console.log(newData);
+        let title = document.createElement("div");
+        title.setAttribute("class", "title");
+        app.appendChild(title);
+        title.innerHTML = `<h1 class="title">SpaceX Launches</h1>`;
 
         newData.forEach(item => {
             $("#loader").addClass("hide-loader");
@@ -89,7 +72,7 @@ function callLaunches() {
                 reddit = `<a href="${item.links.reddit_campaign}" target="_blank"><i class="fab fa-reddit-alien"></i></a>`;
             }
 
-            // checks for a url within video link item.
+            // checks for a url within presskit item.
 
             let presskit = item.links.presskit;
 
@@ -127,6 +110,26 @@ function callLaunches() {
         });
     });
 }
+
+// applys pagination to page
+
+let pagination = document.getElementById("btm-pagination");
+pagination.innerHTML = `<nav aria-label="Page navigation" class="container">
+                                    <ul class="pagination justify-content-center">
+                                        
+                                        <li class="page-item active"><option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=82">1</option></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=72" class="page-link">2</option></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=62" class="page-link">3</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=52" class="page-link">4</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=32" class="page-link">5</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=22" class="page-link">6</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=12" class="page-link">7</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=02" class="page-link">8</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=2&offset=0" class="page-link">9</a></li>
+                                        
+                            
+                                    </ul>
+                                </nav>`;
 
 
 // nav-bar active state change without reloading webpage

@@ -24,7 +24,7 @@ function upcomingLaunch() {
         <div class="overlay"></div>
         <div class="container-fluid">
             <div class="card card-raised card-carousel">
-                <h1 class="title"><strong>Upcoming Launches</strong></h1>
+                <h1 class="title">Upcoming Launches</h1>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
                     <ol id="data-slide" class="carousel-indicators">           
                     </ol>
@@ -125,7 +125,7 @@ function upcomingLaunch() {
         let activeItem = document.getElementsByTagName("div").item(9);
         activeItem.setAttribute("class", "carousel-item active");
 
-        let activeLaunch = document.getElementsByTagName("li").item(6);
+        let activeLaunch = document.getElementsByTagName("li").item(7);
         activeLaunch.setAttribute("class", "active");
     }).catch((e) => {
         console.error(e);
