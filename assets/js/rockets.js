@@ -83,7 +83,6 @@ function rocketSpec() {
 
                                                 <p class="card-text">${data.description}</p>
                                                    </br>
-
                                                 <h6>Active: ${data.active}</h6>
                                                 <h6>First Flight: ${data.first_flight}  </h6>
                                                 <h6>Cost Per Launch: ${cost}</h6>
