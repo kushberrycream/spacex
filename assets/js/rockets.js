@@ -62,7 +62,6 @@ function rocketSpec() {
 
     axios.get(api + btnValue).then(response => {
         let data = response.data;
-        console.log(data)
         $("#loader").addClass("hide-loader");
         let cost = accounting.formatMoney(data.cost_per_launch);
         let aboutRocket = document.createElement("div");
@@ -235,3 +234,4 @@ function rocketSpec() {
 function clearData() {
     app.innerHTML = "";
 }
+

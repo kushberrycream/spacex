@@ -15,7 +15,6 @@ function callDragons() {
     axios.get(api + "history").then(response => {
         let data = response.data;
         let newData = data.slice().reverse();
-        console.log(newData);
         let title = document.createElement("div");
         title.setAttribute("class", "title");
         app.appendChild(title);

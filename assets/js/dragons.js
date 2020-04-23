@@ -19,7 +19,6 @@ function callDragons() {
 
     axios.get(api).then(response => {
         data = response.data;
-        console.log(data);
         let title = document.createElement("div");
         title.setAttribute("class", "title");
         app.appendChild(title);
@@ -59,20 +58,17 @@ function callDragons() {
 
 function dragonSpec() {
     $("#loader").removeClass("hide-loader");
-
-
     axios.get(api + btnValue).then(response => {
         let data = response.data;
-        console.log(data);
         $("#loader").addClass("hide-loader");
-        let aboutRocket = document.createElement("div");
+        let aboutDragon = document.createElement("div");
 
-        aboutRocket.setAttribute("class", "about-rockets");
+        aboutDragon.setAttribute("class", "about-dragons");
 
         app.innerHTML = `<h1 class="title">${data.name}</h1>`;
-        app.appendChild(aboutRocket);
+        app.appendChild(aboutDragon);
 
-        aboutRocket.innerHTML = `<div class="row">
+        aboutDragon.innerHTML = `<div class="row">
                                     <div id="about" class="col-md-7">                                     
                                         <div class="card">
                                             <div class="card-header">
@@ -232,3 +228,4 @@ function dragonSpec() {
 function clearData() {
     app.innerHTML = "";
 }
+

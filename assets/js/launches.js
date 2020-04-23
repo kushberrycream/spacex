@@ -33,7 +33,6 @@ function callLaunches() {
     axios.get(api + "launches/past" + btnValue).then(response => {
         let data = response.data;
         let newData = data.slice().reverse();
-        console.log(newData);
         let title = document.createElement("div");
         title.setAttribute("class", "title");
         app.appendChild(title);
