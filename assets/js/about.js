@@ -1,7 +1,7 @@
 // Variables
 
 const app = document.getElementById("data");
-const api = "https://api.spacexdata.com/v3/";
+const api = "https://api.spacexdata.com/3/";
 
 
 callAbout();

@@ -12,6 +12,8 @@ axios.interceptors.response.use((response) => {
     console.log('Response:', response);
     return response;
   }, (error) => {
+    let url = "404.html";
+    window.location.assign(url)
     console.log(error);
     return Promise.reject(error);
   });
