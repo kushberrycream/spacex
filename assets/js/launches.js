@@ -5,7 +5,7 @@ const app = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/";
 
 
-let btnValue = "?limit=10&offset=82";
+let btnValue = "?limit=10&offset=83";
 
 // function to clear data div
 
@@ -117,14 +117,14 @@ pagination.innerHTML = `<nav aria-label="Page navigation" class="container">
                                     <ul class="pagination justify-content-center">
                                         
                                         <li class="page-item active"><option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=82">1</option></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=72" class="page-link">2</option></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=62" class="page-link">3</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=52" class="page-link">4</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=32" class="page-link">5</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=22" class="page-link">6</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=12" class="page-link">7</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=02" class="page-link">8</a></li>
-                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=2&offset=0" class="page-link">9</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=73" class="page-link">2</option></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=63" class="page-link">3</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=53" class="page-link">4</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=33" class="page-link">5</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=23" class="page-link">6</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=13" class="page-link">7</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=10&offset=03" class="page-link">8</a></li>
+                                        <li class="page-item"><option onclick="getPagination(value)" value="?limit=3&offset=0" class="page-link">9</a></li>
                                         
                             
                                     </ul>

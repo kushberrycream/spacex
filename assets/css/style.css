@@ -6,7 +6,6 @@
 
 html,body {
   font-family: "Titillium Web", sans-serif;
-  height: 100%; 
 }
 
 body {
@@ -14,10 +13,11 @@ body {
   flex-direction: column;
   background: url("../images/stars.jpg") center center no-repeat fixed;
   background-size: cover;
+  flex: 1 0 auto;
 }
 
 #data {
-    flex: 1 0 auto;
+    
     padding-top: 76px;
 }
 
@@ -591,9 +591,8 @@ form div button:hover {
 
 
 .site-footer
-{
-    flex-shrink: 0;
-  background-color:#26272b;
+{ flex-shrink: 0;
+  background-color:#000;
   padding:45px 0 20px;
   font-size:15px;
   line-height:24px;
