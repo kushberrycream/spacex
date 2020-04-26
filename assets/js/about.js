@@ -1,7 +1,7 @@
 // Variables
 
 const app = document.getElementById("data");
-const api = "https://api.spacexdata.com/3/";
+const api = "https://api.spacexdata.com/v3/";
 
 
 callAbout();
@@ -22,7 +22,7 @@ function callAbout() {
 
             data = api.data;
             infoApi = infoApi.data;
-            console.log(infoApi);
+
             $("#loader").addClass("hide-loader");
             let valuation = accounting.formatMoney(infoApi.valuation);
             let info = document.createElement("div");

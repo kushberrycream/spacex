@@ -121,7 +121,7 @@ function upcomingLaunch() {
 
         });
 
-        let activeItem = document.getElementsByTagName("div").item(9);
+        let activeItem = document.getElementsByTagName("div").item(10);
         activeItem.setAttribute("class", "carousel-item active");
 
         let activeLaunch = document.getElementsByTagName("li").item(7);

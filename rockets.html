@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-gb">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-   
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -14,52 +15,55 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a href="index.html">
-			<img src="assets/images/spacexlogo.jpg" class="d-inline-block align-top navbar-brand" alt="SpaceX"/>
+	<div class="content">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a href="index.html">
+				<img src="assets/images/spacexlogo.jpg" class="d-inline-block align-top navbar-brand" alt="SpaceX"/>
          </a>
-			<button class="navbar-toggler" type="button"
+				<button class="navbar-toggler" type="button"
             data-toggle="collapse" data-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" >
          <span class="navbar-toggler-icon"></span>
          </button>
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="index.html" class="nav-link" >Home</a>
-					</li>
-					<li class="nav-item active" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
-					</li>
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="missions.html" id="missions" class="nav-link">Missions</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="launches.html" id="launches" class="nav-link">Launches</a>
-					</li>
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="history.html" id="history" class="nav-link">History</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="about.html" class="nav-link">About</a>
-					</li>
-				</ul>
-				<div class="socialbuttons">
-                    <a class="social" href="contact.html"><i class="fas fa-envelope"></i></a> 
-                    <a class="social" href="https://www.facebook.com/profile.php?id=555815524" target="_blank"><i class="fab fa-facebook-square"></i></a> 
-                    <a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/" target="_blank"><i class="fab fa-linkedin"></i></a> 
-                    <a class="social" href="https://github.com/kushberrycream" target="_blank"><i class="fab fa-github-square"></i></a>
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+							<a href="index.html" class="nav-link">Home</a>
+						</li>
+						<li class="nav-item active" data-toggle="collapse" data-target=".navbar-collapse.show">
+							<a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
+						</li>
+						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+							<a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
+						</li>
+						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+							<a href="missions.html" id="missions" class="nav-link">Missions</a>
+						</li>
+						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+							<a href="launches.html" id="launches" class="nav-link">Launches</a>
+						</li>
+						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+							<a href="history.html" id="history" class="nav-link">History</a>
+						</li>
+						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+							<a href="about.html" class="nav-link">About</a>
+						</li>
+					</ul>
+					<div class="socialbuttons">
+						<a class="social" href="contact.html"><i class="fas fa-envelope"></i></a>
+						<a class="social" href="https://www.facebook.com/profile.php?id=555815524"
+							target="_blank"><i class="fab fa-facebook-square"></i></a>
+						<a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/"
+							target="_blank"><i class="fab fa-linkedin"></i></a>
+						<a class="social" href="https://github.com/kushberrycream"
+							target="_blank"><i class="fab fa-github-square"></i></a>
+					</div>
 				</div>
-			</div>
-	</nav>
-    
-	<div class="loader hide-loader" id="loader"></div>
-    
-	<div id="data"></div>
-    
+		</nav>
+
+		<div id="data"></div>
+	</div>
+
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row no-gutters">
@@ -116,14 +120,32 @@
 			</div>
 		</div>
 	</footer>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+	<div class="loader hide-loader" id="loader"></div>
+	<div id="error" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Error!</h5>
+				</div>
+				<div class="modal-body">
+					<p>Something went wrong! Please try again or contact support!</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="window.location.reload();">Refresh Page</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 	<script src="assets/js/interceptors.js"></script>
-    <script src="assets/js/rockets.js"></script> 
+	<script src="assets/js/rockets.js"></script>
 </body>
+
 </html>
