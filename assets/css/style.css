@@ -23,6 +23,24 @@ body {
     padding-top: 76px;
          
 }
+.dwn-arrow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    font-size: 3rem;
+}
+
+.arrow {
+    color: #fff;
+}
+
+.arrow:hover {
+    color: #fff;
+}
+
+
 
 .container-fluid,
 .container {
@@ -113,7 +131,8 @@ button:focus {
 /*   Titles - Headers - cards   */
 
 h2 {
-  padding: 20px 0;
+  padding: 10px 0;
+  margin-bottom: 0;
 }
 
 .title {
@@ -260,8 +279,10 @@ h2 {
 }
 
 .carousel .carousel-caption {
-    padding-bottom: 45px;
+    margin-bottom: 50px;
+    height: 240px;
 }
+
 .carousel .carousel-caption img {
     position: absolute;
     top: 0;
@@ -322,6 +343,11 @@ h2 {
 
     color: #fff;
     text-align:left;
+}
+
+.launch-details {
+    height: 220px;
+   overflow-y: scroll;
 }
 
 /* home page placeholders for data and countdown styling  */
