@@ -21,7 +21,7 @@ function callDragons() {
         title.innerHTML = `<h1 class="title">SpaceX Historical Events</h1>`;
         let row = document.createElement("div");
 
-        row.setAttribute("class", "row no-gutters");
+        row.setAttribute("class", "row no-gutters justify-content-center");
         newData.forEach(item => {
             $("#loader").addClass("hide-loader");
 
