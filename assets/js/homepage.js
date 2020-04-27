@@ -170,70 +170,112 @@ function upcomingLaunch() {
                         <label for="tab-six" id="tab-six-label" class="tab">${pads[5].site_name_long}</label>
 
 
-                            <div id="tab-one-panel" class="panel active">
+                            <div id="tab-one-panel" class="panel">
                                 <div class="row">
-                                    <div class="panel-item col-md-1">${tableHeaders[2]} <br> ${pads[0].status}</div>
-                                    <div class="panel-item col-md-2">${tableHeaders[3]} <br> ${pads[0].location.name}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[4]} <br> ${pads[0].vehicles_launched[0]}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[5]} <br> ${pads[0].attempted_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[6]} <br> ${pads[0].successful_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[7]} <br> <a href="${pads[0].wikipedia}">Click Here!</a></div>
-                                    <div class="panel-item col-md-5">${tableHeaders[8]} <br> ${pads[0].details}</div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[2]}</strong></div>
+                                    <div class="panel-item col-md-2"><strong>${tableHeaders[3]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[4]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[5]}</strong></div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[6]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[7]}</strong></div> 
+                                    <div class="panel-item col-md-5"><strong>${tableHeaders[8]}</strong></div>
+                                    <div class="panel-item col-md-1">${pads[0].status}</div>
+                                    <div class="panel-item col-md-2">${pads[0].location.name}</div>
+                                    <div class="panel-item col-md-1">${pads[0].vehicles_launched[0]}</div>
+                                    <div class="panel-item col-md-1">${pads[0].attempted_launches}</div>
+                                    <div class="panel-item col-md-1">${pads[0].successful_launches}</div>
+                                    <div class="panel-item col-md-1"><a href="${pads[0].wikipedia}">Click Here!</a></div>
+                                    <div class="panel-item col-md-5">${pads[0].details}</div>
                                 </div>
                             </div>
                             <div id="tab-two-panel" class="panel">
                                 <div class="row">
-                                    <div class="panel-item col-md-1">${tableHeaders[2]} <br> ${pads[1].status}</div>
-                                    <div class="panel-item col-md-2">${tableHeaders[3]} <br> ${pads[1].location.name}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[4]} <br> ${pads[1].vehicles_launched[0]}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[5]} <br> ${pads[1].attempted_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[6]} <br> ${pads[1].successful_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[7]} <br> <a href="${pads[1].wikipedia}">Click Here!</a></div>
-                                    <div class="panel-item col-md-5">${tableHeaders[8]} <br> ${pads[1].details}</div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[2]}</strong></div>
+                                    <div class="panel-item col-md-2"><strong>${tableHeaders[3]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[4]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[5]}</strong></div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[6]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[7]}</strong></div> 
+                                    <div class="panel-item col-md-5"><strong>${tableHeaders[8]}</strong></div>
+                                    <div class="panel-item col-md-1">${pads[1].status}</div>
+                                    <div class="panel-item col-md-2">${pads[1].location.name}</div>
+                                    <div class="panel-item col-md-1">${pads[1].vehicles_launched[0]}</div>
+                                    <div class="panel-item col-md-1">${pads[1].attempted_launches}</div>
+                                    <div class="panel-item col-md-1">${pads[1].successful_launches}</div>
+                                    <div class="panel-item col-md-1"><a href="${pads[1].wikipedia}">Click Here!</a></div>
+                                    <div class="panel-item col-md-5">${pads[1].details}</div>
                                 </div>
                             </div>
                             <div id="tab-three-panel" class="panel">
                                 <div class="row">
-                                    <div class="panel-item col-md-1">${tableHeaders[2]} <br> ${pads[2].status}</div>
-                                    <div class="panel-item col-md-2">${tableHeaders[3]} <br> ${pads[2].location.name}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[4]} <br> ${pads[2].vehicles_launched[0]}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[5]} <br> ${pads[2].attempted_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[6]} <br> ${pads[2].successful_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[7]} <br> <a href="${pads[2].wikipedia}">Click Here!</a></div>
-                                    <div class="panel-item col-md-5">${tableHeaders[8]} <br> ${pads[2].details}</div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[2]}</strong></div>
+                                    <div class="panel-item col-md-2"><strong>${tableHeaders[3]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[4]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[5]}</strong></div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[6]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[7]}</strong></div> 
+                                    <div class="panel-item col-md-5"><strong>${tableHeaders[8]}</strong></div>
+                                    <div class="panel-item col-md-1">${pads[2].status}</div>
+                                    <div class="panel-item col-md-2">${pads[2].location.name}</div>
+                                    <div class="panel-item col-md-1">${pads[2].vehicles_launched[0]}</div>
+                                    <div class="panel-item col-md-1">${pads[2].attempted_launches}</div>
+                                    <div class="panel-item col-md-1">${pads[2].successful_launches}</div>
+                                    <div class="panel-item col-md-1"><a href="${pads[2].wikipedia}">Click Here!</a></div>
+                                    <div class="panel-item col-md-5">${pads[2].details}</div>
                                 </div>
                             </div>
                             <div id="tab-four-panel" class="panel">
                                 <div class="row">
-                                    <div class="panel-item col-md-1">${tableHeaders[2]} <br> ${pads[3].status}</div>
-                                    <div class="panel-item col-md-2">${tableHeaders[3]} <br> ${pads[3].location.name}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[4]} <br> ${pads[3].vehicles_launched[0]}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[5]} <br> ${pads[3].attempted_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[6]} <br> ${pads[3].successful_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[7]} <br> <a href="${pads[3].wikipedia}">Click Here!</a></div>
-                                    <div class="panel-item col-md-5">${tableHeaders[8]} <br> ${pads[3].details}</div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[2]}</strong></div>
+                                    <div class="panel-item col-md-2"><strong>${tableHeaders[3]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[4]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[5]}</strong></div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[6]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[7]}</strong></div> 
+                                    <div class="panel-item col-md-5"><strong>${tableHeaders[8]}</strong></div>
+                                    <div class="panel-item col-md-1">${pads[3].status}</div>
+                                    <div class="panel-item col-md-2">${pads[3].location.name}</div>
+                                    <div class="panel-item col-md-1">${pads[3].vehicles_launched[0]}</div>
+                                    <div class="panel-item col-md-1">${pads[3].attempted_launches}</div>
+                                    <div class="panel-item col-md-1">${pads[3].successful_launches}</div>
+                                    <div class="panel-item col-md-1"><a href="${pads[3].wikipedia}">Click Here!</a></div>
+                                    <div class="panel-item col-md-5">${pads[3].details}</div>
                                 </div>
                             </div>
                             <div id="tab-five-panel" class="panel">
                                 <div class="row">
-                                    <div class="panel-item col-md-1">${tableHeaders[2]} <br> ${pads[4].status}</div>
-                                    <div class="panel-item col-md-2">${tableHeaders[3]} <br> ${pads[4].location.name}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[4]} <br> ${pads[4].vehicles_launched[0]}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[5]} <br> ${pads[4].attempted_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[6]} <br> ${pads[4].successful_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[7]} <br> <a href="${pads[4].wikipedia}">Click Here!</a></div>
-                                    <div class="panel-item col-md-5">${tableHeaders[8]} <br> ${pads[4].details}</div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[2]}</strong></div>
+                                    <div class="panel-item col-md-2"><strong>${tableHeaders[3]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[4]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[5]}</strong></div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[6]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[7]}</strong></div> 
+                                    <div class="panel-item col-md-5"><strong>${tableHeaders[8]}</strong></div>
+                                    <div class="panel-item col-md-1">${pads[4].status}</div>
+                                    <div class="panel-item col-md-2">${pads[4].location.name}</div>
+                                    <div class="panel-item col-md-1">${pads[4].vehicles_launched[0]}</div>
+                                    <div class="panel-item col-md-1">${pads[4].attempted_launches}</div>
+                                    <div class="panel-item col-md-1">${pads[4].successful_launches}</div>
+                                    <div class="panel-item col-md-1"><a href="${pads[4].wikipedia}">Click Here!</a></div>
+                                    <div class="panel-item col-md-5">${pads[4].details}</div>
                                 </div>
                             </div>
                             <div id="tab-six-panel" class="panel">
                                 <div class="row">
-                                    <div class="panel-item col-md-1">${tableHeaders[2]} <br> ${pads[5].status}</div>
-                                    <div class="panel-item col-md-2">${tableHeaders[3]} <br> ${pads[5].location.name}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[4]} <br> ${pads[5].vehicles_launched[0]}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[5]} <br> ${pads[5].attempted_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[6]} <br> ${pads[5].successful_launches}</div>
-                                    <div class="panel-item col-md-1">${tableHeaders[7]} <br> <a href="${pads[5].wikipedia}">Click Here!</a></div>
-                                    <div class="panel-item col-md-5">${tableHeaders[8]} <br> ${pads[5].details}</div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[2]}</strong></div>
+                                    <div class="panel-item col-md-2"><strong>${tableHeaders[3]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[4]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[5]}</strong></div>
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[6]}</strong></div> 
+                                    <div class="panel-item col-md-1"><strong>${tableHeaders[7]}</strong></div> 
+                                    <div class="panel-item col-md-5"><strong>${tableHeaders[8]}</strong></div>
+                                    <div class="panel-item col-md-1">${pads[5].status}</div>
+                                    <div class="panel-item col-md-2">${pads[5].location.name}</div>
+                                    <div class="panel-item col-md-1">${pads[5].vehicles_launched[0]}</div>
+                                    <div class="panel-item col-md-1">${pads[5].attempted_launches}</div>
+                                    <div class="panel-item col-md-1">${pads[5].successful_launches}</div>
+                                    <div class="panel-item col-md-1"><a href="${pads[5].wikipedia}">Click Here!</a></div>
+                                    <div class="panel-item col-md-5">${pads[5].details}</div>
                                 </div>
                             </div>
                     </div>
