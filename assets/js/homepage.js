@@ -201,7 +201,7 @@ function upcomingLaunch() {
                                             <td class="launch-item">${launchPads[0].vehicles_launched[0]}</td>
                                             <td class="launch-item">${launchPads[0].attempted_launches}</td>
                                             <td class="launch-item">${launchPads[0].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[0].wikipedia}">Click Here!</a></td>
+                                            <td class="launch-item"><a href="${launchPads[0].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="launch-item">${launchPads[0].details}</td>
                                         </tr>
                                         </tbody>
@@ -227,7 +227,7 @@ function upcomingLaunch() {
                                             <td class="launch-item">${launchPads[1].vehicles_launched[0]}</td>
                                             <td class="launch-item">${launchPads[1].attempted_launches}</td>
                                             <td class="launch-item">${launchPads[1].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[1].wikipedia}">Click Here!</a></td>
+                                            <td class="launch-item"><a href="${launchPads[1].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="launch-item">${launchPads[1].details}</td>
                                         </tr>
                                         </tbody>
@@ -253,7 +253,7 @@ function upcomingLaunch() {
                                             <td class="launch-item">${launchPads[2].vehicles_launched[0]}</td>
                                             <td class="launch-item">${launchPads[2].attempted_launches}</td>
                                             <td class="launch-item">${launchPads[2].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[2].wikipedia}">Click Here!</a></td>
+                                            <td class="launch-item"><a href="${launchPads[2].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="launch-item">${launchPads[2].details}</td>
                                         </tr>
                                         </tbody>
@@ -279,7 +279,7 @@ function upcomingLaunch() {
                                             <td class="launch-item">${launchPads[3].vehicles_launched[0]}</td>
                                             <td class="launch-item">${launchPads[3].attempted_launches}</td>
                                             <td class="launch-item">${launchPads[3].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[3].wikipedia}">Click Here!</a></td>
+                                            <td class="launch-item"><a href="${launchPads[3].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="launch-item">${launchPads[3].details}</td>
                                         </tr>
                                         </tbody>
@@ -305,7 +305,7 @@ function upcomingLaunch() {
                                             <td class="launch-item">${launchPads[4].vehicles_launched[0]}</td>
                                             <td class="launch-item">${launchPads[4].attempted_launches}</td>
                                             <td class="launch-item">${launchPads[4].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[4].wikipedia}">Click Here!</a></td>
+                                            <td class="launch-item"><a href="${launchPads[4].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="launch-item">${launchPads[4].details}</td>
                                         </tr>
                                         </tbody>
@@ -331,7 +331,7 @@ function upcomingLaunch() {
                                             <td class="launch-item">${launchPads[5].vehicles_launched[0]}</td>
                                             <td class="launch-item">${launchPads[5].attempted_launches}</td>
                                             <td class="launch-item">${launchPads[5].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[5].wikipedia}">Click Here!</a></td>
+                                            <td class="launch-item"><a href="${launchPads[5].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="launch-item">${launchPads[5].details}</td>
                                         </tr>
                                         </tbody>
@@ -379,7 +379,7 @@ function upcomingLaunch() {
                                             <td class="land-item">${landPads[0].landing_type}</td>
                                             <td class="land-item">${landPads[0].attempted_landings}</td>
                                             <td class="land-item">${landPads[0].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[0].successful_landings}">Click Here!</a></td>
+                                            <td class="land-item"><a href="${landPads[0].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="land-item">${landPads[0].details}</td>
                                         </tr>
                                         </tbody>
@@ -405,7 +405,7 @@ function upcomingLaunch() {
                                             <td class="land-item">${landPads[1].landing_type}</td>
                                             <td class="land-item">${landPads[1].attempted_landings}</td>
                                             <td class="land-item">${landPads[1].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[1].successful_landings}">Click Here!</a></td>
+                                            <td class="land-item"><a href="${landPads[1].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="land-item">${landPads[1].details}</td>
                                         </tr>
                                         </tbody>
@@ -431,7 +431,7 @@ function upcomingLaunch() {
                                             <td class="land-item">${landPads[2].landing_type}</td>
                                             <td class="land-item">${landPads[2].attempted_landings}</td>
                                             <td class="land-item">${landPads[2].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[2].successful_landings}">Click Here!</a></td>
+                                            <td class="land-item"><a href="${landPads[2].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="land-item">${landPads[2].details}</td>
                                         </tr>
                                         </tbody>
@@ -457,7 +457,7 @@ function upcomingLaunch() {
                                             <td class="land-item">${landPads[3].landing_type}</td>
                                             <td class="land-item">${landPads[3].attempted_landings}</td>
                                             <td class="land-item">${landPads[3].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[3].successful_landings}">Click Here!</a></td>
+                                            <td class="land-item"><a href="${landPads[3].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="land-item">${landPads[3].details}</td>
                                         </tr>
                                         </tbody>
@@ -483,7 +483,7 @@ function upcomingLaunch() {
                                             <td class="land-item">${landPads[4].landing_type}</td>
                                             <<td class="land-item">${landPads[4].attempted_landings}</td>
                                             <td class="land-item">${landPads[4].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[4].successful_landings}">Click Here!</a></td>
+                                            <td class="land-item"><a href="${landPads[4].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="land-item">${landPads[4].details}</td>
                                         </tr>
                                         </tbody>
@@ -509,7 +509,7 @@ function upcomingLaunch() {
                                             <td class="land-item">${landPads[5].landing_type}</td>
                                             <td class="land-item">${landPads[5].attempted_landings}</td>
                                             <td class="land-item">${landPads[5].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[5].successful_landings}">Click Here!</a></td>
+                                            <td class="land-item"><a href="${landPads[5].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="land-item">${landPads[5].details}</td>
                                         </tr>
                                         </tbody>
@@ -535,7 +535,7 @@ function upcomingLaunch() {
                                             <td class="land-item">${landPads[6].landing_type}</td>
                                             <td class="land-item">${landPads[6].attempted_landings}</td>
                                             <td class="land-item">${landPads[6].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[6].successful_landings}">Click Here!</a></td>
+                                            <td class="land-item"><a href="${landPads[6].wikipedia}" target="_blank">Click Here!</a></td>
                                             <td class="land-item">${landPads[6].details}</td>
                                         </tr>
                                         </tbody>
