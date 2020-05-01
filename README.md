@@ -40,18 +40,34 @@ the data in a uniform and ledgable layout.
 ### Scope
 | User | User Stories |
 | ------ | ------ |
-| SpaceX Fans | As a SpaceX fan I want to be able to view as much Information about SpaceX as possible, Upcoming Launches, Previous Launches, Types oF Rockets etc. |
-| People intrested in Space Flight | As someone intrested in Space Flight I want to be able to see any upcoming Launches and any data on those launches. Also any information on how to watch launches.  |
-| Astronomers | As an Astronomer I want to be able to see Upcoming Launches and information on what is being launched, previous launches and also what has been launched and finally information on the Rockets used to launch the payloads. |
+| SpaceX Fans | As a SpaceX fan I want to be able to view as much Information about SpaceX as possible, Upcoming Launches, Previous Launches, Types of Rockets etc. |
+| People intrested in Space Flight | As someone intrested in Space Flight I want to be able to see any upcoming Launches, any data on those launches and missions they undertake. Also any information on how to watch launches.  |
+| Children intrested in Space | As a Child I want to be able to learn as much as possible and as easily as possible. I want to be able to view any intresting images or links to videos or other pages. |
+| Anyone who doesnt know SpaceX | As a someone new to SpaceX I would like to find out who they are and what they do, any relevant data about SpaceX and links to more relevant information. |
 
-SpaceX fans are able to view a vast array of data in a clear and ledgable format. They can see any a great amount of 
-data about upcoming launches, previous launches and the various rockets and dragons. (Vehicle attatched to the rocket)  
+I wanted to give all users data provided by SpaceX in clear and ledgable format. I wanted to display each specific bit of data in its own section to make the website
+easy for any user to read or use.
+
+SpaceX fans are able to see a great amount of data about upcoming launches, previous launches and the various rockets, dragons (Part of the Spacecraft) and much more.
+
+People intrested in Space flight can easily see what kind of launches are happening and when also and missions that SpaceX have undertaken / currently undertaking. Plus links to
+previous launch videos and links to SpaceX webcast are clearly visable throughout the site.
+
+Children can navigate easily through my site to learn all about the types of vehicles SpaceX use, any information about SpaceX and also any links to more information about Space Flight.
+
+People who do not know about SpaceX and would like to learn what they do can view a vast array of information from launches, missions, vehicles and also historical events SpaceX have been a part of.
 
 
 ### Structure
-The site is actually only two pages, the main data page (index.html) and also a contact page. The page will update according to which navigation link
-is clicked giving the impression of a multipage site, I have provided an alert to the users to say using the back button may have undesired effects and 
-to only use the navigation links. 
+The site is built up of multiple , each page is populated with data from theSpaceX API. The page will update according to which navigation link
+is clicked and a loading spinner will spin in the center of each page until the call has been completed, this gives the user a good indication the page is doing something.
+Almost all the data is displayed within cards this gives the pages continunity and gives a good user experience. 
+
+I have provided multiple CTA's across the whole website for a range of things. The first CTA's are for social links and the contact page provided on the Navbar and the 
+footer of each page. Two sets are provided on the `index.html` page, the user clicks these and they give the user the information for the button they have chosen. Both 
+the Rockets and the dragons page provide CTA's to view more infomation on the specific items. The final CTA's are on the About page, these give all the social links for 
+SpaceX and also another section for my social links again.
+  
 
 ### Skeleton
 [Landing Screen](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Landing%20_%20Home%20Screen.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; [Home Screen (Below Landing)](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Home%20Screen%20(Below%20Landing).png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp; 
@@ -61,7 +77,10 @@ to only use the navigation links.
 [Contact Page](https://github.com/kushberrycream/spacex/blob/master/assets/wireframes/Contact%20Page.png?raw=true) &nbsp;&nbsp;:rocket:&nbsp;&nbsp;
  
 ### Surface
-
+I planned originally to keep the website white and black but as the page progressed I was thinking it needed a space theme, whilst the white and black theme worked I felt it was
+a little to boring to me. My website ended up with the main background being a star filled sky with a different landing page background. To display text correctly I have overlayed the landing page background and
+also changed the background on all cards to have the same colour of the overlay and this helps keep all the text ledgable against the background. All my Fonts, Active links and Icons are white unless
+they are inactive.
 
 <p align="right">
   <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
@@ -76,9 +95,21 @@ format UTC dates as I didnt want to complicate my code by trying to format dates
 
 ### Existing Features
 
+- [x] My site incorporates bootstrap components. I have used a Navbar and updated the style to fit SpaceX's theme, I have also used the bootstrap card to display most of my data and updated the styling again to fit my needs.
+- [x] The landing page uses a carousel component to slide through all the upcoming Launch dates and times. It also displays details about the launch. 
+- [x] I have created tabs so I was able to display data about launch and landing sites in tables. By using tabs i was able to then display the tables responsively without extending the width or the height to much on mobile devices 
+as you only display one item of data at a time.
+- [x] Both the Rockets and the Dragons Pages allow you to view all the vehicles together or you can choose a specific vehicle and view more details on that vehicle, including photos and videos if available.
+- [x] I supply a breakdown of each Mission SpaceX currently undertake and have undertaken and also a link to the company it is associated with.
+- [x] I have broken down the launches by paginating the data. Each page displays 10 launches and they have been reversed so the most recent launch is displayed first. Each Launch displays a Description along with any links.
+- [x] History is split into smaller cards to allow more data to be viewed on the screen but still allow for responiveness. 
+- [x] I have given the user information on the company, their API and also myself. I have also given the user links to the company and myself incase the user wishes to research more or contact myself.
+- [x] A Contact form has been supplied to also allow the user to quickly contact me about any bugs or suggestions.
 
 ### Features Left to Implement
 
+- [ ] In future updates I plan to place a search function within the site to search for the specific information you require. Such as if you search Falcon 1 it will include options to view 
+everything that has the mention of Falcon 1, etc. 
 
 <p align="right">
   <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
@@ -95,7 +126,7 @@ This is the Technology Stack I used throughout this project.
 - [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
     - CSS allows me to make my site attractive and unique.
 - [JavaScript](https://www.javascript.com/)
-    - JavaScript is the main technology used it allows me to provide data to my users.
+    - JavaScript is the main technology used it allows me to provide data to my users whilst also improving the experience.
 - [Axios](https://github.com/axios/axios)
     - Axios allows me to make XMLHttpRequests with a single line of Code.
 - [EmailJS](https://www.emailjs.com/)
@@ -103,12 +134,15 @@ This is the Technology Stack I used throughout this project.
 - [Moment.js](https://momentjs.com/)
     - I used Moment.js to help me format the dates better and without the use of extra Javascript.
 - [Accounting.js](https://github.com/openexchangerates/accounting.js/)
-    - I have used Accounting.js to format all the sums of money obtain from the API.
+    - I have used Accounting.js to format all the sums of money obtain from the API, this allowed me to not fill my code with
+unnecessary, confusing code.
 - [Bootstrap 4](https://getbootstrap.com/)
     - I have used the Bootstrap Framework and multiple components with my own CSS styles to
     create a great User Experience.
 - [Font Awesome](https://fontawesome.com/)
-    - Font Awesome was used for any icons I needed.
+    - Font Awesome was used for any icons I needed as they supply a vast array of good, free icons.
+- [Hover.css](https://ianlunn.github.io/Hover/)
+    - I have used hover.css to implement animation on a few icons to give the user feedback on links.
 
 
 <p align="right">
@@ -124,6 +158,44 @@ I used [W3 Validators](https://validator.w3.org) to check for any errors within 
 as my navigation buttons as this worked for what I needed. The validator let me know this wasnt the correct usage, so I replaced these with buttons and restyled them so
 they still looked the same.
 
+I passed JS, HTML and CSS through validators and beautifiers throughout development to make sure I kepts my code clean and readable and also avoiding trying to fix multiple 
+errors within my code all at once. This approach helped me manage my time on the project better.
+
+Here are a few of the processes I went through to manually test my code:
+
+1. NavBar:
+    1. Throughout development I checked all links would respond correctly. By clicking links I was able to confirm this.
+    2. Next I went into Devtools and turned on mobile emulation to confirm the Toggler button appears, I would click to confirm the button worked correctly.
+    3. Once the links were displayed I clicked each to confirm the navbar opened the page and closed the navbar as intended.
+    4. I also checked all available viewports within devtools to makes sure it displayed correctly.
+    5. Social links were also checked to makes sure they opened a new tab and of course the correct page.
+    6. All tests came were a success and I cannot recall any issues throughout development.
+
+2. Footer:
+    1. My footers navigation works as intended when clicked.
+    2. Once the Quick Links had been selected I tested to see if they opened the correct pages in new tabs.
+    3. I tested each viewport size to see if it resonsed as expected.
+    4. All tests were successful and no errors except with styling occured.
+
+3. Responsivness:
+    1. I went to Devtools on chrome and chose various viewports, checked to see any display issues.
+    2. If issues were discovered I would use Unicorn Revealer to see any hard to find padding / margin issues.
+    3. If data did not display properly I added relevant media queries or edited javascript or content until it was correct.
+    4. I then chose the responsive option on the viewports and checked as many resolutions as possible.
+    5. I repeated the processes for any errors in what was displayed.
+    6. I also checked the responsiveness on my personal iPhone and work Android as Devtools I find is not always 100% correct.
+    7. If any errors did occur I corrected them accordingly.
+
+4. Contact form:
+    1. I went to the Contact form links, both the footer and the navbar links.
+    2. I tried to submit the empty form and an error message about the required fields appears. 
+    3. I tried to submit the form with a different array of invalid emails and the relevant error message appears.
+    4. I tried to not input a name and submut the form and again the correct error appears.
+    5. I then submitted the form with all inputs valid and it suppied me with the correct success response. 
+    6. Finally I went to my emails to confirm this has infact been a success.
+
+5. 
+
 ### Bugs
 
 - During development I realised early on that users would not be able to use the browsers forwards and back button. This is unavoidable due to the way I had coded my Javascript,
@@ -138,7 +210,28 @@ Obviously this is undesirable but can be corrected by using the navigation butto
 
 ## Deployment
 
+I have currently deployed my Portfolio on GitHub Pages using the master branch. It can be viewed on https://kushberrycream.github.io/spacex/, this will eventually be accesible from my own domain. 
+The site will update on all new commits to the master branch. I use `git commit` to commit to the local repository and the use `git push` to send any changed to the master branch. 
 
+### Deployment on GitHub Pages
+1. Firstly I went to my setting in my Repository.
+
+2. I then scrolled down to "GitHub Pages" 
+
+3. Using the source menu I then selected the master branch.
+
+### Cloning the Repository
+To run this repository locally:
+
+1. Click "Clone or Download" at the top of this repository 
+
+2. Copy the URL to your clipboard. 
+
+3. Open up Terminal and select the location in which you wish to clone this      directory 
+
+4. Then copy `git clone https://github.com/kushberrycream/spacex.git` 
+
+5. Press enter and you will have succesfully cloned this Repository. 
 
 <p align="right">
   <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
