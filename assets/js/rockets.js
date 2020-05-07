@@ -72,7 +72,7 @@ function rocketSpec() {
         app.appendChild(aboutRocket);
 
 
-        aboutRocket.innerHTML = `<div class="row">
+        aboutRocket.innerHTML = `<div class="row no-gutters">
                                     <div id="about" class="col-md-7">                                     
                                         <div class="card">
                                             <div class="card-header">

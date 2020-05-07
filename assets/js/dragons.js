@@ -68,7 +68,7 @@ function dragonSpec() {
         app.innerHTML = `<h1 class="title">${data.name}</h1>`;
         app.appendChild(aboutDragon);
 
-        aboutDragon.innerHTML = `<div class="row">
+        aboutDragon.innerHTML = `<div class="row no-gutters">
                                     <div id="about" class="col-md-7">                                     
                                         <div class="card">
                                             <div class="card-header">

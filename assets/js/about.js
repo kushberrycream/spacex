@@ -47,7 +47,7 @@ function callAbout() {
                                             <p>${infoApi.summary}</p>     
                                         </div>
                                         <div class="col-md-6 center-img">
-                                            <img class="spacexwhite" src="assets/images/spacexwhite.png" alt="SpaceX">
+                                            <img class="spacexwhite" src="assets/images/spacextrans.png" alt="SpaceX">
                                         </div>
                                     </div>
                                 </div>
@@ -62,9 +62,9 @@ function callAbout() {
                                         <p>All Information about SpaceX, Launches, Rockets and Missions are provided by the SpaceX API.</p>
                                         <p>${data.description}</p>
                                         <p><strong>Version: </strong>${data.version}</p>
-                                        <div class="row">
+                                        <div class="row text-center">
                                             <a href="${data.project_link}" target="_blank">
-                                            <img class="github" src="assets/images/Octocat.png">GitHub</a>
+                                            <img class="github" src="assets/images/octocat.png">GitHub</a>
                                             <a href="${data.docs}" target="_blank">
                                             <img class="docs" src="assets/images/postman.png">Documentation</a>
                                         </div>
@@ -83,9 +83,9 @@ function callAbout() {
                                         <h5>Contact Me</h5>
                                         <p><strong>Phone: </strong>07449 670 750</br>
                                         <strong>Email: </strong>kushberrycream@hotmail.com</p>
-                                            <div class="row">
+                                            <div class="row text-center">
                                                 <a href="https://github.com/kushberrycream" target="_blank">
-                                                    <img class="github" src="assets/images/Octocat.png" alt="Octocat">Github
+                                                    <img class="github" src="assets/images/octocat.png" alt="Octocat">Github
                                                 </a>
                                                 <a href="" target="_blank">
                                                     <img class="facebook" src="assets/images/facebook.png" alt="Facebook">Facebook
