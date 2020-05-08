@@ -173,7 +173,7 @@ function upcomingLaunch() {
                     <input class="state" type="radio" title="tab-six" name="tabs-state" id="tab-six" />
 
                     <div class="tabs flex-tabs">
-                        <label for="tab-one" id="tab-one-label" class="tab">${launchPads[0].site_name_long}</label>
+                        <label for="tab-one" id="tab-one-label" class="tab" data-toggle="tooltip" data-placement="bottom" title="Click Here!">${launchPads[0].site_name_long}</label>
                         <label for="tab-two" id="tab-two-label" class="tab">${launchPads[1].site_name_long}</label>
                         <label for="tab-three" id="tab-three-label" class="tab">${launchPads[2].site_name_long}</label>
                         <label for="tab-four" id="tab-four-label" class="tab">${launchPads[3].site_name_long}</label>

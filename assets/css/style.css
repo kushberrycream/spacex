@@ -378,6 +378,18 @@ h2 {
   overflow-y: scroll;
 }
 
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #585858; 
+}
+
+.no-link { 
+    color: #000;
+}
+
 
 /* home page placeholders for data and countdown styling  */
 
@@ -433,7 +445,13 @@ h2 {
 
 /* homepage below landing - launch sites and landing sites */
 
-                                        /* both data tabs */
+.website-description {
+    padding: 30px;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+/*                              both data tabs              */
 
 .responsive-tabs {
   margin: 20px;

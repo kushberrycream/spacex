@@ -65,7 +65,7 @@ function callLaunches() {
             let reddit = item.links.reddit_campaign;
 
             if (reddit == null) {
-                reddit = `<i class="fab fa-reddit-alien"></i>`;
+                reddit = `<span class="no-link"><i class="fab fa-reddit-alien"></i></span>`;
                                                 
             } else {
                 reddit = `<a href="${item.links.reddit_campaign}" target="_blank"><i class="fab fa-reddit-alien"></i></a>`;
@@ -76,7 +76,7 @@ function callLaunches() {
             let presskit = item.links.presskit;
 
             if (presskit == null) {
-                presskit = `<i class="far fa-newspaper"></i>`;
+                presskit = `<span class="no-link"><i class="far fa-newspaper"></i></span>`;
                                                 
             } else {
                 presskit = `<a href="${item.links.presskit}" target="_blank"><i class="far fa-newspaper"></i></a>`;

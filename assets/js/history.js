@@ -3,12 +3,12 @@ const app = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/";
 
 
-callDragons()
+callHistory()
 
 
-// calls spacex dragons api
+// calls spacex History api
 
-function callDragons() {
+function callHistory() {
     $("#loader").removeClass("hide-loader");
     $("#data").addClass("container");
 
@@ -39,7 +39,7 @@ function callDragons() {
             let reddit = item.links.reddit;
 
             if (reddit == null) {
-                reddit = `<i class="fab fa-reddit-alien"></i>`;
+                reddit = `<span class="no-link"><i class="fab fa-reddit-alien"></i></span>`;
 
             } else {
                 reddit = `<a href="${item.links.reddit}" target="_blank"><i class="fab fa-reddit-alien"></i></a>`;
@@ -50,7 +50,7 @@ function callDragons() {
             let article = item.links.article;
 
             if (article == null) {
-                article = `<i class="far fa-newspaper"></i>`;
+                article = `<span class="no-link"><i class="far fa-newspaper"></i></span>`;
 
             } else {
                 article = `<a href="${item.links.article}" target="_blank"><i class="far fa-newspaper"></i></a>`;
