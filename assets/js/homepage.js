@@ -1,12 +1,8 @@
 // Variables
 
-const app = document.getElementById("data");
-const app2 = document.getElementById("data2")
 const api = "https://api.spacexdata.com/v3/";
 const launchPads = "https://api.spacexdata.com/v3/launchpads";
 const landPads = "https://api.spacexdata.com/v3/landpads"
-
-
 
 
 // call spacex api on load 
@@ -32,27 +28,6 @@ function upcomingLaunch() {
             landPads = landPads.data;
 
             $("#loader").addClass("hide-loader");
-            app.innerHTML = `
-            <div class="overlay"></div>
-                <div class="container-fluid">
-                    <div class="card card-raised card-carousel">
-                        <h1 class="title">Upcoming Launches</h1>
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
-                            <ol id="data-slide" class="carousel-indicators"></ol>
-                            <div id="upcoming-launch" class="carousel-inner">          
-                            </div>         
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev-home" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <i class="fas fa-long-arrow-alt-left"></i>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next-home" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>`;
-
 
             data.forEach(item => {
                 let a = data.indexOf(item);
@@ -74,7 +49,7 @@ function upcomingLaunch() {
                     <div class="details-container">
                         <div class="carousel-caption row justify-content-center">
                             <div class="col-md-7 text-right">
-                                <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
+                                <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : 'assets/images/spacexcircle.png'}" alt="mission patch">
                                 <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
                                 <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
                                 <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
@@ -87,7 +62,7 @@ function upcomingLaunch() {
                     <div class="details-container">  
                         <div class="carousel-caption row">
                             <div class="col-md-5 text-right">
-                                <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png"}" alt="mission patch">
+                                <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : 'assets/images/spacexcircle.png'}" alt="mission patch">
                                 <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
                                 <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
                                 <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
@@ -126,7 +101,7 @@ function upcomingLaunch() {
 
                     info.innerHTML = `
                     <h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
-                    <h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>
+                        <h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>
                     <h3>${date}</h3>`;
 
 
@@ -161,389 +136,260 @@ function upcomingLaunch() {
 
                 landHeaders.push(upper);
             });
-            
-            app2.innerHTML = `<h2 class="title">Launch Sites</h2>
-                <div class="responsive-tabs">
 
-                    <input class="state" type="radio" title="tab-one" name="tabs-state" id="tab-one" />
-                    <input class="state" type="radio" title="tab-two" name="tabs-state" id="tab-two" />
-                    <input class="state" type="radio" title="tab-three" name="tabs-state" id="tab-three" />
-                    <input class="state" type="radio" title="tab-four" name="tabs-state" id="tab-four" />
-                    <input class="state" type="radio" title="tab-five" name="tabs-state" id="tab-five" />
-                    <input class="state" type="radio" title="tab-six" name="tabs-state" id="tab-six" />
+            //     Launch site labels
 
-                    <div class="tabs flex-tabs">
-                        <label for="tab-one" id="tab-one-label" class="tab" data-toggle="tooltip" data-placement="bottom" title="Click Here!">${launchPads[0].site_name_long}</label>
-                        <label for="tab-two" id="tab-two-label" class="tab">${launchPads[1].site_name_long}</label>
-                        <label for="tab-three" id="tab-three-label" class="tab">${launchPads[2].site_name_long}</label>
-                        <label for="tab-four" id="tab-four-label" class="tab">${launchPads[3].site_name_long}</label>
-                        <label for="tab-five" id="tab-five-label" class="tab">${launchPads[4].site_name_long}</label>
-                        <label for="tab-six" id="tab-six-label" class="tab">${launchPads[5].site_name_long}</label>
+            launchLabel1 = document.getElementById("tab-one-label");
+            launchLabel1.innerText = launchPads[0].site_name_long;
+
+            launchLabel2 = document.getElementById("tab-two-label");
+            launchLabel2.innerText = launchPads[1].site_name_long;
+
+            launchLabel3 = document.getElementById("tab-three-label");
+            launchLabel3.innerText = launchPads[2].site_name_long;
+
+            launchLabel4 = document.getElementById("tab-four-label");
+            launchLabel4.innerText = launchPads[3].site_name_long;
+
+            launchLabel5 = document.getElementById("tab-five-label");
+            launchLabel5.innerText = launchPads[4].site_name_long;
+
+            launchLabel6 = document.getElementById("tab-six-label");
+            launchLabel6.innerText = launchPads[5].site_name_long;
+
+            //      Landing site labels
+
+            landingLabel1 = document.getElementById("tab-one-label-land");
+            landingLabel1.innerText = landPads[0].full_name;
+
+            landingLabel2 = document.getElementById("tab-two-label-land");
+            landingLabel2.innerText = landPads[1].full_name;
+
+            landingLabel3 = document.getElementById("tab-three-label-land");
+            landingLabel3.innerText = landPads[2].full_name;
+
+            landingLabel4 = document.getElementById("tab-four-label-land");
+            landingLabel4.innerText = landPads[3].full_name;
+
+            landingLabel5 = document.getElementById("tab-five-label-land");
+            landingLabel5.innerText = landPads[4].full_name;
+
+            landingLabel6 = document.getElementById("tab-six-label-land");
+            landingLabel6.innerText = landPads[5].full_name;
+
+            landingLabel7 = document.getElementById("tab-seven-label-land");
+            landingLabel7.innerText = landPads[6].full_name;
+
+            //       Launch Site Table Headers 
+
+            launchHeaders = `<tr role="row">
+								<th class="launch-head"><strong>${tableHeaders[2]}</strong></th>
+								<th class="launch-head"><strong>${tableHeaders[3]}</strong></th>
+								<th class="launch-head"><strong>${tableHeaders[4]}</strong></th>
+								<th class="launch-head"><strong>${tableHeaders[5]}</strong></th>
+								<th class="launch-head"><strong>${tableHeaders[6]}</strong></th>
+								<th class="launch-head"><strong>${tableHeaders[7]}</strong></th>
+								<th class="launch-head"><strong>${tableHeaders[8]}</strong></th>
+                            </tr>`;
+
+            launchHead1 = document.getElementById("tab-one-head");
+            launchHead1.innerHTML = launchHeaders;
+
+            launchHead2 = document.getElementById("tab-two-head");
+            launchHead2.innerHTML = launchHeaders;
+
+            launchHead3 = document.getElementById("tab-three-head");
+            launchHead3.innerHTML = launchHeaders;
+
+            launchHead4 = document.getElementById("tab-four-head");
+            launchHead4.innerHTML = launchHeaders;
+
+            launchHead5 = document.getElementById("tab-five-head");
+            launchHead5.innerHTML = launchHeaders;
+
+            launchHead6 = document.getElementById("tab-six-head");
+            launchHead6.innerHTML = launchHeaders;
+
+            //       Launch Site Table Data 
+
+            launchBody1 = document.getElementById("tab-one-body");
+            launchBody1.innerHTML = `<tr role="row">
+							            <td class="launch-item">${launchPads[0].status}</td>
+								        <td class="launch-item">${launchPads[0].location.name}</td>
+								        <td class="launch-item">${launchPads[0].vehicles_launched[0]}</td>
+								        <td class="launch-item">${launchPads[0].attempted_launches}</td>
+								        <td class="launch-item">${launchPads[0].successful_launches}</td>
+								        <td class="launch-item"><a href="${launchPads[0].wikipedia}" target="_blank">Click Here!</a></td>
+								        <td class="launch-item">${launchPads[0].details}</td>
+                                    </tr>`;
+
+            launchBody2 = document.getElementById("tab-two-body");
+            launchBody2.innerHTML = `<tr role="row">
+							            <td class="launch-item">${launchPads[1].status}</td>
+								        <td class="launch-item">${launchPads[1].location.name}</td>
+								        <td class="launch-item">${launchPads[1].vehicles_launched[0]}</td>
+								        <td class="launch-item">${launchPads[1].attempted_launches}</td>
+								        <td class="launch-item">${launchPads[1].successful_launches}</td>
+								        <td class="launch-item"><a href="${launchPads[1].wikipedia}" target="_blank">Click Here!</a></td>
+								        <td class="launch-item">${launchPads[1].details}</td>
+                                    </tr>`;
+
+            launchBody3 = document.getElementById("tab-three-body");
+            launchBody3.innerHTML = `<tr role="row">
+							            <td class="launch-item">${launchPads[2].status}</td>
+								        <td class="launch-item">${launchPads[2].location.name}</td>
+								        <td class="launch-item">${launchPads[2].vehicles_launched[0]}</td>
+								        <td class="launch-item">${launchPads[2].attempted_launches}</td>
+								        <td class="launch-item">${launchPads[2].successful_launches}</td>
+								        <td class="launch-item"><a href="${launchPads[2].wikipedia}" target="_blank">Click Here!</a></td>
+								        <td class="launch-item">${launchPads[2].details}</td>
+                                    </tr>`;
+
+            launchBody4 = document.getElementById("tab-four-body");
+            launchBody4.innerHTML = `<tr role="row">
+							            <td class="launch-item">${launchPads[3].status}</td>
+								        <td class="launch-item">${launchPads[3].location.name}</td>
+								        <td class="launch-item">${launchPads[3].vehicles_launched[0]}</td>
+								        <td class="launch-item">${launchPads[3].attempted_launches}</td>
+								        <td class="launch-item">${launchPads[3].successful_launches}</td>
+								        <td class="launch-item"><a href="${launchPads[3].wikipedia}" target="_blank">Click Here!</a></td>
+								        <td class="launch-item">${launchPads[3].details}</td>
+                                    </tr>`;
+
+            launchBody5 = document.getElementById("tab-five-body");
+            launchBody5.innerHTML = `<tr role="row">
+							            <td class="launch-item">${launchPads[4].status}</td>
+								        <td class="launch-item">${launchPads[4].location.name}</td>
+								        <td class="launch-item">${launchPads[4].vehicles_launched[0]}</td>
+								        <td class="launch-item">${launchPads[4].attempted_launches}</td>
+								        <td class="launch-item">${launchPads[4].successful_launches}</td>
+								        <td class="launch-item"><a href="${launchPads[4].wikipedia}" target="_blank">Click Here!</a></td>
+								        <td class="launch-item">${launchPads[4].details}</td>
+                                    </tr>`;
+
+            launchBody6 = document.getElementById("tab-six-body");
+            launchBody6.innerHTML = `<tr role="row">
+							            <td class="launch-item">${launchPads[5].status}</td>
+								        <td class="launch-item">${launchPads[5].location.name}</td>
+								        <td class="launch-item">${launchPads[5].vehicles_launched[0]}</td>
+								        <td class="launch-item">${launchPads[5].attempted_launches}</td>
+								        <td class="launch-item">${launchPads[5].successful_launches}</td>
+								        <td class="launch-item"><a href="${launchPads[5].wikipedia}" target="_blank">Click Here!</a></td>
+								        <td class="launch-item">${launchPads[5].details}</td>
+                                    </tr>`;
 
 
-                            <div id="tab-one-panel" class="panel">
-                                    <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="launch-head"><strong>${tableHeaders[2]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[3]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[4]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[5]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[6]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[7]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="launch-item">${launchPads[0].status}</td>
-                                            <td class="launch-item">${launchPads[0].location.name}</td>
-                                            <td class="launch-item">${launchPads[0].vehicles_launched[0]}</td>
-                                            <td class="launch-item">${launchPads[0].attempted_launches}</td>
-                                            <td class="launch-item">${launchPads[0].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[0].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="launch-item">${launchPads[0].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-two-panel" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="launch-head"><strong>${tableHeaders[2]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[3]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[4]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[5]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[6]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[7]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="launch-item">${launchPads[1].status}</td>
-                                            <td class="launch-item">${launchPads[1].location.name}</td>
-                                            <td class="launch-item">${launchPads[1].vehicles_launched[0]}</td>
-                                            <td class="launch-item">${launchPads[1].attempted_launches}</td>
-                                            <td class="launch-item">${launchPads[1].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[1].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="launch-item">${launchPads[1].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-three-panel" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="launch-head"><strong>${tableHeaders[2]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[3]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[4]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[5]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[6]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[7]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="launch-item">${launchPads[2].status}</td>
-                                            <td class="launch-item">${launchPads[2].location.name}</td>
-                                            <td class="launch-item">${launchPads[2].vehicles_launched[0]}</td>
-                                            <td class="launch-item">${launchPads[2].attempted_launches}</td>
-                                            <td class="launch-item">${launchPads[2].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[2].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="launch-item">${launchPads[2].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-four-panel" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="launch-head"><strong>${tableHeaders[2]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[3]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[4]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[5]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[6]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[7]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="launch-item">${launchPads[3].status}</td>
-                                            <td class="launch-item">${launchPads[3].location.name}</td>
-                                            <td class="launch-item">${launchPads[3].vehicles_launched[0]}</td>
-                                            <td class="launch-item">${launchPads[3].attempted_launches}</td>
-                                            <td class="launch-item">${launchPads[3].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[3].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="launch-item">${launchPads[3].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-five-panel" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="launch-head"><strong>${tableHeaders[2]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[3]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[4]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[5]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[6]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[7]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="launch-item">${launchPads[4].status}</td>
-                                            <td class="launch-item">${launchPads[4].location.name}</td>
-                                            <td class="launch-item">${launchPads[4].vehicles_launched[0]}</td>
-                                            <td class="launch-item">${launchPads[4].attempted_launches}</td>
-                                            <td class="launch-item">${launchPads[4].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[4].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="launch-item">${launchPads[4].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-six-panel" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="launch-head"><strong>${tableHeaders[2]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[3]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[4]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[5]}</strong></th>
-                                            <th class="launch-head"><strong>${tableHeaders[6]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[7]}</strong></th> 
-                                            <th class="launch-head"><strong>${tableHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="launch-item">${launchPads[5].status}</td>
-                                            <td class="launch-item">${launchPads[5].location.name}</td>
-                                            <td class="launch-item">${launchPads[5].vehicles_launched[0]}</td>
-                                            <td class="launch-item">${launchPads[5].attempted_launches}</td>
-                                            <td class="launch-item">${launchPads[5].successful_launches}</td>
-                                            <td class="launch-item"><a href="${launchPads[5].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="launch-item">${launchPads[5].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </div>
-                </div>
-                <h2 class="title">Landing Sites</h2>
-                <div class="responsive-tabs">
+            //       Landing Site Table Headers 
 
-                    <input class="state" type="radio" title="tab-one-land" name="tabs-state" id="tab-one-land" />
-                    <input class="state" type="radio" title="tab-two-land" name="tabs-state" id="tab-two-land" />
-                    <input class="state" type="radio" title="tab-three-land" name="tabs-state" id="tab-three-land" />
-                    <input class="state" type="radio" title="tab-four-land" name="tabs-state" id="tab-four-land" />
-                    <input class="state" type="radio" title="tab-five-land" name="tabs-state" id="tab-five-land" />
-                    <input class="state" type="radio" title="tab-six-land" name="tabs-state" id="tab-six-land" />
-                    <input class="state" type="radio" title="tab-seven-land" name="tabs-state" id="tab-seven-land" />
+            landingHeaders = `<tr role="row">
+									<th class="land-head"><strong>${landHeaders[2]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[3]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[4]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[5]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[6]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[7]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[8]}</strong></th>
+                                </tr>`;
+                                
+            landHead1 = document.getElementById("tab-one-head-land");
+            landHead1.innerHTML = landingHeaders;
 
-                    <div class="tabs flex-tabs">
-                        <label for="tab-one-land" id="tab-one-label-land" class="tab">${landPads[0].full_name}</label>
-                        <label for="tab-two-land" id="tab-two-label-land" class="tab">${landPads[1].full_name}</label>
-                        <label for="tab-three-land" id="tab-three-label-land" class="tab">${landPads[2].full_name}</label>
-                        <label for="tab-four-land" id="tab-four-label-land" class="tab">${landPads[3].full_name}</label>
-                        <label for="tab-five-land" id="tab-five-label-land" class="tab">${landPads[4].full_name}</label>
-                        <label for="tab-six-land" id="tab-six-label-land" class="tab">${landPads[5].full_name}</label>
-                        <label for="tab-seven-land" id="tab-seven-label-land" class="tab">${landPads[6].full_name}</label>
+            landHead2 = document.getElementById("tab-two-head-land");
+            landHead2.innerHTML = landingHeaders;
 
-                            <div id="tab-one-panel-land" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="land-head"><strong>${landHeaders[2]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[3]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[4]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[5]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[6]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[7]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="land-item">${landPads[0].status}</td>
-                                            <td class="land-item">${landPads[0].location.name}</td>
-                                            <td class="land-item">${landPads[0].landing_type}</td>
-                                            <td class="land-item">${landPads[0].attempted_landings}</td>
-                                            <td class="land-item">${landPads[0].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[0].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="land-item">${landPads[0].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-two-panel-land" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="land-head"><strong>${landHeaders[2]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[3]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[4]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[5]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[6]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[7]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="land-item">${landPads[1].status}</td>
-                                            <td class="land-item">${landPads[1].location.name}</td>
-                                            <td class="land-item">${landPads[1].landing_type}</td>
-                                            <td class="land-item">${landPads[1].attempted_landings}</td>
-                                            <td class="land-item">${landPads[1].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[1].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="land-item">${landPads[1].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-three-panel-land" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="land-head"><strong>${landHeaders[2]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[3]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[4]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[5]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[6]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[7]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="land-item">${landPads[2].status}</td>
-                                            <td class="land-item">${landPads[2].location.name}</td>
-                                            <td class="land-item">${landPads[2].landing_type}</td>
-                                            <td class="land-item">${landPads[2].attempted_landings}</td>
-                                            <td class="land-item">${landPads[2].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[2].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="land-item">${landPads[2].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-four-panel-land" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="land-head"><strong>${landHeaders[2]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[3]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[4]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[5]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[6]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[7]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="land-item">${landPads[3].status}</td>
-                                            <td class="land-item">${landPads[3].location.name}</td>
-                                            <td class="land-item">${landPads[3].landing_type}</td>
-                                            <td class="land-item">${landPads[3].attempted_landings}</td>
-                                            <td class="land-item">${landPads[3].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[3].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="land-item">${landPads[3].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-five-panel-land" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="land-head"><strong>${landHeaders[2]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[3]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[4]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[5]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[6]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[7]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="land-item">${landPads[4].status}</td>
-                                            <td class="land-item">${landPads[4].location.name}</td>
-                                            <td class="land-item">${landPads[4].landing_type}</td>
-                                            <<td class="land-item">${landPads[4].attempted_landings}</td>
-                                            <td class="land-item">${landPads[4].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[4].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="land-item">${landPads[4].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-six-panel-land" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="land-head"><strong>${landHeaders[2]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[3]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[4]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[5]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[6]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[7]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="land-item">${landPads[5].status}</td>
-                                            <td class="land-item">${landPads[5].location.name}</td>
-                                            <td class="land-item">${landPads[5].landing_type}</td>
-                                            <td class="land-item">${landPads[5].attempted_landings}</td>
-                                            <td class="land-item">${landPads[5].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[5].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="land-item">${landPads[5].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div id="tab-seven-panel-land" class="panel">
-                                <table role="table">
-                                        <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th class="land-head"><strong>${landHeaders[2]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[3]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[4]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[5]}</strong></th>
-                                            <th class="land-head"><strong>${landHeaders[6]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[7]}</strong></th> 
-                                            <th class="land-head"><strong>${landHeaders[8]}</strong></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody role="rowgroup">
-                                        <tr role="row">
-                                            <td class="land-item">${landPads[6].status}</td>
-                                            <td class="land-item">${landPads[6].location.name}</td>
-                                            <td class="land-item">${landPads[6].landing_type}</td>
-                                            <td class="land-item">${landPads[6].attempted_landings}</td>
-                                            <td class="land-item">${landPads[6].successful_landings}</td>
-                                            <td class="land-item"><a href="${landPads[6].wikipedia}" target="_blank">Click Here!</a></td>
-                                            <td class="land-item">${landPads[6].details}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </div>
-                </div>`;
-            
+            landHead3 = document.getElementById("tab-three-head-land");
+            landHead3.innerHTML = landingHeaders;
+
+            landHead4 = document.getElementById("tab-four-head-land");
+            landHead4.innerHTML = landingHeaders;
+
+            landHead5 = document.getElementById("tab-five-head-land");
+            landHead5.innerHTML = landingHeaders;
+
+            landHead6 = document.getElementById("tab-six-head-land");
+            landHead6.innerHTML = landingHeaders;
+
+            landHead7 = document.getElementById("tab-seven-head-land");
+            landHead7.innerHTML = landingHeaders;
+
+            //       Landing Site Table Data 
+
+            landBody1 = document.getElementById("tab-one-body-land");
+            landBody1.innerHTML = `<tr role="row">
+									    <td class="land-item">${landPads[0].status}</td>
+									    <td class="land-item">${landPads[0].location.name}</td>
+									    <td class="land-item">${landPads[0].landing_type}</td>
+									    <td class="land-item">${landPads[0].attempted_landings}</td>
+									    <td class="land-item">${landPads[0].successful_landings}</td>
+									    <td class="land-item"><a href="${landPads[0].wikipedia}" target="_blank">Click Here!</a></td>
+									    <td class="land-item">${landPads[0].details}</td>
+								    </tr>`;
+
+            landBody2 = document.getElementById("tab-two-body-land");
+            landBody2.innerHTML = `<tr role="row">
+									    <td class="land-item">${landPads[1].status}</td>
+									    <td class="land-item">${landPads[1].location.name}</td>
+									    <td class="land-item">${landPads[1].landing_type}</td>
+									    <td class="land-item">${landPads[1].attempted_landings}</td>
+									    <td class="land-item">${landPads[1].successful_landings}</td>
+									    <td class="land-item"><a href="${landPads[1].wikipedia}" target="_blank">Click Here!</a></td>
+									    <td class="land-item">${landPads[1].details}</td>
+                                    </tr>`;
+                                    
+            landBody3 = document.getElementById("tab-three-body-land");
+            landBody3.innerHTML = `<tr role="row">
+									    <td class="land-item">${landPads[2].status}</td>
+									    <td class="land-item">${landPads[2].location.name}</td>
+									    <td class="land-item">${landPads[2].landing_type}</td>
+									    <td class="land-item">${landPads[2].attempted_landings}</td>
+									    <td class="land-item">${landPads[2].successful_landings}</td>
+									    <td class="land-item"><a href="${landPads[2].wikipedia}" target="_blank">Click Here!</a></td>
+									    <td class="land-item">${landPads[2].details}</td>
+                                    </tr>`;
+                                    
+            landBody4 = document.getElementById("tab-four-body-land");
+            landBody4.innerHTML = `<tr role="row">
+									    <td class="land-item">${landPads[3].status}</td>
+									    <td class="land-item">${landPads[3].location.name}</td>
+									    <td class="land-item">${landPads[3].landing_type}</td>
+									    <td class="land-item">${landPads[3].attempted_landings}</td>
+									    <td class="land-item">${landPads[3].successful_landings}</td>
+									    <td class="land-item"><a href="${landPads[3].wikipedia}" target="_blank">Click Here!</a></td>
+									    <td class="land-item">${landPads[3].details}</td>
+                                    </tr>`;
+                    
+            landBody5 = document.getElementById("tab-five-body-land");
+            landBody5.innerHTML = `<tr role="row">
+									    <td class="land-item">${landPads[4].status}</td>
+									    <td class="land-item">${landPads[4].location.name}</td>
+									    <td class="land-item">${landPads[4].landing_type}</td>
+									    <td class="land-item">${landPads[4].attempted_landings}</td>
+									    <td class="land-item">${landPads[4].successful_landings}</td>
+									    <td class="land-item"><a href="${landPads[4].wikipedia}" target="_blank">Click Here!</a></td>
+									    <td class="land-item">${landPads[4].details}</td>
+                                    </tr>`;
+                                    
+            landBody6 = document.getElementById("tab-six-body-land");
+            landBody6.innerHTML = `<tr role="row">
+									    <td class="land-item">${landPads[5].status}</td>
+									    <td class="land-item">${landPads[5].location.name}</td>
+									    <td class="land-item">${landPads[5].landing_type}</td>
+									    <td class="land-item">${landPads[5].attempted_landings}</td>
+									    <td class="land-item">${landPads[5].successful_landings}</td>
+									    <td class="land-item"><a href="${landPads[5].wikipedia}" target="_blank">Click Here!</a></td>
+									    <td class="land-item">${landPads[5].details}</td>
+                                    </tr>`;
+                                    
+            landBody7 = document.getElementById("tab-seven-body-land");
+            landBody7.innerHTML = `<tr role="row">
+									    <td class="land-item">${landPads[6].status}</td>
+									    <td class="land-item">${landPads[6].location.name}</td>
+									    <td class="land-item">${landPads[6].landing_type}</td>
+									    <td class="land-item">${landPads[6].attempted_landings}</td>
+									    <td class="land-item">${landPads[6].successful_landings}</td>
+									    <td class="land-item"><a href="${landPads[6].wikipedia}" target="_blank">Click Here!</a></td>
+									    <td class="land-item">${landPads[6].details}</td>
+								    </tr>`;
         }));
 }
 
