@@ -30,49 +30,90 @@ function upcomingLaunch() {
             $("#loader").addClass("hide-loader");
 
             data.forEach(item => {
+
                 let a = data.indexOf(item);
                 let indicators = document.getElementById("data-slide");
                 let slide = document.createElement("li");
+
                 slide.setAttribute("data-slide-to", a);
                 slide.setAttribute("data-target", "#carouselExampleIndicators");
+
                 indicators.appendChild(slide);
+
             });
 
             data.forEach(item => {
+
                 let upcomingLaunch = document.getElementById("upcoming-launch");
                 let launches = document.createElement("div");
+
                 launches.setAttribute("class", "carousel-item");
                 upcomingLaunch.appendChild(launches);
 
                 if (item.details == null) {
-                    launches.innerHTML = `
-                    <div class="details-container">
-                        <div class="carousel-caption row justify-content-center">
-                            <div class="col-md-7 text-right">
-                                <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : 'assets/images/spacexcircle.png'}" alt="mission patch">
-                                <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
-                                <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
-                                <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
-                                <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
-                            </div>
-                        </div>
-                    </div>`;
+                    let container = document.createElement("div");
+                    let caption = document.createElement("div");
+                    let column = document.createElement("div");
+                    let patch = document.createElement("img");
+                    let flight = document.createElement("h4");
+                    let name = document.createElement("h4");
+                    let type = document.createElement("h4");
+                    let site = document.createElement("h4");
+
+                    container.setAttribute("class", "details-container");
+                    caption.setAttribute("class", "carousel-caption row justify-content-center");
+                    column.setAttribute("class", "col-md-7 text-right");
+                    patch.setAttribute("src", item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png");
+                    
+
+                    launches.appendChild(container);
+                    container.appendChild(caption);
+                    caption.appendChild(column);
+                    column.appendChild(patch);
+                    column.appendChild(flight);
+                    column.appendChild(name);
+                    column.appendChild(type);
+                    column.appendChild(site);
+                    
+                    flight.innerHTML = `<span class="flight">Flight No:</span> ${item.flight_number}`;
+                    name.innerHTML = `<span class="rocket">Rocket:</span> ${item.rocket.rocket_name}`;
+                    type.innerHTML = `<span class="type">Rocket Type:</span> ${item.rocket.rocket_type}`;
+                    site.innerHTML = `<h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>`;
                 } else {
-                    launches.innerHTML = `
-                    <div class="details-container">  
-                        <div class="carousel-caption row">
-                            <div class="col-md-5 text-right">
-                                <img src="${item.links.mission_patch_small ? item.links.mission_patch_small : 'assets/images/spacexcircle.png'}" alt="mission patch">
-                                <h4><span class="flight">Flight No:</span> ${item.flight_number}</h4>
-                                <h4><span class="rocket">Rocket:</span> ${item.rocket.rocket_name}</h4>
-                                <h4><span class="type">Rocket Type:</span> ${item.rocket.rocket_type}</h4>
-                                <h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>
-                            </div>
-                            <div class="col-md-6 d-md-block d-none launch-details">                                                    
-                                <p>${item.details}</p>
-                            </div>
-                        </div>
-                    </div>`;
+                    let container = document.createElement("div");
+                    let caption = document.createElement("div");
+                    let column = document.createElement("div");
+                    let column2 = document.createElement("div");
+                    let patch = document.createElement("img");
+                    let flight = document.createElement("h4");
+                    let name = document.createElement("h4");
+                    let type = document.createElement("h4");
+                    let site = document.createElement("h4");
+                    let details = document.createElement("p");
+
+                    container.setAttribute("class", "details-container");
+                    caption.setAttribute("class", "carousel-caption row justify-content-center");
+                    column.setAttribute("class", "col-md-5 text-right");
+                    column2.setAttribute("class", "col-md-6 d-md-block d-none launch-details")
+                    patch.setAttribute("src", item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png");
+                    
+
+                    launches.appendChild(container);
+                    container.appendChild(caption);
+                    caption.appendChild(column);
+                    caption.appendChild(column2);
+                    column.appendChild(patch);
+                    column.appendChild(flight);
+                    column.appendChild(name);
+                    column.appendChild(type);
+                    column.appendChild(site);
+                    column2.appendChild(details);
+                    
+                    flight.innerHTML = `<span class="flight">Flight No:</span> ${item.flight_number}`;
+                    name.innerHTML = `<span class="rocket">Rocket:</span> ${item.rocket.rocket_name}`;
+                    type.innerHTML = `<span class="type">Rocket Type:</span> ${item.rocket.rocket_type}`;
+                    site.innerHTML = `<h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>`
+                    details.innerText = item.details;
                 }
 
                 let info = document.createElement("div");
@@ -99,17 +140,15 @@ function upcomingLaunch() {
                     };
 
 
-                    info.innerHTML = `
-                    <h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
-                        <h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>
-                    <h3>${date}</h3>`;
+                    info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
+                                    <h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>
+                                    <h3>${date}</h3>`;
 
 
                     if (t < 0) {
                         clearInterval(x);
-                        info.innerHTML = `
-                        <h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
-                        <h2>Date To Be Confirmed!</h2>`;
+                        info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
+                                        <h2>Date To Be Confirmed!</h2>`;
                     }
                 }, 1000);
 
@@ -212,71 +251,85 @@ function upcomingLaunch() {
 
             //       Launch Site Table Data 
 
-            launchBody1 = document.getElementById("tab-one-body");
-            launchBody1.innerHTML = `<tr role="row">
-							            <td class="launch-item">${launchPads[0].status}</td>
+            let launchBody1 = document.getElementById("tab-one-body");
+            let launchBody2 = document.getElementById("tab-two-body");
+            let launchBody3 = document.getElementById("tab-three-body");
+            let launchBody4 = document.getElementById("tab-four-body");
+            let launchBody5 = document.getElementById("tab-five-body");
+            let launchBody6 = document.getElementById("tab-six-body");
+            let tableRow1 = document.createElement("tr");
+            let tableRow2 = document.createElement("tr");
+            let tableRow3 = document.createElement("tr");
+            let tableRow4 = document.createElement("tr");
+            let tableRow5 = document.createElement("tr");
+            let tableRow6 = document.createElement("tr");
+            
+
+            tableRow1.setAttribute("role", "row");
+            tableRow2.setAttribute("role", "row");
+            tableRow3.setAttribute("role", "row");
+            tableRow4.setAttribute("role", "row");
+            tableRow5.setAttribute("role", "row");
+            tableRow6.setAttribute("role", "row");
+
+            launchBody1.appendChild(tableRow1);
+            launchBody2.appendChild(tableRow2);
+            launchBody3.appendChild(tableRow3);
+            launchBody4.appendChild(tableRow4);
+            launchBody5.appendChild(tableRow5);
+            launchBody6.appendChild(tableRow6);
+            
+            tableRow1.innerHTML = `<td class="launch-item">${launchPads[0].status}</td>
 								        <td class="launch-item">${launchPads[0].location.name}</td>
 								        <td class="launch-item">${launchPads[0].vehicles_launched[0]}</td>
 								        <td class="launch-item">${launchPads[0].attempted_launches}</td>
 								        <td class="launch-item">${launchPads[0].successful_launches}</td>
 								        <td class="launch-item"><a href="${launchPads[0].wikipedia}" target="_blank">Click Here!</a></td>
-								        <td class="launch-item">${launchPads[0].details}</td>
-                                    </tr>`;
+								        <td class="launch-item">${launchPads[0].details}</td>`;
+            
+            
 
-            launchBody2 = document.getElementById("tab-two-body");
-            launchBody2.innerHTML = `<tr role="row">
-							            <td class="launch-item">${launchPads[1].status}</td>
+            tableRow2.innerHTML = `<td class="launch-item">${launchPads[1].status}</td>
 								        <td class="launch-item">${launchPads[1].location.name}</td>
 								        <td class="launch-item">${launchPads[1].vehicles_launched[0]}</td>
 								        <td class="launch-item">${launchPads[1].attempted_launches}</td>
 								        <td class="launch-item">${launchPads[1].successful_launches}</td>
 								        <td class="launch-item"><a href="${launchPads[1].wikipedia}" target="_blank">Click Here!</a></td>
-								        <td class="launch-item">${launchPads[1].details}</td>
-                                    </tr>`;
+								        <td class="launch-item">${launchPads[1].details}</td>`;
 
-            launchBody3 = document.getElementById("tab-three-body");
-            launchBody3.innerHTML = `<tr role="row">
-							            <td class="launch-item">${launchPads[2].status}</td>
+            
+            tableRow3.innerHTML = `<td class="launch-item">${launchPads[2].status}</td>
 								        <td class="launch-item">${launchPads[2].location.name}</td>
 								        <td class="launch-item">${launchPads[2].vehicles_launched[0]}</td>
 								        <td class="launch-item">${launchPads[2].attempted_launches}</td>
 								        <td class="launch-item">${launchPads[2].successful_launches}</td>
 								        <td class="launch-item"><a href="${launchPads[2].wikipedia}" target="_blank">Click Here!</a></td>
-								        <td class="launch-item">${launchPads[2].details}</td>
-                                    </tr>`;
+								        <td class="launch-item">${launchPads[2].details}</td>`;
 
-            launchBody4 = document.getElementById("tab-four-body");
-            launchBody4.innerHTML = `<tr role="row">
-							            <td class="launch-item">${launchPads[3].status}</td>
+            
+            tableRow4.innerHTML = `<td class="launch-item">${launchPads[3].status}</td>
 								        <td class="launch-item">${launchPads[3].location.name}</td>
 								        <td class="launch-item">${launchPads[3].vehicles_launched[0]}</td>
 								        <td class="launch-item">${launchPads[3].attempted_launches}</td>
 								        <td class="launch-item">${launchPads[3].successful_launches}</td>
 								        <td class="launch-item"><a href="${launchPads[3].wikipedia}" target="_blank">Click Here!</a></td>
-								        <td class="launch-item">${launchPads[3].details}</td>
-                                    </tr>`;
+								        <td class="launch-item">${launchPads[3].details}</td>`;
 
-            launchBody5 = document.getElementById("tab-five-body");
-            launchBody5.innerHTML = `<tr role="row">
-							            <td class="launch-item">${launchPads[4].status}</td>
+            tableRow5.innerHTML = `<td class="launch-item">${launchPads[4].status}</td>
 								        <td class="launch-item">${launchPads[4].location.name}</td>
 								        <td class="launch-item">${launchPads[4].vehicles_launched[0]}</td>
 								        <td class="launch-item">${launchPads[4].attempted_launches}</td>
 								        <td class="launch-item">${launchPads[4].successful_launches}</td>
 								        <td class="launch-item"><a href="${launchPads[4].wikipedia}" target="_blank">Click Here!</a></td>
-								        <td class="launch-item">${launchPads[4].details}</td>
-                                    </tr>`;
+								        <td class="launch-item">${launchPads[4].details}</td>`;
 
-            launchBody6 = document.getElementById("tab-six-body");
-            launchBody6.innerHTML = `<tr role="row">
-							            <td class="launch-item">${launchPads[5].status}</td>
+            tableRow6.innerHTML = `<td class="launch-item">${launchPads[5].status}</td>
 								        <td class="launch-item">${launchPads[5].location.name}</td>
 								        <td class="launch-item">${launchPads[5].vehicles_launched[0]}</td>
 								        <td class="launch-item">${launchPads[5].attempted_launches}</td>
 								        <td class="launch-item">${launchPads[5].successful_launches}</td>
 								        <td class="launch-item"><a href="${launchPads[5].wikipedia}" target="_blank">Click Here!</a></td>
-								        <td class="launch-item">${launchPads[5].details}</td>
-                                    </tr>`;
+								        <td class="launch-item">${launchPads[5].details}</td>`;
 
 
             //       Landing Site Table Headers 
@@ -314,82 +367,100 @@ function upcomingLaunch() {
 
             //       Landing Site Table Data 
 
-            landBody1 = document.getElementById("tab-one-body-land");
-            landBody1.innerHTML = `<tr role="row">
-									    <td class="land-item">${landPads[0].status}</td>
+            let landBody1 = document.getElementById("tab-one-body-land");
+            let landBody2 = document.getElementById("tab-two-body-land");
+            let landBody3 = document.getElementById("tab-three-body-land");
+            let landBody4 = document.getElementById("tab-four-body-land");
+            let landBody5 = document.getElementById("tab-five-body-land");
+            let landBody6 = document.getElementById("tab-six-body-land");
+            let landBody7 = document.getElementById("tab-seven-body-land");
+            let landRow1 = document.createElement("tr");
+            let landRow2 = document.createElement("tr");
+            let landRow3 = document.createElement("tr");
+            let landRow4 = document.createElement("tr");
+            let landRow5 = document.createElement("tr");
+            let landRow6 = document.createElement("tr");
+            let landRow7 = document.createElement("tr");
+
+            landRow1.setAttribute("role", "row");
+            landRow2.setAttribute("role", "row");
+            landRow3.setAttribute("role", "row");
+            landRow4.setAttribute("role", "row");
+            landRow5.setAttribute("role", "row");
+            landRow6.setAttribute("role", "row");
+            landRow7.setAttribute("role", "row");
+
+            landBody1.appendChild(landRow1);
+            landBody2.appendChild(landRow2);
+            landBody3.appendChild(landRow3);
+            landBody4.appendChild(landRow4);
+            landBody5.appendChild(landRow5);
+            landBody6.appendChild(landRow6);
+            landBody7.appendChild(landRow7);
+
+
+            landRow1.innerHTML = `<td class="land-item">${landPads[0].status}</td>
 									    <td class="land-item">${landPads[0].location.name}</td>
 									    <td class="land-item">${landPads[0].landing_type}</td>
 									    <td class="land-item">${landPads[0].attempted_landings}</td>
 									    <td class="land-item">${landPads[0].successful_landings}</td>
 									    <td class="land-item"><a href="${landPads[0].wikipedia}" target="_blank">Click Here!</a></td>
-									    <td class="land-item">${landPads[0].details}</td>
-								    </tr>`;
+									    <td class="land-item">${landPads[0].details}</td>`;
 
-            landBody2 = document.getElementById("tab-two-body-land");
-            landBody2.innerHTML = `<tr role="row">
-									    <td class="land-item">${landPads[1].status}</td>
+            
+            landRow2.innerHTML = `<td class="land-item">${landPads[1].status}</td>
 									    <td class="land-item">${landPads[1].location.name}</td>
 									    <td class="land-item">${landPads[1].landing_type}</td>
 									    <td class="land-item">${landPads[1].attempted_landings}</td>
 									    <td class="land-item">${landPads[1].successful_landings}</td>
 									    <td class="land-item"><a href="${landPads[1].wikipedia}" target="_blank">Click Here!</a></td>
-									    <td class="land-item">${landPads[1].details}</td>
-                                    </tr>`;
+									    <td class="land-item">${landPads[1].details}</td>`;
                                     
-            landBody3 = document.getElementById("tab-three-body-land");
-            landBody3.innerHTML = `<tr role="row">
-									    <td class="land-item">${landPads[2].status}</td>
+            
+            landRow3.innerHTML = `<td class="land-item">${landPads[2].status}</td>
 									    <td class="land-item">${landPads[2].location.name}</td>
 									    <td class="land-item">${landPads[2].landing_type}</td>
 									    <td class="land-item">${landPads[2].attempted_landings}</td>
 									    <td class="land-item">${landPads[2].successful_landings}</td>
 									    <td class="land-item"><a href="${landPads[2].wikipedia}" target="_blank">Click Here!</a></td>
-									    <td class="land-item">${landPads[2].details}</td>
-                                    </tr>`;
+									    <td class="land-item">${landPads[2].details}</td>`;
                                     
-            landBody4 = document.getElementById("tab-four-body-land");
-            landBody4.innerHTML = `<tr role="row">
-									    <td class="land-item">${landPads[3].status}</td>
+            
+            landRow4.innerHTML = `<td class="land-item">${landPads[3].status}</td>
 									    <td class="land-item">${landPads[3].location.name}</td>
 									    <td class="land-item">${landPads[3].landing_type}</td>
 									    <td class="land-item">${landPads[3].attempted_landings}</td>
 									    <td class="land-item">${landPads[3].successful_landings}</td>
 									    <td class="land-item"><a href="${landPads[3].wikipedia}" target="_blank">Click Here!</a></td>
-									    <td class="land-item">${landPads[3].details}</td>
-                                    </tr>`;
+									    <td class="land-item">${landPads[3].details}</td>`;
                     
-            landBody5 = document.getElementById("tab-five-body-land");
-            landBody5.innerHTML = `<tr role="row">
-									    <td class="land-item">${landPads[4].status}</td>
+            landRow5.innerHTML = `<td class="land-item">${landPads[4].status}</td>
 									    <td class="land-item">${landPads[4].location.name}</td>
 									    <td class="land-item">${landPads[4].landing_type}</td>
 									    <td class="land-item">${landPads[4].attempted_landings}</td>
 									    <td class="land-item">${landPads[4].successful_landings}</td>
 									    <td class="land-item"><a href="${landPads[4].wikipedia}" target="_blank">Click Here!</a></td>
-									    <td class="land-item">${landPads[4].details}</td>
-                                    </tr>`;
+									    <td class="land-item">${landPads[4].details}</td>`;
                                     
-            landBody6 = document.getElementById("tab-six-body-land");
-            landBody6.innerHTML = `<tr role="row">
-									    <td class="land-item">${landPads[5].status}</td>
+            
+            landRow6.innerHTML = `<td class="land-item">${landPads[5].status}</td>
 									    <td class="land-item">${landPads[5].location.name}</td>
 									    <td class="land-item">${landPads[5].landing_type}</td>
 									    <td class="land-item">${landPads[5].attempted_landings}</td>
 									    <td class="land-item">${landPads[5].successful_landings}</td>
 									    <td class="land-item"><a href="${landPads[5].wikipedia}" target="_blank">Click Here!</a></td>
-									    <td class="land-item">${landPads[5].details}</td>
-                                    </tr>`;
+									    <td class="land-item">${landPads[5].details}</td>`;
                                     
-            landBody7 = document.getElementById("tab-seven-body-land");
-            landBody7.innerHTML = `<tr role="row">
-									    <td class="land-item">${landPads[6].status}</td>
+            
+            landRow7.innerHTML = `<td class="land-item">${landPads[6].status}</td>
 									    <td class="land-item">${landPads[6].location.name}</td>
 									    <td class="land-item">${landPads[6].landing_type}</td>
 									    <td class="land-item">${landPads[6].attempted_landings}</td>
 									    <td class="land-item">${landPads[6].successful_landings}</td>
 									    <td class="land-item"><a href="${landPads[6].wikipedia}" target="_blank">Click Here!</a></td>
-									    <td class="land-item">${landPads[6].details}</td>
-								    </tr>`;
+                                        <td class="land-item">${landPads[6].details}</td>`;
+                                        
+            return;
         }));
 }
 

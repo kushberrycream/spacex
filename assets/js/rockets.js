@@ -1,11 +1,12 @@
 // Variables
-const app = document.getElementById("data");
+const rocketData = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/";
 
 let btnValue;
 
 function getValue(value) {
     btnValue = value;
+    rocketSpec();
 }
 
 callRockets();
@@ -19,37 +20,57 @@ function callRockets() {
 
     axios.get(api + "rockets").then(response => {
         let data = response.data;
-        let title = document.createElement("div");
-        title.setAttribute("class", "title");
-        app.appendChild(title);
-        title.innerHTML = `<h1 class="title">SpaceX Rockets</h1>`;
+        
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 
             let info = document.createElement("div");
+            let cardHead = document.createElement("div");
+            let cardBody = document.createElement("div");
+            let row = document.createElement("div");
+            let column1 = document.createElement("div");
+            let column2 = document.createElement("div");
+            let cardInfo1 = document.createElement("h5");
+            let cardInfo2 = document.createElement("p");
+            let wiki = document.createElement("a");
+            let button = document.createElement("button");
+            let image = document.createElement("img");
+
             info.setAttribute("class", "card");
-            app.appendChild(info);
+            cardHead.setAttribute("class", "card-header");
+            cardBody.setAttribute("class", "card-body");
+            row.setAttribute("class", "row");
+            column1.setAttribute("class", "col-md-6");
+            column2.setAttribute("class", "col-md-6 text-center");
+            cardInfo1.setAttribute("class", "card-title");
+            cardInfo2.setAttribute("class", "card-text");
+            wiki.setAttribute("href", item.wikipedia);
+            wiki.setAttribute("target", "_blank");
+            button.setAttribute("onclick", "getValue(value)");
+            button.setAttribute("value", `rockets/${item.rocket_id}`)
+            button.setAttribute("class", "more btn btn-primary");
+            image.setAttribute("class", "rocket-image");
+            image.setAttribute("src", item.flickr_images[0]);
+            image.setAttribute("alt", "rocket-image"); 
 
-            info.innerHTML = `
-                            <div class="card-header">
-                                <h3>${item.rocket_name}</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5 class="card-title">ID: ${item.id} - Active: ${item.active}</h5>
-                                        <p class="card-text">${item.description}</p>
-                                        Wikipedia: <a href="${item.wikipedia}" target="_blank">${item.wikipedia}</a>
-                                        <br>
-                                        <button onclick="getValue(value), rocketSpec()" value="rockets/${item.rocket_id}" class="more btn btn-primary">More</button>
-                                    </div>
-                                    <div class="col-md-6 text-center">
-                                        <img class="rocket-image" src="${item.flickr_images[0]} alt="Rocket-Image">
-                                    </div>
-                                </div>
-                            </div>`;
+            rocketData.appendChild(info);
+            info.appendChild(cardHead);
+            info.appendChild(cardBody);
+            cardBody.appendChild(row);
+            row.appendChild(column1);
+            row.appendChild(column2);
+            column1.appendChild(cardInfo1);
+            column1.appendChild(cardInfo2);
+            column1.appendChild(wiki);
+            column1.appendChild(button);
+            column2.appendChild(image);
 
 
+            cardHead.innerHTML = `<h3>${item.rocket_name}</h3>`;
+            cardInfo1.innerText = `ID: ${item.id} - Active: ${item.active}`;
+            cardInfo2.innerText = item.description;
+            wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
+            button.innerText = "More";                        
         });
     });
 }
@@ -59,17 +80,17 @@ function callRockets() {
 function rocketSpec() {
     $("#loader").removeClass("hide-loader");
 
-
     axios.get(api + btnValue).then(response => {
-        let data = response.data;
         $("#loader").addClass("hide-loader");
+
+        let data = response.data;
         let cost = accounting.formatMoney(data.cost_per_launch);
         let aboutRocket = document.createElement("div");
 
         aboutRocket.setAttribute("class", "about-rockets");
 
-        app.innerHTML = `<h1 class="title">${data.rocket_name}</h1>`;
-        app.appendChild(aboutRocket);
+        rocketData.innerHTML = `<h1 class="title">${data.rocket_name}</h1>`;
+        rocketData.appendChild(aboutRocket);
 
 
         aboutRocket.innerHTML = `<div class="row no-gutters">
