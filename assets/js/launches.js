@@ -130,9 +130,3 @@ pagination.innerHTML = `<nav aria-label="Page navigation" class="container">
                                     </ul>
                                 </nav>`;
 
-
-// nav-bar active state change without reloading webpage
-$(".page-item").on("click", function () {
-    $(".page-item").removeClass("active");
-    $(this).addClass("active");
-});
