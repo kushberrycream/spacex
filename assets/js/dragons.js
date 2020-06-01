@@ -19,6 +19,7 @@ function callDragons() {
 
     axios.get(api).then(response => {
         let data = response.data;
+        
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 

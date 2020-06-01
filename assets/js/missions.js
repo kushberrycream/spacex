@@ -1,5 +1,5 @@
 // Variables
-const app = document.getElementById("data");
+const missions = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/";
 
 callMissions();
@@ -12,54 +12,53 @@ function callMissions() {
     $("#data").addClass("container");
 
     axios.get(api + "missions").then(response => {
-        data = response.data;
-        let title = document.createElement("div");
-        title.setAttribute("class", "title");
-        app.appendChild(title);
-        title.innerHTML = `<h1 class="title">Missions</h1>`;
+        let data = response.data;
 
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 
             let info = document.createElement("div");
+            let cardHead = document.createElement("div");
+            let headLink = document.createElement("a");
+            let cardBody = document.createElement("div");
+            let mission = document.createElement("h5");
+            let manufacturers = document.createElement("h6");
+            let description = document.createElement("p");
+            let wiki = document.createElement("a");
+            let twitter = document.createElement("a");
+
             info.setAttribute("class", "card");
-            app.appendChild(info);
+            cardHead.setAttribute("class", "card-header");
+            headLink.setAttribute("href", item.website);
+            headLink.setAttribute("target", "_blank");
+            cardBody.setAttribute("class", "card-body");
+            mission.setAttribute("class", "card-title");
+            description.setAttribute("class", "card-text");
+            wiki.setAttribute("href", item.wikipedia);
+            wiki.setAttribute("target", "_blank");
+            twitter.setAttribute("href", item.twitter);
+            twitter.setAttribute("target", "_blank");
+
+            missions.appendChild(info);
+            info.appendChild(cardHead);
+            cardHead.appendChild(headLink);
+            info.appendChild(cardBody);
+            cardBody.appendChild(mission);
+            cardBody.appendChild(manufacturers);
+            cardBody.appendChild(description);
+            cardBody.appendChild(wiki);
+            cardBody.appendChild(twitter);
+
+            headLink.innerHTML = `<h3>${item.mission_name}</h3>`;
+            mission.innerText = `Mission ID: ${item.mission_id}`;
+            description.innerText = item.description;
+            wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
+            twitter.innerHTML = `<i class="fab fa-twitter"></i>`;
 
             if (item.manufacturers[1] == null) {
-
-                info.innerHTML = `<div class="card-header">
-                                    <h3>${item.mission_name}</h3>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Mission ID: ${item.mission_id}</h5>
-                                    <h6>Manufacturers: ${item.manufacturers[0]} </h6>
-                                    <p class="card-text">${item.description}</p>
-                                        Website: <a href="${item.website}" target="_blank">${item.website}</a> 
-                                    <br>
-
-                                    <a href="${item.wikipedia}" target="_blank"><i class="fab fa-wikipedia-w"></i> </a>
-                                    
-
-                                    <a href="${item.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
-                                </div>`;
+                manufacturers.innerText = `Manufacturers: ${item.manufacturers[0]}`;
             } else {
-
-                info.innerHTML = `<div class="card-header">
-                                    <h3>${item.mission_name}</h3>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Mission ID: ${item.mission_id}</h5>
-                                    <h6>Manufacturers: ${item.manufacturers[0]} - ${item.manufacturers[1]} - ${item.manufacturers[2]}</h6>
-                                    <p class="card-text">${item.description}</p>
-                                        Website: <a href="${item.website}" target="_blank">${item.website}</a> 
-                                    <br>
-
-                                    <a href="${item.wikipedia}" target="_blank"><i class="fab fa-wikipedia-w"></i> </a>
-                                    
-
-                                    <a href="${item.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
-                                </div>`;
-
+                manufacturers.innerText = `Manufacturers: ${item.manufacturers[0]} - ${item.manufacturers[1]} - ${item.manufacturers[2]}`;
             }
 
         });
