@@ -1,15 +1,15 @@
 // Variables
-const app = document.getElementById("data");
+const dragonData = document.getElementById("data");
 const api = "https://api.spacexdata.com/v3/dragons";
 
 let btnValue;
 
 function getValue(value) {
     btnValue = value;
+    dragonSpec();
 }
 
 callDragons()
-
 
 // calls spacex dragons api
 
@@ -18,39 +18,60 @@ function callDragons() {
     $("#data").addClass("container");
 
     axios.get(api).then(response => {
-        data = response.data;
-        let title = document.createElement("div");
-        title.setAttribute("class", "title");
-        app.appendChild(title);
-        title.innerHTML = `<h1 class="title">SpaceX Dragons</h1>`;
+        let data = response.data;
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 
             let info = document.createElement("div");
+            let cardHead = document.createElement("div");
+            let cardBody = document.createElement("div");
+            let row = document.createElement("div");
+            let column1 = document.createElement("div");
+            let column2 = document.createElement("div");
+            let cardInfo1 = document.createElement("h5");
+            let cardInfo2 = document.createElement("h6");
+            let cardInfo3 = document.createElement("h6");
+            let wiki = document.createElement("a");
+            let button = document.createElement("button");
+            let image = document.createElement("img");
+
             info.setAttribute("class", "card");
-            app.appendChild(info);
+            cardHead.setAttribute("class", "card-header");
+            cardBody.setAttribute("class", "card-body");
+            row.setAttribute("class", "row");
+            column1.setAttribute("class", "col-md-6");
+            column2.setAttribute("class", "col-md-6 text-center");
+            cardInfo1.setAttribute("class", "card-title");
+            cardInfo2.setAttribute("class", "card-title");
+            cardInfo3.setAttribute("class", "card-text");
+            wiki.setAttribute("href", item.wikipedia);
+            wiki.setAttribute("target", "_blank");
+            button.setAttribute("onclick", "getValue(value)");
+            button.setAttribute("value", `/${item.id}`)
+            button.setAttribute("class", "more btn btn-primary");
+            image.setAttribute("class", "rocket-image");
+            image.setAttribute("src", item.flickr_images[2]);
+            image.setAttribute("alt", "dragon-image"); 
 
-            info.innerHTML = `<div class="card-header">
-                                <h3>${item.name}</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5 class="card-title">Type: ${item.type} - Active: ${item.active}</h5>
-                                        <h6 class="card-title">First Flight: ${item.first_flight}</h6>
-                                        <p class="card-text">${item.description}</p>
-                                        Wikipedia: <a href="${item.wikipedia}" target="_blank">${item.wikipedia}</a>
-                                        <br>
-                                        <button onclick="getValue(value), dragonSpec()" value="/${item.id}" class="more btn btn-primary">More</button>
-                                        
-                                    </div>
-                                    <div class="col-md-6 text-center">
-                                        <img class="rocket-image" src="${item.flickr_images[0]} alt="Rocket-Image">
-                                    </div>
-                                </div>
-                            </div>`;
+            dragonData.appendChild(info);
+            info.appendChild(cardHead);
+            info.appendChild(cardBody);
+            cardBody.appendChild(row);
+            row.appendChild(column1);
+            row.appendChild(column2);
+            column1.appendChild(cardInfo1);
+            column1.appendChild(cardInfo2);
+            column1.appendChild(cardInfo3);
+            column1.appendChild(wiki);
+            column1.appendChild(button);
+            column2.appendChild(image);
 
-
+            cardHead.innerHTML = `<h3>${item.name}</h3>`;
+            cardInfo1.innerText = `Type: ${item.type} - Active: ${item.active}`;
+            cardInfo2.innerText = `First Flight: ${item.first_flight}`;
+            cardInfo3.innerText = item.description;
+            wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
+            button.innerText = "More";  
         });
     });
 }
@@ -59,72 +80,107 @@ function callDragons() {
 function dragonSpec() {
     $("#loader").removeClass("hide-loader");
     axios.get(api + btnValue).then(response => {
-        let data = response.data;
         $("#loader").addClass("hide-loader");
+        let data = response.data;
         let aboutDragon = document.createElement("div");
+        let row = document.createElement("div");
+        let column1 = document.createElement("div");
+        let column2 = document.createElement("div");
+        let card = document.createElement("div");
+        let card2 = document.createElement("div");
+        let cardHeader = document.createElement("div");
+        let cardHeader2 = document.createElement("div");
+        let cardBody = document.createElement("div");
+        let cardBody2 = document.createElement("div");
+        let cardText = document.createElement("p");
+        let active = document.createElement("h6");
+        let type = document.createElement("h6");
+        let crewCapacity = document.createElement("h6");
+        let orbit = document.createElement("h6");
+        let wiki = document.createElement("a");
+        let photos = document.createElement("div");
+        let carousel = document.createElement("div");
+        let flickr = document.createElement("div");
+        let prev = document.createElement("a");
+        let next = document.createElement("a");
 
-        aboutDragon.setAttribute("class", "about-dragons");
+        aboutDragon.setAttribute("class", "about-rockets");
+        row.setAttribute("class", "row no-gutters");
+        column1.setAttribute("class", "col-md-7");
+        column2.setAttribute("class", "col-md-5");
+        column2.setAttribute("id", "rocketstats");
+        card.setAttribute("class", "card");
+        card2.setAttribute("class", "card")
+        cardHeader.setAttribute("class", "card-header");
+        cardHeader2.setAttribute("class", "card-header");
+        cardBody.setAttribute("class", "card-body");
+        cardBody2.setAttribute("class", "card-body");
+        cardText.setAttribute("class", "card-text");
+        wiki.setAttribute("href", data.wikipedia);
+        wiki.setAttribute("target", "_blank");
+        photos.setAttribute("id", "photos");
+        carousel.setAttribute("id", "carouselExampleIndicators");
+        carousel.setAttribute("class", "carousel slide");
+        carousel.setAttribute("data-ride", "carousel");   
+        flickr.setAttribute("id", "flickr-images");
+        flickr.setAttribute("class", "carousel-inner");
+        prev.setAttribute("class", "carousel-control-prev");
+        prev.setAttribute("href", "#carouselExampleIndicators");
+        prev.setAttribute("role", "button");
+        prev.setAttribute("data-slide", "prev");
+        next.setAttribute("class", "carousel-control-next");
+        next.setAttribute("href", "#carouselExampleIndicators");
+        next.setAttribute("role", "button");
+        next.setAttribute("data-slide", "next"); 
 
-        app.innerHTML = `<h1 class="title">${data.name}</h1>`;
-        app.appendChild(aboutDragon);
+        dragonData.innerHTML = `<h1 class="title">${data.name}</h1>`;
 
-        aboutDragon.innerHTML = `<div class="row no-gutters">
-                                    <div id="about" class="col-md-7">                                     
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4>About</h4>
-                                            </div>
-                                            <div class="card-body">
+        dragonData.appendChild(aboutDragon);
+        aboutDragon.appendChild(row);
+        row.appendChild(column1);
+        row.appendChild(column2);
+        column1.appendChild(card);
+        card.appendChild(cardHeader);
+        cardHeader.innerHTML = `<h4>About</h4>`;
 
-                                                <p class="card-text">${data.description}</p>
-                                                   </br>
-                                                <h6>Active: ${data.active}</h6> 
-                                                <h6>Type: ${data.type}</h6>
-                                                <h6>Crew Capacity: ${data.crew_capacity}</h6>
-                                                <h6>Orbit Duration: ${data.orbit_duration_yr}Yrs</h6>
-                                                <div class="meter red">
-	                                                <span style="width:100%"></span>
-                                                </div>
+        card.appendChild(cardBody);
+        cardBody.appendChild(cardText);
+        cardText.innerHTML = `<p class="card-text">${data.description}</p>`;
 
-                                                </br>
+        cardBody.appendChild(active);
+        active.innerText = `Active: ${data.active}`;
 
-                                                Wikipedia: <a href="${data.wikipedia}" target="_blank">${data.wikipedia}</a>
-                                        
-                                            </div>
-                                        </div>
-                                        <div id="photos">
-                                        </div>
-                                    </div>
-                                    <div id="rocketstats" class="col-md-5">
-                                    </div>
-                                </div>`;
+        cardBody.appendChild(type);
+        type.innerText = `Type: ${data.type}`;
 
-        let photos = document.getElementById("photos");
-        photos.innerHTML = `<div class="card">
-                                            <div class="card-header">
-                                                <h4>Photos</h4>
-                                            </div>
-                                                <div class="card-body">
-                                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                                        <ol id="data-slide" class="carousel-indicators">
-                                                            
-                                                        </ol>
-                                                        <div id="flickr-images" class="carousel-inner">
-                                                            
-                                                            
-                                                        </div>
-                                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                            <span class="sr-only">Next</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                        </div>`;
 
+        cardBody.appendChild(crewCapacity);
+        crewCapacity.innerText = `Crew Capacity: ${data.crew_capacity}`;
+
+        cardBody.appendChild(orbit);
+        orbit.innerText = `Orbit Duration: ${data.orbit_duration_yr}Yrs`;
+
+        cardBody.appendChild(wiki);
+        wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
+        
+        column1.appendChild(photos);
+        photos.appendChild(card2);
+        card2.appendChild(cardHeader2);
+        cardHeader2.innerHTML = `<h4>Photos</h4>`;
+
+        card2.appendChild(cardBody2);
+        cardBody2.appendChild(carousel);
+        carousel.innerHTML = `<ol id="data-slide" class="carousel-indicators"></ol>`;
+
+        carousel.appendChild(flickr);
+        
+        flickr.appendChild(prev);
+        prev.innerHTML = `<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>`
+        flickr.appendChild(next);
+        next.innerHTML = `<span class="carousel-control-next-icon" aria-hidden="true"></span>
+                           <span class="sr-only">Next</span>`;
+        
 
         data.flickr_images.forEach(item => {
 
@@ -145,7 +201,7 @@ function dragonSpec() {
 
             photos.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
 
-            let activeItem = document.getElementsByTagName("div").item(17);
+            let activeItem = document.getElementsByTagName("div").item(16);
             activeItem.setAttribute("class", "carousel-item active");
 
             let activePhoto = document.getElementsByTagName("li").item(7);

@@ -20,7 +20,6 @@ function callRockets() {
 
     axios.get(api + "rockets").then(response => {
         let data = response.data;
-        
         data.forEach(item => {
             $("#loader").addClass("hide-loader");
 
@@ -172,9 +171,10 @@ function rocketSpec() {
 
         carousel.appendChild(flickr);
         
+        flickr.appendChild(prev);
         prev.innerHTML = `<span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>`
-
+        flickr.appendChild(next);
         next.innerHTML = `<span class="carousel-control-next-icon" aria-hidden="true"></span>
                            <span class="sr-only">Next</span>`;
 
@@ -182,10 +182,8 @@ function rocketSpec() {
         data.flickr_images.forEach(item => {
 
             let a = data.flickr_images.indexOf(item);
-
             let flickrImages = document.getElementById("flickr-images");
             let indicators = document.getElementById("data-slide");
-
             let images = document.createElement("div");
             let slide = document.createElement("li");
 

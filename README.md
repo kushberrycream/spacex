@@ -18,10 +18,10 @@ Click the image below for a live Demo of the Website.
     * [Structure](#structure)
     * [Skeleton](#skeleton)
     * [Surface](#surface)
+- [Technologies Used](#technologies-used")
 - [Features](#features)
     * [Existing Features](#existing-features)
     * [Features Left to Implement](#features-left-to-implement)
-- [Technologies Used](#technologies-used")
 - [Testing](#testing)
 - [Deployment](#deployment)
     * [Deployment on GitHub Pages](#deployment-on-github-pages)
@@ -86,35 +86,6 @@ they are inactive.
   <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
 </p>
 
-## Features
-
-I have used Bootstrap as the HTML and CSS Framework to help me develope a responsive mobile-first website. The Majority of the page is written in 
-VanillaJS as I wanted to showcase what I can do with Javascript, I have also implimented jQuery in a few places but this is quite minimal.
-I have also used a few js libaries such as accounting.js as this was alot simpler than writing code to format currency correctly, I also used moment.js to 
-format UTC dates as I didnt want to complicate my code by trying to format dates with my own code.
-
-### Existing Features
-
-- [x] My site incorporates bootstrap components. I have used a Navbar and updated the style to fit SpaceX's theme, I have also used the bootstrap card to display most of my data and updated the styling again to fit my needs.
-- [x] The landing page uses a carousel component to slide through all the upcoming Launch dates and times. It also displays details about the launch. 
-- [x] I have created tabs so I was able to display data about launch and landing sites in tables. By using tabs i was able to then display the tables responsively without extending the width or the height to much on mobile devices 
-as you only display one item of data at a time.
-- [x] Both the Rockets and the Dragons Pages allow you to view all the vehicles together or you can choose a specific vehicle and view more details on that vehicle, including photos and videos if available.
-- [x] I supply a breakdown of each Mission SpaceX currently undertake and have undertaken and also a link to the company it is associated with.
-- [x] I have broken down the launches by paginating the data. Each page displays 10 launches and they have been reversed so the most recent launch is displayed first. Each Launch displays a Description along with any links.
-- [x] History is split into smaller cards to allow more data to be viewed on the screen but still allow for responiveness. 
-- [x] I have given the user information on the company, their API and also myself. I have also given the user links to the company and myself incase the user wishes to research more or contact myself.
-- [x] A Contact form has been supplied to also allow the user to quickly contact me about any bugs or suggestions.
-
-### Features Left to Implement
-
-- [ ] In future updates I plan to place a search function within the site to search for the specific information you require. Such as if you search Falcon 1 it will include options to view 
-everything that has the mention of Falcon 1, etc. 
-
-<p align="right">
-  <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
-</p>
-
 ## Technologies Used
 
 This is the Technology Stack I used throughout this project.
@@ -144,6 +115,35 @@ unnecessary, confusing code.
 - [Hover.css](https://ianlunn.github.io/Hover/)
     - I have used hover.css to implement animation on a few icons to give the user feedback on links.
 
+
+<p align="right">
+  <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
+</p>
+
+## Features
+
+I have used Bootstrap as the HTML and CSS Framework to help me develope a responsive mobile-first website. The Majority of the page is written in 
+VanillaJS as I wanted to showcase what I can do with Javascript, I have also implimented jQuery in a few places but this is quite minimal.
+I have also used a few js libaries such as accounting.js as this was alot simpler than writing code to format currency correctly, I also used moment.js to 
+format UTC dates as I didnt want to complicate my code by trying to format dates with my own code.
+
+### Existing Features
+
+- [x] My site incorporates bootstrap components. I have used a Navbar and updated the style to fit SpaceX's theme, I have also used the bootstrap card to display most of my data and updated the styling again to fit my needs.
+- [x] The landing page uses a carousel component to slide through all the upcoming Launch dates and times. It also displays details about the launch. 
+- [x] I have created tabs so I was able to display data about launch and landing sites in tables. By using tabs i was able to then display the tables responsively without extending the width or the height to much on mobile devices 
+as you only display one item of data at a time.
+- [x] Both the Rockets and the Dragons Pages allow you to view all the vehicles together or you can choose a specific vehicle and view more details on that vehicle, including photos and videos if available.
+- [x] I supply a breakdown of each Mission SpaceX currently undertake and have undertaken and also a link to the company it is associated with.
+- [x] I have broken down the launches by paginating the data. Each page displays 10 launches and they have been reversed so the most recent launch is displayed first. Each Launch displays a Description along with any links.
+- [x] History is split into smaller cards to allow more data to be viewed on the screen but still allow for responiveness. 
+- [x] I have given the user information on the company, their API and also myself. I have also given the user links to the company and myself incase the user wishes to research more or contact myself.
+- [x] A Contact form has been supplied to also allow the user to quickly contact me about any bugs or suggestions.
+
+### Features Left to Implement
+
+- [ ] In future updates I plan to place a search function within the site to search for the specific information you require. Such as if you search Falcon 1 it will include options to view 
+everything that has the mention of Falcon 1, etc. 
 
 <p align="right">
   <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
@@ -202,8 +202,7 @@ Here are a few of the processes I went through to manually test my code:
 I was thinking of leaving it as it was but as I progressed I decided this was not good user experience as if they were to use the forwards and back browser buttons this would lead to
 undesired effects.
 - A few times when developing and using my website if I clicked links to quickly this could lead to the previous API's call data not being removed and displaying it below the new API calls Data.
-Obviously this is undesirable but can be corrected by using the navigation buttons or refreshing the page.
-
+Obviously this is undesirable and was fixed by placing all the separate API calls and the associated functions within their own js files and only placed them within the relevant HTML page.
 <p align="right">
   <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
 </p> 
