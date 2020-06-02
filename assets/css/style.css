@@ -1291,6 +1291,10 @@ form div button:hover {
 }
 
 
+.patch {
+    max-width: 256px;
+}
+
 
 
 
