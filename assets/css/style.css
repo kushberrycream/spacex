@@ -147,14 +147,14 @@ h2 {
 
 .card {
   margin: 0;
-  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.13);
   border-radius: 0;
   position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: #0000009e;
+  background-color: #000000e2;
   color: #fff;
   word-wrap: break-word;
   border: none;
@@ -235,7 +235,7 @@ h2 {
 /*    home page carousel    */
 
 .card.card-carousel {
-  color: rgba(0, 0, 0, .87);
+  color:  #000000e2;
   width: 100%;
   text-align: center;
   height: 100%;
