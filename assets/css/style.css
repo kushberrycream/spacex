@@ -243,6 +243,7 @@ h2 {
   background: transparent;
   overflow: hidden;
   box-shadow: none;
+  padding-top: 66px;
 }
 
 .carousel-indicators {
