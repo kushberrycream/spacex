@@ -74,11 +74,8 @@ function dragonSpec() {
     let column1 = document.createElement("div");
     let column2 = document.createElement("div");
     let card = document.createElement("div");
-    let card2 = document.createElement("div");
     let cardHeader = document.createElement("div");
-    let cardHeader2 = document.createElement("div");
     let cardBody = document.createElement("div");
-    let cardBody2 = document.createElement("div");
     let cardText = document.createElement("p");
     let active = document.createElement("h6");
     let type = document.createElement("h6");
@@ -92,33 +89,37 @@ function dragonSpec() {
     let next = document.createElement("a");
 
     aboutDragon.setAttribute("class", "about-rockets");
-    row.setAttribute("class", "row no-gutters");
-    column1.setAttribute("class", "col-md-7");
-    column2.setAttribute("class", "col-md-5");
-    column2.setAttribute("id", "rocketstats");
-    card.setAttribute("class", "card");
-    card2.setAttribute("class", "card")
-    cardHeader.setAttribute("class", "card-header");
-    cardHeader2.setAttribute("class", "card-header");
-    cardBody.setAttribute("class", "card-body");
-    cardBody2.setAttribute("class", "card-body");
-    cardText.setAttribute("class", "card-text");
+    row.className = "row no-gutters";
+    column1.className = "col-md-7";
+    column2.className = "col-md-5";
+    column2.setAttribute("id", "dragon-stats");
+    card.className = "card";
+    cardHeader.className = "card-header";
+    cardBody.className = "card-body";
+    cardText.className = "card-text";
     wiki.setAttribute("href", specificDragon.wikipedia);
     wiki.setAttribute("target", "_blank");
     photos.setAttribute("id", "photos");
     carousel.setAttribute("id", "carouselExampleIndicators");
-    carousel.setAttribute("class", "carousel slide");
+    carousel.className = "carousel slide";
     carousel.setAttribute("data-ride", "carousel");
     flickr.setAttribute("id", "flickr-images");
-    flickr.setAttribute("class", "carousel-inner");
-    prev.setAttribute("class", "carousel-control-prev");
+    flickr.className = "carousel-inner";
+    prev.className = "carousel-control-prev";
     prev.setAttribute("href", "#carouselExampleIndicators");
     prev.setAttribute("role", "button");
     prev.setAttribute("data-slide", "prev");
-    next.setAttribute("class", "carousel-control-next");
+    next.className = "carousel-control-next";
     next.setAttribute("href", "#carouselExampleIndicators");
     next.setAttribute("role", "button");
     next.setAttribute("data-slide", "next");
+
+    let card2 = card.cloneNode(false);
+    let card3 = card.cloneNode(false);
+    let cardHeader2 = cardHeader.cloneNode(false);
+    let cardHeader3 = cardHeader.cloneNode(false);
+    let cardBody2 = cardBody.cloneNode(false);
+    let cardBody3 = cardBody.cloneNode(false);
 
     dragonData.innerHTML = `<h1 class="title">${specificDragon.name}</h1>`;
 
@@ -168,42 +169,39 @@ function dragonSpec() {
     next.innerHTML = `<span class="carousel-control-next-icon" aria-hidden="true"></span>
                            <span class="sr-only">Next</span>`;
 
-
     specificDragon.flickr_images.forEach(item => {
 
-        let a = specificDragon.flickr_images.indexOf(item);
-
+        let imgIndex = specificDragon.flickr_images.indexOf(item);
         let flickrImages = document.getElementById("flickr-images");
         let indicators = document.getElementById("data-slide");
-
-        photos = document.createElement("div");
+        let images = document.createElement("div");
         let slide = document.createElement("li");
 
-        photos.setAttribute("class", "carousel-item");
-        slide.setAttribute("data-slide-to", a);
+        images.setAttribute("class", "carousel-item");
+        slide.setAttribute("data-slide-to", imgIndex);
         slide.setAttribute("data-target", "#carouselExampleIndicators");
 
-        flickrImages.appendChild(photos);
+        flickrImages.appendChild(images);
         indicators.appendChild(slide);
 
-        photos.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
+        images.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
 
         let activeItem = document.getElementsByTagName("div").item(16);
         activeItem.setAttribute("class", "carousel-item active");
 
         let activePhoto = document.getElementsByTagName("li").item(7);
         activePhoto.setAttribute("class", "active");
-
     });
 
-    let rocketStats = document.getElementById("rocketstats");
-    rocketStats.innerHTML = `
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h4>Statistics</h4>
-                                                </div>
-                                            <div class="card-body">
-                                                <ul class="list-group list-group-flush">
+    let dragonStats = document.getElementById("dragon-stats");
+
+    dragonStats.appendChild(card3);
+    card3.appendChild(cardHeader3);
+    cardHeader3.innerHTML = `<h4>Statistics</h4>`;
+
+    card3.appendChild(cardBody3);
+
+    cardBody3.innerHTML = `<ul class="list-group list-group-flush">
                                                     <li class="list-group-item">Diameter: ${specificDragon.diameter.meters}m</li>
                                                     <li class="list-group-item">Height With Trunk: ${specificDragon.height_w_trunk.meters}m</li>
                                                     <li class="list-group-item">Trunk Volume: ${specificDragon.trunk.trunk_volume.cubic_meters}&#13221;</li>
@@ -222,7 +220,7 @@ function dragonSpec() {
                                                     </li>
                                                     <li class="list-group-item">Pressurized Capsule Payload Volume: ${specificDragon.pressurized_capsule.payload_volume.cubic_meters}&#13221;</li>
                                                     <li class="list-group-item">Solar Arrays: ${specificDragon.trunk.cargo.solar_array}</li>
-                                                    <li class="list-group-item">Sidewall Angle: ${data.sidewall_angle_deg}&deg;</li>
+                                                    <li class="list-group-item">Sidewall Angle: ${specificDragon.sidewall_angle_deg}&deg;</li>
                                                     <li class="list-group-item">Heat Shield:
                                                         <ul>
                                                             <li class="list-item">Development Partner: ${specificDragon.heat_shield.dev_partner}</li>
@@ -234,11 +232,7 @@ function dragonSpec() {
                                                     <li id="thrusters" class="list-group-item">Thrusters:
                                                         
                                                     </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>`;
+                                                </ul>`;
     specificDragon.thrusters.forEach(item => {
 
         let payloadName = document.getElementById("thrusters");

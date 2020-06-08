@@ -20,7 +20,6 @@ function homepageData() {
         axios.get(landPads)
     ])
         .then(axios.spread((upcomingApi, launchPads, landPads) => {
-            // call both apis upcoming launches and past launches
             upcoming = upcomingApi.data;
             launchData = launchPads.data;
             landData = landPads.data;

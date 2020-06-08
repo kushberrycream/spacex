@@ -376,7 +376,7 @@ h2 {
 
 .launch-details {
   height: 220px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 a {
@@ -483,7 +483,7 @@ a:hover {
 }
 
 .responsive-tabs .flex-tabs .panel {
-  background-color: #0000009e;
+  background-color: #000000e2;
   color: #fff;
   padding: 20px;
   display: none;
@@ -497,7 +497,7 @@ a:hover {
   display: inline-block;
   padding: 10px;
   vertical-align: top;
-  background-color: #0000005b;
+  background-color: #000000e2;
   color: #fff;
   cursor: pointer;
   border-left: 10px solid #ccc;
