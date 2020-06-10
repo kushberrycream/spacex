@@ -13,6 +13,9 @@ const infoApi = "https://api.spacexdata.com/v3/info";
 
 let btnValue = "?limit=10&offset=84";
 
+
+
+
 function homepageData() {
     axios.all([
         axios.get(upcomingApi),
@@ -110,3 +113,4 @@ function callAbout() {
             aboutPage();
         }));
 }
+

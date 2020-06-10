@@ -42,6 +42,7 @@ function eachDragon() {
         image.setAttribute("class", "rocket-image");
         image.setAttribute("src", item.flickr_images[2]);
         image.setAttribute("alt", "dragon-image");
+        image.setAttribute("onerror", "imgError(this);");
 
         dragonData.appendChild(info);
         info.appendChild(cardHead);
@@ -184,7 +185,7 @@ function dragonSpec() {
         flickrImages.appendChild(images);
         indicators.appendChild(slide);
 
-        images.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
+        images.innerHTML = `<img src="${item}" class="d-block w-100" alt="..." onerror="imgError(this);"/>`;
 
         let activeItem = document.getElementsByTagName("div").item(16);
         activeItem.setAttribute("class", "carousel-item active");
@@ -253,11 +254,14 @@ function dragonSpec() {
                                     </ul>
                                 </li>
                                     `;
-
     });
-
-
 
 }
 
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = "assets/images/image-unavailable.jpg";
+    return;
+}
 

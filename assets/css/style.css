@@ -354,6 +354,13 @@ h2 {
   overflow-y: auto;
 }
 
+#flickr-images {
+  height: 600px;
+  align-items: center;
+  display: flex;
+}
+
+
 a {
   color: #fff;
 }
@@ -491,6 +498,7 @@ a:hover {
   color: #fff;
   cursor: pointer;
   border-left: 10px solid #ccc;
+  width: 33%
 }
 
 .responsive-tabs .tab:hover {
@@ -655,6 +663,11 @@ a:hover {
   width: 75%;
 }
 
+.row.no-gutters .col-md-6 .card {
+    height: 100%;
+}
+
+
 /*    contact form      */
 
 .contact {
@@ -684,12 +697,13 @@ form div label {
   transition: all 0.4s ease-in-out;
   font-family: "Karla", sans-serif;
   font-size: 0.75rem;
-  color: #555555;
+  color: #fefefe;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0;
   opacity: 0;
   order: 1;
+  
 }
 
 form div input {
@@ -714,8 +728,9 @@ form div input {
   border: 1px solid transparent;
 }
 
-form div input:valid+label {
+form div input:visited+label, form div input:focus+label {
   opacity: 1;
+  display: contents;
 }
 
 form div input:focus {
@@ -751,7 +766,7 @@ form div textarea:valid+label {
 }
 
 form div textarea:focus {
-  border: 1px solid #5f6edc;
+  border: 1px solid #000;
 }
 
 form div button {
@@ -767,15 +782,16 @@ form div button {
   font-weight: 700;
   border-radius: 50px;
   padding: 0.75rem 2rem;
-  background-color: #ff4a5d;
-  color: #ffffff;
+  background-color: #fefefe;
+  color: #000;
   border: none;
   max-width: 210px;
   cursor: pointer;
 }
 
 form div button:hover {
-  background-color: #5f6edc;
+  background-color: #00000073;
+  color: #fefefe;
 }
 
 /*          footer      */
@@ -988,6 +1004,7 @@ form div button:hover {
     background-color: #0000005b;
     color: #fff;
     cursor: pointer;
+    width: 100%;
   }
   .flex-tabs .tab:last-of-type {
     border-bottom: none;

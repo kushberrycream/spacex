@@ -39,8 +39,8 @@ function eachRocket() {
         image.setAttribute("class", "rocket-image");
         image.setAttribute("src", item.flickr_images[0]);
         image.setAttribute("alt", "rocket-image");
-        image.setAttribute("onerror", "this.onerror=404;this.src='https://hips.hearstapps.com/pop.h-cdn.co/assets/17/30/1501012342-pmx090117-falconheavy01.jpg?crop=1.00xw:0.492xh;0,0.209xh&resize=480:*';");
-
+        image.setAttribute("onerror", "imgError(this);");
+        
         rocketData.appendChild(info);
         info.appendChild(cardHead);
         info.appendChild(cardBody);
@@ -179,13 +179,14 @@ function rocketSpec() {
         flickrImages.appendChild(images);
         indicators.appendChild(slide);
 
-        images.innerHTML = `<img src="${item}" class="d-block w-100" alt="...">`;
+        images.innerHTML = `<img src="${item}" class="d-block w-100" alt="Space X Rocket" onerror="imgError(this);"/>`;
 
         let activeItem = document.getElementsByTagName("div").item(16);
         activeItem.setAttribute("class", "carousel-item active");
 
         let activePhoto = document.getElementsByTagName("li").item(7);
         activePhoto.setAttribute("class", "active");
+
     });
 
     let rocketStats = document.getElementById("rocketstats");
@@ -323,4 +324,8 @@ function rocketSpec() {
 }
 
 
-
+function imgError(image) {
+    image.onerror = "";
+    image.src = "assets/images/image-unavailable.jpg";
+    return;
+}
