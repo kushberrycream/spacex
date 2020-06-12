@@ -1,4 +1,10 @@
-homepageData()
+/**
+ * @fileoverview JS file with all Axios XMLHttpRequests,
+ * Axios transforms JSON Data Automatically.
+ * @author Tom Jones <tom@wilson-express.co.uk>
+ */
+
+homepageData();
 
 function carousel() {
     $("#loader").addClass("hide-loader");
@@ -84,7 +90,7 @@ function carousel() {
             site.innerHTML = `<h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>`
             details.innerText = item.details;
         }
-        
+
         let deadline = new Date(item.launch_date_utc).getTime();
         let x = setInterval(function () {
             let now = new Date().getTime();
@@ -117,32 +123,21 @@ function carousel() {
             }
         }, 1000);
 
-
     });
 
 };
 
+
 function active() {
+
     let activeItem = document.getElementsByTagName("div").item(8);
     activeItem.setAttribute("class", "carousel-item active");
 
     let activeLaunch = document.getElementsByTagName("li").item(7);
     activeLaunch.setAttribute("class", "active");
+}
 
-    let tableHeaders = [];
-    Object.keys(launchData[1]).forEach(key => {
-        let newKey = key.replace(/_/g, " ");
-        let upper = newKey.replace(/^\w/, c => c.toUpperCase());
-
-        tableHeaders.push(upper);
-    });
-    let landHeaders = [];
-    Object.keys(landData[1]).forEach(key => {
-        let newKey = key.replace(/_/g, " ");
-        let upper = newKey.replace(/^\w/, c => c.toUpperCase());
-
-        landHeaders.push(upper);
-    });
+function siteLabels() {
 
     //     Launch site labels
 
@@ -187,6 +182,27 @@ function active() {
     landingLabel7 = document.getElementById("tab-seven-label-land");
     landingLabel7.innerText = landData[6].full_name;
 
+
+}
+
+
+function headers() {
+
+    let tableHeaders = [];
+    Object.keys(launchData[1]).forEach(key => {
+        let newKey = key.replace(/_/g, " ");
+        let upper = newKey.replace(/^\w/, c => c.toUpperCase());
+
+        tableHeaders.push(upper);
+    });
+    let landHeaders = [];
+    Object.keys(landData[1]).forEach(key => {
+        let newKey = key.replace(/_/g, " ");
+        let upper = newKey.replace(/^\w/, c => c.toUpperCase());
+
+        landHeaders.push(upper);
+    });
+
     //       Launch Site Table Headers 
 
     launchHeaders = `<tr role="row">
@@ -217,6 +233,42 @@ function active() {
     launchHead6 = document.getElementById("tab-six-head");
     launchHead6.innerHTML = launchHeaders;
 
+    //       Landing Site Table Headers 
+
+    landingHeaders = `<tr role="row">
+									<th class="land-head"><strong>${landHeaders[2]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[3]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[4]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[5]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[6]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[7]}</strong></th>
+									<th class="land-head"><strong>${landHeaders[8]}</strong></th>
+                                </tr>`;
+
+    landHead1 = document.getElementById("tab-one-head-land");
+    landHead1.innerHTML = landingHeaders;
+
+    landHead2 = document.getElementById("tab-two-head-land");
+    landHead2.innerHTML = landingHeaders;
+
+    landHead3 = document.getElementById("tab-three-head-land");
+    landHead3.innerHTML = landingHeaders;
+
+    landHead4 = document.getElementById("tab-four-head-land");
+    landHead4.innerHTML = landingHeaders;
+
+    landHead5 = document.getElementById("tab-five-head-land");
+    landHead5.innerHTML = landingHeaders;
+
+    landHead6 = document.getElementById("tab-six-head-land");
+    landHead6.innerHTML = landingHeaders;
+
+    landHead7 = document.getElementById("tab-seven-head-land");
+    landHead7.innerHTML = landingHeaders;
+
+}
+
+function launchSiteData() {
     //       Launch Site Table Data 
 
     let launchBody1 = document.getElementById("tab-one-body");
@@ -299,40 +351,9 @@ function active() {
 								        <td class="launch-item"><a href="${launchData[5].wikipedia}" target="_blank">Click Here!</a></td>
 								        <td class="launch-item">${launchData[5].details}</td>`;
 
+}
 
-    //       Landing Site Table Headers 
-
-    landingHeaders = `<tr role="row">
-									<th class="land-head"><strong>${landHeaders[2]}</strong></th>
-									<th class="land-head"><strong>${landHeaders[3]}</strong></th>
-									<th class="land-head"><strong>${landHeaders[4]}</strong></th>
-									<th class="land-head"><strong>${landHeaders[5]}</strong></th>
-									<th class="land-head"><strong>${landHeaders[6]}</strong></th>
-									<th class="land-head"><strong>${landHeaders[7]}</strong></th>
-									<th class="land-head"><strong>${landHeaders[8]}</strong></th>
-                                </tr>`;
-
-    landHead1 = document.getElementById("tab-one-head-land");
-    landHead1.innerHTML = landingHeaders;
-
-    landHead2 = document.getElementById("tab-two-head-land");
-    landHead2.innerHTML = landingHeaders;
-
-    landHead3 = document.getElementById("tab-three-head-land");
-    landHead3.innerHTML = landingHeaders;
-
-    landHead4 = document.getElementById("tab-four-head-land");
-    landHead4.innerHTML = landingHeaders;
-
-    landHead5 = document.getElementById("tab-five-head-land");
-    landHead5.innerHTML = landingHeaders;
-
-    landHead6 = document.getElementById("tab-six-head-land");
-    landHead6.innerHTML = landingHeaders;
-
-    landHead7 = document.getElementById("tab-seven-head-land");
-    landHead7.innerHTML = landingHeaders;
-
+function landSiteData() {
     //       Landing Site Table Data 
 
     let landBody1 = document.getElementById("tab-one-body-land");
@@ -428,8 +449,7 @@ function active() {
 									    <td class="land-item"><a href="${landData[6].wikipedia}" target="_blank">Click Here!</a></td>
                                         <td class="land-item">${landData[6].details}</td>`;
 
+}
 
-
-};
 
 

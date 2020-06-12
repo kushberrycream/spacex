@@ -4,15 +4,7 @@ const launches = document.getElementById("data");
 callLaunches();
 pagination();
 
-// function to clear data div
-
-function clearData() {
-    launches.innerHTML = "";
-}
-
 // calls spacex past launches api
-
-
 function allLaunches() {
 
     $("#data").addClass("container");
