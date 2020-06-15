@@ -1,5 +1,3 @@
-// Variables
-const launches = document.getElementById("data");
 
 callLaunches();
 pagination();
@@ -79,7 +77,7 @@ function allLaunches() {
         patch.setAttribute("src", item.links.mission_patch_small);
         patch.setAttribute("alt", "Mission Patch");
 
-        launches.appendChild(launchHead);
+        mainContent.appendChild(launchHead);
         launchHead.innerHTML = launchSuccess;
 
         launchHead.appendChild(cardBody);
@@ -154,11 +152,10 @@ function pagination() {
     listItem8.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=04" class="page-link">8</option>`;
     listItem9.innerHTML = `<option onclick="getPagination(value)" value="?limit=4&offset=0" class="page-link">9</option>`;
 
+
+    
     $(".page-item").on("click", function () {
         $(".page-item").removeClass("active");
         $(this).addClass("active");
     });
 }
-
-// changes active state on pagination
-

@@ -1,5 +1,3 @@
-const rocketData = document.getElementById("data");
-
 callRockets();
 
 // calls spacex rocket api - all rockets
@@ -41,7 +39,7 @@ function eachRocket() {
         image.setAttribute("alt", "rocket-image");
         image.setAttribute("onerror", "imgError(this);");
         
-        rocketData.appendChild(info);
+        mainContent.appendChild(info);
         info.appendChild(cardHead);
         info.appendChild(cardBody);
         cardBody.appendChild(row);
@@ -120,9 +118,9 @@ function rocketSpec() {
     let cardBody2 = cardBody.cloneNode(false);
     let cardBody3 = cardBody.cloneNode(false);
 
-    rocketData.innerHTML = `<h1 class="title">${specificRocket.rocket_name}</h1>`;
+    mainContent.innerHTML = `<h1 class="title">${specificRocket.rocket_name}</h1>`;
 
-    rocketData.appendChild(aboutRocket);
+    mainContent.appendChild(aboutRocket);
     aboutRocket.appendChild(row);
     row.appendChild(column1);
     row.appendChild(column2);

@@ -452,7 +452,6 @@ a:hover {
 /*                              both data tabs              */
 
 .responsive-tabs {
-  margin: 20px;
   text-align: center;
 }
 
@@ -532,6 +531,7 @@ a:hover {
 .launch-head {
   padding-left: 10px;
   padding-right: 10px;
+  vertical-align: top;
 }
 
 /* land sites data table */
@@ -563,6 +563,7 @@ a:hover {
 .land-head {
   padding-left: 10px;
   padding-right: 10px;
+  vertical-align: top;
 }
 
 /*          launches page            */

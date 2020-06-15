@@ -4,7 +4,13 @@
  * @author Tom Jones <tom@wilson-express.co.uk>
  */
 
+/** 
+ * Call homepageData() function from axios.js,
+ * retrieves data from SpaceX API's  
+ */
+
 homepageData();
+
 
 function carousel() {
     $("#loader").addClass("hide-loader");
@@ -40,7 +46,6 @@ function carousel() {
             caption.setAttribute("class", "carousel-caption row justify-content-center");
             column.setAttribute("class", "col-md-7 text-right");
             patch.setAttribute("src", item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png");
-
 
             launches.appendChild(container);
             container.appendChild(caption);

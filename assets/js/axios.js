@@ -4,29 +4,32 @@
  * @author Tom Jones <tom@wilson-express.co.uk>
  */
 
+
 /** 
  * Constants and Variables,
  * SpaceX Endpoints Used on multiple Functions
- * @const  {string} A URL to Retrieve Main SpaceX API
- * @const  {string} A URL to Retrieve SpaceX info API 
+ * @const {string} spaceX URL to Retrieve Main SpaceX API
+ * @const {string} infoApi URL to Retrieve SpaceX info API 
+ * @const {string} upcomingApi URL to Retrieve SpaceX upcoming launches API 
+ * @const {string} launchPads URL to Retrieve SpaceX launch sites API 
+ * @const {string} landPads URL to Retrieve SpaceX land sites API 
+ * @const {HTMLElement} mainContent Get data element and add to variable
  * @type {string} A quierystring to add to end of an endpoint
  */
 const spaceX = "https://api.spacexdata.com/v3/";
 const infoApi = "https://api.spacexdata.com/v3/info";
+const upcomingApi = "https://api.spacexdata.com/v3/launches/upcoming";
+const launchPads = "https://api.spacexdata.com/v3/launchpads";
+const landPads = "https://api.spacexdata.com/v3/landpads";
+const mainContent = document.getElementById("data");
 
 let btnValue = "?limit=10&offset=84";
-
 
 /** 
  * Function to retrieve data from 3 endpoints
  * Upcoming launch, launch sites and land sites.
  */
 function homepageData() {
-
-    /** SpaceX endpoints  */
-    const upcomingApi = "https://api.spacexdata.com/v3/launches/upcoming";
-    const launchPads = "https://api.spacexdata.com/v3/launchpads";
-    const landPads = "https://api.spacexdata.com/v3/landpads";
 
     /** perform multiple XMLHttpRequests */
     axios.all([
@@ -55,11 +58,12 @@ function homepageData() {
 /** Function to retrieved data from the rockets API endpoint */
 function callRockets() {
 
-    /** request and turn response data into a variable to be used within rockets.js */
+    /** 
+     * request and turn response data into a variable
+     * and call all related functions within rockets.js 
+     */ 
     axios.get("https://api.spacexdata.com/v3/rockets").then(response => {
         rockets = response.data;
-
-        /** call all related functions within rockets.js */
         eachRocket();
     });
 }
@@ -76,8 +80,6 @@ function oneRocket() {
      */
     axios.get(spaceX + btnValue).then(response => {
         specificRocket = response.data;
-
-        /** Call all related functions within rockets.js */
         rocketSpec();
     });
 }
@@ -85,11 +87,12 @@ function oneRocket() {
 /** Function to retrieve data from the dragons API endpoint */
 function callDragons() {
 
-    /** request and turn response data into a variable to be used within dragons.js */
+    /** 
+     * request and turn response data from dragons api into a variable 
+     * and call all related functions within dragons.js
+     */
     axios.get("https://api.spacexdata.com/v3/dragons").then(response => {
         dragons = response.data;
-
-        /** call all related functions within dragons.js */
         eachDragon();
     });
 }
@@ -98,23 +101,25 @@ function callDragons() {
 function oneDragon() {
 
     /** displays loader before specific rocket data is loaded */
+
     $("#loader").removeClass("hide-loader");
 
     /** 
-     * Request data from the main spaceX URL + the value of the button selected 
-     * and turn data into a variable for use within dragons.js
+     * request data from spacex main api and btn value and add to a variable
+     * then call all related functions within Dragons.js
      */
     axios.get(spaceX + btnValue).then(response => {
         specificDragon = response.data;
-
-        /** call all related functions within dragons.js */
         dragonSpec();
     });
 }
 
 /**
- * Function to change the value of the btnValue Variable
- * @param {string} value 
+ * Function added to onclick attribute to change the btnValue
+ * depending on the value of the btn selected. This wil then 
+ * change the endpoint on the API so only the selected Rocket
+ * or dragon is displayed.
+ * @param {string} value value of btn
  */
 function getValue(value) {
 
@@ -138,35 +143,57 @@ function getValue(value) {
 /** function to retrieve data from the missions api endpoint */
 function callMissions() {
 
+    /** Add data from missions api to a variable and call any related functions */
     axios.get("https://api.spacexdata.com/v3/missions").then(response => {
         missionData = response.data;
         eachMission();
     });
 }
 
-/** function to retrieve data from the past launches api endpoint + the value of the  */
+/** 
+ * function to retrieve data from the past launches api endpoint
+ * plus btnValue variable to add a querystring to the end of the url. 
+ */
 function callLaunches() {
 
+    /** 
+     * add data from past launches api to a variable and then reverse the object
+     * then call all related functions within launches.js file.
+     */
     axios.get("https://api.spacexdata.com/v3/launches/past" + btnValue).then(response => {
         launchData = response.data;
         launchReversed = launchData.slice().reverse();
+
+        
         allLaunches();
     });
 }
 
-
-
+/**
+ * Function added to onclick attribute to change the btnValue
+ * depending on the value of the btn selected. This wil then 
+ * change the endpoint on the API so only 10 items are shown 
+ * at a time.
+ * @param {string} value value of btn
+ */
 function getPagination(value) {
     btnValue = value;
-    callLaunches();
+
+    /** Recall Past Launches API and clear Data before displaying new data */
     clearData();
+    callLaunches();
+    
     $("#loader").removeClass("hide-loader");
 }
 
 
-
+/** function to retrieve data from the History api endpoint */
 function callHistory() {
 
+    /** 
+     * Add response from History api to variable and reverse order of object
+     * then call all related functions in History API.
+     */
     axios.get("https://api.spacexdata.com/v3/history").then(response => {
         historyData = response.data;
         historyReversed = historyData.slice().reverse();
@@ -175,9 +202,14 @@ function callHistory() {
 }
 
 
-
+/** function to retrieve data from the main Spacex api and SpaceX info API  */
 function callAbout() {
-    
+
+
+    /** 
+     * Perform 2 XHLHttpRequests and add the reponses to variables 
+     * then call any relevant functions within about.js
+     */
     axios.all([
         axios.get(spaceX),
         axios.get(infoApi)
@@ -189,7 +221,8 @@ function callAbout() {
         }));
 }
 
-/** function to clear all HTML from pages if called */ 
+
+/** function to clear all HTML from inside the Data div on Launches.html */ 
 function clearData() {
-    launches.innerHTML = "";
+    mainContent.innerHTML = "";
 }
