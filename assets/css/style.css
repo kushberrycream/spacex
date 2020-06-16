@@ -355,7 +355,7 @@ h2 {
 }
 
 #flickr-images {
-  height: 600px;
+  height: 700px;
   align-items: center;
   display: flex;
 }
@@ -650,6 +650,10 @@ a:hover {
   max-width: 400px;
   height: auto;
   text-align: center;
+}
+
+#rocketstats .card {
+    height: 100%;
 }
 
 .center-img {

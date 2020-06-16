@@ -2,7 +2,7 @@ callRockets();
 
 // calls spacex rocket api - all rockets
 
-function eachRocket() {
+function eachRocketCard() {
 
     $("#data").addClass("container");
 
@@ -15,11 +15,6 @@ function eachRocket() {
         let row = document.createElement("div");
         let column1 = document.createElement("div");
         let column2 = document.createElement("div");
-        let cardInfo1 = document.createElement("h5");
-        let cardInfo2 = document.createElement("p");
-        let wiki = document.createElement("a");
-        let button = document.createElement("button");
-        let image = document.createElement("img");
 
         info.setAttribute("class", "card");
         cardHead.setAttribute("class", "card-header");
@@ -27,42 +22,55 @@ function eachRocket() {
         row.setAttribute("class", "row");
         column1.setAttribute("class", "col-md-6");
         column2.setAttribute("class", "col-md-6 text-center");
-        cardInfo1.setAttribute("class", "card-title");
-        cardInfo2.setAttribute("class", "card-text");
-        wiki.setAttribute("href", item.wikipedia);
-        wiki.setAttribute("target", "_blank");
-        button.setAttribute("onclick", "getValue(value)");
-        button.setAttribute("value", `rockets/${item.rocket_id}`);
-        button.setAttribute("class", "more btn btn-primary");
-        image.setAttribute("class", "rocket-image");
-        image.setAttribute("src", item.flickr_images[0]);
-        image.setAttribute("alt", "rocket-image");
-        image.setAttribute("onerror", "imgError(this);");
-        
+
         mainContent.appendChild(info);
         info.appendChild(cardHead);
         info.appendChild(cardBody);
         cardBody.appendChild(row);
         row.appendChild(column1);
         row.appendChild(column2);
-        column1.appendChild(cardInfo1);
-        column1.appendChild(cardInfo2);
-        column1.appendChild(wiki);
-        column1.appendChild(button);
-        column2.appendChild(image);
 
-
-        cardHead.innerHTML = `<h3>${item.rocket_name}</h3>`;
-        cardInfo1.innerText = `ID: ${item.id} - Active: ${item.active}`;
-        cardInfo2.innerText = item.description;
-        wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
-        button.innerText = "More";
+        eachRocketData(item, cardHead, column1, column2);
     });
+}
+
+function eachRocketData(item, cardHead, column1, column2) {
+    let cardInfo1 = document.createElement("h5");
+    let cardInfo2 = document.createElement("p");
+    let wiki = document.createElement("a");
+    let button = document.createElement("button");
+    let image = document.createElement("img");
+
+    cardInfo1.setAttribute("class", "card-title");
+    cardInfo2.setAttribute("class", "card-text");
+    wiki.setAttribute("href", item.wikipedia);
+    wiki.setAttribute("target", "_blank");
+    wiki.setAttribute("aria-label", "Wikipedia Link");
+    button.setAttribute("onclick", "getValue(value)");
+    button.setAttribute("value", `rockets/${item.rocket_id}`);
+    button.setAttribute("class", "more btn btn-primary");
+    button.setAttribute("aria-label", "More Button");
+    image.setAttribute("class", "rocket-image");
+    image.setAttribute("src", item.flickr_images[0]);
+    image.setAttribute("alt", "rocket-image");
+    image.setAttribute("onerror", "imgError(this);");
+
+    column1.appendChild(cardInfo1);
+    column1.appendChild(cardInfo2);
+    column1.appendChild(wiki);
+    column1.appendChild(button);
+    column2.appendChild(image);
+
+    cardHead.innerHTML = `<h3>${item.rocket_name}</h3>`;
+    cardInfo1.innerText = `ID: ${item.id} - Active: ${item.active}`;
+    cardInfo2.innerText = item.description;
+    wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
+    button.innerText = `More about the ${item.rocket_name}`;
 }
 
 // calls a specific spacex rocket api url
 
-function rocketSpec() {
+function rocketSpecCard() {
 
     $("#loader").addClass("hide-loader");
 
@@ -73,17 +81,7 @@ function rocketSpec() {
     let card = document.createElement("div");
     let cardHeader = document.createElement("div");
     let cardBody = document.createElement("div");
-    let cardText = document.createElement("p");
-    let active = document.createElement("h6");
-    let flight = document.createElement("h6");
-    let costPer = document.createElement("h6");
-    let cost = accounting.formatMoney(specificRocket.cost_per_launch);
-    let wiki = document.createElement("a");
     let photos = document.createElement("div");
-    let carousel = document.createElement("div");
-    let flickr = document.createElement("div");
-    let prev = document.createElement("a");
-    let next = document.createElement("a");
 
     aboutRocket.className = "about-rockets";
     row.className = "row no-gutters";
@@ -93,23 +91,7 @@ function rocketSpec() {
     card.className = "card";
     cardHeader.className = "card-header";
     cardBody.className = "card-body";
-    cardText.className = "card-text";
-    wiki.setAttribute("href", specificRocket.wikipedia);
-    wiki.setAttribute("target", "_blank");
     photos.setAttribute("id", "photos");
-    carousel.setAttribute("id", "carouselExampleIndicators");
-    carousel.className = "carousel slide";
-    carousel.setAttribute("data-ride", "carousel");
-    flickr.setAttribute("id", "flickr-images");
-    flickr.className = "carousel-inner";
-    prev.className = "carousel-control-prev";
-    prev.setAttribute("href", "#carouselExampleIndicators");
-    prev.setAttribute("role", "button");
-    prev.setAttribute("data-slide", "prev");
-    next.className = "carousel-control-next";
-    next.setAttribute("href", "#carouselExampleIndicators");
-    next.setAttribute("role", "button");
-    next.setAttribute("data-slide", "next");
 
     let card2 = card.cloneNode(false);
     let card3 = card.cloneNode(false);
@@ -124,32 +106,76 @@ function rocketSpec() {
     aboutRocket.appendChild(row);
     row.appendChild(column1);
     row.appendChild(column2);
+
+    let rocketStats = document.getElementById("rocketstats");
+
     column1.appendChild(card);
     card.appendChild(cardHeader);
-    cardHeader.innerHTML = `<h4>About</h4>`;
-
     card.appendChild(cardBody);
-    cardBody.appendChild(cardText);
-    cardText.innerHTML = `<p class="card-text">${specificRocket.description}</p>`;
-
-    cardBody.appendChild(active);
-    active.innerText = `Active: ${specificRocket.active}`;
-
-    cardBody.appendChild(flight);
-    flight.innerText = `First Flight: ${specificRocket.first_flight}`;
-
-    cardBody.appendChild(costPer);
-    costPer.innerText = `Cost Per Launch: ${cost}`;
-
-    cardBody.appendChild(wiki);
-    wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
-
     column1.appendChild(photos);
     photos.appendChild(card2);
     card2.appendChild(cardHeader2);
-    cardHeader2.innerHTML = `<h4>Photos</h4>`;
-
     card2.appendChild(cardBody2);
+    rocketStats.appendChild(card3);
+    card3.appendChild(cardHeader3);
+    card3.appendChild(cardBody3);
+
+    cardHeader.innerHTML = `<h4>About</h4>`;
+    cardHeader2.innerHTML = `<h4>Photos</h4>`;
+    cardHeader3.innerHTML = `<h4>Statistics</h4>`;
+
+    rocketInfo(cardBody);
+    rocketCarousel(cardBody2);
+    rocketStatistics(cardBody3);
+}
+
+function rocketInfo(cardBody) {
+
+    let cardText = document.createElement("p");
+    let active = document.createElement("h6");
+    let flight = document.createElement("h6");
+    let costPer = document.createElement("h6");
+    let cost = accounting.formatMoney(specificRocket.cost_per_launch);
+    let wiki = document.createElement("a");
+
+    cardText.className = "card-text";
+    wiki.setAttribute("href", specificRocket.wikipedia);
+    wiki.setAttribute("target", "_blank");
+
+    cardBody.appendChild(cardText);
+    cardBody.appendChild(active);
+    cardBody.appendChild(flight);
+    cardBody.appendChild(costPer);
+    cardBody.appendChild(wiki);
+
+    cardText.innerHTML = `<p class="card-text">${specificRocket.description}</p>`;
+    active.innerText = `Active: ${specificRocket.active}`;
+    flight.innerText = `First Flight: ${specificRocket.first_flight}`;
+    costPer.innerText = `Cost Per Launch: ${cost}`;
+    wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
+}
+
+function rocketCarousel(cardBody2) {
+    let carousel = document.createElement("div");
+    let flickr = document.createElement("div");
+    let prev = document.createElement("a");
+    let next = document.createElement("a");
+
+    carousel.setAttribute("id", "carouselExampleIndicators");
+    carousel.className = "carousel slide";
+    carousel.setAttribute("data-ride", "carousel");
+    flickr.setAttribute("id", "flickr-images");
+    flickr.className = "carousel-inner";
+    prev.className = "carousel-control-prev";
+    prev.setAttribute("href", "#carouselExampleIndicators");
+    prev.setAttribute("role", "button");
+    prev.setAttribute("data-slide", "prev");
+    next.className = "carousel-control-next";
+    next.setAttribute("href", "#carouselExampleIndicators");
+    next.setAttribute("role", "button");
+    next.setAttribute("data-slide", "next");
+
+
     cardBody2.appendChild(carousel);
     carousel.innerHTML = `<ol id="data-slide" class="carousel-indicators"></ol>`;
 
@@ -162,6 +188,9 @@ function rocketSpec() {
     next.innerHTML = `<span class="carousel-control-next-icon" aria-hidden="true"></span>
                            <span class="sr-only">Next</span>`;
 
+}
+
+function rocketImages() {
     specificRocket.flickr_images.forEach(item => {
 
         let imgIndex = specificRocket.flickr_images.indexOf(item);
@@ -187,7 +216,9 @@ function rocketSpec() {
 
     });
 
-    let rocketStats = document.getElementById("rocketstats");
+}
+
+function rocketStatistics(cardBody3) {
     let statsList = document.createElement("ul");
     let listGroupItem1 = document.createElement("li");
     let listItem1 = document.createElement("li");
@@ -226,11 +257,7 @@ function rocketSpec() {
     let listItem16 = listItem1.cloneNode(false);
     let listItem17 = listItem1.cloneNode(false);
 
-    rocketStats.appendChild(card3);
-    card3.appendChild(cardHeader3);
-    cardHeader3.innerHTML = `<h4>Statistics</h4>`;
 
-    card3.appendChild(cardBody3);
     cardBody3.appendChild(statsList);
     statsList.appendChild(listGroupItem1);
     statsList.appendChild(listGroupItem2);
@@ -266,7 +293,7 @@ function rocketSpec() {
     listItem3.innerText = `Engine Version: ${specificRocket.engines.version}`;
     listItem4.innerText = `Layout: ${specificRocket.engines.layout}`;
     listItem5.innerText = "Propellants:";
-    
+
     listItem5.appendChild(subList2);
     subList2.appendChild(listItem6);
     subList2.appendChild(listItem7);
@@ -296,7 +323,7 @@ function rocketSpec() {
     listItem13.innerText = `Burn Time: ${specificRocket.first_stage.burn_time_sec}secs`;
 
     statsList.appendChild(listGroupItem10);
-    
+
     listGroupItem10.innerText = "Second Stage:";
 
     listGroupItem10.appendChild(subList4);
@@ -327,3 +354,14 @@ function imgError(image) {
     image.src = "assets/images/image-unavailable.jpg";
     return;
 }
+
+
+
+
+
+
+
+
+
+
+

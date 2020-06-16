@@ -11,7 +11,6 @@
 
 homepageData();
 
-
 function carousel() {
     $("#loader").addClass("hide-loader");
     upcoming.forEach(item => {
@@ -22,115 +21,97 @@ function carousel() {
         let upcomingLaunch = document.getElementById("upcoming-launch");
         let launches = document.createElement("div");
         let info = document.createElement("div");
+        let container = document.createElement("div");
+        let caption = document.createElement("div");
+        let column = document.createElement("div");
+        let column2 = document.createElement("div");
+        let patch = document.createElement("img");
+        let flight = document.createElement("h4");
+        let name = document.createElement("h4");
+        let type = document.createElement("h4");
+        let site = document.createElement("h4");
+        let details = document.createElement("p");
 
         slide.setAttribute("data-slide-to", a);
         slide.setAttribute("data-target", "#carouselExampleIndicators");
         launches.setAttribute("class", "carousel-item");
         info.setAttribute("class", "countdown");
+        container.setAttribute("class", "details-container");
+        caption.setAttribute("class", "carousel-caption row justify-content-center");
+        patch.setAttribute("src", item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png");
+        patch.setAttribute("alt", "mission patch");
 
         indicators.appendChild(slide);
         upcomingLaunch.appendChild(launches);
         launches.appendChild(info);
+        launches.appendChild(container);
+        container.appendChild(caption);
+        caption.appendChild(column);
+        column.appendChild(patch);
+        column.appendChild(flight);
+        column.appendChild(name);
+        column.appendChild(type);
+        column.appendChild(site);
+
+        flight.innerHTML = `<span class="flight">Flight No:</span> ${item.flight_number}`;
+        name.innerHTML = `<span class="rocket">Rocket:</span> ${item.rocket.rocket_name}`;
+        type.innerHTML = `<span class="type">Rocket Type:</span> ${item.rocket.rocket_type}`;
+        site.innerHTML = `<h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>`;
 
         if (item.details == null) {
-            let container = document.createElement("div");
-            let caption = document.createElement("div");
-            let column = document.createElement("div");
-            let patch = document.createElement("img");
-            let flight = document.createElement("h4");
-            let name = document.createElement("h4");
-            let type = document.createElement("h4");
-            let site = document.createElement("h4");
 
-            container.setAttribute("class", "details-container");
-            caption.setAttribute("class", "carousel-caption row justify-content-center");
             column.setAttribute("class", "col-md-7 text-right");
-            patch.setAttribute("src", item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png");
 
-            launches.appendChild(container);
-            container.appendChild(caption);
-            caption.appendChild(column);
-            column.appendChild(patch);
-            column.appendChild(flight);
-            column.appendChild(name);
-            column.appendChild(type);
-            column.appendChild(site);
-
-            flight.innerHTML = `<span class="flight">Flight No:</span> ${item.flight_number}`;
-            name.innerHTML = `<span class="rocket">Rocket:</span> ${item.rocket.rocket_name}`;
-            type.innerHTML = `<span class="type">Rocket Type:</span> ${item.rocket.rocket_type}`;
-            site.innerHTML = `<h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>`;
         } else {
-            let container = document.createElement("div");
-            let caption = document.createElement("div");
-            let column = document.createElement("div");
-            let column2 = document.createElement("div");
-            let patch = document.createElement("img");
-            let flight = document.createElement("h4");
-            let name = document.createElement("h4");
-            let type = document.createElement("h4");
-            let site = document.createElement("h4");
-            let details = document.createElement("p");
 
-            container.setAttribute("class", "details-container");
-            caption.setAttribute("class", "carousel-caption row justify-content-center");
             column.setAttribute("class", "col-md-5 text-right");
             column2.setAttribute("class", "col-md-6 d-md-block d-none launch-details")
-            patch.setAttribute("src", item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png");
 
-            launches.appendChild(container);
-            container.appendChild(caption);
-            caption.appendChild(column);
             caption.appendChild(column2);
-            column.appendChild(patch);
-            column.appendChild(flight);
-            column.appendChild(name);
-            column.appendChild(type);
-            column.appendChild(site);
             column2.appendChild(details);
 
-            flight.innerHTML = `<span class="flight">Flight No:</span> ${item.flight_number}`;
-            name.innerHTML = `<span class="rocket">Rocket:</span> ${item.rocket.rocket_name}`;
-            type.innerHTML = `<span class="type">Rocket Type:</span> ${item.rocket.rocket_type}`;
-            site.innerHTML = `<h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>`
             details.innerText = item.details;
         }
+        countdown(item, info);
+    });
 
-        let deadline = new Date(item.launch_date_utc).getTime();
-        let x = setInterval(function () {
-            let now = new Date().getTime();
-            let t = deadline - now;
-            let days = Math.floor(t / (1000 * 60 * 60 * 24));
-            let hours = Math.floor(
-                (t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((t % (1000 * 60)) / 1000);
-            let date;
+}
 
-            let mql = window.matchMedia("screen and (min-width: 800px)")
-            if (mql.matches) {
-                date = moment.parseZone(item.launch_date_utc).utc().format("dddd Do MMMM YYYY, h:mm a");
-            }
-            else {
-                date = moment.parseZone(item.launch_date_utc).utc().format("D / M / YYYY, h:mm a");
-            };
+function countdown(item, info) {
+    let deadline = new Date(item.launch_date_utc).getTime();
+    let x = setInterval(function () {
+        let now = new Date().getTime();
+        let t = deadline - now;
+        let days = Math.floor(t / (1000 * 60 * 60 * 24));
+        let hours = Math.floor(
+            (t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((t % (1000 * 60)) / 1000);
+        let date;
+
+        let mql = window.matchMedia("screen and (min-width: 800px)")
+        if (mql.matches) {
+            date = moment.parseZone(item.launch_date_utc).utc().format("dddd Do MMMM YYYY, h:mm a");
+        }
+        else {
+            date = moment.parseZone(item.launch_date_utc).utc().format("D / M / YYYY, h:mm a");
+        };
 
 
-            info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
+        info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
                                     <h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>
                                     <h3>${date}</h3>`;
 
-            if (t < 0) {
-                clearInterval(x);
-                info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
+        if (t < 0) {
+            clearInterval(x);
+            info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
                                         <h2>Date To Be Confirmed!</h2>`;
-            }
-        }, 1000);
+        }
+    }, 1000);
 
-    });
+}
 
-};
 
 
 function active() {

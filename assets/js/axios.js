@@ -64,7 +64,7 @@ function callRockets() {
      */ 
     axios.get("https://api.spacexdata.com/v3/rockets").then(response => {
         rockets = response.data;
-        eachRocket();
+        eachRocketCard();
     });
 }
 
@@ -80,7 +80,8 @@ function oneRocket() {
      */
     axios.get(spaceX + btnValue).then(response => {
         specificRocket = response.data;
-        rocketSpec();
+        rocketSpecCard();
+        rocketImages();
     });
 }
 
@@ -127,7 +128,7 @@ function getValue(value) {
     btnValue = value;
 
     /** checks to see if eachRocket is a functions on the current page  */
-    if (typeof eachRocket === "function") {
+    if (typeof eachRocketCard === "function") {
 
         /** call oneRocket function to produce new response data */
         oneRocket();
@@ -146,7 +147,7 @@ function callMissions() {
     /** Add data from missions api to a variable and call any related functions */
     axios.get("https://api.spacexdata.com/v3/missions").then(response => {
         missionData = response.data;
-        eachMission();
+        eachMissionCard();
     });
 }
 
