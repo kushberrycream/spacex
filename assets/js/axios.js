@@ -198,7 +198,7 @@ function callHistory() {
     axios.get("https://api.spacexdata.com/v3/history").then(response => {
         historyData = response.data;
         historyReversed = historyData.slice().reverse();
-        allHistory();
+        allHistoryCard();
     });
 }
 

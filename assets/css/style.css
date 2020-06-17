@@ -139,6 +139,10 @@ h2 {
   border: none;
 }
 
+.col .card-title + .card-title + .card-text {
+    padding-bottom: 40px;
+}
+
 .card-header:first-child {
   border-radius: 0;
 }
@@ -162,11 +166,18 @@ h2 {
   font-size: 1.3rem;
 }
 
+.historylinks {
+  position: absolute;
+  bottom: 0px;
+
+}
+
 .history-media-buttons {
   /* found on history page */
-  position: absolute;
-  right: 65px;
   font-size: 1.3rem;
+  width: 33vw;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .socialbuttons {
@@ -367,10 +378,6 @@ a {
 
 a:hover {
   color: #585858;
-}
-
-.no-link {
-  color: #000;
 }
 
 .dwn-arrow {
@@ -736,6 +743,10 @@ form div input {
 form div input:visited+label, form div input:focus+label {
   opacity: 1;
   display: contents;
+}
+
+form div input:valid+label {
+  opacity: 1;
 }
 
 form div input:focus {
