@@ -740,12 +740,22 @@ form div input {
   border: 1px solid transparent;
 }
 
+/* cannot group the below classes without bugs */
+
 form div input:visited+label, form div input:focus+label {
   opacity: 1;
   display: contents;
 }
 
 form div input:valid+label {
+  opacity: 1;
+}
+
+form div input::selection+label {
+  opacity: 1;
+}
+
+form div input:visited+label {
   opacity: 1;
 }
 

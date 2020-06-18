@@ -94,7 +94,7 @@ function callDragons() {
      */
     axios.get("https://api.spacexdata.com/v3/dragons").then(response => {
         dragons = response.data;
-        eachDragon();
+        eachDragonCard();
     });
 }
 
@@ -134,7 +134,7 @@ function getValue(value) {
         oneRocket();
 
     /** checks to see if eachDragon is a functions on the current page  */
-    } else if (typeof eachDragon === "function") {
+    } else if (typeof eachDragonCard === "function") {
 
         /** call oneDragon function to produce new response data */
         oneDragon();

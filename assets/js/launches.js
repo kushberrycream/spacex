@@ -29,7 +29,6 @@ function allLaunches() {
                                 </div>`;
         }
 
-
         launchHead.setAttribute("class", "card");
         cardBody.setAttribute("class", "card-body");
         row.setAttribute("class", "row");
@@ -43,8 +42,6 @@ function allLaunches() {
         row.appendChild(column1);
         row.appendChild(column2);
 
-
-
         launchInfo(item, column1, column2);
 
     });
@@ -56,25 +53,27 @@ function launchInfo(item, column1, column2) {
     let launchDate = document.createElement("p");
     let site = document.createElement("p");
     let details = document.createElement("p");
+    let row = document.createElement("div");
+    let column3 = document.createElement("div");
     let mediaBtn = document.createElement("div");
     let video = document.createElement("a");
     let wiki = document.createElement("a");
+    let patch = document.createElement("img");
     let redditLink = document.createElement("div");
     let presskitLink = document.createElement("div");
-    let patch = document.createElement("img");
     let reddit = item.links.reddit_campaign;
     let presskit = item.links.presskit;
 
 
     if (presskit == null) {
-        presskit = `<span class="no-link"><i class="far fa-newspaper"></i></span>`;
+        presskit = ``;
 
     } else {
         presskit = `<a href="${item.links.presskit}" target="_blank"><i class="far fa-newspaper"></i></a>`;
     }
 
     if (reddit == null) {
-        reddit = `<span class="no-link"><i class="fab fa-reddit-alien"></i></span>`;
+        reddit = ``;
     } else {
         reddit = `<a href="${item.links.reddit_campaign}" target="_blank"><i class="fab fa-reddit-alien"></i></a>`;
     }
@@ -84,24 +83,36 @@ function launchInfo(item, column1, column2) {
     launchDate.setAttribute("class", "card-text");
     site.setAttribute("class", "card-text");
     details.setAttribute("class", "card-text");
+    row.setAttribute("class", "row");
+    column3.setAttribute("class", "col-sm-3 text-center");
     mediaBtn.setAttribute("class", "media-buttons");
     video.setAttribute("href", item.links.video_link);
     video.setAttribute("target", "_blank");
-    wiki.setAttribute("href", item.wikipedia);
+    wiki.setAttribute("href", item.links.wikipedia);
     wiki.setAttribute("target", "_blank");
     patch.setAttribute("class", "patch");
     patch.setAttribute("src", item.links.mission_patch_small);
     patch.setAttribute("alt", "Mission Patch");
 
+    let column4 = column3.cloneNode(false);
+    let column5 = column3.cloneNode(false);
+    let column6 = column3.cloneNode(false);
+
+
+
     column1.appendChild(flight);
     column1.appendChild(launchDate);
     column1.appendChild(site);
     column1.appendChild(details);
-    column1.appendChild(mediaBtn);
-    mediaBtn.appendChild(video);
-    mediaBtn.appendChild(wiki);
-    mediaBtn.appendChild(redditLink);
-    mediaBtn.appendChild(presskitLink);
+    column1.appendChild(row);
+    row.appendChild(column3);
+    row.appendChild(column4);
+    row.appendChild(column5);
+    row.appendChild(column6);
+    column3.appendChild(video);
+    column4.appendChild(wiki);
+    column5.appendChild(redditLink);
+    column6.appendChild(presskitLink);
     column2.appendChild(patch);
 
     flight.innerText = `Flight Number: ${item.flight_number}`;
@@ -112,6 +123,7 @@ function launchInfo(item, column1, column2) {
     wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
     redditLink.innerHTML = reddit;
     presskitLink.innerHTML = presskit;
+
 
 
 }

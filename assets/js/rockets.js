@@ -30,11 +30,14 @@ function eachRocketCard() {
         row.appendChild(column1);
         row.appendChild(column2);
 
-        eachRocketData(item, cardHead, column1, column2);
+        cardHead.innerHTML = `<h3>${item.rocket_name}</h3>`;
+
+
+        eachRocketData(item, column1, column2);
     });
 }
 
-function eachRocketData(item, cardHead, column1, column2) {
+function eachRocketData(item, column1, column2) {
     let cardInfo1 = document.createElement("h5");
     let cardInfo2 = document.createElement("p");
     let wiki = document.createElement("a");
@@ -61,7 +64,6 @@ function eachRocketData(item, cardHead, column1, column2) {
     column1.appendChild(button);
     column2.appendChild(image);
 
-    cardHead.innerHTML = `<h3>${item.rocket_name}</h3>`;
     cardInfo1.innerText = `ID: ${item.id} - Active: ${item.active}`;
     cardInfo2.innerText = item.description;
     wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;

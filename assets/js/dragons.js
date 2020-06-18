@@ -1,11 +1,8 @@
-// Variables
-const dragonData = document.getElementById("data");
-
 callDragons();
 
 // calls spacex dragons api
 
-function eachDragon() {
+function eachDragonCard() {
 
     $("#data").addClass("container");
 
@@ -18,12 +15,6 @@ function eachDragon() {
         let row = document.createElement("div");
         let column1 = document.createElement("div");
         let column2 = document.createElement("div");
-        let cardInfo1 = document.createElement("h5");
-        let cardInfo2 = document.createElement("h6");
-        let cardInfo3 = document.createElement("h6");
-        let wiki = document.createElement("a");
-        let button = document.createElement("button");
-        let image = document.createElement("img");
 
         info.setAttribute("class", "card");
         cardHead.setAttribute("class", "card-header");
@@ -31,45 +22,60 @@ function eachDragon() {
         row.setAttribute("class", "row");
         column1.setAttribute("class", "col-md-6");
         column2.setAttribute("class", "col-md-6 text-center");
-        cardInfo1.setAttribute("class", "card-title");
-        cardInfo2.setAttribute("class", "card-title");
-        cardInfo3.setAttribute("class", "card-text");
-        wiki.setAttribute("href", item.wikipedia);
-        wiki.setAttribute("target", "_blank");
-        button.setAttribute("onclick", "getValue(value)");
-        button.setAttribute("value", `dragons/${item.id}`)
-        button.setAttribute("class", "more btn btn-primary");
-        image.setAttribute("class", "rocket-image");
-        image.setAttribute("src", item.flickr_images[2]);
-        image.setAttribute("alt", "dragon-image");
-        image.setAttribute("onerror", "imgError(this);");
 
-        dragonData.appendChild(info);
+        mainContent.appendChild(info);
         info.appendChild(cardHead);
         info.appendChild(cardBody);
         cardBody.appendChild(row);
         row.appendChild(column1);
         row.appendChild(column2);
-        column1.appendChild(cardInfo1);
-        column1.appendChild(cardInfo2);
-        column1.appendChild(cardInfo3);
-        column1.appendChild(wiki);
-        column1.appendChild(button);
-        column2.appendChild(image);
 
         cardHead.innerHTML = `<h3>${item.name}</h3>`;
-        cardInfo1.innerText = `Type: ${item.type} - Active: ${item.active}`;
-        cardInfo2.innerText = `First Flight: ${item.first_flight}`;
-        cardInfo3.innerText = item.description;
-        wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
-        button.innerText = "More";
+
+        eachDragonData(item, column1, column2);
     });
 }
 
+function eachDragonData(item, column1, column2) {
+    let cardInfo1 = document.createElement("h5");
+    let cardInfo2 = document.createElement("h6");
+    let cardInfo3 = document.createElement("h6");
+    let wiki = document.createElement("a");
+    let button = document.createElement("button");
+    let image = document.createElement("img");
+
+    cardInfo1.setAttribute("class", "card-title");
+    cardInfo2.setAttribute("class", "card-title");
+    cardInfo3.setAttribute("class", "card-text");
+    wiki.setAttribute("href", item.wikipedia);
+    wiki.setAttribute("target", "_blank");
+    button.setAttribute("onclick", "getValue(value)");
+    button.setAttribute("value", `dragons/${item.id}`)
+    button.setAttribute("class", "more btn btn-primary");
+    image.setAttribute("class", "rocket-image");
+    image.setAttribute("src", item.flickr_images[2]);
+    image.setAttribute("alt", "dragon-image");
+    image.setAttribute("onerror", "imgError(this);");
+
+    column1.appendChild(cardInfo1);
+    column1.appendChild(cardInfo2);
+    column1.appendChild(cardInfo3);
+    column1.appendChild(wiki);
+    column1.appendChild(button);
+    column2.appendChild(image);
+
+    cardInfo1.innerText = `Type: ${item.type} - Active: ${item.active}`;
+    cardInfo2.innerText = `First Flight: ${item.first_flight}`;
+    cardInfo3.innerText = item.description;
+    wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
+    button.innerText = `More about the ${item.name}`;;
+
+}
+
 function dragonSpec() {
-   
+
     $("#loader").addClass("hide-loader");
-    
+
     let aboutDragon = document.createElement("div");
     let row = document.createElement("div");
     let column1 = document.createElement("div");
@@ -122,9 +128,9 @@ function dragonSpec() {
     let cardBody2 = cardBody.cloneNode(false);
     let cardBody3 = cardBody.cloneNode(false);
 
-    dragonData.innerHTML = `<h1 class="title">${specificDragon.name}</h1>`;
+    mainContent.innerHTML = `<h1 class="title">${specificDragon.name}</h1>`;
 
-    dragonData.appendChild(aboutDragon);
+    mainContent.appendChild(aboutDragon);
     aboutDragon.appendChild(row);
     row.appendChild(column1);
     row.appendChild(column2);
@@ -262,6 +268,5 @@ function dragonSpec() {
 function imgError(image) {
     image.onerror = "";
     image.src = "assets/images/image-unavailable.jpg";
-    return;
 }
 
