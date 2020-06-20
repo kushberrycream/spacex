@@ -111,7 +111,8 @@ function oneDragon() {
      */
     axios.get(spaceX + btnValue).then(response => {
         specificDragon = response.data;
-        dragonSpec();
+        dragonSpecCard();
+        dragonImages();
     });
 }
 
