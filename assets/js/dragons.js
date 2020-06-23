@@ -40,6 +40,9 @@ function eachDragonData(item, column1, column2) {
     let cardInfo1 = document.createElement("h5");
     let cardInfo2 = document.createElement("h6");
     let cardInfo3 = document.createElement("h6");
+    let linkRow = document.createElement("div");
+    let linkCol1 = document.createElement("div");
+    let linkCol2 = document.createElement("div");
     let wiki = document.createElement("a");
     let button = document.createElement("button");
     let image = document.createElement("img");
@@ -47,7 +50,11 @@ function eachDragonData(item, column1, column2) {
     cardInfo1.setAttribute("class", "card-title");
     cardInfo2.setAttribute("class", "card-title");
     cardInfo3.setAttribute("class", "card-text");
+    linkRow.setAttribute("class", "row text-center rocket-dragon-links");
+    linkCol1.setAttribute("class", "col-6");
+    linkCol2.setAttribute("class", "row-6");
     wiki.setAttribute("href", item.wikipedia);
+    wiki.setAttribute("class", "hvr-pulse-grow ");
     wiki.setAttribute("target", "_blank");
     button.setAttribute("onclick", "getValue(value)");
     button.setAttribute("value", `dragons/${item.id}`)
@@ -60,15 +67,18 @@ function eachDragonData(item, column1, column2) {
     column1.appendChild(cardInfo1);
     column1.appendChild(cardInfo2);
     column1.appendChild(cardInfo3);
-    column1.appendChild(wiki);
-    column1.appendChild(button);
+    column1.appendChild(linkRow);
+    linkRow.appendChild(linkCol1);
+    linkRow.appendChild(linkCol2);
+    linkCol1.appendChild(wiki);
+    linkCol2.appendChild(button);
     column2.appendChild(image);
 
     cardInfo1.innerText = `Type: ${item.type} - Active: ${item.active}`;
     cardInfo2.innerText = `First Flight: ${item.first_flight}`;
     cardInfo3.innerText = item.description;
     wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
-    button.innerText = `More about the ${item.name}`;;
+    button.innerHTML = `More about the ${item.name} <i class="fas fa-space-shuttle"></i>`;;
 
 }
 
@@ -89,7 +99,7 @@ function dragonSpecCard() {
     row.className = "row no-gutters";
     column1.className = "col-md-7";
     column2.className = "col-md-5";
-    column2.setAttribute("id", "dragon-stats");
+    column2.setAttribute("id", "dragonstats");
     card.className = "card";
     cardHeader.className = "card-header";
     cardBody.className = "card-body";
@@ -109,7 +119,7 @@ function dragonSpecCard() {
     row.appendChild(column1);
     row.appendChild(column2);
 
-    let dragonStats = document.getElementById("dragon-stats");
+    let dragonStats = document.getElementById("dragonstats");
 
     column1.appendChild(card);
     card.appendChild(cardHeader);
@@ -142,6 +152,7 @@ function dragonInfo(cardBody) {
     cardText.className = "card-text";
     wiki.setAttribute("href", specificDragon.wikipedia);
     wiki.setAttribute("target", "_blank");
+    wiki.setAttribute("class", "rocket-dragon-links hvr-pulse-grow");
 
     cardBody.appendChild(cardText);
     cardBody.appendChild(active);

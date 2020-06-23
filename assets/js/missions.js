@@ -44,15 +44,17 @@ function missionInfo(item, headLink, cardBody) {
 
     mission.setAttribute("class", "card-title");
     description.setAttribute("class", "card-text");
-    row.setAttribute("class", "row text-center");
-    col1.setAttribute("class", "col-1");
-    col2.setAttribute("class", "col-1");
+    row.setAttribute("class", "row text-center mission-links");
+    col1.setAttribute("class", "col-2");
+    col2.setAttribute("class", "col-2");
     wiki.setAttribute("href", item.wikipedia);
     wiki.setAttribute("target", "_blank");
+    wiki.setAttribute("class", "hvr-pulse-grow")
     wiki.setAttribute("aria-label", "Wikipedia Link");
     twitter.setAttribute("href", item.twitter);
     twitter.setAttribute("target", "_blank");
     twitter.setAttribute("aria-label", "Twitter Link");
+    twitter.setAttribute("class", "hvr-pulse-grow")
 
     cardBody.appendChild(mission);
     cardBody.appendChild(manufacturers);

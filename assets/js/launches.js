@@ -4,8 +4,15 @@ pagination();
 
 // calls spacex past launches api
 function allLaunches() {
+   
 
-    $("#data").addClass("container");
+    let title = document.createElement("h1");
+
+    title.setAttribute("class", "title");
+
+    mainContent.appendChild(title);
+
+    title.innerText = "SpaceX Launches";
 
     launchReversed.forEach(item => {
         $("#loader").addClass("hide-loader");
@@ -55,7 +62,6 @@ function launchInfo(item, column1, column2) {
     let details = document.createElement("p");
     let row = document.createElement("div");
     let column3 = document.createElement("div");
-    let mediaBtn = document.createElement("div");
     let video = document.createElement("a");
     let wiki = document.createElement("a");
     let patch = document.createElement("img");
@@ -69,13 +75,13 @@ function launchInfo(item, column1, column2) {
         presskit = ``;
 
     } else {
-        presskit = `<a href="${item.links.presskit}" target="_blank"><i class="far fa-newspaper"></i></a>`;
+        presskit = `<a href="${item.links.presskit}" target="_blank" class="hvr-pulse-grow"><i class="far fa-newspaper"></i></a>`;
     }
 
     if (reddit == null) {
         reddit = ``;
     } else {
-        reddit = `<a href="${item.links.reddit_campaign}" target="_blank"><i class="fab fa-reddit-alien"></i></a>`;
+        reddit = `<a href="${item.links.reddit_campaign}" target="_blank" class="hvr-pulse-grow"><i class="fab fa-reddit-alien"></i></a>`;
     }
 
 
@@ -84,12 +90,13 @@ function launchInfo(item, column1, column2) {
     site.setAttribute("class", "card-text");
     details.setAttribute("class", "card-text");
     row.setAttribute("class", "row");
-    column3.setAttribute("class", "col-sm-3 text-center");
-    mediaBtn.setAttribute("class", "media-buttons");
+    column3.setAttribute("class", "col-3 text-center launch-links");
     video.setAttribute("href", item.links.video_link);
+    video.setAttribute("class", "hvr-pulse-grow");
     video.setAttribute("target", "_blank");
     wiki.setAttribute("href", item.links.wikipedia);
     wiki.setAttribute("target", "_blank");
+    wiki.setAttribute("class", "hvr-pulse-grow");
     patch.setAttribute("class", "patch");
     patch.setAttribute("src", item.links.mission_patch_small);
     patch.setAttribute("alt", "Mission Patch");
@@ -97,8 +104,6 @@ function launchInfo(item, column1, column2) {
     let column4 = column3.cloneNode(false);
     let column5 = column3.cloneNode(false);
     let column6 = column3.cloneNode(false);
-
-
 
     column1.appendChild(flight);
     column1.appendChild(launchDate);
@@ -151,6 +156,7 @@ function pagination() {
     let listItem7 = listItem6.cloneNode(true);
     let listItem8 = listItem7.cloneNode(true);
     let listItem9 = listItem8.cloneNode(true);
+    let listItem10 = listItem9.cloneNode(true);
 
     pagination.appendChild(navMenu);
     navMenu.appendChild(list);
@@ -163,16 +169,18 @@ function pagination() {
     list.appendChild(listItem7);
     list.appendChild(listItem8);
     list.appendChild(listItem9);
+    list.appendChild(listItem10);
 
-    listItem1.innerHTML = `<option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=84">1</option>`;
-    listItem2.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=74" class="page-link">2</option>`;
-    listItem3.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=64" class="page-link">3</option>`;
-    listItem4.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=54" class="page-link">4</option>`;
-    listItem5.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=34" class="page-link">5</option>`;
-    listItem6.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=24" class="page-link">6</option>`;
-    listItem7.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=14" class="page-link">7</option>`;
-    listItem8.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=04" class="page-link">8</option>`;
-    listItem9.innerHTML = `<option onclick="getPagination(value)" value="?limit=4&offset=0" class="page-link">9</option>`;
+    listItem1.innerHTML = `<option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=86">1</option>`;
+    listItem2.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=76" class="page-link">2</option>`;
+    listItem3.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=66" class="page-link">3</option>`;
+    listItem4.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=56" class="page-link">4</option>`;
+    listItem5.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=46" class="page-link">5</option>`;
+    listItem6.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=36" class="page-link">6</option>`;
+    listItem7.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=26" class="page-link">7</option>`;
+    listItem8.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=16" class="page-link">8</option>`;
+    listItem9.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=06" class="page-link">9</option>`;
+    listItem10.innerHTML = `<option onclick="getPagination(value)" value="?limit=6&offset=0" class="page-link">10</option>`;
 
 
 

@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Home page displaying Upcoming launches and also land and launch sites in tables">
+	<meta name="description" content="Home page displaying Upcoming launches and also land and launch sites in tables">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
 	<link rel="stylesheet"
@@ -17,53 +17,57 @@
 </head>
 
 <body>
-	<section class="content">
-
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a href="index.html">
-				<img src="assets/images/spacexlogo.png" class="d-inline-block align-top navbar-brand" alt="SpaceX"/>
+	<!-- Navbar Start -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a href="index.html">
+			<img src="assets/images/spacexlogo.png" class="d-inline-block align-top navbar-brand" alt="SpaceX"/>
          </a>
-				<button class="navbar-toggler" type="button"
+			<button class="navbar-toggler" type="button"
             data-toggle="collapse" data-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" >
          <span class="navbar-toggler-icon"></span>
          </button>
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li class="nav-item  active" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="index.html" class="nav-link">Home</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="missions.html" id="missions" class="nav-link">Missions</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="launches.html" id="launches" class="nav-link">Launches</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="history.html" id="history" class="nav-link">History</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="about.html" class="nav-link">About</a>
-						</li>
-					</ul>
-					<div class="socialbuttons">
-						<a class="social" href="contact.html"><i class="fas fa-envelope"></i></a>
-						<a class="social" href="https://www.facebook.com/profile.php?id=555815524" target="_blank"
-							rel="noreferrer"><i class="fab fa-facebook-square"></i></a>
-						<a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/" target="_blank"
-							rel="noreferrer"><i class="fab fa-linkedin"></i></a>
-						<a class="social" href="https://github.com/kushberrycream" target="_blank"
-							rel="noreferrer"><i class="fab fa-github-square"></i></a>
-					</div>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item  active" data-toggle="collapse" data-target=".navbar-collapse.show">
+						<a href="index.html" class="nav-link">Home</a>
+					</li>
+					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+						<a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
+					</li>
+					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+						<a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
+					</li>
+					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+						<a href="missions.html" id="missions" class="nav-link">Missions</a>
+					</li>
+					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+						<a href="launches.html" id="launches" class="nav-link">Launches</a>
+					</li>
+					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+						<a href="history.html" id="history" class="nav-link">History</a>
+					</li>
+					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+						<a href="about.html" class="nav-link">About</a>
+					</li>
+				</ul>
+				<div class="socialbuttons">
+					<a class="social" href="contact.html"><i class="fas fa-envelope"></i></a>
+					<a class="social" href="https://www.facebook.com/profile.php?id=555815524" target="_blank"
+						rel="noreferrer"><i class="fab fa-facebook-square"></i></a>
+					<a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/" target="_blank"
+						rel="noreferrer"><i class="fab fa-linkedin"></i></a>
+					<a class="social" href="https://github.com/kushberrycream" target="_blank"
+						rel="noreferrer"><i class="fab fa-github-square"></i></a>
 				</div>
-		</nav>
+			</div>
+	</nav>
+	<!-- Mavbar End -->
 
+	<!-- Main Site Content -->
+	<section class="content">
+
+		<!-- Launches Carousel Start -->
 		<div class="bg container-fluid">
 
 			<div class="overlay"></div>
@@ -91,7 +95,9 @@
 				</a>
 			</div>
 		</div>
+        <!-- Launches Carousel End-->
 
+        <!-- Homepage Introduction Start -->
 		<div id="introduction" class="introduction container">
 			<h1 class="title">SpaceX Vehicle and Launch Data</h1>
 			<p class="website-description">Welcome! This site was built using the SpaceX API to bring you an interactive
@@ -100,7 +106,9 @@
 				come here to view, if the page is missing something or you experience
 				any bugs please send me a message via the contact form. </p>
 		</div>
+        <!-- Homepage Introduction End -->
 
+        <!-- Launch / Land Sites Start -->
 		<div class="container">
 
 			<h2 class="title">Launch Sites</h2>
@@ -234,9 +242,12 @@
 				</fieldset>
 			</div>
 		</div>
+        <!-- Launch / Land Sites End -->
 
 	</section>
+    <!-- Main Site End -->
 
+    <!-- Footer Start-->
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
@@ -304,15 +315,19 @@
 			</div>
 		</div>
 	</footer>
+    <!-- Footer End-->
 
-
-
+    <!-- Down Arrow / More Arrow Start-->
 	<div class="dwn-arrow">
 		<a href="#introduction" class="arrow"><i class="fas fa-chevron-down hvr-wobble-vertical"></i></a>
 	</div>
+    <!-- Down Arrow / More Arrow End-->
 
+    <!-- Loader Start-->
 	<div class="loader" id="loader"></div>
+    <!-- Loader End-->
 
+    <!-- Error Modal Start-->
 	<div id="error" class="modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -328,6 +343,7 @@
 			</div>
 		</div>
 	</div>
+    <!-- Error Modal End-->
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/json-mask/1.0.1/jsonMask.min.js"></script>

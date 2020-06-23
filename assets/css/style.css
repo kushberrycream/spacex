@@ -158,23 +158,36 @@ h2 {
 
 /*   wikipedia - video - article - social links  */
 
-.media-buttons {
-  /* found on launches page */
-  position: absolute;
-  top: -5px;
-  right: 0;
-  font-size: 1.3rem;
-}
-
 .historylinks {
   position: absolute;
   bottom: 0px;
 
 }
 
+.about-links,
+.icon {
+  font-size: 1.6rem;
+  padding: 20px 0;
+  text-align: center;
+  height: 75px;
+  line-height: 40px;
+}
+
+.rocket-dragon-links {
+  font-size: 1.6rem;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.mission-links {
+  font-size: 1.6rem;
+  padding: 20px 0;
+  text-align: center;
+}
+
 .history-media-buttons {
   /* found on history page */
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   width: 33vw;
   padding: 20px 0;
   text-align: center;
@@ -186,33 +199,27 @@ h2 {
   color: #f3f3f3;
 }
 
-.icon {
-  height: 50px;
-  font-size: 40px;
-  line-height: 40px;
-}
-
 .elon {
   margin-bottom: 20px;
 }
 
 .github {
   width: 70px;
-  margin: 20px 20px 0 20px;
+  margin: auto;
   display: grid;
   text-align: center;
 }
 
 .facebook {
   width: 58px;
-  margin: 20px 20px 0 20px;
+  margin: auto;
   display: grid;
   text-align: center;
 }
 
 .docs {
   width: 58px;
-  margin: 20px 20px 0 20px;
+  margin: auto;
   display: grid;
   text-align: center;
 }
@@ -454,6 +461,7 @@ a:hover {
   padding: 30px;
   color: #fff;
   font-size: 1.3rem;
+  background-color: #000018;
 }
 
 /*                              both data tabs              */
@@ -573,6 +581,10 @@ a:hover {
   vertical-align: top;
 }
 
+.land-item {
+    height: 100px;
+}
+
 /*          launches page            */
 
 .green {
@@ -592,6 +604,10 @@ a:hover {
   top: 40px;
 }
 
+.launch-links {
+    font-size: 1.6rem;
+
+}
 /*  Launches page pagination styling   */
 
 .page-link {
@@ -660,6 +676,10 @@ a:hover {
 }
 
 #rocketstats .card {
+    height: 100%;
+}
+
+#dragonstats .card {
     height: 100%;
 }
 

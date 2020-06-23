@@ -16,36 +16,36 @@
  * @const {HTMLElement} mainContent Get data element and add to variable
  * @type {string} A quierystring to add to end of an endpoint
  */
-const spaceX = "https://api.spacexdata.com/v3/";
-const infoApi = "https://api.spacexdata.com/v3/info";
-const upcomingApi = "https://api.spacexdata.com/v3/launches/upcoming";
-const launchPads = "https://api.spacexdata.com/v3/launchpads";
-const landPads = "https://api.spacexdata.com/v3/landpads";
-const mainContent = document.getElementById("data");
 
-let btnValue = "?limit=10&offset=84";
+const spaceX = "https://api.spacexdata.com/v3/",
+      infoApi = "https://api.spacexdata.com/v3/info",
+      upcomingApi = "https://api.spacexdata.com/v3/launches/upcoming",
+      launchPads = "https://api.spacexdata.com/v3/launchpads",
+      landPads = "https://api.spacexdata.com/v3/landpads",
+      mainContent = document.getElementById("data");
+
+let btnValue = "?limit=10&offset=86";
+
 
 /** 
  * Function to retrieve data from 3 endpoints
  * Upcoming launch, launch sites and land sites.
+ * Performs 3 similtanious XMLHttpRequests and spreads JSON 
+ * data across 3 variables. Then call all relevant functions in homepage.js
  */
-function homepageData() {
 
-    /** perform multiple XMLHttpRequests */
+function homepageData() {
     axios.all([
         axios.get(upcomingApi),
         axios.get(launchPads),
         axios.get(landPads)
     ])
-
-        /** Spread response data across associated variables */
         .then(axios.spread((upcomingApi, launchPads, landPads) => {
 
             upcoming = upcomingApi.data;
             launchData = launchPads.data;
             landData = landPads.data;
 
-            /** Call all functions within homepage.js */
             carousel();
             active();
             siteLabels();
@@ -55,29 +55,26 @@ function homepageData() {
         }));
 }
 
-/** Function to retrieved data from the rockets API endpoint */
+/** 
+ * Function to retrieved data from the rockets API endpoint.
+ * Turn response data into a variable and call all related
+ * functions within rockets.js.
+ */
 function callRockets() {
-
-    /** 
-     * request and turn response data into a variable
-     * and call all related functions within rockets.js 
-     */ 
     axios.get("https://api.spacexdata.com/v3/rockets").then(response => {
         rockets = response.data;
         eachRocketCard();
     });
 }
 
-/** Function which retrieves specific rocket data once user selects which one  */
+/** 
+ * Function which retrieves specific rocket data once user selects which one.
+ * Displays loader before API Called and Data displayed.
+ * Uses btnValue variable to change the URL on users button press.
+ * Then turns repsonse data into a variable and call all related functions within rockets.js.
+ */
 function oneRocket() {
-
-    /** displays loader before specific rocket data is loaded */
     $("#loader").removeClass("hide-loader");
-
-    /** 
-     * Request data from the main spaceX URL + the value of the button selected 
-     * and turn data into a variable for use within rockets.js
-     */
     axios.get(spaceX + btnValue).then(response => {
         specificRocket = response.data;
         rocketSpecCard();
@@ -85,30 +82,26 @@ function oneRocket() {
     });
 }
 
-/** Function to retrieve data from the dragons API endpoint */
+/** 
+ * Function to retrieve data from the dragons API endpoint.
+ * Turn response data into a variable and call all related
+ * functions within dragons.js.
+ */
 function callDragons() {
-
-    /** 
-     * request and turn response data from dragons api into a variable 
-     * and call all related functions within dragons.js
-     */
     axios.get("https://api.spacexdata.com/v3/dragons").then(response => {
         dragons = response.data;
         eachDragonCard();
     });
 }
 
-/** Function which retrieves specific dragon data once user selects which one  */
+/** 
+ * Function which retrieves specific dragon data once user selects which one.
+ * Displays loader before API Called and Data displayed.
+ * Uses btnValue variable to change the URL on users button press.
+ * Then turns repsonse data into a variable and call all related functions within dragons.js.
+ */
 function oneDragon() {
-
-    /** displays loader before specific rocket data is loaded */
-
     $("#loader").removeClass("hide-loader");
-
-    /** 
-     * request data from spacex main api and btn value and add to a variable
-     * then call all related functions within Dragons.js
-     */
     axios.get(spaceX + btnValue).then(response => {
         specificDragon = response.data;
         dragonSpecCard();
@@ -118,15 +111,14 @@ function oneDragon() {
 
 /**
  * Function added to onclick attribute to change the btnValue
- * depending on the value of the btn selected. This wil then 
+ * depending on the value of the btn selected. This will then 
  * change the endpoint on the API so only the selected Rocket
  * or dragon is displayed.
  * @param {string} value value of btn
  */
 function getValue(value) {
-
-    /** btnValue value changed to the value attribute of the selected button */
     btnValue = value;
+
 
     /** checks to see if eachRocket is a functions on the current page  */
     if (typeof eachRocketCard === "function") {
@@ -155,18 +147,13 @@ function callMissions() {
 /** 
  * function to retrieve data from the past launches api endpoint
  * plus btnValue variable to add a querystring to the end of the url. 
+ * Turn response data into a variable and reverse object to show newest first.
+ * Then call all related functions in launches.js
  */
 function callLaunches() {
-
-    /** 
-     * add data from past launches api to a variable and then reverse the object
-     * then call all related functions within launches.js file.
-     */
     axios.get("https://api.spacexdata.com/v3/launches/past" + btnValue).then(response => {
         launchData = response.data;
         launchReversed = launchData.slice().reverse();
-
-        
         allLaunches();
     });
 }
@@ -189,13 +176,12 @@ function getPagination(value) {
 }
 
 
-/** function to retrieve data from the History api endpoint */
+/** 
+ * function to retrieve data from the History api endpoint.
+ * add response data to a variable and reverse the order of the object
+ * to display newest data first. then call related functions in history.js 
+ */
 function callHistory() {
-
-    /** 
-     * Add response from History api to variable and reverse order of object
-     * then call all related functions in History API.
-     */
     axios.get("https://api.spacexdata.com/v3/history").then(response => {
         historyData = response.data;
         historyReversed = historyData.slice().reverse();
@@ -204,14 +190,12 @@ function callHistory() {
 }
 
 
-/** function to retrieve data from the main Spacex api and SpaceX info API  */
+/** 
+ * function to retrieve data from the main Spacex api and SpaceX info API.
+ * perform 2 similtanious XMLHttpRequests and spread response data across 
+ * 2 variables. then call any related functions within about.js
+  */
 function callAbout() {
-
-
-    /** 
-     * Perform 2 XHLHttpRequests and add the reponses to variables 
-     * then call any relevant functions within about.js
-     */
     axios.all([
         axios.get(spaceX),
         axios.get(infoApi)

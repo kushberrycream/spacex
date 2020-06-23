@@ -66,6 +66,8 @@ function aboutPage() {
 
 function companyInfo(cardHead1, col1, col2) {
 
+    let linkRow = document.createElement("div");
+    let linkCol1 = document.createElement("div");
     let valuation = accounting.formatMoney(infoApiData.valuation);
     let name = document.createElement("h3");
     let musk = document.createElement("p");
@@ -79,17 +81,27 @@ function companyInfo(cardHead1, col1, col2) {
     let elonTwitter = document.createElement("a");
     let logo = document.createElement("img");
 
+    linkRow.setAttribute("class", "row text-center about-links");
+    linkCol1.setAttribute("class", "col-3");
     website.setAttribute("href", infoApiData.links.website);
     website.setAttribute("target", "_blank");
+    website.setAttribute("class", "hvr-pulse-grow");
     flickr.setAttribute("href", infoApiData.links.flickr);
     flickr.setAttribute("target", "_blank");
+    flickr.setAttribute("class", "hvr-pulse-grow");
     twitter.setAttribute("href", infoApiData.links.twitter);
     twitter.setAttribute("target", "_blank");
+    twitter.setAttribute("class", "hvr-pulse-grow");
     elonTwitter.setAttribute("href", infoApiData.links.elon_twitter);
     elonTwitter.setAttribute("target", "_blank");
+    elonTwitter.setAttribute("class", "hvr-pulse-grow");
     logo.setAttribute("class", "spacexwhite");
     logo.setAttribute("src", "assets/images/spacextrans.png");
     logo.setAttribute("alt", "SpaceX");
+
+    let linkCol2 = linkCol1.cloneNode(false);
+    let linkCol3 = linkCol1.cloneNode(false);
+    let linkCol4 = linkCol1.cloneNode(false);
 
     cardHead1.appendChild(name);
     col1.appendChild(musk);
@@ -97,10 +109,15 @@ function companyInfo(cardHead1, col1, col2) {
     col1.appendChild(hq);
     col1.appendChild(details);
     col1.appendChild(value);
-    col1.appendChild(website);
-    col1.appendChild(flickr);
-    col1.appendChild(twitter);
-    col1.appendChild(elonTwitter);
+    col1.appendChild(linkRow);
+    linkRow.appendChild(linkCol1);
+    linkRow.appendChild(linkCol2);
+    linkRow.appendChild(linkCol3);
+    linkRow.appendChild(linkCol4);
+    linkCol1.appendChild(website);
+    linkCol2.appendChild(flickr);
+    linkCol3.appendChild(twitter);
+    linkCol4.appendChild(elonTwitter);
     col2.appendChild(logo);
 
     name.innerText = infoApiData.name;
@@ -117,28 +134,36 @@ function companyInfo(cardHead1, col1, col2) {
 
 
 function apiInfo(cardHead2, cardBody2) {
+
+    let linkRow = document.createElement("div");
+    let linkCol1 = document.createElement("div");
     let link = document.createElement("a");
     let project = document.createElement("h3");
     let disclaimer = document.createElement("p");
     let description = document.createElement("p");
     let version = document.createElement("p");
-    let row3 = document.createElement("div");
     let docs1 = document.createElement("a");
 
-    row3.setAttribute("class", "row text-center");
+    linkRow.setAttribute("class", "row text-center");
+    linkCol1.setAttribute("class", "col-6");
     link.setAttribute("href", spacexData.project_link);
     link.setAttribute("target", "_blank");
+    link.setAttribute("class", "hvr-pulse-grow");
     docs1.setAttribute("href", spacexData.docs);
     docs1.setAttribute("target", "_blank");
+    docs1.setAttribute("class", "hvr-pulse-grow");
 
+    let linkCol2 = linkCol1.cloneNode(false);
 
     cardHead2.appendChild(project);
     cardBody2.appendChild(disclaimer);
     cardBody2.appendChild(description);
     cardBody2.appendChild(version);
-    cardBody2.appendChild(row3);
-    row3.appendChild(link);
-    row3.appendChild(docs1);
+    cardBody2.appendChild(linkRow);
+    linkRow.appendChild(linkCol1);
+    linkRow.appendChild(linkCol2);
+    linkCol1.appendChild(link);
+    linkCol2.appendChild(docs1);
 
 
     project.innerText = spacexData.project_name;
@@ -152,23 +177,29 @@ function apiInfo(cardHead2, cardBody2) {
 
 
 function aboutMe(cardHead3, cardBody3) {
+    let linkRow = document.createElement("div");
+    let linkCol1 = document.createElement("div");
     let me = document.createElement("h3");
     let codeInst = document.createElement("p");
     let repo = document.createElement("a");
     let contact = document.createElement("h5");
     let phone = document.createElement("p");
     let email = document.createElement("p");
-    let row4 = document.createElement("div");
     let github = document.createElement("a");
     let facebook = document.createElement("a");
 
+    linkRow.setAttribute("class", "row text-center");
+    linkCol1.setAttribute("class", "col-6");
     repo.setAttribute("src", "#");
     repo.setAttribute("target", "_blank");
-    row4.setAttribute("class", "row text-center");
     github.setAttribute("href", "https://github.com/kushberrycream");
     github.setAttribute("target", "_blank");
+    github.setAttribute("class", "hvr-pulse-grow");
     facebook.setAttribute("href", "#");
     facebook.setAttribute("target", "_blank");
+    facebook.setAttribute("class", "hvr-pulse-grow");
+
+    let linkCol2 = linkCol1.cloneNode(false);
 
     cardHead3.appendChild(me);
     cardBody3.appendChild(codeInst);
@@ -176,9 +207,11 @@ function aboutMe(cardHead3, cardBody3) {
     cardBody3.appendChild(contact);
     cardBody3.appendChild(phone);
     cardBody3.appendChild(email);
-    cardBody3.appendChild(row4);
-    row4.appendChild(github);
-    row4.appendChild(facebook);
+    cardBody3.appendChild(linkRow);
+    linkRow.appendChild(linkCol1);
+    linkRow.appendChild(linkCol2);
+    linkCol1.appendChild(github);
+    linkCol2.appendChild(facebook);
 
     me.innerText = "Created By Tom Jones";
     codeInst.innerText = "This site was created as a Project for the Code Institutes Diploma in Software Development.";
