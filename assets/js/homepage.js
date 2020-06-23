@@ -1,49 +1,56 @@
 /**
- * @fileoverview JS file with all Axios XMLHttpRequests,
- * Axios transforms JSON Data Automatically.
+ * @fileoverview JS file with all functions called on the homepage,
  * @author Tom Jones <tom@wilson-express.co.uk>
  */
 
 /** 
  * Call homepageData() function from axios.js,
- * retrieves data from SpaceX API's  
  */
 
 homepageData();
 
+/**
+ * This functions creates the Carousel on the homepage.
+ * Using the forEach() method I create a seperate carousel-item
+ * for all the upcoming launches. 
+ */
 function carousel() {
+    /** hides loader once data is obtained */
     $("#loader").addClass("hide-loader");
     upcoming.forEach(item => {
 
-        let a = upcoming.indexOf(item);
-        let indicators = document.getElementById("data-slide");
-        let slide = document.createElement("li");
-        let upcomingLaunch = document.getElementById("upcoming-launch");
-        let launches = document.createElement("div");
-        let info = document.createElement("div");
-        let container = document.createElement("div");
-        let caption = document.createElement("div");
-        let column = document.createElement("div");
-        let column2 = document.createElement("div");
-        let patch = document.createElement("img");
-        let flight = document.createElement("h4");
-        let name = document.createElement("h4");
-        let type = document.createElement("h4");
-        let site = document.createElement("h4");
-        let details = document.createElement("p");
+        /** All Variables used to create carousel elements */
+        let a = upcoming.indexOf(item),
+            indicators = document.getElementById("data-slide"),
+            slide = document.createElement("li"),
+            upcomingLaunch = document.getElementById("upcoming-launch"),
+            launches = document.createElement("div"),
+            countdown = document.createElement("div"),
+            container = document.createElement("div"),
+            caption = document.createElement("div"),
+            column = document.createElement("div"),
+            column2 = document.createElement("div"),
+            patch = document.createElement("img"),
+            flight = document.createElement("h4"),
+            name = document.createElement("h4"),
+            type = document.createElement("h4"),
+            site = document.createElement("h4"),
+            details = document.createElement("p");
 
+        /** Sets attributes for all elements created */
         slide.setAttribute("data-slide-to", a);
         slide.setAttribute("data-target", "#carouselExampleIndicators");
         launches.setAttribute("class", "carousel-item");
-        info.setAttribute("class", "countdown");
+        countdown.setAttribute("class", "countdown");
         container.setAttribute("class", "details-container");
         caption.setAttribute("class", "carousel-caption row justify-content-center");
         patch.setAttribute("src", item.links.mission_patch_small ? item.links.mission_patch_small : "assets/images/spacexcircle.png");
         patch.setAttribute("alt", "mission patch");
 
+        /** appends all elements to the DOM */
         indicators.appendChild(slide);
         upcomingLaunch.appendChild(launches);
-        launches.appendChild(info);
+        launches.appendChild(countdown);
         launches.appendChild(container);
         container.appendChild(caption);
         caption.appendChild(column);
@@ -53,11 +60,19 @@ function carousel() {
         column.appendChild(type);
         column.appendChild(site);
 
+        /** Set the HTML content of some of the elements */
         flight.innerHTML = `<span class="flight">Flight No:</span> ${item.flight_number}`;
         name.innerHTML = `<span class="rocket">Rocket:</span> ${item.rocket.rocket_name}`;
         type.innerHTML = `<span class="type">Rocket Type:</span> ${item.rocket.rocket_type}`;
         site.innerHTML = `<h4><span class="site">Site:</span> ${item.launch_site.site_name_long}</h4>`;
 
+
+        /**
+         * if / else statement to see if item.details exists.
+         * if it doesnt then it sets only one column with launch information.
+         * if it does exist then it sets another column with the details / desription
+         * of the upcoming launch.
+         */
         if (item.details == null) {
 
             column.setAttribute("class", "col-md-7 text-right");
@@ -72,48 +87,68 @@ function carousel() {
 
             details.innerText = item.details;
         }
-        countdown(item, info);
+
+        /** call the countdown function to display countdown for each upcoming launch. */
+        countdownTimer(item, countdown);
     });
 
 }
 
-function countdown(item, info) {
-    let deadline = new Date(item.launch_date_utc).getTime();
-    let x = setInterval(function () {
-        let now = new Date().getTime();
-        let t = deadline - now;
-        let days = Math.floor(t / (1000 * 60 * 60 * 24));
-        let hours = Math.floor(
-            (t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((t % (1000 * 60)) / 1000);
-        let date;
+/**
+ * This function creates a countdown for each upcoming launch!
+ * This function uses the moument.js libary to format the date displayed.
+ * @param {object} item 
+ * @param {HTMLElement} countdowm 
+ */
+function countdownTimer(item, countdown) {
 
-        let mql = window.matchMedia("screen and (min-width: 800px)")
-        if (mql.matches) {
-            date = moment.parseZone(item.launch_date_utc).utc().format("dddd Do MMMM YYYY, h:mm a");
-        }
-        else {
-            date = moment.parseZone(item.launch_date_utc).utc().format("D / M / YYYY, h:mm a");
-        };
+    /** 
+     * End Date for the countdowns. Then using the setInterval() method
+     * I create my countdown by subtracting my deadline with the date now. 
+     * then using math.floor I am able to work out the remaining days, hours, minutes and seconds.
+     */
+    let deadline = new Date(item.launch_date_utc).getTime(),
+        x = setInterval(function () {
+            let now = new Date().getTime(),
+                t = deadline - now,
+                days = Math.floor(t / (1000 * 60 * 60 * 24)),
+                hours = Math.floor(
+                    (t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                ),
+                minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds = Math.floor((t % (1000 * 60)) / 1000),
+                date,
+
+                /** if / else statement to display long date or short date depending on media screen size. */
+                launchDate = window.matchMedia("screen and (min-width: 800px)");
+            if (launchDate.matches) {
+                date = moment.parseZone(item.launch_date_utc).utc().format("dddd Do MMMM YYYY, h:mm a");
+            }
+            else {
+                date = moment.parseZone(item.launch_date_utc).utc().format("D / M / YYYY, h:mm a");
+            };
 
 
-        info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
+            /** using innerHTML I display my countdowns */
+            countdown.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
                                     <h2>${days}d ${hours}h ${minutes}m ${seconds}s</h2>
                                     <h3>${date}</h3>`;
 
-        if (t < 0) {
-            clearInterval(x);
-            info.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
+            /** if the countdown is over then display placeholder message using clearInterval() */
+            if (t < 0) {
+                clearInterval(x);
+                countdown.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
                                         <h2>Date To Be Confirmed!</h2>`;
-        }
-    }, 1000);
+            }
+
+            /** Interval of 1second */
+        }, 1000);
 
 }
 
 
 
+/** This function add an active class to the carousel-item and also the carousel-indicators */
 function active() {
 
     let activeItem = document.getElementsByTagName("div").item(8);
@@ -123,10 +158,11 @@ function active() {
     activeLaunch.setAttribute("class", "active");
 }
 
+
+/** This function creates labels for both launch and land sites. */
 function siteLabels() {
 
-    //     Launch site labels
-
+    /** launch site labels */
     launchLabel1 = document.getElementById("tab-one-label");
     launchLabel1.innerText = launchData[0].site_name_long;
 
@@ -145,8 +181,7 @@ function siteLabels() {
     launchLabel6 = document.getElementById("tab-six-label");
     launchLabel6.innerText = launchData[5].site_name_long;
 
-    //      Landing site labels
-
+    /** Landing site labels */
     landingLabel1 = document.getElementById("tab-one-label-land");
     landingLabel1.innerText = landData[0].full_name;
 
@@ -167,20 +202,22 @@ function siteLabels() {
 
     landingLabel7 = document.getElementById("tab-seven-label-land");
     landingLabel7.innerText = landData[6].full_name;
-
-
 }
 
-
+/** Here I have created the headers for both Landing and launch sites */
 function headers() {
 
+    /** first i create an empty array and use the Object.keys() method to get the enumberable property names*/
     let tableHeaders = [];
     Object.keys(launchData[1]).forEach(key => {
         let newKey = key.replace(/_/g, " ");
         let upper = newKey.replace(/^\w/, c => c.toUpperCase());
 
+        /** Push headers to the empty array */
         tableHeaders.push(upper);
     });
+
+    /** repeated the above but for landing sites! */
     let landHeaders = [];
     Object.keys(landData[1]).forEach(key => {
         let newKey = key.replace(/_/g, " ");
@@ -254,30 +291,30 @@ function headers() {
 
 }
 
+/** This Function adds data to the launch site table */
 function launchSiteData() {
-    //       Launch Site Table Data 
 
-    let launchBody1 = document.getElementById("tab-one-body");
-    let launchBody2 = document.getElementById("tab-two-body");
-    let launchBody3 = document.getElementById("tab-three-body");
-    let launchBody4 = document.getElementById("tab-four-body");
-    let launchBody5 = document.getElementById("tab-five-body");
-    let launchBody6 = document.getElementById("tab-six-body");
-    let tableRow1 = document.createElement("tr");
-    let tableRow2 = document.createElement("tr");
-    let tableRow3 = document.createElement("tr");
-    let tableRow4 = document.createElement("tr");
-    let tableRow5 = document.createElement("tr");
-    let tableRow6 = document.createElement("tr");
-
+    /** 
+     * first i access the table "bodys" i.e the area the info will be displayed.
+     * Then i create a table row and clone 5 times so each body has its own row.
+     */
+    let launchBody1 = document.getElementById("tab-one-body"),
+        launchBody2 = document.getElementById("tab-two-body"),
+        launchBody3 = document.getElementById("tab-three-body"),
+        launchBody4 = document.getElementById("tab-four-body"),
+        launchBody5 = document.getElementById("tab-five-body"),
+        launchBody6 = document.getElementById("tab-six-body"),
+        tableRow1 = document.createElement("tr");
 
     tableRow1.setAttribute("role", "row");
-    tableRow2.setAttribute("role", "row");
-    tableRow3.setAttribute("role", "row");
-    tableRow4.setAttribute("role", "row");
-    tableRow5.setAttribute("role", "row");
-    tableRow6.setAttribute("role", "row");
 
+    let tableRow2 = tableRow1.cloneNode(false),
+        tableRow3 = tableRow1.cloneNode(false),
+        tableRow4 = tableRow1.cloneNode(false),
+        tableRow5 = tableRow1.cloneNode(false),
+        tableRow6 = tableRow1.cloneNode(false);
+
+    /** append all rows to the table body */
     launchBody1.appendChild(tableRow1);
     launchBody2.appendChild(tableRow2);
     launchBody3.appendChild(tableRow3);
@@ -285,6 +322,7 @@ function launchSiteData() {
     launchBody5.appendChild(tableRow5);
     launchBody6.appendChild(tableRow6);
 
+    /** HTML content for each launch site */
     tableRow1.innerHTML = `<td class="launch-item">${launchData[0].status}</td>
 								        <td class="launch-item">${launchData[0].location.name}</td>
 								        <td class="launch-item">${launchData[0].vehicles_launched[0]}</td>
@@ -292,8 +330,6 @@ function launchSiteData() {
 								        <td class="launch-item">${launchData[0].successful_launches}</td>
 								        <td class="launch-item"><a href="${launchData[0].wikipedia}" target="_blank">Click Here!</a></td>
 								        <td class="launch-item">${launchData[0].details}</td>`;
-
-
 
     tableRow2.innerHTML = `<td class="launch-item">${launchData[1].status}</td>
 								        <td class="launch-item">${launchData[1].location.name}</td>
@@ -303,15 +339,13 @@ function launchSiteData() {
 								        <td class="launch-item"><a href="${launchData[1].wikipedia}" target="_blank">Click Here!</a></td>
 								        <td class="launch-item">${launchData[1].details}</td>`;
 
-
     tableRow3.innerHTML = `<td class="launch-item">${launchData[2].status}</td>
 								        <td class="launch-item">${launchData[2].location.name}</td>
 								        <td class="launch-item">${launchData[2].vehicles_launched[0]}</td>
 								        <td class="launch-item">${launchData[2].attempted_launches}</td>
 								        <td class="launch-item">${launchData[2].successful_launches}</td>
 								        <td class="launch-item"><a href="${launchData[2].wikipedia}" target="_blank">Click Here!</a></td>
-								        <td class="launch-item">${launchData[2].details}</td>`;
-
+                                        <td class="launch-item">${launchData[2].details}</td>`;
 
     tableRow4.innerHTML = `<td class="launch-item">${launchData[3].status}</td>
 								        <td class="launch-item">${launchData[3].location.name}</td>
@@ -339,32 +373,32 @@ function launchSiteData() {
 
 }
 
+/** This Function adds data to the landing site table */
 function landSiteData() {
-    //       Landing Site Table Data 
-
+    
+    /** 
+     * first i access the table "bodys" i.e the area the info will be displayed.
+     * Then i create a table row and clone 6 times so each body has its own row.
+     */
     let landBody1 = document.getElementById("tab-one-body-land");
-    let landBody2 = document.getElementById("tab-two-body-land");
-    let landBody3 = document.getElementById("tab-three-body-land");
-    let landBody4 = document.getElementById("tab-four-body-land");
-    let landBody5 = document.getElementById("tab-five-body-land");
-    let landBody6 = document.getElementById("tab-six-body-land");
-    let landBody7 = document.getElementById("tab-seven-body-land");
-    let landRow1 = document.createElement("tr");
-    let landRow2 = document.createElement("tr");
-    let landRow3 = document.createElement("tr");
-    let landRow4 = document.createElement("tr");
-    let landRow5 = document.createElement("tr");
-    let landRow6 = document.createElement("tr");
-    let landRow7 = document.createElement("tr");
+        landBody2 = document.getElementById("tab-two-body-land"),
+        landBody3 = document.getElementById("tab-three-body-land"),
+        landBody4 = document.getElementById("tab-four-body-land"),
+        landBody5 = document.getElementById("tab-five-body-land"),
+        landBody6 = document.getElementById("tab-six-body-land"),
+        landBody7 = document.getElementById("tab-seven-body-land"),
+        landRow1 = document.createElement("tr");
 
     landRow1.setAttribute("role", "row");
-    landRow2.setAttribute("role", "row");
-    landRow3.setAttribute("role", "row");
-    landRow4.setAttribute("role", "row");
-    landRow5.setAttribute("role", "row");
-    landRow6.setAttribute("role", "row");
-    landRow7.setAttribute("role", "row");
+    
+    let landRow2 = landRow1.cloneNode(landRow1),
+        landRow3 = landRow1.cloneNode(landRow1),
+        landRow4 = landRow1.cloneNode(landRow1),
+        landRow5 = landRow1.cloneNode(landRow1),
+        landRow6 = landRow1.cloneNode(landRow1),
+        landRow7 = landRow1.cloneNode(landRow1);
 
+    /** append all rows to table body */
     landBody1.appendChild(landRow1);
     landBody2.appendChild(landRow2);
     landBody3.appendChild(landRow3);
@@ -373,7 +407,7 @@ function landSiteData() {
     landBody6.appendChild(landRow6);
     landBody7.appendChild(landRow7);
 
-
+    /** HTML content for each land site */
     landRow1.innerHTML = `<td class="land-item">${landData[0].status}</td>
 									    <td class="land-item">${landData[0].location.name}</td>
 									    <td class="land-item">${landData[0].landing_type}</td>
@@ -381,7 +415,6 @@ function landSiteData() {
 									    <td class="land-item">${landData[0].successful_landings}</td>
 									    <td class="land-item"><a href="${landData[0].wikipedia}" target="_blank">Click Here!</a></td>
 									    <td class="land-item">${landData[0].details}</td>`;
-
 
     landRow2.innerHTML = `<td class="land-item">${landData[1].status}</td>
 									    <td class="land-item">${landData[1].location.name}</td>
@@ -391,7 +424,6 @@ function landSiteData() {
 									    <td class="land-item"><a href="${landData[1].wikipedia}" target="_blank">Click Here!</a></td>
 									    <td class="land-item">${landData[1].details}</td>`;
 
-
     landRow3.innerHTML = `<td class="land-item">${landData[2].status}</td>
 									    <td class="land-item">${landData[2].location.name}</td>
 									    <td class="land-item">${landData[2].landing_type}</td>
@@ -399,7 +431,6 @@ function landSiteData() {
 									    <td class="land-item">${landData[2].successful_landings}</td>
 									    <td class="land-item"><a href="${landData[2].wikipedia}" target="_blank">Click Here!</a></td>
 									    <td class="land-item">${landData[2].details}</td>`;
-
 
     landRow4.innerHTML = `<td class="land-item">${landData[3].status}</td>
 									    <td class="land-item">${landData[3].location.name}</td>
@@ -417,7 +448,6 @@ function landSiteData() {
 									    <td class="land-item"><a href="${landData[4].wikipedia}" target="_blank">Click Here!</a></td>
 									    <td class="land-item">${landData[4].details}</td>`;
 
-
     landRow6.innerHTML = `<td class="land-item">${landData[5].status}</td>
 									    <td class="land-item">${landData[5].location.name}</td>
 									    <td class="land-item">${landData[5].landing_type}</td>
@@ -425,7 +455,6 @@ function landSiteData() {
 									    <td class="land-item">${landData[5].successful_landings}</td>
 									    <td class="land-item"><a href="${landData[5].wikipedia}" target="_blank">Click Here!</a></td>
 									    <td class="land-item">${landData[5].details}</td>`;
-
 
     landRow7.innerHTML = `<td class="land-item">${landData[6].status}</td>
 									    <td class="land-item">${landData[6].location.name}</td>
