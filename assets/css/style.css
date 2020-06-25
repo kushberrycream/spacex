@@ -702,6 +702,34 @@ a:hover {
 
 /*    contact form      */
 
+.form #sendmessage {
+  color: #288e3b;
+  border: 1px solid #288e3b;
+  display: none;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  background-color: rgba(0, 0, 26, 0.9);
+}
+
+.form #errormessage {
+  color: red;
+  display: none;
+  border: 1px solid red;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  background-color: rgba(0, 0, 26, 0.9);
+}
+
+.form #sendmessage.show,
+.form #errormessage.show,
+.form .show {
+  display: block;
+}
+
 .contact {
   max-width: 800px;
   margin: 50px auto;
