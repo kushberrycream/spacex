@@ -33,7 +33,7 @@ function allHistoryCard() {
         let linkCols2 = linkCols1.cloneNode(false);
         let linkCols3 = linkCols1.cloneNode(false);
 
-        mainContent.appendChild(row1);
+        MAINCONTENT.appendChild(row1);
         row1.appendChild(card);
         card.appendChild(cardHead);
         card.appendChild(cardBody);

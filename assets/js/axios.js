@@ -5,25 +5,21 @@
  */
 
 
-/** 
- * Constants and Variables,
- * SpaceX Endpoints Used on multiple Functions
- * @const {string} spaceX URL to Retrieve Main SpaceX API
- * @const {string} infoApi URL to Retrieve SpaceX info API 
- * @const {string} upcomingApi URL to Retrieve SpaceX upcoming launches API 
- * @const {string} launchPads URL to Retrieve SpaceX launch sites API 
- * @const {string} landPads URL to Retrieve SpaceX land sites API 
- * @const {HTMLElement} mainContent Get data element and add to variable
- * @type {string} A quierystring to add to end of an endpoint
- */
+      /** @const {string} SPACEX URL which retrieves data from main SpaceX API */
+const SPACEX = "https://api.spacexdata.com/v3/",
+      /** @const {string} INFOAPI Adds info to end of URL for a different endpoint */
+      INFOAPI = SPACEX + "info",
+      /** @const {string} UPCOMINGAPI Adds launches/upcoming to url for different endpoint */
+      UPCOMINGAPI = SPACEX + "launches/upcoming",
+      /** @const {string} LAUNCHPADS Adds launchpads to url for different endpoint */
+      LAUNCHPADS = SPACEX + "launchpads",
+      /** @const {string} LANDPADS Adds landpads to url for different endpoint */
+      LANDPADS = SPACEX + "landpads",
+      /** @const {HTMLElement} MAINCONTENT Accesses element with ID of data*/
+      MAINCONTENT = document.getElementById("data");
 
-const spaceX = "https://api.spacexdata.com/v3/",
-      infoApi = "https://api.spacexdata.com/v3/info",
-      upcomingApi = "https://api.spacexdata.com/v3/launches/upcoming",
-      launchPads = "https://api.spacexdata.com/v3/launchpads",
-      landPads = "https://api.spacexdata.com/v3/landpads",
-      mainContent = document.getElementById("data");
 
+/** @type {string} A quierystring to add to end of an endpoint */
 let btnValue = "?limit=10&offset=86";
 
 
@@ -36,9 +32,9 @@ let btnValue = "?limit=10&offset=86";
 
 function homepageData() {
     axios.all([
-        axios.get(upcomingApi),
-        axios.get(launchPads),
-        axios.get(landPads)
+        axios.get(UPCOMINGAPI),
+        axios.get(LAUNCHPADS),
+        axios.get(LANDPADS)
     ])
         .then(axios.spread((upcomingApi, launchPads, landPads) => {
 
@@ -75,7 +71,7 @@ function callRockets() {
  */
 function oneRocket() {
     $("#loader").removeClass("hide-loader");
-    axios.get(spaceX + btnValue).then(response => {
+    axios.get(SPACEX + btnValue).then(response => {
         specificRocket = response.data;
         rocketSpecCard();
         rocketImages();
@@ -102,7 +98,7 @@ function callDragons() {
  */
 function oneDragon() {
     $("#loader").removeClass("hide-loader");
-    axios.get(spaceX + btnValue).then(response => {
+    axios.get(SPACEX + btnValue).then(response => {
         specificDragon = response.data;
         dragonSpecCard();
         dragonImages();
@@ -197,8 +193,8 @@ function callHistory() {
   */
 function callAbout() {
     axios.all([
-        axios.get(spaceX),
-        axios.get(infoApi)
+        axios.get(SPACEX),
+        axios.get(INFOAPI)
     ])
         .then(axios.spread((spaceX, infoApi) => {
             spacexData = spaceX.data;

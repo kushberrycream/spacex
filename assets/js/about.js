@@ -41,7 +41,7 @@ function aboutPage() {
     col3.setAttribute("class", "col-md-6");
     col4.setAttribute("class", "col-md-6");
 
-    mainContent.appendChild(info);
+    MAINCONTENT.appendChild(info);
     info.appendChild(card1);
     card1.appendChild(cardHead1);
     card1.appendChild(cardBody1);
@@ -125,7 +125,7 @@ function companyInfo(cardHead1, col1, col2) {
     coo.innerHTML = `<strong>COO: </strong>${infoApiData.coo}`;
     value.innerHTML = `<strong>Valuation: </strong>${valuation}`;
     hq.innerHTML = `<strong>HQ: </strong>${infoApiData.headquarters.address}, ${infoApiData.headquarters.city}, ${infoApiData.headquarters.state}`;
-    details.innerText = infoApi.summary;
+    details.innerText = infoApiData.summary;
     website.innerHTML = `<i class="icon fas fa-link"></i>`;
     flickr.innerHTML = `<i class="icon fab fa-flickr"></i>`;
     twitter.innerHTML = `<i class="icon fab fa-twitter-square"></i>`;

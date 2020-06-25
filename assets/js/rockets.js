@@ -1,3 +1,12 @@
+/**
+ * @fileoverview JS file with all functions called on the Rockets page,
+ * @author Tom Jones <tom@wilson-express.co.uk>
+ */
+
+/** 
+ * Call callRockets() function from axios.js,
+ */
+
 callRockets();
 
 // calls spacex rocket api - all rockets
@@ -23,7 +32,7 @@ function eachRocketCard() {
         column1.setAttribute("class", "col-md-6");
         column2.setAttribute("class", "col-md-6 text-center");
 
-        mainContent.appendChild(info);
+        MAINCONTENT.appendChild(info);
         info.appendChild(cardHead);
         info.appendChild(cardBody);
         cardBody.appendChild(row);
@@ -113,9 +122,9 @@ function rocketSpecCard() {
     let cardBody2 = cardBody.cloneNode(false);
     let cardBody3 = cardBody.cloneNode(false);
 
-    mainContent.innerHTML = `<h1 class="title">${specificRocket.rocket_name}</h1>`;
+    MAINCONTENT.innerHTML = `<h1 class="title">${specificRocket.rocket_name}</h1>`;
 
-    mainContent.appendChild(aboutRocket);
+    MAINCONTENT.appendChild(aboutRocket);
     aboutRocket.appendChild(row);
     row.appendChild(column1);
     row.appendChild(column2);

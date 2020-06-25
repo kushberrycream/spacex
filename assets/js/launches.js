@@ -10,7 +10,7 @@ function allLaunches() {
 
     title.setAttribute("class", "title");
 
-    mainContent.appendChild(title);
+    MAINCONTENT.appendChild(title);
 
     title.innerText = "SpaceX Launches";
 
@@ -42,7 +42,7 @@ function allLaunches() {
         column1.setAttribute("class", "col-md-7");
         column2.setAttribute("class", "col-md-5 text-center");
 
-        mainContent.appendChild(launchHead);
+        MAINCONTENT.appendChild(launchHead);
         launchHead.innerHTML = launchSuccess;
         launchHead.appendChild(cardBody);
         cardBody.appendChild(row);

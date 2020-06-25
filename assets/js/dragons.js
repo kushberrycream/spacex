@@ -1,3 +1,12 @@
+/**
+ * @fileoverview JS file with all functions called on the Dragons page,
+ * @author Tom Jones <tom@wilson-express.co.uk>
+ */
+
+/** 
+ * Call callDragons() function from axios.js,
+ */
+
 callDragons();
 
 // calls spacex dragons api
@@ -23,7 +32,7 @@ function eachDragonCard() {
         column1.setAttribute("class", "col-md-6");
         column2.setAttribute("class", "col-md-6 text-center");
 
-        mainContent.appendChild(info);
+        MAINCONTENT.appendChild(info);
         info.appendChild(cardHead);
         info.appendChild(cardBody);
         cardBody.appendChild(row);

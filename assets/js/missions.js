@@ -1,3 +1,12 @@
+/**
+ * @fileoverview JS file with all functions called on the Missions page,
+ * @author Tom Jones <tom@wilson-express.co.uk>
+ */
+
+/** 
+ * Call callMissions() function from axios.js,
+ */
+
 callMissions();
 
 // calls spacex missions api
@@ -21,7 +30,7 @@ function eachMissionCard() {
         headLink.setAttribute("target", "_blank");
         cardBody.setAttribute("class", "card-body");
 
-        mainContent.appendChild(info);
+        MAINCONTENT.appendChild(info);
         info.appendChild(cardHead);
         cardHead.appendChild(headLink);
         info.appendChild(cardBody);
