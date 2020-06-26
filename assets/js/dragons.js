@@ -61,11 +61,11 @@ function eachDragonData(item, column1, column2) {
     cardInfo3.setAttribute("class", "card-text");
     linkRow.setAttribute("class", "row text-center rocket-dragon-links");
     linkCol1.setAttribute("class", "col-6");
-    linkCol2.setAttribute("class", "row-6");
+    linkCol2.setAttribute("class", "col-6");
     wiki.setAttribute("href", item.wikipedia);
-    wiki.setAttribute("class", "hvr-pulse-grow ");
+    wiki.setAttribute("class", "hvr-pulse-grow");
     wiki.setAttribute("target", "_blank");
-    button.setAttribute("onclick", "getValue(value)");
+    button.setAttribute(`onclick`, `getValue("dragon", value)`);
     button.setAttribute("value", `dragons/${item.id}`)
     button.setAttribute("class", "more btn btn-primary");
     image.setAttribute("class", "rocket-image");
@@ -121,9 +121,9 @@ function dragonSpecCard() {
     let cardBody2 = cardBody.cloneNode(false);
     let cardBody3 = cardBody.cloneNode(false);
 
-    mainContent.innerHTML = `<h1 class="title">${specificDragon.name}</h1>`;
+    MAINCONTENT.innerHTML = `<h1 class="title">${specificDragon.name}</h1>`;
 
-    mainContent.appendChild(aboutDragon);
+    MAINCONTENT.appendChild(aboutDragon);
     aboutDragon.appendChild(row);
     row.appendChild(column1);
     row.appendChild(column2);

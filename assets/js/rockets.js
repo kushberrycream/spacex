@@ -66,7 +66,7 @@ function eachRocketData(item, column1, column2) {
     wiki.setAttribute("target", "_blank");
     wiki.setAttribute("class", "hvr-pulse-grow");
     wiki.setAttribute("aria-label", "Wikipedia Link");
-    button.setAttribute("onclick", "getValue(value)");
+    button.setAttribute(`onclick`, `getValue("rocket", value)`);
     button.setAttribute("value", `rockets/${item.rocket_id}`);
     button.setAttribute("class", "more btn btn-primary");
     button.setAttribute("aria-label", "More Button");

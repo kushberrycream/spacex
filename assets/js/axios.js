@@ -15,11 +15,21 @@ const SPACEX = "https://api.spacexdata.com/v3/",
       LAUNCHPADS = SPACEX + "launchpads",
       /** @const {string} LANDPADS Adds landpads to url for different endpoint */
       LANDPADS = SPACEX + "landpads",
+      /** @const {string} ROCKETS Adds rockets to url for different endpoint */
+      ROCKETS = SPACEX + "rockets",
+      /** @const {string} DRAGONS Adds dragons to url for different endpoint */
+      DRAGONS = SPACEX + "dragons",
+      /** @const {string} MISSIONS Adds missions to url for different endpoint */
+      MISSIONS = SPACEX + "missions",
+      /** @const {string} PAST Adds launches/past to url for different endpoint */
+      PAST = SPACEX + "launches/past",
+      /** @const {string} HISTORY Adds history to url for different endpoint */
+      HISTORY = SPACEX + "history",
       /** @const {HTMLElement} MAINCONTENT Accesses element with ID of data*/
       MAINCONTENT = document.getElementById("data");
 
 
-/** @type {string} A quierystring to add to end of an endpoint */
+    /** @type {string} A quierystring to add to end of an endpoint */
 let btnValue = "?limit=10&offset=86";
 
 
@@ -57,21 +67,22 @@ function homepageData() {
  * functions within rockets.js.
  */
 function callRockets() {
-    axios.get("https://api.spacexdata.com/v3/rockets").then(response => {
+    axios.get(ROCKETS).then(response => {
         rockets = response.data;
         eachRocketCard();
     });
 }
 
-/** 
- * Function which retrieves specific rocket data once user selects which one.
- * Displays loader before API Called and Data displayed.
- * Uses btnValue variable to change the URL on users button press.
- * Then turns repsonse data into a variable and call all related functions within rockets.js.
- */
-function oneRocket() {
+ /**
+  * Function which retrieves specific rocket data once user selects which one.
+  * Displays loader before API Called and Data displayed.
+  * Uses btnValue variable to change the URL on users button press.
+  * Then turns repsonse data into a variable and call all related functions within rockets.js.
+  * @param {string} value this is the value of the button selected on rockets.js
+  */
+function oneRocket(value) {
     $("#loader").removeClass("hide-loader");
-    axios.get(SPACEX + btnValue).then(response => {
+    axios.get(SPACEX + value).then(response => {
         specificRocket = response.data;
         rocketSpecCard();
         rocketImages();
@@ -84,7 +95,7 @@ function oneRocket() {
  * functions within dragons.js.
  */
 function callDragons() {
-    axios.get("https://api.spacexdata.com/v3/dragons").then(response => {
+    axios.get(DRAGONS).then(response => {
         dragons = response.data;
         eachDragonCard();
     });
@@ -95,10 +106,11 @@ function callDragons() {
  * Displays loader before API Called and Data displayed.
  * Uses btnValue variable to change the URL on users button press.
  * Then turns repsonse data into a variable and call all related functions within dragons.js.
+ * @param {string} value this is the value of the button selected on dragons.js
  */
-function oneDragon() {
+function oneDragon(value) {
     $("#loader").removeClass("hide-loader");
-    axios.get(SPACEX + btnValue).then(response => {
+    axios.get(SPACEX + value).then(response => {
         specificDragon = response.data;
         dragonSpecCard();
         dragonImages();
@@ -112,21 +124,18 @@ function oneDragon() {
  * or dragon is displayed.
  * @param {string} value value of btn
  */
-function getValue(value) {
-    btnValue = value;
-
-
-    /** checks to see if eachRocket is a functions on the current page  */
-    if (typeof eachRocketCard === "function") {
-
+/**
+ * 
+ * @param {string} type type is a string of either "rocket" or "dragon"
+ * @param {string} value This is the value of button selected by user
+ */
+function getValue(type, value) {
+    if (type == "rocket") {
         /** call oneRocket function to produce new response data */
-        oneRocket();
-
-    /** checks to see if eachDragon is a functions on the current page  */
-    } else if (typeof eachDragonCard === "function") {
-
+        oneRocket(value);
+    } else if (type == "dragon") {
         /** call oneDragon function to produce new response data */
-        oneDragon();
+        oneDragon(value);
     }
 }
 
@@ -134,7 +143,7 @@ function getValue(value) {
 function callMissions() {
 
     /** Add data from missions api to a variable and call any related functions */
-    axios.get("https://api.spacexdata.com/v3/missions").then(response => {
+    axios.get(MISSIONS).then(response => {
         missionData = response.data;
         eachMissionCard();
     });
@@ -146,8 +155,8 @@ function callMissions() {
  * Turn response data into a variable and reverse object to show newest first.
  * Then call all related functions in launches.js
  */
-function callLaunches() {
-    axios.get("https://api.spacexdata.com/v3/launches/past" + btnValue).then(response => {
+function callLaunches(value) {
+    axios.get(PAST + value).then(response => {
         launchData = response.data;
         launchReversed = launchData.slice().reverse();
         allLaunches();
@@ -162,11 +171,10 @@ function callLaunches() {
  * @param {string} value value of btn
  */
 function getPagination(value) {
-    btnValue = value;
-
     /** Recall Past Launches API and clear Data before displaying new data */
     clearData();
-    callLaunches();
+    callLaunches(value);
+
     
     $("#loader").removeClass("hide-loader");
 }
@@ -178,7 +186,7 @@ function getPagination(value) {
  * to display newest data first. then call related functions in history.js 
  */
 function callHistory() {
-    axios.get("https://api.spacexdata.com/v3/history").then(response => {
+    axios.get(HISTORY).then(response => {
         historyData = response.data;
         historyReversed = historyData.slice().reverse();
         allHistoryCard();
@@ -206,5 +214,5 @@ function callAbout() {
 
 /** function to clear all HTML from inside the Data div on Launches.html */ 
 function clearData() {
-    mainContent.innerHTML = "";
+    MAINCONTENT.innerHTML = "";
 }
