@@ -7,7 +7,7 @@
  * Call callRockets() function from axios.js,
  */
 
-callRockets();
+fetchRockets();
 
 // calls spacex rocket api - all rockets
 
@@ -94,6 +94,10 @@ function eachRocketData(item, column1, column2) {
 
 function rocketSpecCard() {
 
+    window.history.pushState('', null, specificRocket.rocket_id + ".html");
+    $(window).on('popstate', function () {
+        location.reload(true);
+    });
     $("#loader").addClass("hide-loader");
 
     let aboutRocket = document.createElement("div");

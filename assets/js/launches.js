@@ -1,11 +1,11 @@
 
-callLaunches("?limit=10&offset=86");
+callLaunches("?order=desc");
 pagination();
 
 // calls spacex past launches api
 function allLaunches() {
-   
 
+    $("#loader").addClass("hide-loader");
     let title = document.createElement("h1");
 
     title.setAttribute("class", "title");
@@ -14,17 +14,15 @@ function allLaunches() {
 
     title.innerText = "SpaceX Launches";
 
-    launchReversed.forEach(item => {
-        $("#loader").addClass("hide-loader");
 
-
-
-        let launchHead = document.createElement("div");
-        let cardBody = document.createElement("div");
-        let row = document.createElement("div");
-        let column1 = document.createElement("div");
-        let column2 = document.createElement("div");
-        let launchSuccess = item.launch_success;
+    for (var i = 0; i < launchData.length ; i++) {
+        let item = launchData[i],
+            launchHead = document.createElement("div"),
+            cardBody = document.createElement("div"),
+            row = document.createElement("div"),
+            column1 = document.createElement("div"),
+            column2 = document.createElement("div"),
+            launchSuccess = item.launch_success;
 
         if (launchSuccess == true) {
             launchSuccess = `<div class='card-header green'>
@@ -50,8 +48,8 @@ function allLaunches() {
         row.appendChild(column2);
 
         launchInfo(item, column1, column2);
+    }
 
-    });
 }
 
 function launchInfo(item, column1, column2) {
@@ -171,24 +169,20 @@ function pagination() {
     list.appendChild(listItem9);
     list.appendChild(listItem10);
 
-    listItem1.innerHTML = `<option class="page-link" onclick="getPagination(value)" value="?limit=10&offset=86">1</option>`;
-    listItem2.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=76" class="page-link">2</option>`;
-    listItem3.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=66" class="page-link">3</option>`;
-    listItem4.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=56" class="page-link">4</option>`;
-    listItem5.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=46" class="page-link">5</option>`;
-    listItem6.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=36" class="page-link">6</option>`;
-    listItem7.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=26" class="page-link">7</option>`;
-    listItem8.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=16" class="page-link">8</option>`;
-    listItem9.innerHTML = `<option onclick="getPagination(value)" value="?limit=10&offset=06" class="page-link">9</option>`;
-    listItem10.innerHTML = `<option onclick="getPagination(value)" value="?limit=6&offset=0" class="page-link">10</option>`;
-
-
-
-
+    listItem1.innerHTML = `<option class="page-link" onclick="getPagination(value)" value="?order=desc&limit=10&offset=0">1</option>`;
+    listItem2.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=10" class="page-link">2</option>`;
+    listItem3.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=20" class="page-link">3</option>`;
+    listItem4.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=30" class="page-link">4</option>`;
+    listItem5.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=40" class="page-link">5</option>`;
+    listItem6.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=50" class="page-link">6</option>`;
+    listItem7.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=60" class="page-link">7</option>`;
+    listItem8.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=70" class="page-link">8</option>`;
+    listItem9.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=80" class="page-link">9</option>`;
+    listItem10.innerHTML = `<option onclick="getPagination(value)" value="?order=desc&limit=10&offset=90" class="page-link">10</option>`;
 }
-
 
 $(".page-item").on("click", function () {
     $(".page-item").removeClass("active");
     $(this).addClass("active");
 });
+

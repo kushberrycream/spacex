@@ -87,11 +87,18 @@ function eachDragonData(item, column1, column2) {
     cardInfo2.innerText = `First Flight: ${item.first_flight}`;
     cardInfo3.innerText = item.description;
     wiki.innerHTML = `<i class="fab fa-wikipedia-w"></i>`;
-    button.innerHTML = `More about the ${item.name} <i class="fas fa-space-shuttle"></i>`;;
+    button.innerHTML = `More about the ${item.name} <i class="fas fa-space-shuttle"></i>`;
+
+    
 
 }
 
 function dragonSpecCard() {
+
+    window.history.pushState('', null, specificDragon.id + ".html");
+    $(window).on('popstate', function () {
+        location.reload(true);
+    });
 
     $("#loader").addClass("hide-loader");
 
@@ -353,8 +360,6 @@ function imgError(img) {
     img.src = "assets/images/image-unavailable.jpg";
     return;
 }
-
-
 
 
 
