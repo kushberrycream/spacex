@@ -1,363 +1,330 @@
 <!DOCTYPE html>
 <html lang="en-gb">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<meta name="description" content="Home page displaying Upcoming launches and also land and launch sites in tables">
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
-	<link rel="stylesheet" href="assets/css/style.css" />
-	<title>Space X</title>
-</head>
-
-<body>
-	<!-- Navbar Start -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a href="index.html">
-			<img src="assets/images/spacexlogo.png" class="d-inline-block align-top navbar-brand" alt="SpaceX"/>
-         </a>
-			<button class="navbar-toggler" type="button"
-            data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" >
-         <span class="navbar-toggler-icon"></span>
-         </button>
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item  active" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="index.html" class="nav-link">Home</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="missions.html" id="missions" class="nav-link">Missions</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="launches.html" id="launches" class="nav-link">Launches</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="history.html" id="history" class="nav-link">History</a>
-					</li>
-					<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-						<a href="about.html" class="nav-link">About</a>
-					</li>
-				</ul>
-				<div class="socialbuttons">
-					<a class="social" href="contact.html"><i class="fas fa-envelope"></i></a>
-					<a class="social" href="https://www.facebook.com/profile.php?id=555815524" target="_blank"
-						rel="noreferrer"><i class="fab fa-facebook-square"></i></a>
-					<a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/" target="_blank"
-						rel="noreferrer"><i class="fab fa-linkedin"></i></a>
-					<a class="social" href="https://github.com/kushberrycream" target="_blank"
-						rel="noreferrer"><i class="fab fa-github-square"></i></a>
-				</div>
-			</div>
-	</nav>
-	<!-- Mavbar End -->
-
-	<!-- Main Site Content -->
-	<section class="content">
-
-		<!-- Launches Carousel Start -->
-		<div class="bg container-fluid">
-
-			<div class="overlay"></div>
-
-			<div class="container-fluid">
-				<div class="card card-raised card-carousel">
-					<h1 class="title">Upcoming Launches</h1>
-					<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
-						data-interval="10000">
-						<ol id="data-slide" class="carousel-indicators">
-
-						</ol>
-						<div id="upcoming-launch" class="carousel-inner">
-
-						</div>
-					</div>
-				</div>
-				<a class="carousel-control-prev-home" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					<i class="fas fa-long-arrow-alt-left"></i>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next-home" href="#carouselExampleIndicators" role="button" data-slide="next">
-					<i class="fas fa-long-arrow-alt-right"></i>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-        <!-- Launches Carousel End-->
-
-        <!-- Homepage Introduction Start -->
-		<div id="introduction" class="introduction container">
-			<h1 class="title">SpaceX Vehicle and Launch Data</h1>
-			<p class="website-description">Welcome! This site was built using the SpaceX API to bring you an interactive
-				view of all the SpaceX Launch, Mission, History and Vehicle data.
-				This website is in no way linked with SpaceX. I hope you are able to view all the information you have
-				come here to view, if the page is missing something or you experience
-				any bugs please send me a message via the contact form. </p>
-		</div>
-        <!-- Homepage Introduction End -->
-
-        <!-- Launch / Land Sites Start -->
-		<div class="container">
-
-			<h2 class="title">Launch Sites</h2>
-
-			<div class="responsive-tabs">
-
-				<fieldset id="launch-state">
-					<input class="state" type="radio" title="tab-one" name="launch-state" id="tab-one" checked="checked" />
-					<input class="state" type="radio" title="tab-two" name="launch-state" id="tab-two" />
-					<input class="state" type="radio" title="tab-three" name="launch-state" id="tab-three" />
-					<input class="state" type="radio" title="tab-four" name="launch-state" id="tab-four" />
-					<input class="state" type="radio" title="tab-five" name="launch-state" id="tab-five" />
-					<input class="state" type="radio" title="tab-six" name="launch-state" id="tab-six" />
-
-
-					<div class="tabs flex-tabs">
-						<label for="tab-one" id="tab-one-label" class="tab"></label>
-						<label for="tab-two" id="tab-two-label" class="tab"></label>
-						<label for="tab-three" id="tab-three-label" class="tab"></label>
-						<label for="tab-four" id="tab-four-label" class="tab"></label>
-						<label for="tab-five" id="tab-five-label" class="tab"></label>
-						<label for="tab-six" id="tab-six-label" class="tab"></label>
-
-
-						<div id="tab-one-panel" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-one-head"></thead>
-								<tbody role="rowgroup" id="tab-one-body"></tbody>
-							</table>
-						</div>
-						<div id="tab-two-panel" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-two-head"></thead>
-								<tbody role="rowgroup" id="tab-two-body"></tbody>
-							</table>
-						</div>
-						<div id="tab-three-panel" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-three-head"></thead>
-								<tbody role="rowgroup" id="tab-three-body"></tbody>
-							</table>
-						</div>
-						<div id="tab-four-panel" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-four-head"></thead>
-								<tbody role="rowgroup" id="tab-four-body"></tbody>
-							</table>
-						</div>
-						<div id="tab-five-panel" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-five-head"></thead>
-								<tbody role="rowgroup" id="tab-five-body"></tbody>
-							</table>
-						</div>
-						<div id="tab-six-panel" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-six-head"></thead>
-								<tbody role="rowgroup" id="tab-six-body"></tbody>
-							</table>
-						</div>
-					</div>
-				</fieldset>
-			</div>
-
-			<h2 class="title">Landing Sites</h2>
-
-			<div class="responsive-tabs">
-
-				<fieldset id="land-state">
-					<input class="state" type="radio" title="tab-one-land" name="land-state" id="tab-one-land" checked="checked" />
-					<input class="state" type="radio" title="tab-two-land" name="land-state" id="tab-two-land" />
-					<input class="state" type="radio" title="tab-three-land" name="land-state" id="tab-three-land" />
-					<input class="state" type="radio" title="tab-four-land" name="land-state" id="tab-four-land" />
-					<input class="state" type="radio" title="tab-five-land" name="land-state" id="tab-five-land" />
-					<input class="state" type="radio" title="tab-six-land" name="land-state" id="tab-six-land" />
-					<input class="state" type="radio" title="tab-seven-land" name="land-state" id="tab-seven-land" />
-
-					<div class="tabs flex-tabs">
-						<label for="tab-one-land" id="tab-one-label-land" class="tab"></label>
-						<label for="tab-two-land" id="tab-two-label-land" class="tab"></label>
-						<label for="tab-three-land" id="tab-three-label-land" class="tab"></label>
-						<label for="tab-four-land" id="tab-four-label-land" class="tab"></label>
-						<label for="tab-five-land" id="tab-five-label-land" class="tab"></label>
-						<label for="tab-six-land" id="tab-six-label-land" class="tab"></label>
-						<label for="tab-seven-land" id="tab-seven-label-land" class="tab"></label>
-
-						<div id="tab-one-panel-land" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-one-head-land"></thead>
-								<tbody role="rowgroup" id="tab-one-body-land"></tbody>
-							</table>
-						</div>
-						<div id="tab-two-panel-land" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-two-head-land"></thead>
-								<tbody role="rowgroup" id="tab-two-body-land"></tbody>
-							</table>
-						</div>
-						<div id="tab-three-panel-land" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-three-head-land"></thead>
-								<tbody role="rowgroup" id="tab-three-body-land"></tbody>
-							</table>
-						</div>
-						<div id="tab-four-panel-land" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-four-head-land"></thead>
-								<tbody role="rowgroup" id="tab-four-body-land"></tbody>
-							</table>
-						</div>
-						<div id="tab-five-panel-land" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-five-head-land"></thead>
-								<tbody role="rowgroup" id="tab-five-body-land"></tbody>
-							</table>
-						</div>
-						<div id="tab-six-panel-land" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-six-head-land"></thead>
-								<tbody role="rowgroup" id="tab-six-body-land"></tbody>
-							</table>
-						</div>
-						<div id="tab-seven-panel-land" class="panel">
-							<table role="table">
-								<thead role="rowgroup" id="tab-seven-head-land"></thead>
-								<tbody role="rowgroup" id="tab-seven-body-land"></tbody>
-							</table>
-						</div>
-					</div>
-
-				</fieldset>
-			</div>
-		</div>
-        <!-- Launch / Land Sites End -->
-
-	</section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Home page displaying Upcoming launches and also land and launch sites in tables">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Space X</title>
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a href="index.html">
+      <img src="assets/images/spacexlogo.png" class="d-inline-block align-top navbar-brand" alt="SpaceX"/>
+      </a>
+      <button class="navbar-toggler" type="button"
+        data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" >
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item  active" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="missions.html" id="missions" class="nav-link">Missions</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="launches.html" id="launches" class="nav-link">Launches</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="history.html" id="history" class="nav-link">History</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+        </ul>
+        <div class="socialbuttons">
+          <a class="social" href="contact.html"><i class="fas fa-envelope"></i></a>
+          <a class="social" href="https://www.facebook.com/profile.php?id=555815524" target="_blank"
+            rel="noreferrer"><i class="fab fa-facebook-square"></i></a>
+          <a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/" target="_blank"
+            rel="noreferrer"><i class="fab fa-linkedin"></i></a>
+          <a class="social" href="https://github.com/kushberrycream" target="_blank"
+            rel="noreferrer"><i class="fab fa-github-square"></i></a>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Main Site Content -->
+    <section class="content">
+      <!-- Launches Carousel Start -->
+      <div class="bg container-fluid">
+        <div class="overlay"></div>
+        <div class="container-fluid">
+          <div class="card card-raised card-carousel">
+            <h1 class="title">Upcoming Launches</h1>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
+              data-interval="10000">
+              <ol id="data-slide" class="carousel-indicators">
+              </ol>
+              <div id="upcoming-launch" class="carousel-inner">
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev-home" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <i class="fas fa-long-arrow-alt-left"></i>
+          <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next-home" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <i class="fas fa-long-arrow-alt-right"></i>
+          <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <!-- Launches Carousel End-->
+      <!-- Homepage Introduction Start -->
+      <div id="introduction" class="introduction container">
+        <h1 class="title">SpaceX Vehicle and Launch Data</h1>
+        <p class="website-description">Welcome! This site was built using the SpaceX API to bring you an interactive
+          view of all the SpaceX Launch, Mission, History and Vehicle data.
+          This website is in no way linked with SpaceX. I hope you are able to view all the information you have
+          come here to view, if the page is missing something or you experience
+          any bugs please send me a message via the contact form. 
+        </p>
+      </div>
+      <!-- Homepage Introduction End -->
+      <!-- Launch / Land Sites Start -->
+      <div class="container">
+        <h2 class="title">Launch Sites</h2>
+        <div class="responsive-tabs">
+          <fieldset id="launch-state">
+            <input class="state" type="radio" title="tab-one" name="launch-state" id="tab-one" checked="checked" />
+            <input class="state" type="radio" title="tab-two" name="launch-state" id="tab-two" />
+            <input class="state" type="radio" title="tab-three" name="launch-state" id="tab-three" />
+            <input class="state" type="radio" title="tab-four" name="launch-state" id="tab-four" />
+            <input class="state" type="radio" title="tab-five" name="launch-state" id="tab-five" />
+            <input class="state" type="radio" title="tab-six" name="launch-state" id="tab-six" />
+            <div class="tabs flex-tabs">
+              <label for="tab-one" id="tab-one-label" class="tab"></label>
+              <label for="tab-two" id="tab-two-label" class="tab"></label>
+              <label for="tab-three" id="tab-three-label" class="tab"></label>
+              <label for="tab-four" id="tab-four-label" class="tab"></label>
+              <label for="tab-five" id="tab-five-label" class="tab"></label>
+              <label for="tab-six" id="tab-six-label" class="tab"></label>
+              <div id="tab-one-panel" class="panel">
+                <table>
+                  <thead id="tab-one-head"></thead>
+                  <tbody id="tab-one-body"></tbody>
+                </table>
+              </div>
+              <div id="tab-two-panel" class="panel">
+                <table>
+                  <thead id="tab-two-head"></thead>
+                  <tbody id="tab-two-body"></tbody>
+                </table>
+              </div>
+              <div id="tab-three-panel" class="panel">
+                <table>
+                  <thead id="tab-three-head"></thead>
+                  <tbody id="tab-three-body"></tbody>
+                </table>
+              </div>
+              <div id="tab-four-panel" class="panel">
+                <table>
+                  <thead id="tab-four-head"></thead>
+                  <tbody id="tab-four-body"></tbody>
+                </table>
+              </div>
+              <div id="tab-five-panel" class="panel">
+                <table>
+                  <thead id="tab-five-head"></thead>
+                  <tbody id="tab-five-body"></tbody>
+                </table>
+              </div>
+              <div id="tab-six-panel" class="panel">
+                <table>
+                  <thead id="tab-six-head"></thead>
+                  <tbody id="tab-six-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <h2 class="title">Landing Sites</h2>
+        <div class="responsive-tabs">
+          <fieldset id="land-state">
+            <input class="state" type="radio" title="tab-one-land" name="land-state" id="tab-one-land" checked="checked" />
+            <input class="state" type="radio" title="tab-two-land" name="land-state" id="tab-two-land" />
+            <input class="state" type="radio" title="tab-three-land" name="land-state" id="tab-three-land" />
+            <input class="state" type="radio" title="tab-four-land" name="land-state" id="tab-four-land" />
+            <input class="state" type="radio" title="tab-five-land" name="land-state" id="tab-five-land" />
+            <input class="state" type="radio" title="tab-six-land" name="land-state" id="tab-six-land" />
+            <input class="state" type="radio" title="tab-seven-land" name="land-state" id="tab-seven-land" />
+            <div class="tabs flex-tabs">
+              <label for="tab-one-land" id="tab-one-label-land" class="tab"></label>
+              <label for="tab-two-land" id="tab-two-label-land" class="tab"></label>
+              <label for="tab-three-land" id="tab-three-label-land" class="tab"></label>
+              <label for="tab-four-land" id="tab-four-label-land" class="tab"></label>
+              <label for="tab-five-land" id="tab-five-label-land" class="tab"></label>
+              <label for="tab-six-land" id="tab-six-label-land" class="tab"></label>
+              <label for="tab-seven-land" id="tab-seven-label-land" class="tab"></label>
+              <div id="tab-one-panel-land" class="panel">
+                <table>
+                  <thead id="tab-one-head-land"></thead>
+                  <tbody id="tab-one-body-land"></tbody>
+                </table>
+              </div>
+              <div id="tab-two-panel-land" class="panel">
+                <table>
+                  <thead id="tab-two-head-land"></thead>
+                  <tbody id="tab-two-body-land"></tbody>
+                </table>
+              </div>
+              <div id="tab-three-panel-land" class="panel">
+                <table>
+                  <thead id="tab-three-head-land"></thead>
+                  <tbody id="tab-three-body-land"></tbody>
+                </table>
+              </div>
+              <div id="tab-four-panel-land" class="panel">
+                <table>
+                  <thead id="tab-four-head-land"></thead>
+                  <tbody id="tab-four-body-land"></tbody>
+                </table>
+              </div>
+              <div id="tab-five-panel-land" class="panel">
+                <table>
+                  <thead id="tab-five-head-land"></thead>
+                  <tbody id="tab-five-body-land"></tbody>
+                </table>
+              </div>
+              <div id="tab-six-panel-land" class="panel">
+                <table>
+                  <thead id="tab-six-head-land"></thead>
+                  <tbody id="tab-six-body-land"></tbody>
+                </table>
+              </div>
+              <div id="tab-seven-panel-land" class="panel">
+                <table>
+                  <thead id="tab-seven-head-land"></thead>
+                  <tbody id="tab-seven-body-land"></tbody>
+                </table>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <!-- Launch / Land Sites End -->
+    </section>
     <!-- Main Site End -->
-
     <!-- Footer Start-->
-	<footer class="site-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-6 about-footer">
-					<h6>About</h6>
-					<p class="text-justify">This is a site built to display the vast amount of data available from
-						SpaceX.
-						I built this site for my second project, Interactive Frontend Development. </p>
-				</div>
-
-				<div class="col-xs-6 col-md-3">
-					<h6>Useful Links</h6>
-					<ul class="footer-links">
-						<li><a href="https://www.spacex.com/" target="_blank" rel="noreferrer">SpaceX Website</a></li>
-						<li><a href="https://www.flickr.com/photos/spacex" target="_blank" rel="noreferrer">SpaceX
-								Flickr</a></li>
-						<li><a href="https://www.spacex.com/webcast" target="_blank" rel="noreferrer">SpaceX Webcast</a>
-						</li>
-						<li><a href="https://www.youtube.com/spacex" target="_blank" rel="noreferrer">SpaceX YouTube</a>
-						</li>
-						<li><a href="https://www.starlink.com/" target="_blank" rel="noreferrer">Starlink Website</a>
-						</li>
-						<li><a href="https://www.nasa.gov/" target="_blank" rel="noreferrer">NASA Website</a></li>
-					</ul>
-				</div>
-
-				<div class="col-xs-6 col-md-3">
-					<h6>Quick Links</h6>
-					<ul class="footer-links">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="rockets.html">Rockets</a></li>
-						<li><a href="dragons.html">Dragons</a></li>
-						<li><a href="missions.html">Missions</a></li>
-						<li><a href="launches.html">Launches</a></li>
-						<li><a href="history.html">History</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-			</div>
-			<hr>
-		</div>
-		<div class="container">
-			<div class="row no-gutters">
-				<div class="col-md-8 col-sm-6 col-xs-12">
-					<p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
-						<a href="">Tom Jones</a>.
-						<br>
-                        All Data Created and Owned By Space Exploration Technologies Corp.
-					</p>
-				</div>
-
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<ul class="social-icons">
-						<li><a class="facebook" href="https://www.facebook.com/profile.php?id=555815524"
-								rel="noreferrer"><i class="fab fa-facebook-square"></i></a>
-						</li>
-						<li><a class="github" href="https://github.com/kushberrycream"
-								rel="noreferrer"><i class="fab fa-github-square"></i></a></li>
-						<li><a class="linkedin" href="https://www.linkedin.com/in/tomjoneswebdev/"
-								rel="noreferrer"><i class="fab fa-linkedin"></i></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 about-footer">
+            <h6>About</h6>
+            <p class="text-justify">This is a site built to display the vast amount of data available from
+              SpaceX.
+              I built this site for my second project, Interactive Frontend Development. 
+            </p>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <h6>Useful Links</h6>
+            <ul class="footer-links">
+              <li><a href="https://www.spacex.com/" target="_blank" rel="noreferrer">SpaceX Website</a></li>
+              <li><a href="https://www.flickr.com/photos/spacex" target="_blank" rel="noreferrer">SpaceX
+                Flickr</a>
+              </li>
+              <li><a href="https://www.spacex.com/webcast" target="_blank" rel="noreferrer">SpaceX Webcast</a>
+              </li>
+              <li><a href="https://www.youtube.com/spacex" target="_blank" rel="noreferrer">SpaceX YouTube</a>
+              </li>
+              <li><a href="https://www.starlink.com/" target="_blank" rel="noreferrer">Starlink Website</a>
+              </li>
+              <li><a href="https://www.nasa.gov/" target="_blank" rel="noreferrer">NASA Website</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="rockets.html">Rockets</a></li>
+              <li><a href="dragons.html">Dragons</a></li>
+              <li><a href="missions.html">Missions</a></li>
+              <li><a href="launches.html">Launches</a></li>
+              <li><a href="history.html">History</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+              <a href="">Tom Jones</a>.
+              <br>
+              All Data Created and Owned By Space Exploration Technologies Corp.
+            </p>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="https://www.facebook.com/profile.php?id=555815524"
+                rel="noreferrer"><i class="fab fa-facebook-square"></i></a>
+              </li>
+              <li><a class="github" href="https://github.com/kushberrycream"
+                rel="noreferrer"><i class="fab fa-github-square"></i></a></li>
+              <li><a class="linkedin" href="https://www.linkedin.com/in/tomjoneswebdev/"
+                rel="noreferrer"><i class="fab fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- Footer End-->
-
     <!-- Down Arrow / More Arrow Start-->
-	<div class="dwn-arrow">
-		<a href="#introduction" class="arrow"><i class="fas fa-chevron-down hvr-wobble-vertical"></i></a>
-	</div>
+    <div class="dwn-arrow">
+      <a href="#introduction" class="arrow"><i class="fas fa-chevron-down hvr-wobble-vertical"></i></a>
+    </div>
     <!-- Down Arrow / More Arrow End-->
-
     <!-- Loader Start-->
-	<div class="loader" id="loader"></div>
+    <div class="loader" id="loader"></div>
     <!-- Loader End-->
-
     <!-- Error Modal Start-->
-	<div id="error" class="modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Error!</h5>
-				</div>
-				<div class="modal-body">
-					<p>Something went wrong! Please try again or contact support!</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" onclick="window.location.reload();">Refresh Page</button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div id="error" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Error!</h5>
+          </div>
+          <div class="modal-body">
+            <p>Something went wrong! Please try again or contact support!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="window.location.reload();">Refresh Page</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Error Modal End-->
-
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/json-mask/1.0.1/jsonMask.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-
-	<script src="assets/js/interceptors.js"></script>
-	<script src="assets/js/axios.js"></script>
-	<script src="assets/js/homepage.js"></script>
-
-</body>
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json-mask/1.0.1/jsonMask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="assets/js/interceptors.js"></script>
+    <script src="assets/js/axios.js"></script>
+    <script src="assets/js/homepage.js"></script>
+  </body>
 </html>

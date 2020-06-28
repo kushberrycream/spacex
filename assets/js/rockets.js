@@ -379,7 +379,6 @@ function rocketStatistics(cardBody3) {
 function imgError(image) {
     image.onerror = "";
     image.src = "assets/images/image-unavailable.jpg";
-    return;
 }
 
 
