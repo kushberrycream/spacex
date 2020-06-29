@@ -1,168 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-	<link rel="stylesheet" href="assets/css/style.css" />
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
-	<script type="text/javascript">
-		(function(){
-      emailjs.init("user_0IURczLYt4s8hqrnRZBPm");
-   })();
-	</script>
-	<title>Space X</title>
-</head>
-
-<body>
-	<div class="content">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a href="index.html">
-				<img src="assets/images/spacexlogo.png" class="d-inline-block align-top navbar-brand" alt="SpaceX"/>
-         </a>
-				<button class="navbar-toggler" type="button"
-            data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" >
-         <span class="navbar-toggler-icon"></span>
-         </button>
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="index.html" class="nav-link">Home</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="missions.html" id="missions" class="nav-link">Missions</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="launches.html" id="launches" class="nav-link">Launches</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="history.html" id="history" class="nav-link">History</a>
-						</li>
-						<li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-							<a href="about.html" class="nav-link">About</a>
-						</li>
-					</ul>
-					<div class="socialbuttons">
-						<a class="social" href="contact.html"><i class="fas fa-envelope"></i></a>
-						<a class="social" href="https://www.facebook.com/profile.php?id=555815524"
-							target="_blank"><i class="fab fa-facebook-square"></i></a>
-						<a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/"
-							target="_blank"><i class="fab fa-linkedin"></i></a>
-						<a class="social" href="https://github.com/kushberrycream"
-							target="_blank"><i class="fab fa-github-square"></i></a>
-					</div>
-				</div>
-		</nav>
-
-		<section class="contact container form">
-			<h1 class="title">Get in touch</h1>
-			<h3 class="title">Have a suggestion? or found a bug? Let me know!</h3>
-			<div id="sendmessage">Your message has been sent. Thank you! <i class="fas fa-check-circle"></i>
-			</div>
-			<div id="errormessage">Error sending message, Please try Again!
-				<i class="fas fa-times-circle"></i>
-			</div>
-			<form class="row contactForm" onsubmit="return sendMail(this);">
-				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-					<input type="text" placeholder="Full name" id="name" name="name" required >
-					<label for="name">Full name</label>
-				</div>
-				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-					<input type="email" data-parsley-trigger="change" data-parsley-type="email" placeholder="Email address" id="email" name="email" required >
-					<label for="email">Email Address</label>
-				</div>
-				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-					<textarea name="message" id="message" required placeholder="Send me a message!"></textarea>
-					<label for="message">Send me a message!</label>
-				</div>
-				<div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12">
-					<button type="submit" class="send">Send message</button>
-				</div>
-			</form>
-		</section>
-	</div>
-
-	<footer class="site-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-6 about-footer">
-					<h6>About</h6>
-					<p class="text-justify">This is a site built to display the vast amount of data available from
-						SpaceX.
-						I built this site for my second project, Interactive Frontend Development. </p>
-				</div>
-
-				<div class="col-xs-6 col-md-3">
-					<h6>Useful Links</h6>
-					<ul class="footer-links">
-						<li><a href="https://www.spacex.com/" target="_blank">SpaceX Website</a></li>
-						<li><a href="https://www.flickr.com/photos/spacex" target="_blank">SpaceX Flickr</a></li>
-						<li><a href="https://www.spacex.com/webcast" target="_blank">SpaceX Webcast</a></li>
-						<li><a href="https://www.youtube.com/spacex" target="_blank">SpaceX YouTube</a></li>
-						<li><a href="https://www.starlink.com/" target="_blank">Starlink Website</a></li>
-						<li><a href="https://www.nasa.gov/" target="_blank">NASA Website</a></li>
-					</ul>
-				</div>
-
-				<div class="col-xs-6 col-md-3">
-					<h6>Quick Links</h6>
-					<ul class="footer-links">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="rockets.html">Rockets</a></li>
-						<li><a href="dragons.html">Dragons</a></li>
-						<li><a href="missions.html">Missions</a></li>
-						<li><a href="launches.html">Launches</a></li>
-						<li><a href="history.html">History</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-			</div>
-			<hr>
-		</div>
-		<div class="container">
-			<div class="row no-gutters">
-				<div class="col-md-8 col-sm-6 col-xs-12">
-					<p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
-						<a href="">Tom Jones</a>.
-						<br>
-                        All Data Created and Owned By Space Exploration Technologies Corp.
-					</p>
-				</div>
-
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<ul class="social-icons">
-						<li><a class="facebook"
-								href="https://www.facebook.com/profile.php?id=555815524"><i class="fab fa-facebook-square"></i></a>
-						</li>
-						<li><a class="github"
-								href="https://github.com/kushberrycream"><i class="fab fa-github-square"></i></a></li>
-						<li><a class="linkedin"
-								href="https://www.linkedin.com/in/tomjoneswebdev/"><i class="fab fa-linkedin"></i></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script src="assets/js/sendEmail.js"></script>
-
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Contact page so users can contact the developer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Space X - Contact the developer</title>
+    <!-- initialize emailjs -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init("user_0IURczLYt4s8hqrnRZBPm");
+       })();
+    </script>
+    <!-- initialize emailjs end -->
+    
+  </head>
+  <body>
+    <!-- Navbar Start -->   
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a href="index.html">
+      <img src="assets/images/spacexlogo.png" class="d-inline-block align-top navbar-brand" alt="SpaceX"/>
+      </a>
+      <button class="navbar-toggler" type="button"
+        data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" >
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="rockets.html" id="rockets" class="nav-link">Rockets</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="dragons.html" id="dragons" class="nav-link">Dragons</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="missions.html" id="missions" class="nav-link">Missions</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="launches.html" id="launches" class="nav-link">Launches</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="history.html" id="history" class="nav-link">History</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+        </ul>
+        <div class="socialbuttons">
+          <a class="social" href="contact.html"><i class="fas fa-envelope"></i></a>
+          <a class="social" href="https://www.facebook.com/profile.php?id=555815524"
+            target="_blank"><i class="fab fa-facebook-square"></i></a>
+          <a class="social" href="https://www.linkedin.com/in/tomjoneswebdev/"
+            target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a class="social" href="https://github.com/kushberrycream"
+            target="_blank"><i class="fab fa-github-square"></i></a>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Main Site Content -->
+    <section class="content">
+      <!-- Contact Form Start-->
+      <div class="contact container form">
+        <h1 class="title">Get in touch</h1>
+        <h3 class="title">Have a suggestion? or found a bug? Let me know!</h3>
+        <!-- Success Message Start-->
+        <div id="sendmessage">Your message has been sent. Thank you! <i class="fas fa-check-circle"></i>
+        </div>
+        <!-- Success Message End-->
+        <!-- Error Message Start-->
+        <div id="errormessage">Error sending message, Please try Again!
+          <i class="fas fa-times-circle"></i>
+        </div>
+        <!-- Error Message End-->
+        <!-- Actual Form Start-->
+        <form class="row contactForm" onsubmit="return sendMail(this);">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <input type="text" placeholder="Full name" id="name" name="name" required >
+            <label for="name">Full name</label>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <input type="email" data-parsley-trigger="change" data-parsley-type="email" placeholder="Email address" id="email" name="email" required >
+            <label for="email">Email Address</label>
+          </div>
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <textarea name="message" id="message" required placeholder="Send me a message!"></textarea>
+            <label for="message">Send me a message!</label>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12">
+            <button type="submit" class="send">Send message</button>
+          </div>
+        </form>
+        <!-- Actual Form End -->
+      </div>
+    </section>
+    <!-- Main Site End -->
+    <!-- Footer Start-->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 about-footer">
+            <h6>About</h6>
+            <p class="text-justify">This is a site built to display the vast amount of data available from
+              SpaceX.
+              I built this site for my second project, Interactive Frontend Development. 
+            </p>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <h6>Useful Links</h6>
+            <ul class="footer-links">
+              <li><a href="https://www.spacex.com/" target="_blank">SpaceX Website</a></li>
+              <li><a href="https://www.flickr.com/photos/spacex" target="_blank">SpaceX Flickr</a></li>
+              <li><a href="https://www.spacex.com/webcast" target="_blank">SpaceX Webcast</a></li>
+              <li><a href="https://www.youtube.com/spacex" target="_blank">SpaceX YouTube</a></li>
+              <li><a href="https://www.starlink.com/" target="_blank">Starlink Website</a></li>
+              <li><a href="https://www.nasa.gov/" target="_blank">NASA Website</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="rockets.html">Rockets</a></li>
+              <li><a href="dragons.html">Dragons</a></li>
+              <li><a href="missions.html">Missions</a></li>
+              <li><a href="launches.html">Launches</a></li>
+              <li><a href="history.html">History</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+              <a href="">Tom Jones</a>.
+              <br>
+              All Data Created and Owned By Space Exploration Technologies Corp.
+            </p>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook"
+                href="https://www.facebook.com/profile.php?id=555815524"><i class="fab fa-facebook-square"></i></a>
+              </li>
+              <li><a class="github"
+                href="https://github.com/kushberrycream"><i class="fab fa-github-square"></i></a></li>
+              <li><a class="linkedin"
+                href="https://www.linkedin.com/in/tomjoneswebdev/"><i class="fab fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="assets/js/sendEmail.js"></script>
+  </body>
 </html>
+COPY TO CLIPBOARD	 SELECT ALL
+© FreeFormatter.com - FREEFORMATTER is a d/b/a of 10174785 Canada Inc. - Copyright Notice - 
