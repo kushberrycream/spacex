@@ -6,14 +6,6 @@ pagination();
 function allLaunches() {
 
     $("#loader").addClass("hide-loader");
-    let title = document.createElement("h1");
-
-    title.setAttribute("class", "title");
-
-    MAINCONTENT.appendChild(title);
-
-    title.innerText = "SpaceX Launches";
-
 
     for (var i = 0; i < launchData.length ; i++) {
         let item = launchData[i],
