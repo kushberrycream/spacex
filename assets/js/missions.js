@@ -4,13 +4,13 @@
  */
 
 /** Call callMissions() function from axios.js */
-callMissions();
+fetchMissions();
 
 /**
  * This function uses the forEach method to loop through the object obtained
  * from the Missions endpoint and create a card for each mission. 
  */
-function eachMissionCard() {
+function createMissionCards() {
   missionData.forEach(item => {
 
     /** removes loader */

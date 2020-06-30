@@ -63,7 +63,7 @@ function homepageData() {
 function fetchRockets() {
   axios.get(ROCKETS).then(response => {
     rockets = response.data;
-    eachRocketCard();
+    createRocketCards();
   });
 }
 
@@ -88,10 +88,10 @@ function fetchSpecificRocket(value) {
  * Turn response data into a variable and call all related
  * functions within dragons.js.
  */
-function callDragons() {
+function fetchDragons() {
   axios.get(DRAGONS).then(response => {
     dragons = response.data;
-    eachDragonCard();
+    createDragonCards();
   });
 }
 
@@ -112,12 +112,12 @@ function fetchSpecificDragon(value) {
 }
 
 /** function to retrieve data from the missions api endpoint */
-function callMissions() {
+function fetchMissions() {
 
   /** Add data from missions api to a variable and call any related functions */
   axios.get(MISSIONS).then(response => {
     missionData = response.data;
-    eachMissionCard();
+    createMissionCards();
   });
 }
 
@@ -128,10 +128,10 @@ function callMissions() {
  * Then call all related functions in launches.js
  * @param {string} value this is the value of the page button selected.
  */
-function callLaunches(value) {
+function fetchLaunches(value) {
   axios.get(PAST + value).then(response => {
     launchData = response.data;
-    allLaunches();
+    fetchAllLaunches();
   });
 }
 
@@ -140,10 +140,10 @@ function callLaunches(value) {
  * add response data to a variable and reverse the order of the object
  * to display newest data first. then call related functions in history.js 
  */
-function callHistory() {
+function fetchHistory() {
   axios.get(HISTORY).then(response => {
     historyData = response.data;
-    allHistoryCard();
+    createHistoryCards();
   });
 }
 
@@ -152,7 +152,7 @@ function callHistory() {
  * perform 2 similtanious XMLHttpRequests and spread response data across 
  * 2 variables. then call any related functions within about.js
  */
-function callAbout() {
+function fetchAbout() {
   axios.all([
       axios.get(SPACEX),
       axios.get(INFOAPI)
@@ -174,8 +174,9 @@ function callAbout() {
 function getPagination(value) {
   /** Recall Past Launches API and clear Data before displaying new data */
   clearData();
-  callLaunches(value);
+  fetchLaunches(value);
   $("#loader").removeClass("hide-loader");
+
 }
 
 /**
@@ -200,3 +201,4 @@ function getValue(type, value) {
 function clearData() {
   MAINCONTENT.innerHTML = "";
 }
+

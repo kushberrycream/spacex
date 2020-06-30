@@ -146,7 +146,7 @@ function countdownTimer(item, countdown) {
             <h2>Date To Be Confirmed!</h2>`;
       }
 
-      /** Interval of 1second */
+      /** Interval of 1 second */
     }, 1000);
 
 }

@@ -4,13 +4,13 @@
  */
 
 /** Function which calls the history endpoint */
-callHistory();
+fetchHistory();
 
 /**
  * This Function creates the cards on the history.html page
  * using the forEach method, this will not load any data just the cards! 
  */
-function allHistoryCard() {
+function createHistoryCards() {
 
   /** create a single row outside of the forEach method */
   let row1 = document.createElement("div");
@@ -54,6 +54,7 @@ function allHistoryCard() {
     row3.appendChild(linkCols2);
     row3.appendChild(linkCols3);
 
+    /** call the function that displays all the data to the page */
     historyInfo(item, cardHead, col, linkCols1, linkCols2, linkCols3);
   });
 }
@@ -61,12 +62,12 @@ function allHistoryCard() {
 /**
  * This function uses the data obtained from the history enpoint and appends them
  * to there own individual cards created in allHistoryCards().
- * @param {object} item Data from the history endpoint passed from eachHistoryCard()
- * @param {HTMLElement} cardHead Passed from eachHistoryCard() and displays the title of the history item
- * @param {HTMLElement} col Passed from eachHistoryCard() and is the container for all the data.
- * @param {HTMLElement} linkCols1 Passed from eachHistoryCard() and is a container for the wikipedia link.
- * @param {HTMLElement} linkCols2 Passed from eachHistoryCard() and is a container for the reddit link.
- * @param {HTMLElement} linkCols3 Passed from eachHistoryCard() and is a container for the article link.
+ * @param {object} item Data from the history endpoint passed from createHistoryCards()
+ * @param {HTMLElement} cardHead Passed from createHistoryCards() and displays the title of the history item
+ * @param {HTMLElement} col Passed from createHistoryCards() and is the container for all the data.
+ * @param {HTMLElement} linkCols1 Passed from createHistoryCards() and is a container for the wikipedia link.
+ * @param {HTMLElement} linkCols2 Passed from createHistoryCards() and is a container for the reddit link.
+ * @param {HTMLElement} linkCols3 Passed from createHistoryCards() and is a container for the article link.
  */
 function historyInfo(item, cardHead, col, linkCols1, linkCols2, linkCols3) {
 

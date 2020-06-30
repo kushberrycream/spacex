@@ -7,11 +7,11 @@
  * Call callDragons() function from axios.js,
  */
 
-callDragons();
+fetchDragons();
 
 // calls spacex dragons api
 
-function eachDragonCard() {
+function createDragonCards() {
 
     $("#data").addClass("container");
 
@@ -236,7 +236,7 @@ function dragonImages() {
 
         images.innerHTML = `<img src="${item}" class="d-block w-100" alt="..." onerror="imgError(this);"/>`;
 
-        let activeItem = document.getElementsByTagName("div").item(16);
+        let activeItem = document.getElementsByTagName("div").item(15);
         activeItem.setAttribute("class", "carousel-item active");
 
         let activePhoto = document.getElementsByTagName("li").item(7);

@@ -1,9 +1,9 @@
 
-callLaunches("?order=desc&limit=10&offset=0");
+fetchLaunches("?order=desc&limit=10&offset=0");
 pagination();
 
 // calls spacex past launches api
-function allLaunches() {
+function fetchAllLaunches() {
 
     $("#loader").addClass("hide-loader");
 

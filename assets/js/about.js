@@ -4,7 +4,7 @@
  */
 
 /** Function which calls the main SpaceX API and the company info endpoint */
-callAbout();
+fetchAbout();
 
 /**
  * This Function creates the cards on the about.html page
