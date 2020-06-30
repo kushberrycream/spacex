@@ -7,7 +7,7 @@ function fetchAllLaunches() {
 
     $("#loader").addClass("hide-loader");
 
-    for (var i = 0; i < launchData.length ; i++) {
+    for (let i = 0; i < launchData.length ; i++) {
         let item = launchData[i],
             launchHead = document.createElement("div"),
             cardBody = document.createElement("div"),

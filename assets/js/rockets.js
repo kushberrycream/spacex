@@ -3,10 +3,7 @@
  * @author Tom Jones <tom@wilson-express.co.uk>
  */
 
-/** 
- * Call fetchRockets() function from axios.js,
- */
-
+/** Call fetchRockets() function from axios.js */
 fetchRockets();
 
 /**
@@ -33,7 +30,7 @@ function createRocketCards() {
     cardBody.setAttribute("class", "card-body");
     row.setAttribute("class", "row");
     column1.setAttribute("class", "col-md-6");
-    column2.setAttribute("class", "text-center");
+    column2.setAttribute("class", "col-md-6 text-center");
 
     /** Append all elements created */
     MAINCONTENT.appendChild(info);
@@ -138,7 +135,7 @@ function rocketSpecCard() {
   aboutRocket.className = "about-rockets";
   row.className = "row no-gutters";
   column1.className = "col-md-7";
-  column2.className = "col-md-5";
+  column2.className = "col-md-5"; 
   column2.setAttribute("id", "rocketstats");
   card.className = "card";
   cardHeader.className = "card-header";
@@ -177,9 +174,6 @@ function rocketSpecCard() {
   card3.appendChild(cardHeader3);
   card3.appendChild(cardBody3);
 
-  /** Set inner text / HTML of elements */
-
-
   /** call all the functions to display data on the page once cards are created */
   rocketInfo(cardHeader, cardBody);
   rocketCarousel(cardHeader2, cardBody2);
@@ -194,12 +188,12 @@ function rocketSpecCard() {
 function rocketInfo(cardHeader, cardBody) {
 
   /** create elements */
-  let cardText = document.createElement("p");
-  active = document.createElement("h6");
-  flight = document.createElement("h6");
-  costPer = document.createElement("h6");
-  cost = accounting.formatMoney(specificRocket.cost_per_launch);
-  wiki = document.createElement("a");
+  let cardText = document.createElement("p"),
+    active = document.createElement("h6"),
+    flight = document.createElement("h6"),
+    costPer = document.createElement("h6"),
+    cost = accounting.formatMoney(specificRocket.cost_per_launch),
+    wiki = document.createElement("a");
 
   /** Set Attributes on elements just created */
   cardText.className = "card-text";
@@ -207,7 +201,7 @@ function rocketInfo(cardHeader, cardBody) {
   wiki.setAttribute("target", "_blank");
   wiki.setAttribute("class", "rocket-dragon-links hvr-pulse-grow");
 
-  /** Appened the rest of the elements */
+  /** Append the rest of the elements */
   cardBody.appendChild(cardText);
   cardBody.appendChild(active);
   cardBody.appendChild(flight);
@@ -254,7 +248,6 @@ function rocketCarousel(cardHeader2, cardBody2) {
   /** Set Card Header */
   cardHeader2.innerHTML = `<h4>Photos</h4>`;
 
-
   /** append indicators to card and carousel */
   cardBody2.appendChild(carousel);
   carousel.innerHTML = `<ol id="data-slide" class="carousel-indicators"></ol>`;
@@ -298,8 +291,8 @@ function rocketImages() {
     images.innerHTML = `<img src="${item}" class="d-block w-100" alt="Space X Rocket" onerror="imgError(this);"/>`;
 
     /** Grab the 15th div and 7th li and set attributes of specific elements */
-    let activeItem = document.getElementsByTagName("div").item(15);
-    let activePhoto = document.getElementsByTagName("li").item(7);
+    let activeItem = document.getElementsByTagName("div").item(15),
+        activePhoto = document.getElementsByTagName("li").item(7);
 
     activeItem.setAttribute("class", "carousel-item active");
     activePhoto.setAttribute("class", "active");
@@ -422,7 +415,7 @@ function rocketStatistics(cardHeader3, cardBody3) {
   /** Set inner text of list group item */
   listGroupItem9.innerText = "First Stage:";
 
-  /** appened 3rd sublist and set of list items */
+  /** append 3rd sublist and set of list items */
   listGroupItem9.appendChild(subList3);
   subList3.appendChild(listItem10);
   subList3.appendChild(listItem11);
@@ -457,10 +450,13 @@ function rocketStatistics(cardHeader3, cardBody3) {
   /** forEach method to loop through payload_weight data and create a list item for each */
   specificRocket.payload_weights.forEach(item => {
 
+    /** get list group item with id of payload-name and create a list  */
     let payloadName = document.getElementById("payload-name"),
       listitem = document.createElement("li");
+    /** append lists */
     payloadName.appendChild(listitem);
 
+    /** list inner HTML */
     listitem.innerText = `${item.name} - ${item.kg}kg`;
   });
 
