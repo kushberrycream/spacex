@@ -21,7 +21,7 @@ const SPACEX = "https://api.spacexdata.com/v3/",
   /** @const {string} MISSIONS Adds missions to url for different endpoint */
   MISSIONS = SPACEX + "missions",
   /** @const {string} PAST Adds launches/past to url for different endpoint */
-  PAST = SPACEX + "launches/past",
+  PAST = SPACEX + "launches/past/?order=desc&limit=10&offset=",
   /** @const {string} HISTORY Adds history to url for different endpoint */
   HISTORY = SPACEX + "history/?order=desc",
   /** @const {HTMLElement} MAINCONTENT Accesses element with ID of data*/
