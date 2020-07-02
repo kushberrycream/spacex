@@ -131,7 +131,17 @@ function fetchMissions() {
 function fetchLaunches(value) {
   axios.get(PAST + value).then(response => {
     launchData = response.data;
+
     fetchAllLaunches();
+
+    
+    if (launchData.length >= 10) {
+            document.getElementById("next").setAttribute("class", "");
+        }
+    if (launchData.length < 10) {
+            next.setAttribute("class", "display-none");
+        }
+    
   });
 }
 
@@ -161,6 +171,7 @@ function fetchAbout() {
       spacexData = spaceX.data;
       infoApiData = infoApi.data;
       aboutPage();
+      
     }));
 }
 
@@ -175,7 +186,9 @@ function getPagination(value) {
   /** Recall Past Launches API and clear Data before displaying new data */
   clearData();
   fetchLaunches(value);
+  
   $("#loader").removeClass("hide-loader");
+  
 
 }
 

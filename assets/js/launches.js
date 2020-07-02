@@ -7,7 +7,7 @@ function fetchAllLaunches() {
 
     $("#loader").addClass("hide-loader");
 
-    for (let i = 0; i < launchData.length ; i++) {
+    for (let i = 0; i < launchData.length; i++) {
         let item = launchData[i],
             launchHead = document.createElement("div"),
             cardBody = document.createElement("div"),
@@ -145,9 +145,9 @@ function pagination() {
     list.appendChild(listItem2);
 
 
-    listItem1.innerHTML = `<option class="page-link" value="0" id="next">Next</option>`;
-    listItem2.innerHTML = `<option class="page-link" value="0" id="prev">Prev</option>`;
-    
+    listItem1.innerHTML = `<option value="0" id="next">Next</option>`;
+    listItem2.innerHTML = `<option value="0" id="prev">Prev</option>`;
+
     /** values of next / prev buttons */
     let next = document.getElementById("next"),
         prev = document.getElementById("prev"),
@@ -155,19 +155,34 @@ function pagination() {
         prevOffset = 0;
 
     /** onclick event to change value of next and prev buttons when next is pressed */
-    next.onclick = function() {
-      value = this.value = offset += 10;
-      value = offset;
-      prev.value = prevOffset += 10;
-      getPagination(value);  
+    document.getElementById("next").onclick = function () {
+        value = this.value = offset += 10;
+        value = offset;
+        prev.value = prevOffset += 10;
+        prev.setAttribute("class", "");
+        getPagination(value);
     }
     /** onclick event to change value of next and prev buttons when prev is pressed */
-    prev.onclick = function() {
-      value = this.value = prevOffset -= 10;
-      value = prevOffset;
-      next.value = offset -= 10;
-      getPagination(value);  
+    document.getElementById("prev").onclick = function () {
+        value = this.value = prevOffset -= 10;
+        value = prevOffset;
+        next.value = offset -= 10;
+        if (prev.value == "0") {
+            prev.setAttribute("class", "display-none");
+        }
+        if (launchData.length <= 10) {
+            next.setAttribute("class", "");
+        }
+
+        getPagination(value);
+
     }
+
+    /** removes prev button at start */
+    if (prev.value == "0") {
+        prev.setAttribute("class", "display-none");
+    }
+
 }
 
 
