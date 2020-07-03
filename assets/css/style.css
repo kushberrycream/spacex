@@ -124,6 +124,14 @@ h2 {
   font-weight: 600;
 }
 
+.launch-title {
+  text-align: center;
+  padding: 20px;
+  color: #fefefe;
+  font-weight: 600;
+  margin-top: 66px;
+}
+
 .card {
   margin: 0;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.13);
@@ -164,13 +172,19 @@ h2 {
 
 }
 
+.display-none {
+    display: none;
+}
+
+.links {
+    padding-bottom: 20px;
+}
 .about-links,
 .icon {
   font-size: 1.6rem;
-  padding: 20px 0;
   text-align: center;
   height: 75px;
-  line-height: 40px;
+  padding: 20px;
 }
 
 .rocket-dragon-links {
@@ -616,26 +630,15 @@ a:hover {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  font-size: 1.5rem;
+  width:100%;
 }
 
 .page-link:hover {
   z-index: 2;
   color: #fff;
   background-color: transparent;
-  cursor: pointer;
-}
 
-.pagination {
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  padding-left: 0;
-  list-style: none;
-  border-radius: .25rem;
-  position: fixed;
-  top: 200px;
-  right: 0;
-  font-size: 1.5rem;
 }
 
 .page-item:first-child .page-link {

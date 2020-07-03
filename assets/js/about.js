@@ -94,10 +94,10 @@ function companyInfo(cardHead1, col1, col2) {
     logo = document.createElement("img");
 
   /** Set Attributes on elements just created */
-  linkRow.setAttribute("class", "row text-center about-links");
-  linkCol1.setAttribute("class", "col-3");
+  linkRow.setAttribute("class", "row text-center links");
+  linkCol1.setAttribute("class", "col-sm-3 col-6");
   website.setAttribute("target", "_blank");
-  website.setAttribute("class", "hvr-pulse-grow");
+  website.setAttribute("class", "hvr-pulse-grow about-links");
   logo.setAttribute("class", "spacexwhite");
   logo.setAttribute("src", "assets/images/spacextrans.png");
   logo.setAttribute("alt", "SpaceX");

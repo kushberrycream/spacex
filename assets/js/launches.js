@@ -7,9 +7,8 @@ function fetchAllLaunches() {
 
     $("#loader").addClass("hide-loader");
 
-    for (let i = 0; i < launchData.length; i++) {
-        let item = launchData[i],
-            launchHead = document.createElement("div"),
+    launchData.forEach(item => {
+        let launchHead = document.createElement("div"),
             cardBody = document.createElement("div"),
             row = document.createElement("div"),
             column1 = document.createElement("div"),
@@ -40,7 +39,7 @@ function fetchAllLaunches() {
         row.appendChild(column2);
 
         launchInfo(item, column1, column2);
-    }
+    })
 
 }
 
@@ -90,6 +89,7 @@ function launchInfo(item, column1, column2) {
     patch.setAttribute("class", "patch");
     patch.setAttribute("src", item.links.mission_patch_small);
     patch.setAttribute("alt", "Mission Patch");
+    patch.setAttribute("onerror", "imgError(this);");
 
     let column4 = column3.cloneNode(false);
     let column5 = column3.cloneNode(false);
@@ -135,7 +135,7 @@ function pagination() {
     navMenu.setAttribute("aria-label", "Page navigation");
     navMenu.classList.add("container");
     list.classList.add("pagination", "justify-content-center");
-    listItem1.classList.add("page-item", "active");
+    listItem1.classList.add("page-link");
 
     let listItem2 = listItem1.cloneNode(true);
 
@@ -144,9 +144,12 @@ function pagination() {
     list.appendChild(listItem1);
     list.appendChild(listItem2);
 
+    listItem1.classList.add("text-right")
 
-    listItem1.innerHTML = `<option value="0" id="next">Next</option>`;
-    listItem2.innerHTML = `<option value="0" id="prev">Prev</option>`;
+
+    listItem1.innerHTML = `<option value="0" id="prev">Prev</option>`;
+    listItem2.innerHTML = `<option value="0" id="next">Next</option>`;
+    
 
     /** values of next / prev buttons */
     let next = document.getElementById("next"),
@@ -160,7 +163,7 @@ function pagination() {
         value = offset;
         prev.value = prevOffset += 10;
         prev.setAttribute("class", "");
-        getPagination(value);
+        getValue("launches", value);
     }
     /** onclick event to change value of next and prev buttons when prev is pressed */
     document.getElementById("prev").onclick = function () {
@@ -170,11 +173,11 @@ function pagination() {
         if (prev.value == "0") {
             prev.setAttribute("class", "display-none");
         }
-        if (launchData.length <= 10) {
+        if (launchData.length <= 11) {
             next.setAttribute("class", "");
         }
 
-        getPagination(value);
+        getValue("launches", value);
 
     }
 

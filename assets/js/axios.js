@@ -21,7 +21,7 @@ const SPACEX = "https://api.spacexdata.com/v3/",
   /** @const {string} MISSIONS Adds missions to url for different endpoint */
   MISSIONS = SPACEX + "missions",
   /** @const {string} PAST Adds launches/past to url for different endpoint */
-  PAST = SPACEX + "launches/past/?order=desc&limit=10&offset=",
+  PAST = SPACEX + "launches/past/?order=desc&limit=11&offset=",
   /** @const {string} HISTORY Adds history to url for different endpoint */
   HISTORY = SPACEX + "history/?order=desc",
   /** @const {HTMLElement} MAINCONTENT Accesses element with ID of data*/
@@ -133,15 +133,17 @@ function fetchLaunches(value) {
     launchData = response.data;
 
     fetchAllLaunches();
+    
 
     
-    if (launchData.length >= 10) {
+    if (launchData.length == 11) {
             document.getElementById("next").setAttribute("class", "");
         }
-    if (launchData.length < 10) {
+    if (launchData.length < 11) {
             next.setAttribute("class", "display-none");
         }
     
+    document.getElementsByClassName("card")[10].setAttribute("class", "card display-none");
   });
 }
 
@@ -184,7 +186,7 @@ function fetchAbout() {
  */
 function getPagination(value) {
   /** Recall Past Launches API and clear Data before displaying new data */
-  clearData();
+  
   fetchLaunches(value);
   
   $("#loader").removeClass("hide-loader");
@@ -207,6 +209,9 @@ function getValue(type, value) {
     /** If the type is "dragons" it will call fetchSpecficDragon() */
   } else if (type == "dragon") {
     fetchSpecificDragon(value);
+  } else if (type == "launches") {
+    clearData();
+    fetchLaunches(value);
   }
 }
 
@@ -215,3 +220,12 @@ function clearData() {
   MAINCONTENT.innerHTML = "";
 }
 
+/**
+ * This is a function to apply an error image if any image responds with an error.
+ * created due to spaceX API breaking and some image links not working.
+ * @param {string} image applys a placeholder image to any images that respond with an error
+ */
+function imgError(image) {
+  image.onerror = "";
+  image.src = "assets/images/image-unavailable.jpg";
+}

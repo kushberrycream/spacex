@@ -462,12 +462,3 @@ function rocketStatistics(cardHeader3, cardBody3) {
 
 }
 
-/**
- * This is a function to apply an error image if any image responds with an error.
- * created due to spaceX API breaking and some image links not working.
- * @param {string} image applys a placeholder image to any images that respond with an error
- */
-function imgError(image) {
-  image.onerror = "";
-  image.src = "assets/images/image-unavailable.jpg";
-}
