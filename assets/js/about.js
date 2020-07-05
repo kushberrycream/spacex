@@ -10,7 +10,7 @@ fetchAbout();
  * This Function creates the cards on the about.html page
  * it will not load any data just the cards! 
  */
-function aboutPage() {
+function aboutPageCards() {
 
   /** removes loader */
   $("#loader").addClass("hide-loader");

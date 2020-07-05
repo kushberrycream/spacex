@@ -112,16 +112,9 @@ function eachDragonData(item, cardHead, column1, column2) {
  */
 function dragonSpecCard() {
 
-  /** using the history API I add a new url to the history of the browser */
-  window.history.pushState('', null, specificDragon.id + ".html");
-  /** when the back button is pressed the page reloads to refresh to the original state */
-  $(window).on('popstate', function () {
-    location.reload(true);
-  });
-
   /** removes loader */
   $("#loader").addClass("hide-loader");
-
+  
   /** create elements */
   let aboutDragon = document.createElement("div"),
     row = document.createElement("div"),
@@ -132,7 +125,7 @@ function dragonSpecCard() {
     cardBody = document.createElement("div"),
     photos = document.createElement("div");
 
-  /** Set Attributes on elements just created */
+  /** Set Attributes on elements just created */  
   aboutDragon.className = "about-rockets";
   row.className = "row no-gutters";
   column1.className = "col-md-7";
@@ -175,6 +168,13 @@ function dragonSpecCard() {
   card3.appendChild(cardHeader3);
   card3.appendChild(cardBody3);
 
+  /** using the history API I add a new url to the history of the browser */
+  window.history.pushState('', null, specificDragon.id + ".html");
+  /** when the back button is pressed the page reloads to refresh to the original state */
+  $(window).on('popstate', function () {
+    location.reload(true);
+  });
+  
   /** call all the functions to display data on the page once cards are created */
   dragonInfo(cardHeader, cardBody);
   dragonCarousel(cardHeader2, cardBody2);

@@ -20,7 +20,7 @@ const SPACEX = "https://api.spacexdata.com/v3/",
   DRAGONS = SPACEX + "dragons",
   /** @const {string} MISSIONS Adds missions to url for different endpoint */
   MISSIONS = SPACEX + "missions",
-  /** @const {string} PAST Adds launches/past to url for different endpoint */
+  /** @const {string} PAST Adds launches/past/..... to url for different endpoint */
   PAST = SPACEX + "launches/past/?order=desc&limit=11&offset=",
   /** @const {string} HISTORY Adds history to url for different endpoint */
   HISTORY = SPACEX + "history/?order=desc",
@@ -70,7 +70,7 @@ function fetchRockets() {
 /**
  * Function which retrieves specific rocket data once user selects which one.
  * Displays loader before API Called and Data displayed.
- * Uses btnValue variable to change the URL on users button press.
+ * Uses value attribute on the button selected to change the URL.
  * Then turns repsonse data into a variable and call all related functions within rockets.js.
  * @param {string} value this is the value of the button selected on rockets.js
  */
@@ -98,7 +98,7 @@ function fetchDragons() {
 /** 
  * Function which retrieves specific dragon data once user selects which one.
  * Displays loader before API Called and Data displayed.
- * Uses btnValue variable to change the URL on users button press.
+ * Uses value attribute on the button selected to change the URL.
  * Then turns repsonse data into a variable and call all related functions within dragons.js.
  * @param {string} value this is the value of the button selected on dragons.js
  */
@@ -111,7 +111,10 @@ function fetchSpecificDragon(value) {
   });
 }
 
-/** function to retrieve data from the missions api endpoint */
+/**
+ * This function retrieves data from the missions endpoint 
+ * turns response into a variable and calls the createMissionsCards function.
+ */
 function fetchMissions() {
 
   /** Add data from missions api to a variable and call any related functions */
@@ -123,27 +126,28 @@ function fetchMissions() {
 
 /** 
  * function to retrieve data from the past launches api endpoint
- * plus btnValue variable to add a querystring to the end of the url. 
- * Turn response data into a variable and reverse object to show newest first.
- * Then call all related functions in launches.js
+ * plus the value attribute passed as 0 originally and changed with each prev/next
+ * button press it then turns the response into a variable.
+ * Then it calls all related functions in launches.js.
+ * I then check the amount of records obtained with an else if statement.
  * @param {string} value this is the value of the page button selected.
  */
 function fetchLaunches(value) {
   axios.get(PAST + value).then(response => {
     launchData = response.data;
 
-    fetchAllLaunches();
+    fetchAllLaunchCards();
     
-
-    
-    if (launchData.length == 11) {
-            document.getElementById("next").setAttribute("class", "");
-        }
+    /** if statememt checking to see if array returns less than 11 records if true then it will add class display-none to next button */
     if (launchData.length < 11) {
-            next.setAttribute("class", "display-none");
-        }
+            next.classList.add("display-none");
+    /** else if statement checks if array returns exactly 11 records then it will display a next button */
+      } else if (launchData.length == 11) {
+            next.classList.remove("display-none");
+      }
     
-    document.getElementsByClassName("card")[10].setAttribute("class", "card display-none");
+    /** removes the 11th record on screen to keep the page at 10 records or less */
+    document.getElementsByClassName("card")[10].classList.add("display-none");
   });
 }
 
@@ -179,23 +183,6 @@ function fetchAbout() {
 
 /**
  * Function added to onclick attribute to change the btnValue
- * depending on the value of the btn selected. This wil then 
- * change the endpoint on the API so only 10 items are shown 
- * at a time.
- * @param {string} value this is the value of the page button selected.
- */
-function getPagination(value) {
-  /** Recall Past Launches API and clear Data before displaying new data */
-  
-  fetchLaunches(value);
-  
-  $("#loader").removeClass("hide-loader");
-  
-
-}
-
-/**
- * Function added to onclick attribute to change the btnValue
  * depending on the value of the btn selected. This will then 
  * change the endpoint on the API so only the selected Rocket
  * or dragon is displayed.
@@ -206,12 +193,15 @@ function getValue(type, value) {
   /** Checks if the type is the string "rockets" if it is then it calls fetchSpecificRockets() */
   if (type == "rocket") {
     fetchSpecificRocket(value);
-    /** If the type is "dragons" it will call fetchSpecficDragon() */
+    /** If the type is "dragons" if true it will call fetchSpecficDragon() */
   } else if (type == "dragon") {
     fetchSpecificDragon(value);
+    /** checks if the type is "launches" if true it will clear any launch data then retrieves more data and adds a new loader  */
   } else if (type == "launches") {
     clearData();
     fetchLaunches(value);
+    /** adds a loader if class not already removed */
+    $("#loader").removeClass("hide-loader");
   }
 }
 
@@ -223,6 +213,7 @@ function clearData() {
 /**
  * This is a function to apply an error image if any image responds with an error.
  * created due to spaceX API breaking and some image links not working.
+ * used on any images that i have no control over.
  * @param {string} image applys a placeholder image to any images that respond with an error
  */
 function imgError(image) {

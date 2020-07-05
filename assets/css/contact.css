@@ -1,0 +1,167 @@
+/*    contact form      */
+
+.form #sendmessage {
+  color: #288e3b;
+  border: 1px solid #288e3b;
+  display: none;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  background-color: rgba(0, 0, 26, 0.9);
+}
+
+.form #errormessage {
+  color: red;
+  display: none;
+  border: 1px solid red;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  background-color: rgba(0, 0, 26, 0.9);
+}
+
+.form #sendmessage.show,
+.form #errormessage.show,
+.form .show {
+  display: block;
+}
+
+.contact {
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
+  padding-top: 76px;
+  margin-top: 0;
+}
+
+form {
+  padding: 2rem;
+}
+
+form div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.5rem;
+}
+
+form div label {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  font-family: "Karla", sans-serif;
+  font-size: 0.75rem;
+  color: #fefefe;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  opacity: 0;
+  order: 1;
+  
+}
+
+form div input {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  appearance: none;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  padding: 0.5rem 1rem;
+  outline: none;
+  width: 100%;
+  font-family: "Karla", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  color: #555555;
+  position: relative;
+  display: block;
+  order: 2;
+  border: 1px solid transparent;
+}
+
+/* cannot group the below classes without bugs */
+
+form div input:visited+label, form div input:focus+label {
+  opacity: 1;
+  display: contents;
+}
+
+form div input:valid+label {
+  opacity: 1;
+}
+
+form div input::selection+label {
+  opacity: 1;
+}
+
+form div input:visited+label {
+  opacity: 1;
+}
+
+form div input:focus {
+  border: 1px solid #5f6edc;
+}
+
+form div textarea {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  font-family: "Karla", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  color: #555555;
+  appearance: none;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  padding: 0.5rem 1rem;
+  outline: none;
+  width: 100%;
+  position: relative;
+  display: block;
+  order: 2;
+  resize: none;
+  height: 120px;
+  border: 1px solid transparent;
+}
+
+form div textarea:valid+label {
+  opacity: 1;
+}
+
+form div textarea:focus {
+  border: 1px solid #000;
+}
+
+form div button {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+  font-family: "Karla", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  background-color: #fefefe;
+  color: #000;
+  border: none;
+  max-width: 210px;
+  cursor: pointer;
+}
+
+form div button:hover {
+  background-color: #00000073;
+  color: #fefefe;
+}

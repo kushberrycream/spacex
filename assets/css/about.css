@@ -1,0 +1,49 @@
+
+/*     about page    */
+
+.spacexwhite {
+  width: 75%;
+}
+
+.row.no-gutters .col-md-6 .card {
+    height: 100%;
+}
+
+/*   wikipedia - video - article - social links  */
+.about-links,
+.icon {
+  font-size: 1.6rem;
+  text-align: center;
+  height: 75px;
+  padding: 20px;
+}
+
+.socialbuttons {
+  font-size: 1.5rem;
+  color: #f3f3f3;
+}
+
+.elon {
+  margin-bottom: 20px;
+}
+
+.github {
+  width: 70px;
+  margin: auto;
+  display: grid;
+  text-align: center;
+}
+
+.facebook {
+  width: 58px;
+  margin: auto;
+  display: grid;
+  text-align: center;
+}
+
+.docs {
+  width: 58px;
+  margin: auto;
+  display: grid;
+  text-align: center;
+}

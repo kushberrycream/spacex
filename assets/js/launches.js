@@ -1,9 +1,15 @@
+/**
+ * @fileoverview All functions used to display data onto launches.html page
+ * @author Tom Jones <tom@wilson-express.co.uk>
+ */
 
+ /** Function which calls the main SpaceX API and the launches endpoint passing 0 as the value param */
 fetchLaunches("0");
+/** Function which displays prev/next buttons */
 pagination();
 
 // calls spacex past launches api
-function fetchAllLaunches() {
+function fetchAllLaunchCards() {
 
     $("#loader").addClass("hide-loader");
 

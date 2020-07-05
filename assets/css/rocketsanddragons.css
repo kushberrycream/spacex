@@ -1,0 +1,39 @@
+/*  rockets page image styling */
+
+.rocket-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  text-align: center;
+}
+
+#rocketstats .card {
+    height: 100%;
+}
+
+#dragonstats .card {
+    height: 100%;
+}
+
+.center-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#flickr-images {
+  height: 700px;
+  align-items: center;
+  display: flex;
+}
+
+.rocket-dragon-links {
+  font-size: 1.6rem;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.list-group-item {
+  background-color: transparent;
+  border: 1px solid #ffffffad;
+}

@@ -1,0 +1,76 @@
+/*          launches page            */
+
+.launch-title {
+  text-align: center;
+  padding: 20px;
+  color: #fefefe;
+  font-weight: 600;
+  margin-top: 66px;
+}
+
+.green {
+  background: #1b8500;
+  color: #fff;
+}
+
+.red {
+  background: #ff0000;
+  color: #fff;
+}
+
+.launch-success {
+  position: absolute;
+  left: 20px;
+  font-size: small;
+  top: 40px;
+}
+.launch-links {
+    font-size: 1.6rem;
+
+}
+/*  Launches page pagination styling   */
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  width:100%;
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: #fff;
+  background-color: transparent;
+
+}
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: 0;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: .25rem;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #1f1f44;
+  border-color: #1f1f44;
+}
+
+.patch {
+  max-width: 256px;
+}
