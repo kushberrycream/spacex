@@ -110,14 +110,6 @@ function eachRocketData(item, cardHead, column1, column2) {
  */
 function rocketSpecCard() {
 
-  /** using the history API I add a new url to the history of the browser */
-  window.history.pushState('', null, specificRocket.rocket_id + ".html");
-  /** when the back button is pressed the page reloads to refresh to the original state */
-  $(window).on('popstate', function () {
-
-    location.reload(true);
-  });
-
   /** removes loader */
   $("#loader").addClass("hide-loader");
 
@@ -173,6 +165,14 @@ function rocketSpecCard() {
   rocketStats.appendChild(card3);
   card3.appendChild(cardHeader3);
   card3.appendChild(cardBody3);
+
+   /** using the history API I add a new url to the history of the browser */
+  window.history.pushState('', null, "rockets.html");
+  /** when the back button is pressed the page reloads to refresh to the original state */
+  $(window).on('popstate', function () {
+
+    location.reload(true);
+  });
 
   /** call all the functions to display data on the page once cards are created */
   rocketInfo(cardHeader, cardBody);

@@ -169,7 +169,7 @@ function dragonSpecCard() {
   card3.appendChild(cardBody3);
 
   /** using the history API I add a new url to the history of the browser */
-  window.history.pushState('', null, specificDragon.id + ".html");
+  window.history.pushState('', null, "dragons.html");
   /** when the back button is pressed the page reloads to refresh to the original state */
   $(window).on('popstate', function () {
     location.reload(true);
