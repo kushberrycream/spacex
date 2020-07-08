@@ -140,7 +140,7 @@ function fetchLaunches(value) {
     
     /** if statememt checking to see if array returns less than 11 records if true then it will add class display-none to next button */
     if (launchData.length < 11) {
-            next.classList.add("display-none");
+            next.setAttribute("class", "display-none");
     /** else if statement checks if array returns exactly 11 records then it will display a next button */
       } else if (launchData.length == 11) {
             next.classList.remove("display-none");
@@ -182,10 +182,9 @@ function fetchAbout() {
 }
 
 /**
- * Function added to onclick attribute to change the btnValue
+ * Function added to onclick attribute to change the Value
  * depending on the value of the btn selected. This will then 
- * change the endpoint on the API so only the selected Rocket
- * or dragon is displayed.
+ * change the endpoint on the API so only the selected data is displayed.
  * @param {string} type type is a string of either "rocket" or "dragon"
  * @param {string} value This is the value of button selected by user
  */

@@ -7,7 +7,7 @@
 fetchMissions();
 
 /**
- * This function uses the forEach method to loop through the object obtained
+ * This function uses the forEach method to loop through the array obtained
  * from the Missions endpoint and create a card for each mission. 
  */
 function createMissionCards() {
@@ -42,9 +42,9 @@ function createMissionCards() {
 
 /**
  * This Functions uses the data obtained from the Missions endpoint.
- * @param {object} item Data from the missions endpoint passed from eachMissionCard() 
- * @param {HTMLElement} headLink Passed from the eachMissionCard() function, used to display mission name.
- * @param {HTMLElement} cardBody Passed from the eachMissionCard() function and used to display mission data.
+ * @param {Array} item Data from the missions endpoint passed from createMissionCard() 
+ * @param {HTMLElement} headLink Passed from the createMissionCard() function, used to display mission name.
+ * @param {HTMLElement} cardBody Passed from the createMissionCard() function and used to display mission data.
  */
 function missionInfo(item, headLink, cardBody) {
 
