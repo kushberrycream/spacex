@@ -672,32 +672,81 @@
 
 @media (max-width:767px) {
     h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     h2 {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
+        padding: 0;
     }
     h3 {
-        font-size: 1rem;
+        font-size: 1.4rem;
+    }
+    h4 {
+        font-size: 1.2rem;
     }
     .mission-name {
         padding-top: 10px;
     }
     .countdown {
-    padding-top: 10px;
-    height: 125px;
-    position: relative;
-    top: unset;
-    right: unset;
-    bottom: unset;
-    left: unset;
-    z-index: 10;
-    padding-bottom: 20px;
-    color: #fff;
-    text-align: center;
-    font-size: 0.5rem;
+        height: 125px;
+        position: relative;
+        top: unset;
+        right: unset;
+        bottom: unset;
+        left: unset;
+        z-index: 10;
+        padding: 20px;
+        color: #fff;
+        text-align: center;
+        font-size: 0.5rem;
     }
     .details-container {
-        height: 50vh;
+        height: 45vh;
     }
+    .carousel .carousel-caption img {
+      position: absolute;
+      top: 0;
+      width: 75px;
+      left: 50px;
+    }
+    .carousel-caption {
+    position: absolute;
+    bottom: -50px;
+    }
+    .mission-name {
+      position: absolute;
+      top: -10px;
+      font-size: 0.9rem;
+    }
+    .site, .rocket, .type, .flight {
+      position: unset;
+    }
+
+}
+
+
+@media (max-width:360px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    h3 {
+        font-size: 1.1rem;
+    }
+    h4 {
+        font-size: 0.9rem;
+    }
+    .carousel-caption {
+    position: absolute;
+    bottom: -90px;
+    }
+    .details-container {
+        height: 35vh;
+    }
+    .site, .rocket, .type, .flight {
+      font-size: 0.7rem;
+    }
+
 }
