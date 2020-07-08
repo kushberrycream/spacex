@@ -61,6 +61,7 @@ function eachDragonData(item, cardHead, column1, column2) {
     cardInfo3 = document.createElement("h6"),
     linkRow = document.createElement("div"),
     linkCol1 = document.createElement("div"),
+    linkCol2 = document.createElement("div"),
     wiki = document.createElement("a"),
     button = document.createElement("button"),
     image = document.createElement("img");
@@ -70,7 +71,8 @@ function eachDragonData(item, cardHead, column1, column2) {
   cardInfo2.setAttribute("class", "card-title");
   cardInfo3.setAttribute("class", "card-text");
   linkRow.setAttribute("class", "row text-center rocket-dragon-links");
-  linkCol1.setAttribute("class", "col-6");
+  linkCol1.setAttribute("class", "col-4");
+  linkCol2.setAttribute("class", "col-8");
   wiki.setAttribute("href", item.wikipedia);
   wiki.setAttribute("class", "hvr-pulse-grow");
   wiki.setAttribute("target", "_blank");
@@ -81,10 +83,7 @@ function eachDragonData(item, cardHead, column1, column2) {
   image.setAttribute("src", item.flickr_images[2]);
   image.setAttribute("alt", "dragon-image");
   image.setAttribute("onerror", "imgError(this);");
-
-  /** clone any duplicate elements */
-  let linkCol2 = linkCol1.cloneNode(false);
-
+  
   /** Append all elements created */
   column1.appendChild(cardInfo1);
   column1.appendChild(cardInfo2);

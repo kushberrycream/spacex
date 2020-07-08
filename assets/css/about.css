@@ -18,11 +18,6 @@
   padding: 20px;
 }
 
-.socialbuttons {
-  font-size: 1.5rem;
-  color: #f3f3f3;
-}
-
 .elon {
   margin-bottom: 20px;
 }
@@ -46,4 +41,11 @@
   margin: auto;
   display: grid;
   text-align: center;
+}
+
+.center-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
 }

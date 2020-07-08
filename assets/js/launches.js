@@ -133,28 +133,30 @@ function launchInfo(item, column1, column2) {
 // applys pagination to page
 function pagination() {
 
-    let pagination = document.getElementById("btm-pagination");
+    let pagination = document.getElementById("prev-next");
     let navMenu = document.createElement("nav");
     let list = document.createElement("ul");
     let listItem1 = document.createElement("li");
 
     navMenu.setAttribute("aria-label", "Page navigation");
     navMenu.classList.add("container");
-    list.classList.add("pagination", "justify-content-center");
-    listItem1.classList.add("page-link");
+    list.classList.add("pagination");
+    listItem1.classList.add("w-100")
 
     let listItem2 = listItem1.cloneNode(true);
+    let listItem3 = listItem1.cloneNode(true);
+
+    listItem2.setAttribute("class", "w-25 link-divide")
 
     pagination.appendChild(navMenu);
     navMenu.appendChild(list);
     list.appendChild(listItem1);
     list.appendChild(listItem2);
+    list.appendChild(listItem3);
 
-    listItem1.classList.add("text-right")
-
-
-    listItem1.innerHTML = `<option value="0" id="prev">Prev</option>`;
-    listItem2.innerHTML = `<option value="0" id="next">Next</option>`;
+    listItem1.innerHTML = `<div class="text-right"><button value="0" id="prev" class="hvr-pulse-grow page-link float-right"><i class="fas fa-angle-left"></i> Prev</button></div>`;
+    listItem2.innerText = "---"
+    listItem3.innerHTML = `<div><button value="0" id="next" class="hvr-pulse-grow page-link">Next <i class="fas fa-angle-right"></i></button></div>`;
     
 
     /** values of next / prev buttons */
@@ -168,7 +170,7 @@ function pagination() {
         value = this.value = offset += 10;
         value = offset;
         prev.value = prevOffset += 10;
-        prev.setAttribute("class", "");
+        prev.setAttribute("class", "hvr-pulse-grow page-link float-right");
         getValue("launches", value);
     }
     /** onclick event to change value of next and prev buttons when prev is pressed */
@@ -180,7 +182,7 @@ function pagination() {
             prev.setAttribute("class", "display-none");
         }
         if (launchData.length <= 11) {
-            next.setAttribute("class", "");
+            next.setAttribute("class", "hvr-pulse-grow page-link");
         }
 
         getValue("launches", value);

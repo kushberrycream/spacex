@@ -37,17 +37,22 @@
   margin-left: -1px;
   line-height: 1.25;
   color: #fff;
-  background-color: transparent;
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
-  width:100%;
+  background-color: #000000e2;
+}
+
+.page-link:focus {
+    box-shadow: none;
 }
 
 .page-link:hover {
   z-index: 2;
+  background-color: #000000e2;
   color: #fff;
-  background-color: transparent;
+  border: none;
+}
 
 }
 
@@ -73,4 +78,36 @@
 
 .patch {
   max-width: 256px;
+}
+
+#prev-next {
+    position: absolute;
+    width: 100%;
+}
+
+.card-body .row .col-md-7 {
+    padding-bottom: 30px;
+}
+
+.card-body .row .col-md-7 .row {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.link-divide {
+    text-align: center;
+    color: #fff;
+    font-size: 1.8rem;
+    background-color: #000000e2;
+    border: none;
+}
+
+@media (max-width:767px) {
+    .countdown {
+        position: relative;
+    }
+    .details-container {
+        height: 50vh;
+    }
 }

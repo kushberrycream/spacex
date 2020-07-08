@@ -176,7 +176,7 @@ function fetchAbout() {
     .then(axios.spread((spaceX, infoApi) => {
       spacexData = spaceX.data;
       infoApiData = infoApi.data;
-      aboutPage();
+      aboutPageCards();
       
     }));
 }

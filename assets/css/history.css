@@ -1,0 +1,23 @@
+
+/** only on history page */ 
+.history-media-buttons {
+  font-size: 1.6rem;
+  width: 33vw;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.historylinks {
+  position: absolute;
+  bottom: 0px;
+}
+
+.col .card-title + .card-title + .card-text {
+    padding-bottom: 40px;
+}
+
+.card-header+.card-body .row+.row {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

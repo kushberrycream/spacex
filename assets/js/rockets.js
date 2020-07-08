@@ -60,6 +60,7 @@ function eachRocketData(item, cardHead, column1, column2) {
     cardInfo2 = document.createElement("p"),
     linkRow = document.createElement("div"),
     linkCol1 = document.createElement("div"),
+    linkCol2 = document.createElement("div"),
     wiki = document.createElement("a"),
     button = document.createElement("button"),
     image = document.createElement("img");
@@ -68,7 +69,8 @@ function eachRocketData(item, cardHead, column1, column2) {
   cardInfo1.setAttribute("class", "card-title");
   cardInfo2.setAttribute("class", "card-text");
   linkRow.setAttribute("class", "row text-center rocket-dragon-links");
-  linkCol1.setAttribute("class", "col-6");
+  linkCol1.setAttribute("class", "col-4");
+  linkCol2.setAttribute("class", "col-8");
   wiki.setAttribute("href", item.wikipedia);
   wiki.setAttribute("target", "_blank");
   wiki.setAttribute("class", "hvr-pulse-grow");
@@ -81,9 +83,6 @@ function eachRocketData(item, cardHead, column1, column2) {
   image.setAttribute("src", item.flickr_images[0]);
   image.setAttribute("alt", "rocket-image");
   image.setAttribute("onerror", "imgError(this);");
-
-  /** clone any duplicate elements */
-  let linkCol2 = linkCol1.cloneNode(false);
 
   /** Append all elements created */
   column1.appendChild(cardInfo1);
