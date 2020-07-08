@@ -77,7 +77,7 @@ function eachDragonData(item, cardHead, column1, column2) {
   wiki.setAttribute("class", "hvr-pulse-grow");
   wiki.setAttribute("target", "_blank");
   button.setAttribute(`onclick`, `getValue("dragon", value)`);
-  button.setAttribute("value", `dragons/${item.id}`)
+  button.setAttribute("value", `dragons/${item.id}`);
   button.setAttribute("class", "more btn btn-primary");
   image.setAttribute("class", "rocket-image");
   image.setAttribute("src", item.flickr_images[2]);
@@ -358,7 +358,7 @@ function dragonStatistics(cardHeader3, cardBody3) {
   listGroupItem2.innerText = `Height With Trunk: ${specificDragon.height_w_trunk.meters}m`;
   listGroupItem3.innerHTML = `Trunk Volume: ${specificDragon.trunk.trunk_volume.cubic_meters}㎥`;
   listGroupItem4.innerText = `Dry Mass: ${specificDragon.dry_mass_kg}kg`;
-  listGroupItem5.innerText = "Launch Payload:"
+  listGroupItem5.innerText = "Launch Payload:";
 
   /** append first sublist and set of list items */
   listGroupItem5.appendChild(subList1);
@@ -449,10 +449,10 @@ function dragonStatistics(cardHeader3, cardBody3) {
     unorderedList2.appendChild(listItem5);
 
     /** 2nd set of list items inner text */
-    listItem2.innerText = `${item.thrust.kN}kN Thrust`
-    listItem3.innerText = `${item.amount} Thrusters`
-    listItem4.innerText = `${item.pods} Pods`
-    listItem5.innerText = "Fuel:"
+    listItem2.innerText = `${item.thrust.kN}kN Thrust`;
+    listItem3.innerText = `${item.amount} Thrusters`;
+    listItem4.innerText = `${item.pods} Pods`;
+    listItem5.innerText = "Fuel:";
 
     /** append 3rd unordered list and set of list-items */
     listItem5.appendChild(unorderedList3);
@@ -460,8 +460,8 @@ function dragonStatistics(cardHeader3, cardBody3) {
     unorderedList3.appendChild(listItem7);
 
     /** 3rd set of list items inner text */
-    listItem6.innerText = item.fuel_1
-    listItem7.innerText = item.fuel_2
+    listItem6.innerText = item.fuel_1;
+    listItem7.innerText = item.fuel_2;
   });
 
 }

@@ -106,7 +106,7 @@ function historyInfo(item, cardHead, col, linkCols1, linkCols2, linkCols3) {
   date.innerText = dateFormat;
   flight.innerHTML = `Flight No: ${item.flight_number} - ID: ${item.id}`;
   details.innerText = item.details;
-  linkCols1.innerHTML = `<a href="${item.links.wikipedia}" target="_blank" class="hvr-pulse-grow"><i class="fab fa-wikipedia-w"></i></a>`
+  linkCols1.innerHTML = `<a href="${item.links.wikipedia}" target="_blank" class="hvr-pulse-grow"><i class="fab fa-wikipedia-w"></i></a>`;
   linkCols2.innerHTML = reddit;
   linkCols3.innerHTML = `<a href="${item.links.article}" target="_blank" class="hvr-pulse-grow"><i class="far fa-newspaper"></i></a>`;
 

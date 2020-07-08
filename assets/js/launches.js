@@ -56,7 +56,7 @@ function fetchAllLaunchCards() {
 
     /** once all cards are created call function to add data */
     launchInfo(item, column1, column2);
-  })
+  });
 
 }
 
@@ -170,14 +170,14 @@ function pagination() {
   navMenu.setAttribute("aria-label", "Page navigation");
   navMenu.classList.add("container");
   list.classList.add("pagination");
-  listItem1.classList.add("w-100")
+  listItem1.classList.add("w-100");
 
   /** Clone all duplicate elements */
   let listItem2 = listItem1.cloneNode(true);
   let listItem3 = listItem1.cloneNode(true);
 
   /** Add any extra attributes */
-  listItem2.setAttribute("class", "w-25 link-divide")
+  listItem2.setAttribute("class", "w-25 link-divide");
 
   /** Append all elements created */
   pagination.appendChild(navMenu);
@@ -188,7 +188,7 @@ function pagination() {
 
   /** Set inner text / HTML of elements */
   listItem1.innerHTML = `<div class="text-right"><button value="0" id="prev" class="hvr-pulse-grow page-link float-right"><i class="fas fa-angle-left"></i> Prev</button></div>`;
-  listItem2.innerText = "---"
+  listItem2.innerText = "---";
   listItem3.innerHTML = `<div><button value="0" id="next" class="hvr-pulse-grow page-link">Next <i class="fas fa-angle-right"></i></button></div>`;
 
   /** values of next / prev buttons */
@@ -207,7 +207,8 @@ function pagination() {
     prev.setAttribute("class", "hvr-pulse-grow page-link float-right");
     /** uses getValue function to pass the button value over to a new api call */
     getValue("launches", value);
-  }
+  };
+  
   /** onclick event to change value of next and prev buttons when prev is pressed */
   document.getElementById("prev").onclick = function () {
     /** takes 10 to the prev value */
@@ -234,12 +235,10 @@ function pagination() {
     }
     /** uses getValue function to pass the button value over to a new api call */
     getValue("launches", value);
-
-  }
+  };
 
   /** removes prev button at page load*/
   if (prev.value == "0") {
     prev.setAttribute("class", "display-none");
   }
-
 }

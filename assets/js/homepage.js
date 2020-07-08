@@ -87,7 +87,7 @@ function carousel() {
     } else {
 
       column.setAttribute("class", "col-md-5 text-right");
-      column2.setAttribute("class", "col-md-6 d-md-block d-none launch-details")
+      column2.setAttribute("class", "col-md-6 d-md-block d-none launch-details");
 
       caption.appendChild(column2);
       column2.appendChild(details);
@@ -132,7 +132,7 @@ function countdownTimer(item, countdown) {
         date = moment.parseZone(item.launch_date_utc).utc().format("dddd Do MMMM YYYY, h:mm a");
       } else {
         date = moment.parseZone(item.launch_date_utc).utc().format("D / M / YYYY, h:mm a");
-      };
+      }
 
       /** using innerHTML I display my countdowns */
       countdown.innerHTML = `<h1><span class="mission-name">Mission Name:</span> ${item.mission_name}</h1>
@@ -156,7 +156,7 @@ function active() {
 
   let activeItem = document.getElementsByTagName("div").item(8),
     activeLaunch = document.getElementsByTagName("li").item(7);
-    activeItem.setAttribute("class", "carousel-item active")
+    activeItem.setAttribute("class", "carousel-item active");
     activeLaunch.setAttribute("class", "active");
 }
 

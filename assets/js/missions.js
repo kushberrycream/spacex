@@ -62,7 +62,7 @@ function missionInfo(item, headLink, cardBody) {
   row.setAttribute("class", "row text-center mission-links");
   col1.setAttribute("class", "col-2");
   wiki.setAttribute("target", "_blank");
-  wiki.setAttribute("class", "hvr-pulse-grow")
+  wiki.setAttribute("class", "hvr-pulse-grow");
 
   /** Clone all duplicate elements */
   let col2 = col1.cloneNode(false),
@@ -80,7 +80,7 @@ function missionInfo(item, headLink, cardBody) {
   cardBody.appendChild(description);
   cardBody.appendChild(row);
   row.appendChild(col1);
-  row.appendChild(col2)
+  row.appendChild(col2);
   col1.appendChild(wiki);
   col2.appendChild(twitter);
 
