@@ -1,4 +1,4 @@
-/*    contact form      */
+        /* CSS on contact.html */
 
 .form #sendmessage {
   color: #288e3b;
@@ -61,7 +61,6 @@ form div label {
   margin-bottom: 0;
   opacity: 0;
   order: 1;
-  
 }
 
 form div input {

@@ -1,4 +1,7 @@
+        /* CSS used throughout the website */
+
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300,300i,400,400i,600,600i,700,700,800i&display=swap);
+
 * {
   box-sizing: border-box;
 }
@@ -16,6 +19,19 @@ body {
   height: 100vh;
 }
 
+h2 {
+  padding: 10px 0;
+  margin-bottom: 0;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: #585858;
+}
+
 .container-fluid,
 .container {
   padding-right: 0;
@@ -30,86 +46,6 @@ body {
   padding-top: 76px;
 }
 
-/*     Navigation Bar     */
-
-.bg-dark {
-  background: #000 !important;
-}
-
-.navbar {
-  z-index: 100;
-  position: absolute;
-  width: 100%;
-}
-
-.navbar-brand {
-  height: 50px;
-}
-
-.social {
-  color: #fff;
-}
-
-.social:hover {
-  color: #949494;
-}
-
-button.nav-link {
-  background-color: transparent;
-  border: none;
-}
-
-button:focus {
-  outline: none;
-}
-
-/*    loader     */
-
-.loader {
-  border: 16px solid #272727;
-  border-top: 16px solid #dadada;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-  position: absolute;
-  top: 50vh;
-  left: 50vw;
-  margin-top: -60px;
-  margin-left: -60px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.hide-loader {
-  display: none;
-}
-
-/** only on missions page but not making a css file just for this class! */
-.mission-links {
-  font-size: 1.6rem;
-  padding: 20px 0;
-  text-align: center;
-}
-
-/*   USED THROUGHOUT WEBSITE   */
-h2 {
-  padding: 10px 0;
-  margin-bottom: 0;
-}
-
-.socialbuttons {
-  font-size: 1.5rem;
-  color: #f3f3f3;
-}
-
 .title {
   text-align: center;
   padding: 20px;
@@ -117,22 +53,13 @@ h2 {
   font-weight: 600;
 }
 
-.display-none {
-    display: none;
-}
-
 .links {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
-a {
-  color: #fff;
+.display-none {
+  display: none;
 }
-
-a:hover {
-  color: #585858;
-}
-
 
 .card {
   margin: 0;
@@ -157,7 +84,84 @@ a:hover {
   border-bottom: 1px solid #fff;
 }
 
-/*          footer      */
+
+        /* Navigation Bar Start */
+
+.bg-dark {
+  background: #000 !important;
+}
+
+.navbar {
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+}
+
+.navbar-brand {
+  height: 50px;
+}
+
+.socialbuttons {
+  font-size: 1.5rem;
+  color: #f3f3f3;
+}
+
+.social:hover {
+  color: #949494;
+}
+
+button.nav-link {
+  background-color: transparent;
+  border: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+        /* Navigation Bar End   */
+
+        /* Loader Start */
+
+.loader {
+  border: 16px solid #272727;
+  border-top: 16px solid #dadada;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  margin-top: -60px;
+  margin-left: -60px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hide-loader {
+  display: none;
+}
+
+         /* Loader End */
+
+        /** only on missions page but not making a css file just for this class! */
+
+.mission-links {
+  font-size: 1.6rem;
+  padding: 20px 0;
+  text-align: center;
+}
+
+        /* Footer Start */
 
 .site-footer {
   margin-top: 20px;
@@ -171,11 +175,11 @@ a:hover {
 
 .site-footer hr {
   border-top-color: #bbb;
-  opacity: 0.5
+  opacity: 0.5;
 }
 
 .site-footer hr.small {
-  margin: 20px 0
+  margin: 20px 0;
 }
 
 .site-footer h6 {
@@ -183,7 +187,7 @@ a:hover {
   font-size: 16px;
   text-transform: uppercase;
   margin-top: 5px;
-  letter-spacing: 2px
+  letter-spacing: 2px;
 }
 
 .site-footer a {
@@ -197,15 +201,15 @@ a:hover {
 
 .footer-links {
   padding-left: 0;
-  list-style: none
+  list-style: none;
 }
 
 .footer-links li {
-  display: block
+  display: block;
 }
 
 .footer-links a {
-  color: #737373
+  color: #737373;
 }
 
 .footer-links a:active,
@@ -298,6 +302,7 @@ a:hover {
   background-color: #007bb6;
 }
 
+        /* Footer media queries */
 
 @media (max-width:991px) {
   .site-footer [class^=col-] {
@@ -309,14 +314,16 @@ a:hover {
   .site-footer {
     padding: 20px;
   }
+
   .site-footer .copyright-text,
   .site-footer .social-icons {
     text-align: center;
   }
+
   .social-icons li.title {
     display: block;
     margin-right: 0;
-    font-weight: 600
+    font-weight: 600;
   }
 }
 
@@ -325,3 +332,5 @@ a:hover {
     padding-right: 20px;
   }
 }
+
+        /* Footer end */

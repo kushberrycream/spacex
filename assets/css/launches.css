@@ -1,4 +1,14 @@
-/*          launches page            */
+/* CSS on launches.html */
+
+.card-body .row .col-md-7 {
+  padding-bottom: 30px;
+}
+
+.card-body .row .col-md-7 .row {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 
 .launch-title {
   text-align: center;
@@ -24,10 +34,15 @@
   font-size: small;
   top: 40px;
 }
-.launch-links {
-    font-size: 1.6rem;
 
+.launch-links {
+  font-size: 1.6rem;
 }
+
+.patch {
+  max-width: 256px;
+}
+
 /*  Launches page pagination styling   */
 
 .page-link {
@@ -44,7 +59,7 @@
 }
 
 .page-link:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .page-link:hover {
@@ -52,8 +67,6 @@
   background-color: #000000e2;
   color: #fff;
   border: none;
-}
-
 }
 
 .page-item:first-child .page-link {
@@ -76,38 +89,15 @@
   border-color: #1f1f44;
 }
 
-.patch {
-  max-width: 256px;
-}
-
 #prev-next {
-    position: absolute;
-    width: 100%;
-}
-
-.card-body .row .col-md-7 {
-    padding-bottom: 30px;
-}
-
-.card-body .row .col-md-7 .row {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+  position: absolute;
+  width: 100%;
 }
 
 .link-divide {
-    text-align: center;
-    color: #fff;
-    font-size: 1.8rem;
-    background-color: #000000e2;
-    border: none;
-}
-
-@media (max-width:767px) {
-    .countdown {
-        position: relative;
-    }
-    .details-container {
-        height: 50vh;
-    }
+  text-align: center;
+  color: #fff;
+  font-size: 1.8rem;
+  background-color: #000000e2;
+  border: none;
 }

@@ -194,7 +194,8 @@ Here are a few of the processes I went through to manually test my code:
     5. I then submitted the form with all inputs valid and it suppied me with the correct success response. 
     6. Finally I went to my emails to confirm this has infact been a success.
 
-5. 
+5. Forwards and back buttons (Rockets / Dragons Pages):
+    1.  
 
 ### Bugs
 
@@ -203,6 +204,8 @@ I was thinking of leaving it as it was but as I progressed I decided this was no
 undesired effects.
 - A few times when developing and using my website if I clicked links to quickly this could lead to the previous API's call data not being removed and displaying it below the new API calls Data.
 Obviously this is undesirable and was fixed by placing all the separate API calls and the associated functions within their own js files and only placed them within the relevant HTML page.
+- Due to only having a single page for Rockets and Dragons and not creating specific page for each I had managed to break the forwards and back buttons as I was not creating a new history item.
+I fixed this by using the history API to add a history item to the browser, Users can now use the forwards and back buttons and refresh without taking them to the previous viewed URL.
 <p align="right">
   <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
 </p> 
@@ -244,6 +247,7 @@ All the content has been obtained via the [SpaceX API](https://docs.spacexdata.c
 ### Media
 - The main background came from [PSD Graphics](https://www.psdgraphics.com/backgrounds/night-sky-stars-background/)
 - SpaceX placeholder patch was taken from [SpaceX Twitter](https://twitter.com/SpaceX/photo)
+- Error Image was sourced from [Twitter](https://pbs.twimg.com/media/DUATAXAXUAE4nF9?format=jpg&name=large) and error message added by me
 
 ### Acknowledgements
 
@@ -253,7 +257,7 @@ All the content has been obtained via the [SpaceX API](https://docs.spacexdata.c
 thread.
 - I wanted to make some floating labels for my contact form as I think this is gives good user experience. I used this example on [Medium](https://medium.com/@imjuangarcia/floating-labels-using-patterns-to-boost-your-contact-form-conversions-3f7a040e7efb)
 to help me get my desired effect.
-- I used [CSS Script](https://www.cssscript.com/css-responsive-tab-view-using-flexbox-model/) and [CSS Tricks](https://www.cssscript.com/css-responsive-tab-view-using-flexbox-model/) to help me display Launch and Land site data responsively.
+- I used [CSS Script](https://www.cssscript.com/css-responsive-tab-view-using-flexbox-model/) and [CSS Tricks](https://css-tricks.com/accessible-simple-responsive-tables/) to help me display Launch and Land site data responsively.
 I liked the way that tables displayed data clearly in rows and columns whilst maintaining sizes no matter what the size of the content and I found I was unable to do this easily any other way.
 The combination of the two tutorials helped me achieve my desired goal.
 

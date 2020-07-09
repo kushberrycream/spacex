@@ -1,0 +1,315 @@
+/*  Carousel used throughout various pages   */
+        /*  Carousel Background Styling */
+.overlay {
+  padding-top: 76px;
+  background-color: #000000;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.bg {
+  background: url("../images/crewdragon.jpg") center center no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+        /* Carousel Background End */
+
+.card.card-carousel {
+  color: #000000e2;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+  box-shadow: none;
+  padding-top: 66px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+}
+
+.carousel .carousel-indicators {
+  bottom: 5px;
+}
+
+.carousel .carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  text-indent: -999px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+  border-radius: 2px;
+}
+
+.carousel .carousel-indicators .active {
+  margin: 11px 10px;
+}
+
+.carousel .carousel-indicators li {
+  margin: 11px 10px;
+}
+
+.carousel .carousel-indicators .active {
+  margin-top: 10px;
+  transform: scale(1.1);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  align-items: center;
+  transition: transform .6s ease;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel .carousel-caption {
+  margin-bottom: 50px;
+  height: 240px;
+}
+
+.carousel .carousel-caption img {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  left: 50px;
+}
+
+.carousel .carousel-caption .material-icons {
+  position: relative;
+  top: 5px;
+}
+
+.carousel .carousel-control-next .material-icons {
+  z-index: 5;
+  display: inline-block;
+  font-size: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100px;
+  margin: auto;
+}
+
+.carousel .carousel-control-prev .material-icons {
+  z-index: 5;
+  display: inline-block;
+  font-size: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  margin: auto;
+}
+
+.carousel-control-next-home,
+.carousel-control-prev-home {
+  position: absolute;
+  bottom: unset;
+  top: unset;
+  color: #fff;
+  text-align: center;
+  width: unset;
+  font-size: 30px;
+}
+
+.carousel-control-prev-home {
+  left: 40vw;
+}
+
+.carousel-control-next-home {
+  right: 40vw;
+}
+
+.carousel-caption {
+  color: #fff;
+  text-align: left;
+}
+
+    /* home page placeholders for data in details container and countdown styling  */
+.mission-name {
+  position: absolute;
+  top: -10px;
+  font-size: small;
+}
+
+.site {
+  position: absolute;
+  top: 100px;
+  font-size: small;
+}
+
+.rocket {
+  position: absolute;
+  top: 27px;
+  right: 20px;
+  font-size: small;
+  width: 75px;
+}
+
+.type {
+  position: absolute;
+  top: 62px;
+  right: 20px;
+  font-size: small;
+  width: 100px;
+}
+
+.flight {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-size: small;
+  width: 75px;
+}
+
+.countdown {
+  height: 125px;
+  position: absolute;
+  top: 20px;
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  z-index: 10;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.launch-details {
+  height: 220px;
+  overflow-y: auto;
+}
+
+.details-container {
+  height: 65vh;
+}
+
+        /* Carousel Media Queries */
+@media (max-width:767px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    padding: 0;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  .mission-name {
+    padding-top: 10px;
+  }
+
+  .countdown {
+    height: 125px;
+    position: relative;
+    top: unset;
+    right: unset;
+    bottom: unset;
+    left: unset;
+    z-index: 10;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    font-size: 0.5rem;
+  }
+
+  .details-container {
+    height: 45vh;
+  }
+
+  .carousel .carousel-caption img {
+    position: absolute;
+    top: 0;
+    width: 75px;
+    left: 50px;
+  }
+
+  .carousel-caption {
+    position: absolute;
+    bottom: -50px;
+  }
+
+  .mission-name {
+    position: absolute;
+    top: -10px;
+    font-size: 0.9rem;
+  }
+
+  .site, 
+    .rocket, 
+    .type, 
+    .flight {
+    position: unset;
+  }
+}
+
+@media (max-width:360px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+  }
+
+  .carousel-caption {
+    position: absolute;
+    bottom: -90px;
+  }
+
+  .details-container {
+    height: 35vh;
+  }
+
+  .site, 
+    .rocket, 
+    .type, 
+    .flight {
+    font-size: 0.7rem;
+  }
+}
+    /* Carousel End */

@@ -1,15 +1,9 @@
-
-/*     about page    */
-
-.spacexwhite {
-  width: 75%;
-}
+        /* CSS on about.html */
 
 .row.no-gutters .col-md-6 .card {
-    height: 100%;
+  height: 100%;
 }
 
-/*   wikipedia - video - article - social links  */
 .about-links,
 .icon {
   font-size: 1.6rem;
@@ -29,13 +23,7 @@
   text-align: center;
 }
 
-.facebook {
-  width: 58px;
-  margin: auto;
-  display: grid;
-  text-align: center;
-}
-
+.facebook,
 .docs {
   width: 58px;
   margin: auto;
@@ -48,4 +36,8 @@
   justify-content: center;
   align-items: center;
   height: 300px;
+}
+
+.spacexwhite {
+  width: 75%;
 }

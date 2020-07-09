@@ -1,5 +1,14 @@
+        /* CSS on history.html */ 
+.col .card-title + .card-title + .card-text {
+  padding-bottom: 40px;
+}
 
-/** only on history page */ 
+.card-header+.card-body .row+.row {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 .history-media-buttons {
   font-size: 1.6rem;
   width: 33vw;
@@ -10,14 +19,4 @@
 .historylinks {
   position: absolute;
   bottom: 0px;
-}
-
-.col .card-title + .card-title + .card-text {
-    padding-bottom: 40px;
-}
-
-.card-header+.card-body .row+.row {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
