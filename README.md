@@ -2,12 +2,16 @@
 **Stream Two Project: Interactive Frontend Development - Code Institute**
 
 ## Introduction
-This is a Website calling the SpaceX API. The Website Fetches the data provided by SpaceX and displays it on
+This is a Website using the SpaceX API. The Website Fetches the data provided by SpaceX and displays it
 across multiple different pages. This Website will show what I have learnt over the last couple of modules and
 provide an insight into what I am able to do with API's and Javascript.
 
 ## Demo
 Click the image below for a live Demo of the Website.
+
+<a href="https://kushberrycream.github.io/spacex/" target="_blank">
+  <img alt="am i responsive" src="https://github.com/kushberrycream/spacex/blob/master/assets/images/iamresponsivespacex.png?raw=true">
+</a>
 
 ## Contents
 - [Introduction](#tom-jones-personal-portfolio---first-milestone-project)
@@ -194,8 +198,17 @@ Here are a few of the processes I went through to manually test my code:
     5. I then submitted the form with all inputs valid and it suppied me with the correct success response. 
     6. Finally I went to my emails to confirm this has infact been a success.
 
-5. Forwards and back buttons (Rockets / Dragons Pages):
-    1.  
+5. Forwards, back and refresh buttons (Rockets / Dragons Pages):
+    
+        `Tested due to a bug explained in Bugs Section it is still not 100% ideal but
+        it now does not break the back, forward and refresh buttons`
+    1. I went over to the Rockets page and I selected a rocket to display that rockets data.
+    2. I First press back and am taken back to the Rockets main pages as I expected.
+    3. I then press forwards and I am not given a new page as I again expect.
+    4. I then go back to the same rocket and try the refresh button, I am then given the main rocket page as I expect.
+    5. Finally I repeat for all rockets and then for the Dragons also.
+
+6. 
 
 ### Bugs
 
@@ -206,6 +219,7 @@ undesired effects.
 Obviously this is undesirable and was fixed by placing all the separate API calls and the associated functions within their own js files and only placed them within the relevant HTML page.
 - Due to only having a single page for Rockets and Dragons and not creating specific page for each I had managed to break the forwards and back buttons as I was not creating a new history item.
 I fixed this by using the history API to add a history item to the browser, Users can now use the forwards and back buttons and refresh without taking them to the previous viewed URL.
+- For some reason the carousel on the rockets and dragon pages do not automatically slide. I have not found a fix for this but this is only a small bug.
 <p align="right">
   <a href="tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
 </p> 

@@ -233,6 +233,7 @@ function rocketCarousel(cardHeader2, cardBody2) {
   carousel.setAttribute("id", "carouselExampleIndicators");
   carousel.className = "carousel slide";
   carousel.setAttribute("data-ride", "carousel");
+  carousel.setAttribute("data-interval", "true");
   flickr.setAttribute("id", "flickr-images");
   flickr.className = "carousel-inner";
   prev.className = "carousel-control-prev";
