@@ -9,7 +9,7 @@ provide an insight into what I am able to do with API's and Javascript.
 ## Demo
 Click the image below for a live Demo of the Website.
 
-<a href="https://kushberrycream.github.io/spacex/" target="_blank">
+<a href="https://kushberrycream.github.io/spacex/">
   <img alt="am i responsive" src="https://github.com/kushberrycream/spacex/blob/master/assets/images/iamresponsivespacex.png?raw=true">
 </a>
 
