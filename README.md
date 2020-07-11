@@ -171,7 +171,8 @@ My site is responsive on multiple media devices and viewports. I used googles De
 Over all the different browsers, devices and viewports I only found the data displayed on the homepage carousel displayed incorrectly, to fix this I added a few media queries 
 and had it displaying as I wanted. I also checked to see if it was correctly displaying by viewing on my personal mobile and everything was working as expected.
 
-All external links have been manually tested, they all open up a new tab in the browser and work correctly by sending the user to a useful site.
+All external links have been manually tested, they all open up a new tab in the browser and work correctly by sending the user to a useful site. Lastly there are no major console errors, any which have occured have been 
+dealt with within my code, such as errors with images not existing, in this situation I have provided an error image to give the user an indication it isnt working or doesnt exist whilst not displaying a broken image icon.
 
 Here are a few of the processes I went through to manually test my code:
 
