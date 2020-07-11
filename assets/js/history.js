@@ -35,7 +35,7 @@ function createHistoryCards() {
     cardBody.setAttribute("class", "card-body");
     row2.setAttribute("class", "row");
     col.setAttribute("class", "col");
-    linkCols1.setAttribute("class", "col-md-4 history-media-buttons");
+    linkCols1.setAttribute("class", "col-4 history-media-buttons");
 
     /** clone all duplicate elements */
     let row3 = row2.cloneNode(false),
