@@ -48,10 +48,6 @@ form div {
 }
 
 form div label {
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   font-family: "Karla", sans-serif;
   font-size: 0.75rem;
@@ -64,10 +60,6 @@ form div label {
 }
 
 form div input {
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   appearance: none;
   border-radius: 5px;
@@ -96,10 +88,6 @@ form div input:valid+label {
   opacity: 1;
 }
 
-form div input::selection+label {
-  opacity: 1;
-}
-
 form div input:visited+label {
   opacity: 1;
 }
@@ -109,10 +97,6 @@ form div input:focus {
 }
 
 form div textarea {
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   font-family: "Karla", sans-serif;
   font-size: 1rem;
@@ -141,10 +125,6 @@ form div textarea:focus {
 }
 
 form div button {
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
   font-family: "Karla", sans-serif;
