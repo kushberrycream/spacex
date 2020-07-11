@@ -229,7 +229,7 @@ function headers() {
 
   // Launch Site Table Headers
 
-  launchHeaders = `<tr role="row">
+  launchHeaders = `<tr>
       <th class="launch-head"><strong>${tableHeaders[2]}</strong></th>
       <th class="launch-head"><strong>${tableHeaders[3]}</strong></th>
       <th class="launch-head"><strong>${tableHeaders[4]}</strong></th>
@@ -259,7 +259,7 @@ function headers() {
 
   // Landing Site Table Headers
 
-  landingHeaders = `<tr role="row">
+  landingHeaders = `<tr>
       <th class="land-head"><strong>${landHeaders[2]}</strong></th>
       <th class="land-head"><strong>${landHeaders[3]}</strong></th>
       <th class="land-head"><strong>${landHeaders[4]}</strong></th>
