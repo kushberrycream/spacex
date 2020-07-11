@@ -37,15 +37,17 @@ Click the image below for a live Demo of the Website.
 
 ## UX
 ### Strategy
-The main goal of my website is to provide any users with a clear and easy to use site which provides information
-obained from the SpaceX API. I have have kept the Design Minimalistic to give a good user experience by displaying
-the data in a uniform and ledgable layout.
+I want users of my website to be able to access clear and easy to read information. 
+I have used the the SpaceX API to obtain all my information, any data i provide to my end user will 
+automatically update if SpaceX were to update it in anyway. I have kept the design minimalistic but still 
+keeping to a space theme. To give a good user experience I have displayed the data in a uniform and ledgable layout
+theroughout the site.
 
 ### Scope
 | User | User Stories |
 | ------ | ------ |
 | SpaceX Fans | As a SpaceX fan I want to be able to view as much Information about SpaceX as possible, Upcoming Launches, Previous Launches, Types of Rockets etc. |
-| People intrested in Space Flight | As someone intrested in Space Flight I want to be able to see any upcoming Launches, any data on those launches and missions they undertake. Also any information on how to watch launches.  |
+| People intrested in Space Flight | As someone intrested in Space Flight I want to be able to see any upcoming Launches, any data on those launches and missions they undertake. Also anything such as Videos, Wikipedia pages and Reddit pages.  |
 | Children intrested in Space | As a Child I want to be able to learn as much as possible and as easily as possible. I want to be able to view any intresting images or links to videos or other pages. |
 | Anyone who doesnt know SpaceX | As a someone new to SpaceX I would like to find out who they are and what they do, any relevant data about SpaceX and links to more relevant information. |
 
@@ -55,22 +57,21 @@ easy for any user to read or use.
 SpaceX fans are able to see a great amount of data about upcoming launches, previous launches and the various rockets, dragons (Part of the Spacecraft) and much more.
 
 People intrested in Space flight can easily see what kind of launches are happening and when also and missions that SpaceX have undertaken / currently undertaking. Plus links to
-previous launch videos and links to SpaceX webcast are clearly visable throughout the site.
+previous launch videos and links to other SpaceX links.
 
-Children can navigate easily through my site to learn all about the types of vehicles SpaceX use, any information about SpaceX and also any links to more information about Space Flight.
+Children can navigate easily through my site to learn all about the types of vehicles SpaceX use, any information about SpaceX and also any links to videos and any more information about Space Flight.
 
 People who do not know about SpaceX and would like to learn what they do can view a vast array of information from launches, missions, vehicles and also historical events SpaceX have been a part of.
 
 
 ### Structure
-The site is built up of multiple , each page is populated with data from theSpaceX API. The page will update according to which navigation link
-is clicked and a loading spinner will spin in the center of each page until the call has been completed, this gives the user a good indication the page is doing something.
-Almost all the data is displayed within cards this gives the pages continunity and gives a good user experience. 
-
-I have provided multiple CTA's across the whole website for a range of things. The first CTA's are for social links and the contact page provided on the Navbar and the 
-footer of each page. Two sets are provided on the `index.html` page, the user clicks these and they give the user the information for the button they have chosen. Both 
-the Rockets and the dragons page provide CTA's to view more infomation on the specific items. The final CTA's are on the About page, these give all the social links for 
-SpaceX and also another section for my social links again.
+The site is built up of multiple pages, each page is populated with data from the SpaceX API. Each page fetches its own data from the API using the various
+endpoints provided, when a page is selected or a new data is fetched a loading spinner will spin in the center of each page until the data has been fetched,
+this gives the user a good indication the page is doing something. Almost all the data is displayed within cards this gives the pages continunity and gives a good user experience. 
+I have provided multiple CTA's across the whole website for a range of things, CTA's are for social links, wikipedia, reddit, news articles, youtube and much more giving the user a vast
+amount of information, all opening to a separate tab so to not divert from my website. A contact form is provided for anyone who needs to contac the developer about bugs or suggestions, 
+but as I am not wanting many emails from this site I have provided minimal links. An Error modal appears if there is any error with the API request this is able to be closed and the rest of the 
+site is still accessible or you can refresh the page via the modal. 
   
 
 ### Skeleton
@@ -83,8 +84,7 @@ SpaceX and also another section for my social links again.
 ### Surface
 I planned originally to keep the website white and black but as the page progressed I was thinking it needed a space theme, whilst the white and black theme worked I felt it was
 a little to boring to me. My website ended up with the main background being a star filled sky with a different landing page background. To display text correctly I have overlayed the landing page background and
-also changed the background on all cards to have the same colour of the overlay and this helps keep all the text ledgable against the background. All my Fonts, Active links and Icons are white unless
-they are inactive.
+also changed the background on all cards to transparent black and this helps keep all the text ledgable against the background. All my Fonts, Active links and Icons are white unless they are being hovered over.
 
 <p align="right">
   <a href="#tom-jones-personal-portfolio---first-milestone-project">Back to Top :arrow_heading_up:</a> 
@@ -141,6 +141,7 @@ as you only display one item of data at a time.
 - [x] I supply a breakdown of each Mission SpaceX currently undertake and have undertaken and also a link to the company it is associated with.
 - [x] I have broken down the launches by paginating the data. Each page displays 10 launches and they have been reversed so the most recent launch is displayed first. Each Launch displays a Description along with any links.
 - [x] History is split into smaller cards to allow more data to be viewed on the screen but still allow for responiveness. 
+- [x] The Launches page has functioning prev and next buttons allowing for the user to select through a set of data and not create a long page thats difficult to read.
 - [x] I have given the user information on the company, their API and also myself. I have also given the user links to the company and myself incase the user wishes to research more or contact myself.
 - [x] A Contact form has been supplied to also allow the user to quickly contact me about any bugs or suggestions.
 
@@ -160,10 +161,15 @@ various libaries I am using. It also says I have unused variables but these are 
 
 I used [W3 Validators](https://validator.w3.org) to check for any errors within my HTML and CSS and both passed. Originally I was using the `<option>` element 
 as my navigation buttons as this worked for what I needed. The validator let me know this wasnt the correct usage, so I replaced these with buttons and restyled them so
-they still looked the same.
+they still looked the same. I was also using the role attribute within my tables as this was used in a tutorial I had used but again I was warned this was not needed.
 
 I passed JS, HTML and CSS through validators and beautifiers throughout development to make sure I kepts my code clean and readable and also avoiding trying to fix multiple 
-errors within my code all at once. This approach helped me manage my time on the project better.
+errors within my code all at once. This approach helped me manage my time on the project better. I also broke down all my code into smaller files to be accessed by the specific page,
+I found this an easier way to keep everything more readable as I found both the CSS and JS files were rather large, this also meant I was able to only have code relevant to the page present in the sources.
+
+My site is responsive on multiple media devices and viewports. I used googles DevTools to test all the different viewport resolutions, I also did this on Opera and firefox.
+Over all the different browsers, devices and viewports I only found the data displayed on the homepage carousel displayed incorrectly, to fix this I added a few media queries 
+and had it displaying as I wanted. I also checked to see if it was correctly displaying by viewing on my personal mobile and everything was working as expected.
 
 Here are a few of the processes I went through to manually test my code:
 
@@ -208,7 +214,18 @@ Here are a few of the processes I went through to manually test my code:
     4. I then go back to the same rocket and try the refresh button, I am then given the main rocket page as I expect.
     5. Finally I repeat for all rockets and then for the Dragons also.
 
-6. 
+6. Pagination (Prev / Next buttons)
+    1. On the launches page I first check to see if a prev button is visable, it was not which is what I expect.
+    2. A next button was available which I can click to recall a new endpoint to display new data, which again works correctly.
+    3. I then press next until it disappears. The last few cards are displayed again as expected.
+    4. To test if the page will add a new next button when the data is updated by spacex I pushed 4 objects to the array to make 11 items (The amount needed to display a next button)
+    5. I then reload the page and select next again until it disapears, the new page now displays the 4 new objects on there own as expected (This will be a single object once the data has been updated.) 
+
+7. Error modal
+    1. I could not get this to display on its own so I had to force the error response by breaking the endpoint URL.
+    2. After that I then loaded the page which had the incorrect endpoint and the error modal appeared.
+    3. I was able to close the modal and use the  rest of the site as expected.
+    4. I reloaded the page and on the error modal I was able to refresh the page as expected also.
 
 ### Bugs
 
