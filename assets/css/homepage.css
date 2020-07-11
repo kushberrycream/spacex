@@ -64,9 +64,7 @@
   padding: 20px;
   display: none;
   width: 100%;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
+  
 }
 
 .responsive-tabs .tab {
@@ -456,8 +454,8 @@
     content: "Wikipedia:";
   }
 
-  .launch-item:nth-of-type(7):before {
-    content: "Details:";
+  .launch-item:nth-of-type(7) {
+    padding-left: 0;
   }
 
   .land-item:before {
@@ -499,8 +497,8 @@
     content: "Wikipedia:";
   }
 
-  .land-item:nth-of-type(7):before {
-    content: "Details:";
+  .land-item:nth-of-type(7) {
+    padding-left: 0;
   }
 }
 
