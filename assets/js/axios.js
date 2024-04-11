@@ -5,7 +5,7 @@
  */
 
 /** @const {string} SPACEX URL which retrieves data from main SpaceX API */
-const SPACEX = "https://api.spacexdata.com/v5/",
+const SPACEX = "https://api.spacexdata.com/v4/",
   /** @const {string} INFOAPI Adds info to end of URL for a different endpoint */
   INFOAPI = SPACEX + "info",
   /** @const {string} UPCOMINGAPI Adds launches/upcoming to url for different endpoint */
