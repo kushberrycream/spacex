@@ -65,7 +65,7 @@ function carousel() {
       siteName = `<span class="site">Site:</span> TBC`;
     } else {
       /** else site name will display the full name  */
-      siteName = `<span class="site">Site:</span> ${item.launch_site.site_name_long}`;
+      siteName = `<span class="site">Site:</span> ${item.launchpad.full_name}`;
     }
 
     /** Set the HTML content of some of the elements */
