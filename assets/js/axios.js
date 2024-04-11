@@ -19,7 +19,7 @@ const SPACEX = "https://api.spacexdata.com/v4/",
   /** @const {string} DRAGONS Adds dragons to url for different endpoint */
   DRAGONS = SPACEX + "dragons",
   /** @const {string} MISSIONS Adds missions to url for different endpoint */
-  MISSIONS = SPACEX + "missions",
+  MISSIONS = SPACEX + "launches",
   /** @const {string} PAST Adds launches/past/..... to url for different endpoint */
   PAST = SPACEX + "launches/past/?order=desc&limit=11&offset=",
   /** @const {string} HISTORY Adds history to url for different endpoint */
