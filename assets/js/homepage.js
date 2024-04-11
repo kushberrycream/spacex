@@ -35,7 +35,7 @@ function carousel() {
       type = document.createElement("h4"),
       site = document.createElement("h4"),
       details = document.createElement("p"),
-      siteName = item.launch_site.full_name;
+      siteName = item.launchpad.full_name;
 
     /** Sets attributes for all elements created */
     slide.setAttribute("data-slide-to", a);
